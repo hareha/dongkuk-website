@@ -1,0 +1,3949 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DK Steel - 동국산업</title>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/RGBELoader.js"></script>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fff;
+      color: #070707;
+      overflow-x: hidden;
+    }
+
+    /* ══ NAV — Figma: h100 px80 ══ */
+    #nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 300;
+      height: 100px;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), background 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 80px;
+    }
+
+    #nav.nav--solid {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    /* 메뉴 열렸을 때: 투명 → 흰 배경 + 그림자 + 다크 텍스트 */
+    #nav.gnb-menu-active {
+      background: #fff !important;
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06) !important;
+    }
+    #nav.gnb-menu-active .nav-links a { color: #4E4E4E !important; }
+    #nav.gnb-menu-active .nav-divider { background: #D3D3D3 !important; }
+    #nav.gnb-menu-active .nav-hamburger span { background: #4E4E4E !important; }
+    #nav.gnb-menu-active .nav-logo img { filter: brightness(0) !important; }
+
+    #nav.nav-hide {
+      transform: translateY(-100%);
+    }
+
+    /* Logo: 163×34 */
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 34px;
+      width: 163px;
+      object-fit: contain;
+      transition: filter 0.4s ease;
+    }
+
+    #nav.nav--dark .nav-logo img {
+      filter: brightness(0);
+    }
+
+    /* 오른쪽 그룹: gap 24 */
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    /* 문의/KR 링크 그룹: gap 16 */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* 문의/KR 개별: h44 px8 py4 r50 20px bold */
+    .nav-links a {
+      display: flex;
+      align-items: center;
+      height: 44px;
+      padding: 4px 8px;
+      border-radius: 50px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      white-space: nowrap;
+      line-height: 1.5;
+      transition: color 0.4s ease;
+    }
+
+    #nav.nav--dark .nav-links a {
+      color: #4E4E4E;
+    }
+
+    /* 구분선: h22 w1 */
+    .nav-divider {
+      width: 1px;
+      height: 22px;
+      background: #fff;
+      flex-shrink: 0;
+      transition: background 0.4s ease;
+    }
+
+    #nav.nav--dark .nav-divider {
+      background: #D3D3D3;
+    }
+
+    /* 햄버거: 44×44 r100, 줄 w28 h2 gap8.86 */
+    .nav-hamburger {
+      width: 44px;
+      height: 44px;
+      border-radius: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 8.86px;
+      cursor: pointer;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: #fff;
+      flex-shrink: 0;
+      transition: background 0.4s ease;
+    }
+
+    #nav.nav--dark .nav-hamburger span {
+      background: #4E4E4E;
+    }
+
+    /* ══ HERO ══ */
+    #hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 720px;
+      overflow: hidden;
+      margin-bottom: 60px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('assets/main/HERO_A.png') center/cover no-repeat;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.05) 50%, rgba(0, 0, 0, 0.45));
+    }
+
+    .hero-blob {
+      position: absolute;
+      left: -140px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.055);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-title {
+      position: absolute;
+      top: clamp(100px, 12.86vw, 247px);
+      left: clamp(24px, 6.25vw, 120px);
+      z-index: 3;
+      font-size: clamp(60px, 8.33vw, 160px);
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .hero-sub-text {
+      position: absolute;
+      bottom: clamp(40px, 4.17vw, 80px);
+      right: clamp(24px, 6.25vw, 120px);
+      z-index: 3;
+      text-align: right;
+    }
+
+    .hero-sub-text p {
+      font-size: clamp(28px, 3vw, 52px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+    }
+
+    /* ══ ORBITAL SECTION ══ */
+    #orbital-wrapper {
+      position: relative;
+      height: 500vh;
+      z-index: 3;
+    }
+
+    .orbital-sticky {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: transparent;
+      overflow: hidden;
+    }
+
+    .orb-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .orb-ellipse {
+      fill: none;
+      stroke-linecap: round;
+    }
+
+    .orb-e1 {
+      stroke: rgba(18, 28, 72, 0);
+      stroke-width: 0;
+    }
+
+    .orb-e2 {
+      stroke: rgba(18, 28, 72, 0.09);
+      stroke-width: 0.7;
+    }
+
+    .orb-inner-trail {
+      fill: none;
+      stroke-linecap: butt;
+      stroke-width: 4;
+    }
+
+    .orb-coil {
+      position: absolute;
+      width: clamp(640px, 76vw, 1460px) !important;
+      height: clamp(640px, 76vw, 1460px) !important;
+      transform: translate(-50%, -50%) scale(1);
+      z-index: 1;
+      opacity: 1;
+      will-change: transform, opacity;
+    }
+
+    .orb-coil img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 12px 36px rgba(0, 0, 0, 0.16)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08));
+    }
+
+    .orb-coil canvas {
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+    }
+
+    /* ── 3D 코일 고정 오버레이 (orbital → product 이동용) ── */
+    #coil-3d-fixed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    #coil-3d-fixed.coil-fixed {
+      position: fixed;
+      top: 0;
+      z-index: 4;
+    }
+
+    #coil-3d-fixed.coil-on-product {
+      z-index: 10;
+    }
+
+
+    #coil-3d-fixed canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .orb-dot {
+      position: absolute;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 4;
+      opacity: 0;
+      pointer-events: none;
+      will-change: left, top;
+    }
+
+    .orb-dot-navy {
+      background: #003592;
+      filter: blur(0px);
+    }
+
+    .orb-dot-orange {
+      background: #f37220;
+      filter: blur(0px);
+    }
+
+    .orb-dot-gray {
+      background: #8a8a9a;
+      filter: blur(0px);
+    }
+
+    .orb-card {
+      position: absolute;
+      z-index: 1;
+      opacity: 0;
+      line-height: 0;
+      will-change: transform, opacity;
+    }
+
+    .orb-card img {
+      display: block;
+    }
+
+    #orb-card-1 {
+      right: 140px;
+      top: 100px;
+      z-index: 1;
+    }
+
+    #orb-card-2 {
+      left: 40px;
+      top: 72px;
+      z-index: 1;
+      max-width: calc(50vw - 340px);
+    }
+
+    #orb-card-3 {
+      right: 40px;
+      top: calc(50% - 188px);
+      z-index: 1;
+    }
+
+    #orb-card-4 {
+      left: 200px;
+      bottom: 72px;
+      z-index: 1;
+      max-width: calc(50vw - 340px);
+    }
+
+    #orb-card-2 img,
+    #orb-card-4 img {
+      width: 100%;
+      height: auto;
+    }
+
+    #orb-phase-1,
+    #orb-phase-2 {
+      position: fixed;
+      left: 50%;
+      opacity: 0;
+      text-align: center;
+      z-index: 5;
+      pointer-events: none;
+      will-change: opacity, transform;
+      top: 50%;
+    }
+
+    .orb-line-clip {
+      overflow: hidden;
+      padding-bottom: 0.08em;
+    }
+
+    .orb-line {
+      display: block;
+      font-size: clamp(40px, 4.17vw, 80px);
+      font-weight: 600;
+      color: #070707;
+      line-height: 1.4;
+      letter-spacing: 0;
+      transform: translateY(110%);
+      will-change: transform;
+    }
+
+    .orb-cta-group {
+      display: inline-flex;
+      align-items: center;
+      gap: clamp(2px, 0.208vw, 4px);
+      margin-top: 28px;
+      opacity: 0;
+      will-change: opacity;
+    }
+
+    .orb-btn-main {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: clamp(120px, 9.06vw, 174px);
+      height: clamp(40px, 3.33vw, 64px);
+      padding: 0 clamp(16px, 1.25vw, 24px);
+      font-size: clamp(14px, 1.04vw, 20px);
+      font-weight: 500;
+      color: #fff;
+      background: #111;
+      line-height: 1.6;
+      border-radius: 16px;
+      text-decoration: none;
+    }
+
+    .orb-btn-circle {
+      width: clamp(40px, 3.125vw, 60px);
+      height: clamp(40px, 3.33vw, 64px);
+      border-radius: 16px;
+      border: 1.5px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #000;
+      transition: all 0.3s ease;
+    }
+
+    .orb-inner-box {
+      width: clamp(14px, 1.04vw, 20px);
+      height: clamp(14px, 1.04vw, 20px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .orb-arrow-svg {
+      width: clamp(10px, 0.729vw, 14px);
+      height: clamp(8px, 0.573vw, 11px);
+    }
+
+    /* ══ 제품소개 ══ */
+    #product-wrapper {
+      position: relative;
+      height: 375vh;
+      /* 👇 제품소개 카드도 양옆 30px 띄우기 위해 wrapper에 패딩 부여 */
+      padding: 0 30px;
+      box-sizing: border-box;
+    }
+
+    .product-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 100%;
+      padding: 40px 0;
+      background: #fff;
+      overflow: visible;
+      box-sizing: border-box;
+    }
+
+    .product-card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      /* 100vh에서 위아래 40px(총 80px) 패딩을 제외한 높이 꽉 채우기 */
+      height: calc(100vh - 80px);
+      background: linear-gradient(135deg, #E46116 0%, #FF7824 66%, #F98039 100%);
+      border-radius: clamp(16px, 1.458vw, 28px);
+      overflow: visible;
+      display: flex;
+      align-items: flex-start;
+      padding: clamp(30px, 3.125vw, 60px) clamp(36px, 3.75vw, 72px);
+    }
+
+    .product-left {
+      flex: 0 0 clamp(280px, 27.083vw, 520px);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .product-dikel {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 0 !important;
+    }
+
+    .product-dikel-icon {
+      width: clamp(28px, 2.292vw, 44px);
+      height: clamp(28px, 2.292vw, 44px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-dikel-name {
+      font-size: clamp(15px, 1.354vw, 26px);
+      font-weight: 700;
+      color: #fff;
+    }
+
+    #prod-steps {
+      flex: 1;
+      position: relative;
+      min-height: clamp(200px, 18.75vw, 360px);
+      margin-top: clamp(16px, 1.563vw, 30px) !important;
+    }
+
+    .prod-step {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      pointer-events: none;
+    }
+
+    .prod-step .product-title,
+    .prod-step .product-info-text h3,
+    .prod-step .product-info-text p,
+    .prod-step .product-info-img video {
+      transform: translateY(14px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+      opacity: 0;
+    }
+
+    .prod-step.prod-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .prod-step.prod-active .product-title,
+    .prod-step.prod-active .product-info-text h3,
+    .prod-step.prod-active .product-info-text p,
+    .prod-step.prod-active .product-info-img video {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .product-title {
+      font-family: 'Pretendard', sans-serif;
+      font-size: clamp(36px, 4.167vw, 80px) !important;
+      font-weight: 600 !important;
+      line-height: 1.4 !important;
+      letter-spacing: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      color: #fff;
+      white-space: nowrap;
+      display: block !important;
+    }
+
+    .product-info-card {
+      position: absolute;
+      bottom: calc(clamp(18px, 1.87vw, 36px) + 40px);
+      margin-top: 0;
+      background: #fff;
+      border-radius: 20px;
+      width: clamp(350px, 36.46vw, 700px);
+      height: clamp(160px, 16.67vw, 320px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .product-info-text h3 {
+      position: absolute;
+      left: clamp(15px, 1.5625vw, 30px);
+      top: clamp(15px, 1.5625vw, 30px);
+      width: clamp(127px, 13.28vw, 255px);
+      height: clamp(45px, 4.6875vw, 90px);
+      font-size: clamp(18px, 1.56vw, 30px);
+      font-weight: 600;
+      color: #070707;
+      line-height: 1.5;
+      margin: 0;
+      display: flex;
+      align-items: flex-start;
+      word-break: keep-all;
+    }
+
+    .product-info-text p {
+      position: absolute;
+      left: clamp(15px, 1.5625vw, 30px);
+      bottom: clamp(15px, 1.5625vw, 30px);
+      width: clamp(180px, 19vw, 365px);
+      font-size: clamp(14px, 1.15vw, 22px);
+      font-weight: 400;
+      color: #4e4e4e;
+      line-height: 1.6;
+      margin: 0;
+      word-break: keep-all;
+    }
+
+    .product-info-img {
+      position: absolute;
+      right: clamp(15px, 1.5625vw, 30px);
+      top: 50%;
+      transform: translateY(-50%);
+      width: clamp(132px, 13.75vw, 264px);
+      height: clamp(132px, 13.75vw, 264px);
+      background: linear-gradient(135deg, #f0f4f8, #d0dee8);
+      border-radius: 12px;
+    }
+
+    .product-bottom {
+      position: absolute;
+      bottom: clamp(18px, 1.875vw, 36px);
+      left: clamp(36px, 3.75vw, 72px);
+      right: clamp(36px, 3.75vw, 72px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 2;
+    }
+
+    .product-bottom-group-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding-left: 6px;
+    }
+
+    .product-status-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0;
+    }
+
+    .keep-scrolling {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: clamp(70px, 7.03vw, 135px);
+      height: clamp(15px, 1.56vw, 30px);
+      justify-content: center;
+    }
+
+    .keep-scrolling span {
+      font-size: clamp(14px, 1.04vw, 20px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    .mouse-icon-box {
+      width: 48px;
+      height: 48px;
+      margin-left: clamp(250px, 26.3vw, 505px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-loading-container {
+      width: clamp(340px, 35.83vw, 688px);
+      height: clamp(18px, 1.87vw, 36px);
+      display: flex;
+      align-items: center;
+    }
+
+    .product-loading-track {
+      width: clamp(338px, 35.625vw, 684px);
+      height: 5px;
+      background: rgba(255, 255, 255, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-loading-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background: #fff;
+      transition: width 0.2s ease-out;
+    }
+
+    .keep-scrolling-line {
+      display: none;
+    }
+
+    .product-detail-btn {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .product-detail-btn a:not(.circle-arrow) {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: clamp(100px, 8.4375vw, 162px);
+      height: clamp(40px, 3.177vw, 61px);
+      padding: 0 clamp(16px, 1.25vw, 24px);
+      font-size: clamp(13px, 0.937vw, 18px);
+      font-weight: 700;
+      color: #000;
+      background: #fff;
+      line-height: 1.6;
+      border-radius: 16px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .product-detail-btn .circle-arrow {
+      width: clamp(40px, 3.177vw, 61px);
+      height: clamp(40px, 3.177vw, 61px);
+      border-radius: 16px;
+      border: 1.5px solid #fff;
+      background: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+
+    .product-detail-btn .circle-arrow:hover {
+      background: rgba(255, 255, 255, 0.01);
+    }
+
+    .product-detail-btn .orb-inner-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+    }
+
+    .product-coil {
+      position: absolute;
+      right: clamp(-30px, -3.125vw, -20px);
+      top: 50%;
+      transform: translateY(-50%);
+      width: clamp(400px, 44.792vw, 860px);
+      height: clamp(400px, 44.792vw, 860px);
+      z-index: 1;
+    }
+
+    .product-coil img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .prod-coil-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .prod-coil-img.prod-active {
+      opacity: 1;
+    }
+
+    /* ══ 슬로건 ══ */
+    #slogan {
+      width: 100%;
+      background: #fff;
+      height: clamp(280px, 31.25vw, 600px);
+      padding: clamp(80px, 10vw, 192px) 0 clamp(90px, 10.938vw, 210px);
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .slogan-track {
+      display: flex;
+      align-items: center;
+      gap: clamp(20px, 2.5vw, 48px);
+      white-space: nowrap;
+      width: max-content;
+      animation: marquee 20s linear infinite;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .slogan-text {
+      font-size: clamp(60px, 8.333vw, 160px);
+      font-weight: 400;
+      color: #070707;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .slogan-circle {
+      flex-shrink: 0;
+      width: clamp(72px, 10.313vw, 198px);
+      height: clamp(72px, 10.313vw, 198px);
+    }
+
+    .slogan-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* ══ 투자 (지속 가능한 성장) ══ */
+    #invest-wrapper {
+      position: relative;
+      height: 250vh;
+      z-index: 2;
+      /* 👇 스크롤바와 상관없이 양옆 30px의 무조건적인 빈 공간 생성 */
+      padding: 0 30px !important;
+      box-sizing: border-box !important;
+      width: 100%;
+    }
+
+    #invest {
+      position: sticky;
+      top: 0;
+
+      /* 👇 요청하신 1860x1080 사이즈 강제 고정! */
+      width: 1860px !important;
+      height: 1080px !important;
+
+      /* 👇 화면 크기가 1860px보다 작을 때 화면 밖으로 튀어나가지 않게 막아줍니다. */
+      max-width: 100% !important;
+
+      /* 👇 지정된 1860px 카드를 화면 정중앙에 예쁘게 배치합니다. */
+      margin: 0 auto !important;
+
+      background: #F1EDEA;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      /* F1EDEA 안쪽 콘텐츠와의 기본 여백 60px 유지 */
+      padding: 0 60px !important;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .invest-inner {
+      background: url('assets/main/bg-invest.png') center center / cover no-repeat;
+      border-radius: clamp(16px, 1.667vw, 32px);
+      width: 100%;
+      height: clamp(540px, 56.25vw, 1080px);
+      max-height: calc(100vh - 80px);
+      display: flex;
+      align-items: stretch;
+      padding: 0 clamp(15px, 1.563vw, 30px) 0 clamp(15px, 1.563vw, 30px) !important;
+      gap: clamp(30px, 3.125vw, 60px);
+      position: relative;
+      z-index: 1;
+    }
+
+    .invest-left {
+      flex: 0 0 clamp(260px, 26.042vw, 500px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(50px, 5.208vw, 100px) 0 clamp(30px, 3.125vw, 60px);
+    }
+
+    .invest-title {
+      font-size: clamp(32px, 3.125vw, 60px);
+      font-weight: 700;
+      line-height: 1.4;
+      color: #070707;
+    }
+
+    .invest-company {
+      font-size: clamp(14px, 1.25vw, 24px);
+      font-weight: 700;
+      color: #F27100;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .invest-price {
+      font-size: clamp(36px, 4.167vw, 80px);
+      font-weight: 600;
+      color: #070707;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .invest-change {
+      font-size: clamp(14px, 1.25vw, 24px);
+      font-weight: 400;
+      color: #070707;
+      line-height: 1.5;
+      margin-bottom: clamp(30px, 3.125vw, 60px);
+    }
+
+    .invest-btn-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .invest-btn-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(14px, 0.938vw, 18px);
+      font-weight: 700;
+      color: #fff;
+      background: #0a0a0a;
+      border: none;
+      padding: clamp(12px, 0.938vw, 18px) clamp(18px, 1.458vw, 28px);
+      border-radius: 16px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+
+    .invest-btn-pill:hover {
+      opacity: 0.85;
+    }
+
+    .invest-btn-arrow {
+      width: clamp(40px, 3.125vw, 60px);
+      height: clamp(40px, 3.125vw, 60px);
+      border-radius: 16px;
+      background: transparent;
+      border: 1.5px solid #0a0a0a;
+      color: #0a0a0a;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(16px, 1.146vw, 22px);
+      text-decoration: none;
+      flex-shrink: 0;
+      transition: opacity 0.2s;
+    }
+
+    .invest-btn-arrow:hover {
+      background: #F27100;
+      border-color: #F27100;
+      color: #fff;
+    }
+
+    .invest-cards-wrap {
+      flex: 1;
+      align-self: stretch;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .invest-cards-track {
+      position: relative;
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      /* 우측 30px 정렬 유지 */
+
+      /* 👇 카드 사이의 간격은 무조건 40px로 고정됩니다! */
+      gap: 16px;
+      padding: 30vh 0;
+    }
+
+    .ic {
+      border-radius: 20px;
+      padding: clamp(20px, 3.5vw, 32px);
+
+      position: relative !important;
+      right: 0 !important;
+      left: auto !important;
+
+      /* 👇 대기 중일 때의 크기 (기존) */
+      width: clamp(400px, 41.406vw, 795px) !important;
+      height: clamp(300px, 20.156vw, 387px) !important;
+
+      transform: none !important;
+      /* scale 사용 안함 (간격 벌어짐 방지) */
+      opacity: 1 !important;
+      box-sizing: border-box;
+
+      transition: width 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        height 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        opacity 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .ic.ic-active {
+      width: clamp(450px, 43.489vw, 835px) !important;
+      height: clamp(337px, 23vw, 406px) !important;
+      z-index: 2;
+    }
+
+    .ic.ic-past,
+    .ic.ic-next {
+      z-index: 1;
+      width: clamp(400px, 41.406vw, 795px) !important;
+      height: clamp(300px, 20.156vw, 387px) !important;
+    }
+
+    .ic.ic-past {
+      transform: translateY(calc(-50% - var(--ic-slide)));
+    }
+
+    .ic.ic-next {
+      transform: translateY(calc(-50% + var(--ic-slide)));
+    }
+
+    .ic .ic-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .ic .ic-label {
+      font-size: clamp(18px, 1.25vw, 24px);
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .ic .ic-num {
+      font-size: clamp(36px, 3.125vw, 60px);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .ic .ic-num em {
+      font-size: clamp(14px, 1.04vw, 20px);
+      font-weight: 500;
+      font-style: normal;
+      margin-left: 4px;
+    }
+
+    .ic .ic-sub {
+      font-size: clamp(14px, 1.04vw, 20px);
+      font-weight: 500;
+      line-height: 1.6;
+      margin-top: 4px;
+    }
+
+    .ic-orange {
+      background: #F27100;
+      height: auto;
+      min-height: clamp(280px, 35vw, 387px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 32px;
+      padding: clamp(24px, 2.39vw, 46px) clamp(20px, 1.66vw, 32px) clamp(20px, 1.66vw, 32px);
+    }
+
+    .ic-orange .ic-label,
+    .ic-orange .ic-num {
+      color: #FFFFFF;
+    }
+
+    .ic-orange .ic-sub {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .ic-icon-img {
+      width: 106px;
+      height: 106px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .ic-photo {
+      height: auto;
+      min-height: clamp(280px, 35vw, 387px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 32px;
+      background: url('assets/main/bg-card-market.png') center center / cover no-repeat;
+      padding: clamp(24px, 2.39vw, 46px) clamp(20px, 1.66vw, 32px) clamp(20px, 1.66vw, 32px);
+    }
+
+    .ic-photo .ic-label {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .ic-photo .ic-num {
+      color: #fff;
+    }
+
+    .ic-photo .ic-sub {
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .ic-white {
+      background: #fff;
+      height: auto;
+      min-height: clamp(280px, 35vw, 387px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 32px;
+      padding: clamp(24px, 2.39vw, 46px) clamp(20px, 1.66vw, 32px) clamp(20px, 1.66vw, 32px);
+    }
+
+    .ic-white .ic-label,
+    .ic-white .ic-num,
+    .ic-white .ic-num em,
+    .ic-white .ic-sub {
+      color: #070707;
+    }
+
+    .ic-calendar {
+      --ic-slide: clamp(260px, 27.083vw, 520px);
+      height: auto;
+      min-height: clamp(300px, 20.156vw, 387px);
+      width: clamp(400px, 41.406vw, 795px);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 20px;
+      background: url('assets/main/bg-card-sales.png') center center / cover no-repeat;
+      position: relative !important;
+      right: 0 !important;
+      left: auto !important;
+      overflow: hidden;
+      padding: clamp(24px, 2.39vw, 46px) clamp(20px, 1.66vw, 32px) clamp(20px, 1.66vw, 32px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), width 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .ic-calendar.ic-active {
+      width: clamp(450px, 43.489vw, 835px);
+    }
+
+    .ic-calendar::before {
+      content: '';
+      position: absolute;
+      right: -60px;
+      top: -60px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      border: 40px solid rgba(255, 255, 255, 0.04);
+      pointer-events: none;
+    }
+
+    .ic-calendar .ic-label {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .ic-cal-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .ic-cal-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .ic-cal-item:last-child {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .ic-cal-item .ev-name {
+      font-size: clamp(16px, 1.25vw, 24px);
+      font-weight: 400;
+      line-height: 1.5;
+      color: #FFFFFF;
+      word-break: keep-all;
+    }
+
+    .ic-cal-item .ev-date {
+      font-size: clamp(13px, 0.937vw, 18px);
+      font-weight: 700;
+      line-height: 1.6;
+      color: #FFFFFF;
+      flex-shrink: 0;
+      margin-left: 16px;
+    }
+
+    /* ══ 고객지원 ══ */
+    #support-wrapper {
+      position: relative;
+      z-index: 1;
+      height: clamp(560px, 46.875vw, 900px);
+    }
+
+    .support-sticky {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      padding: clamp(79px, 8.229vw, 158px) clamp(60px, 6.25vw, 120px);
+      height: clamp(560px, 46.875vw, 900px);
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .support-heading {
+      font-size: clamp(32px, 3.125vw, 60px);
+      font-weight: 700;
+      color: #070707;
+      line-height: 1.4;
+      margin-bottom: clamp(30px, 3.125vw, 60px);
+      width: min(1680px, 100%);
+      height: auto;
+      min-height: clamp(48px, 4.375vw, 84px);
+      display: flex;
+      align-items: center;
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(14px, 1.25vw, 24px);
+      width: min(1680px, 100%);
+    }
+
+    .support-card {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .support-card-img {
+      width: 100%;
+      height: clamp(150px, 15.625vw, 300px);
+      border-radius: clamp(12px, 1.042vw, 20px);
+      overflow: hidden;
+      margin-bottom: clamp(12px, 1.25vw, 24px);
+      position: relative;
+    }
+
+    .support-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .support-card:hover .support-card-img img {
+      transform: scale(1.05);
+    }
+
+    .support-card-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: clamp(8px, 0.83vw, 16px);
+    }
+
+    .support-card-title {
+      font-size: clamp(20px, 1.67vw, 32px);
+      font-weight: 700;
+      line-height: 1.5;
+      color: #1B1B1B;
+    }
+
+    .support-card-arrow {
+      width: clamp(40px, 3.33vw, 64px);
+      height: clamp(40px, 3.33vw, 64px);
+      border-radius: 16px;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      margin-left: 20px;
+    }
+
+    .support-arrow-inner {
+      width: clamp(16px, 1.35vw, 26px);
+      height: clamp(16px, 1.35vw, 26px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .support-arrow-svg {
+      width: clamp(14px, 1.19vw, 23px);
+      height: clamp(11.5px, 0.96vw, 18.5px);
+    }
+
+    .support-card-desc {
+      font-size: clamp(14px, 1.15vw, 22px);
+      font-weight: 400;
+      line-height: 1.6;
+      color: #4E4E4E;
+    }
+
+    /* ══ FOOTER ══ */
+    footer {
+      position: relative;
+      background: #1a1a1a;
+      overflow: hidden;
+      height: auto;
+      box-sizing: border-box;
+      padding-top: 0;
+    }
+
+    .footer-coil {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      pointer-events: none;
+    }
+
+    .footer-coil img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 1;
+    }
+
+    .footer-coil-fade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, #1a1a1a 0%, rgba(26, 26, 26, 0.85) 30%, rgba(26, 26, 26, 0.3) 65%, transparent 100%);
+    }
+
+    .footer-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-content-wrap {
+      position: relative !important;
+      width: 100% !important;
+      height: clamp(320px, 25vw, 480px) !important;
+      display: block !important;
+    }
+
+    .footer-logo {
+      position: absolute !important;
+      left: 80px !important;
+      top: 60px !important;
+      width: 230px !important;
+      height: 46px !important;
+      display: block !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      z-index: 100 !important;
+      text-decoration: none !important;
+      background: none !important;
+      overflow: hidden !important;
+    }
+
+    .footer-logo svg {
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .footer-btns {
+      position: absolute !important;
+      top: 60px !important;
+      right: clamp(40px, 4.167vw, 80px) !important;
+      display: flex;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .footer-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: clamp(110px, 8.281vw, 159px);
+      height: clamp(44px, 3.177vw, 61px);
+      padding: clamp(10px, 0.833vw, 16px) clamp(16px, 1.25vw, 24px);
+      box-sizing: border-box;
+      font-size: clamp(14px, 0.938vw, 18px);
+      font-weight: 700;
+      line-height: 1.6;
+      letter-spacing: 0;
+      color: #fff;
+      background: #4E4E4E;
+      border: none;
+      border-radius: 16px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .footer-btn svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .footer-info-box {
+      position: absolute !important;
+      left: clamp(300px, 28.542vw, 548px) !important;
+      top: 60px !important;
+      margin: 0 !important;
+      display: flex !important;
+      flex-direction: column;
+      gap: clamp(28px, 2.604vw, 50px);
+    }
+
+    .footer-info-header {
+      display: flex;
+      align-items: center;
+      gap: clamp(20px, 2.083vw, 40px);
+    }
+
+    .footer-heading {
+      font-size: clamp(18px, 1.563vw, 30px);
+      font-weight: 700;
+      line-height: 1.5;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    footer .footer-nav-list {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    footer .footer-nav-list a {
+      display: flex !important;
+      align-items: center !important;
+      width: auto !important;
+      min-height: clamp(24px, 1.667vw, 32px) !important;
+      height: auto !important;
+      font-size: clamp(14px, 1.042vw, 20px) !important;
+      font-weight: 300 !important;
+      line-height: 1.6 !important;
+      color: #FFFFFF !important;
+      text-decoration: none !important;
+    }
+
+    .footer-bottom {
+      position: relative !important;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      width: clamp(600px, 91.6vw, 1760px);
+      margin: clamp(40px, 4.167vw, 80px) auto clamp(28px, 2.656vw, 51px) auto !important;
+      padding: 5.5px 0 !important;
+      height: auto !important;
+      min-height: 37px;
+      box-sizing: border-box;
+      border-top: none !important;
+      row-gap: 12px !important;
+      column-gap: 0 !important;
+    }
+
+    .footer-bottom::before {
+      content: '';
+      position: absolute;
+      top: -40px !important;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-bottom a,
+    .footer-bottom span {
+      font-size: 16px !important;
+      font-weight: 400 !important;
+      line-height: 1.6 !important;
+      height: 26px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      color: #FFFFFF !important;
+      text-decoration: none !important;
+    }
+
+    .footer-bottom .sep {
+      height: 26px !important;
+      color: rgba(255, 255, 255, 0.3) !important;
+      margin: 0 11px !important;
+    }
+
+    .footer-copy {
+      position: absolute !important;
+      right: 0 !important;
+      margin: 0 !important;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .fade-in.d1 {
+      transition-delay: 0.1s;
+    }
+
+    .fade-in.d2 {
+      transition-delay: 0.2s;
+    }
+
+    /* ══ 반응형 (모바일 등 데스크탑 붕괴 방지 처리) ══ */
+    @media (max-width: 1280px) {
+      .product-title {
+        white-space: normal !important;
+      }
+
+      .product-left {
+        flex: 0 0 clamp(240px, 37vw, 480px);
+      }
+
+      .product-coil {
+        width: clamp(340px, 38vw, 680px);
+        height: clamp(340px, 38vw, 680px);
+        right: clamp(-20px, -1.5vw, -10px);
+      }
+
+      .footer-nav-list a {
+        font-size: clamp(13px, 1.2vw, 18px) !important;
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .invest-inner {
+        flex-direction: column;
+        padding: 40px;
+      }
+
+      .invest-cards-wrap {
+        width: 100%;
+      }
+
+      .ic {
+        width: 100% !important;
+        right: 0 !important;
+      }
+
+      /* 모바일에서는 끝까지 붙도록 설정 */
+      .support-grid {
+        grid-template-columns: 1fr;
+        width: auto;
+      }
+
+      .support-heading {
+        width: auto;
+      }
+
+      .footer-btns {
+        justify-content: flex-start;
+        position: relative;
+        right: auto;
+        top: auto;
+      }
+
+      .footer-info-box {
+        position: relative;
+        left: auto;
+        top: auto;
+      }
+
+      .footer-logo {
+        position: relative;
+        left: auto;
+        top: auto;
+      }
+
+      .footer-content-wrap {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        padding-left: 80px;
+      }
+
+      .footer-coil {
+        display: none;
+      }
+
+      #orb-card-2,
+      #orb-card-4 {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      #nav {
+        padding: 0 24px;
+      }
+
+      .hero-title {
+        left: 24px;
+        top: 100px;
+        font-size: 60px;
+      }
+
+      .hero-sub-text {
+        right: 24px;
+        bottom: 80px;
+      }
+
+      .orb-heading {
+        font-size: 28px;
+      }
+
+      #orb-phase-1 {
+        white-space: normal;
+        left: 50%;
+        width: 80vw;
+        margin-left: -40vw;
+        transform: translateX(0) translateY(80px);
+      }
+
+      #orb-phase-2 {
+        left: 5%;
+      }
+
+      #product-wrapper {
+        padding: 0 !important;
+      }
+
+      .product-sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        width: 100%;
+        background: #fff;
+
+        /* 👇 카드를 화면 정중앙에 예쁘게 띄우기 위한 마법의 정렬 코드 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        /* 위아래 여백 40px 확보 (좌우는 내부 카드가 알아서 띄워줌) */
+        padding: 40px 0;
+        overflow: visible;
+        box-sizing: border-box;
+      }
+
+      .product-card {
+        position: relative;
+
+        /* 👇 요청하신 1860x930 사이즈 강제 고정! */
+        width: 1860px !important;
+        height: 930px !important;
+
+        /* 👇 화면 크기가 작아지더라도 부모 박스(100vh, 100vw)를 뚫고 나가지 않게 완벽 방어 */
+        max-width: 100% !important;
+        max-height: 100% !important;
+
+        /* 👇 정중앙 배치 (부모의 flex와 시너지) */
+        margin: 0 auto !important;
+
+        /* --- 이하 기존 디자인 속성 완벽 유지 --- */
+        background: url('assets/main/bg-product.png') center center / cover no-repeat;
+        border-radius: clamp(16px, 1.458vw, 28px);
+        overflow: visible;
+        display: flex;
+        align-items: flex-start;
+        padding: clamp(30px, 3.125vw, 60px) clamp(36px, 3.75vw, 72px);
+        box-sizing: border-box;
+        /* 패딩 때문에 1860px이 뚱뚱해지지 않도록 방지 */
+      }
+
+      .product-coil {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        width: 100%;
+        height: 240px;
+      }
+
+      #invest-wrapper {
+        padding: 0 !important;
+      }
+
+      #invest {
+        padding: 24px !important;
+        border-radius: 0;
+      }
+
+      #support {
+        padding: 158px 24px;
+      }
+
+      .support-card-img {
+        width: 100%;
+        height: 200px;
+      }
+
+      .footer-content-wrap,
+      .footer-bottom {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="css/gnb.css">
+</head>
+
+<body data-page="main">
+  <nav id="nav">
+    <a href="#" class="nav-logo" aria-label="DK Dongkuk Industries">
+      <img src="assets/common/logo.svg" alt="Logo">
+    </a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#">문의</a>
+        <a href="#">KR</a>
+      </div>
+      <div class="nav-divider"></div>
+      <div class="nav-hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <h1 class="hero-title">DK Steel</h1>
+    <div class="hero-sub-text">
+      <p>철강, 소재, 친환경</p>
+      <p>사업의 선도자</p>
+    </div>
+  </section>
+
+  <section id="orbital-wrapper">
+    <div class="orbital-sticky">
+      <svg class="orb-svg" id="orb-svg" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="trail-grad-orange" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="rgba(243,114,32,0)" />
+            <stop offset="100%" stop-color="rgba(243,114,32,0.85)" />
+          </linearGradient>
+          <linearGradient id="trail-grad-gray" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="rgba(138,138,154,0)" />
+            <stop offset="100%" stop-color="rgba(138,138,154,0.85)" />
+          </linearGradient>
+          <linearGradient id="trail-grad-navy" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="rgba(0,53,146,0)" />
+            <stop offset="100%" stop-color="rgba(0,53,146,0.85)" />
+          </linearGradient>
+          <linearGradient id="trail-grad-out-orange" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="rgba(243,114,32,0)" />
+            <stop offset="100%" stop-color="rgba(243,114,32,0.35)" />
+          </linearGradient>
+          <linearGradient id="trail-grad-out-orange-2" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="rgba(243,114,32,0)" />
+            <stop offset="100%" stop-color="rgba(243,114,32,0.35)" />
+          </linearGradient>
+          <linearGradient id="trail-grad-out-gray" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="rgba(138,138,154,0)" />
+            <stop offset="100%" stop-color="rgba(138,138,154,0.35)" />
+          </linearGradient>
+          <linearGradient id="trail-grad-out-navy" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="rgba(30,45,92,0)" />
+            <stop offset="100%" stop-color="rgba(30,45,92,0.35)" />
+          </linearGradient>
+        </defs>
+        <ellipse id="orb-e1" class="orb-ellipse orb-e1" cx="960" cy="560" rx="384" ry="384" />
+        <ellipse id="orb-e2" class="orb-ellipse orb-e2" cx="960" cy="560" rx="516" ry="516"
+          style="filter: blur(2.5px); opacity: 0.7;" />
+        <path id="orb-inner-trail-a" class="orb-inner-trail" style="opacity:0" />
+        <path id="orb-inner-trail-b" class="orb-inner-trail" style="opacity:0" />
+        <path id="orb-inner-trail-c" class="orb-inner-trail" style="opacity:0" />
+        <path id="orb-outer-trail-1" class="orb-inner-trail" style="opacity:0;stroke-width:3;filter:blur(2px);" />
+        <path id="orb-outer-trail-2" class="orb-inner-trail" style="opacity:0;stroke-width:3;filter:blur(2px);" />
+        <path id="orb-outer-trail-3" class="orb-inner-trail" style="opacity:0;stroke-width:1.5;filter:blur(2px);" />
+        <path id="orb-outer-trail-4" class="orb-inner-trail" style="opacity:0;stroke-width:1.5;filter:blur(2px);" />
+      </svg>
+      <div class="orb-coil" id="orb-coil" style="width:560px;height:560px;"></div>
+      <div class="orb-dot orb-dot-orange" id="orb-idot-a" style="width:14px;height:14px;"></div>
+      <div class="orb-dot orb-dot-gray" id="orb-idot-b" style="width:14px;height:14px;"></div>
+      <div class="orb-dot orb-dot-navy" id="orb-idot-c" style="width:14px;height:14px;"></div>
+      <div class="orb-dot orb-dot-orange" id="orb-odot-1"
+        style="width:10px;height:10px;filter:blur(1.5px);background:rgba(243,114,32,0.4);"></div>
+      <div class="orb-dot orb-dot-orange" id="orb-odot-2"
+        style="width:10px;height:10px;filter:blur(1.5px);background:rgba(243,114,32,0.4);"></div>
+      <div class="orb-dot orb-dot-gray" id="orb-odot-3" style="width:9px;height:9px;display:none;"></div>
+      <div class="orb-dot orb-dot-navy" id="orb-odot-4" style="width:9px;height:9px;display:none;"></div>
+      <div class="orb-card" id="orb-card-1"><img src="assets/main/card-forest.png" alt=""></div>
+      <div class="orb-card" id="orb-card-2"><img src="assets/main/card-windmill.png" alt=""></div>
+      <div class="orb-card" id="orb-card-3"><img src="assets/main/card-solar.png" alt=""></div>
+      <div class="orb-card" id="orb-card-4"><img src="assets/main/card-ev.png" alt=""></div>
+    </div>
+  </section>
+
+  <!-- 텍스트: orbital-wrapper 밖 (z-index 독립) -->
+  <div id="orb-phase-1">
+    <div class="orb-line-clip"><span class="orb-line" id="p1l1">기술은 정교하게,</span></div>
+    <div class="orb-line-clip"><span class="orb-line" id="p1l2">산업은 지속가능하게</span></div>
+  </div>
+  <div id="orb-phase-2">
+    <div class="orb-line-clip"><span class="orb-line" id="p2l1">동국산업의 혁신은</span></div>
+    <div class="orb-line-clip"><span class="orb-line" id="p2l2">더 단단한 내일을 향합니다.</span></div>
+    <div class="orb-cta-group" id="orb-cta">
+      <a href="#" class="orb-btn-main">동국산업 이야기</a>
+      <a href="#" class="orb-btn-circle">
+        <span class="orb-inner-box">
+          <svg class="orb-arrow-svg" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.5 1L13 5.5L8.5 10M13 5.5H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <section id="product-wrapper">
+    <div class="product-sticky">
+      <div class="product-card">
+        <div class="product-left">
+          <div class="product-dikel">
+            <div class="product-dikel-icon">
+              <svg id="prod-arc-svg" viewBox="0 0 44 44" width="44" height="44"
+                style="transform: rotate(-90deg); display: block;">
+                <circle cx="22" cy="22" r="16.5" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="11" />
+                <circle class="prod-arc-seg" id="prod-seg-1" cx="22" cy="22" r="16.5" fill="none" stroke="white"
+                  stroke-width="11" stroke-dasharray="34.56 69.11" stroke-dashoffset="0"
+                  style="opacity:0;transition:opacity 0.4s ease" />
+                <circle class="prod-arc-seg" id="prod-seg-2" cx="22" cy="22" r="16.5" fill="none" stroke="white"
+                  stroke-width="11" stroke-dasharray="34.56 69.11" stroke-dashoffset="69.11"
+                  style="opacity:0;transition:opacity 0.4s ease" />
+                <circle class="prod-arc-seg" id="prod-seg-3" cx="22" cy="22" r="16.5" fill="none" stroke="white"
+                  stroke-width="11" stroke-dasharray="34.56 69.11" stroke-dashoffset="34.56"
+                  style="opacity:0;transition:opacity 0.4s ease" />
+              </svg>
+            </div>
+            <span class="product-dikel-name">Dikel</span>
+          </div>
+
+          <div id="prod-steps">
+            <div class="prod-step prod-active" id="prod-step-1">
+              <h2 class="product-title">니켈도금강판</h2>
+              <div class="product-info-card">
+                <div class="product-info-text">
+                  <h3>미래 모빌리티를 위한 핵심 소재</h3>
+                  <p>전기차·모빌리티용 원통형 배터리 케이스에 적용되어 친환경·미래 산업 확장을 대표하는 신사업 제품입니다.</p>
+                </div>
+                <div class="product-info-img"><video src="assets/main/video/product_1.mp4" autoplay muted loop playsinline
+                    style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video></div>
+              </div>
+            </div>
+            <div class="prod-step" id="prod-step-2">
+              <h2 class="product-title">냉연강판</h2>
+              <div class="product-info-card">
+                <div class="product-info-text">
+                  <h3>정밀한 두께와 <br>표면 품질의 완성</h3>
+                  <p>우수한 표면 품질과 치수 정밀도를 가진 고탄소강· 특수강 소재로 안전과 신뢰가 중요한 정밀 부품에 적용됩니다.</p>
+                </div>
+                <div class="product-info-img"><video src="assets/main/video/product_2.mp4" autoplay muted loop playsinline
+                    style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video></div>
+              </div>
+            </div>
+            <div class="prod-step" id="prod-step-3">
+              <h2 class="product-title">Q/T 열처리 강판</h2>
+              <div class="product-info-card">
+                <div class="product-info-text">
+                  <h3>고강도와<br>내구성의 균형</h3>
+                  <p>높은 강도와 우수한 인성을 동시에 구현해 고성능이 요구되는 산업에 최적화된 성능을 제공합니다.</p>
+                </div>
+                <div class="product-info-img"><video src="assets/main/video/product_3.mp4" autoplay muted loop playsinline
+                    style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-coil" id="product-coil-target">
+          <!-- 3D 코일이 여기로 안착 (정적 이미지 제거됨) -->
+        </div>
+
+        <div class="product-bottom">
+          <div class="product-bottom-group-wrap">
+            <div class="product-status-row">
+              <div class="keep-scrolling">
+                <span>Keep Scrolling</span>
+                <div class="keep-scrolling-line"></div>
+              </div>
+              <div class="mouse-icon-box">
+                <svg width="22" height="34" viewBox="0 0 22 34" fill="none">
+                  <rect x="0.75" y="0.75" width="20.5" height="32.5" rx="10.25" stroke="white" stroke-width="2" />
+                  <circle cx="11" cy="9" r="3.5" fill="white">
+                    <animate attributeName="cy" values="9;22" dur="1.5s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="1;0" dur="1.5s" repeatCount="indefinite" />
+                  </circle>
+                </svg>
+              </div>
+            </div>
+            <div class="product-loading-container">
+              <div class="product-loading-track">
+                <div class="product-loading-bar"></div>
+              </div>
+            </div>
+          </div>
+          <div class="product-detail-btn">
+            <a href="#">제품상세 더보기</a>
+            <a href="#" class="circle-arrow">
+              <span class="orb-inner-box">
+                <svg class="orb-arrow-svg" width="14" height="11" viewBox="0 0 14 11" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.5 1L13 5.5L8.5 10M13 5.5H1" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="slogan">
+    <div class="slogan-track">
+      <span class="slogan-text">Steel</span>
+      <div class="slogan-circle"><img src="assets/main/slogan-circle.png" alt=""></div>
+      <span class="slogan-text">in Harmony with Tomorrow</span>
+      <span class="slogan-text" style="margin-left:48px">Steel</span>
+      <div class="slogan-circle"><img src="assets/main/slogan-circle.png" alt=""></div>
+      <span class="slogan-text">in Harmony with Tomorrow</span>
+    </div>
+  </section>
+
+  <div id="invest-wrapper">
+    <section id="invest">
+      <div class="invest-inner">
+        <div class="invest-left">
+          <h2 class="invest-title">지속 가능한<br>성장을 위한 투자</h2>
+          <div class="invest-bottom">
+            <p class="invest-company">동국산업</p>
+            <p class="invest-price">KRW 2,600</p>
+            <p class="invest-change">1월 6일보다 + 50원 (1.9%)</p>
+            <div class="invest-btn-group">
+              <a href="#" class="invest-btn-pill">동국산업 투자정보</a>
+              <a href="#" class="invest-btn-arrow">→</a>
+            </div>
+          </div>
+        </div>
+        <div class="invest-cards-wrap">
+          <div class="invest-cards-track" id="invest-track">
+            <div class="ic ic-orange">
+              <div class="ic-top"><span class="ic-label">글로벌 진출 국가</span><img src="assets/main/ic-global.png"
+                  class="ic-icon-img" alt=""></div>
+              <div>
+                <div class="ic-num">12 <em>개국</em></div>
+                <div class="ic-sub">일본, 중국, 유럽 등</div>
+              </div>
+            </div>
+            <div class="ic ic-photo">
+              <div class="ic-top"><span class="ic-label">국내시장 점유율</span><img src="assets/main/ic-market.png"
+                  class="ic-icon-img" alt=""></div>
+              <div>
+                <div class="ic-num">62%</div>
+                <div class="ic-sub">냉연 강판 국내 점유율</div>
+              </div>
+            </div>
+            <div class="ic ic-white">
+              <div class="ic-top"><span class="ic-label">누적 판매량</span><img src="assets/main/ic-sales.png" class="ic-icon-img"
+                  alt=""></div>
+              <div>
+                <div class="ic-num">991,428 <em>M/T ton</em></div>
+                <div class="ic-sub">70년간 이어온 철강 경쟁력</div>
+              </div>
+            </div>
+            <div class="ic ic-calendar">
+              <div class="ic-top"><span class="ic-label">캘린더</span><img src="assets/main/ic-calendar.png" class="ic-icon-img"
+                  alt="">
+              </div>
+              <div class="ic-cal-list">
+                <div class="ic-cal-item"><span class="ev-name">정기주주총회</span><span class="ev-date">2025. 09. 17</span>
+                </div>
+                <div class="ic-cal-item"><span class="ev-name">주주명부폐쇄기간또는기준일설정일</span><span class="ev-date">2025. 09.
+                    11</span></div>
+                <div class="ic-cal-item"><span class="ev-name">기업설명회(IR)개최</span><span class="ev-date">2025. 09.
+                    08</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section id="support-wrapper">
+    <div class="support-sticky">
+      <h2 class="support-heading fade-in">가치를 높이는 소통과 연결</h2>
+      <div class="support-grid">
+        <div class="support-card fade-in d1" onclick="location.href='#'">
+          <div class="support-card-img"><img src="assets/main/support-inquiry.png" alt="문의 및 방문예약"></div>
+          <div class="support-card-title-row">
+            <span class="support-card-title">문의 및 방문예약</span>
+            <div class="support-card-arrow">
+              <div class="support-arrow-inner">
+                <svg class="support-arrow-svg" viewBox="0 0 23 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 1L21.5 9.25L12 17.5M21.5 9.25H1.5" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <p class="support-card-desc">동국산업의 기술 솔루션, 지금 바로 문의하세요.</p>
+        </div>
+        <div class="support-card fade-in d2" onclick="location.href='#'">
+          <div class="support-card-img"><img src="assets/main/support-jobs.png" alt="직무소개 및 FAQ"></div>
+          <div class="support-card-title-row">
+            <span class="support-card-title">직무소개 및 FAQ</span>
+            <div class="support-card-arrow">
+              <div class="support-arrow-inner">
+                <svg class="support-arrow-svg" viewBox="0 0 23 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 1L21.5 9.25L12 17.5M21.5 9.25H1.5" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <p class="support-card-desc">동국산업과 함께 성장하는 내일을 만들어갑니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-coil">
+      <img src="assets/main/footer.png" alt="">
+      <div class="footer-coil-fade"></div>
+    </div>
+    <div class="footer-inner">
+      <div class="footer-content-wrap">
+        <a href="#" class="footer-logo" aria-label="DK Dongkuk Industries">
+          <svg width="230" height="46" viewBox="0 0 230 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M71.1706 4.60156H91.4854L76.5584 20.8539L85.6693 41.0077H65.4034L56.4219 20.8539L71.1706 4.60156Z"
+              fill="white" />
+            <path
+              d="M49.1884 4.60156H7.58713L0 40.9588H41.5984C46.3421 40.9588 51.0111 37.1638 51.9858 32.5207L56.0568 13.0397C57.0285 8.39656 53.9379 4.60444 49.1884 4.60444V4.60156ZM37.6079 15.0551L34.4224 30.5024C33.925 32.9261 31.4899 34.9098 29.0231 34.9098H19.3028L24.3024 10.6534H34.0199C36.4953 10.6534 38.111 12.6401 37.6079 15.0551Z"
+              fill="white" />
+            <path
+              d="M163.991 12.4064H161.947V15.2124H164.385V17.7107C164.385 18.8694 163.965 19.3265 162.66 19.3265H161.86C160.745 19.3265 160.144 18.8579 160.144 17.7107V15.8161H160.153L160.144 13.4155L160.153 11.0206H160.144V9.126C160.144 7.9875 160.745 7.50738 161.86 7.50738H162.66C163.962 7.50738 164.385 7.97887 164.385 9.126V9.76137H169.919V9.55725C169.919 5.7795 168.803 4.60938 164.626 4.60938H159.946C156.191 4.60938 154.612 5.745 154.612 9.53425V17.406C154.612 21.1952 156.191 22.3251 159.946 22.3251H164.626C168.803 22.3251 169.919 21.1607 169.919 17.383V12.415H163.991V12.4064Z"
+              fill="white" />
+            <path
+              d="M115.407 4.73438H104.487V22.1367H115.295C118.802 22.1367 119.782 20.6101 119.782 18.0428V8.86287C119.782 6.29263 118.73 4.73438 115.407 4.73438ZM114.478 17.7207C114.478 18.7241 114.087 19.2387 112.825 19.2387H109.803V7.62088H112.825C113.866 7.62088 114.478 8.216 114.478 9.13888V17.7207Z"
+              fill="white" />
+            <path
+              d="M196.254 17.83C196.254 18.957 195.837 19.4112 194.555 19.4112H193.624C192.528 19.4112 191.933 18.9484 191.933 17.83L191.927 4.73438H186.456V17.5253C186.456 21.2484 188.017 22.361 191.732 22.361H196.496C200.627 22.361 201.72 21.2225 201.72 17.5022V4.73438H196.254V17.83Z"
+              fill="white" />
+            <path
+              d="M130.997 4.625H126.311C122.556 4.625 120.972 5.76062 120.972 9.547V17.3929C120.972 21.1821 122.556 22.312 126.311 22.312H130.997C135.177 22.312 136.275 21.1476 136.275 17.3699V9.57287C136.275 5.7865 135.174 4.62787 130.997 4.62787V4.625ZM130.75 11.1742V17.7034C130.75 18.862 130.333 19.3191 129.036 19.3191H128.228C127.116 19.3191 126.512 18.8505 126.512 17.7034V15.8087H126.518L126.512 13.4081L126.518 11.042H126.512V9.1445C126.512 8.006 127.116 7.53737 128.228 7.53737H129.036C130.333 7.53737 130.75 8.00312 130.75 9.1445V11.18V11.1742Z"
+              fill="white" />
+            <path
+              d="M147.988 15.4552L143.497 4.73438H137.503V22.1367H143.032V10.7L147.925 22.1454H153.471V4.73438H147.988V15.4552Z"
+              fill="white" />
+            <path
+              d="M176.512 13.4514L181.448 22.1367H187.267L181.681 12.9137L185.861 4.73438H180.571L176.512 12.9253V4.73438H171.003V22.1454H176.512V13.4514Z"
+              fill="white" />
+            <path
+              d="M208.477 13.4514L213.408 22.1367H219.236L213.65 12.9137L217.83 4.73438H212.537L208.477 12.9253V4.73438H202.972V22.1454H208.477V13.4514Z"
+              fill="white" />
+            <path
+              d="M188.233 38.3659C188.233 37.2475 187.949 36.4914 187.224 35.7784C187.155 35.7007 186.942 35.5139 186.33 35.0855C186.33 35.0855 184.047 33.5704 184.041 33.5617C182.958 32.8947 182.417 32.1243 182.417 31.279C182.417 30.7328 182.564 30.3245 182.845 30.0514C183.121 29.7926 183.527 29.6575 184.064 29.6575C184.654 29.6575 185.111 29.8444 185.352 30.1721C185.582 30.4855 185.715 31.0979 185.726 31.6671H188.127C188.138 31.5378 188.138 31.279 188.138 31.279C188.138 30.198 187.854 29.4275 187.287 28.9704C186.692 28.4845 185.674 28.2344 184.269 28.2344C182.627 28.2344 181.448 28.4759 180.773 28.9474C180.152 29.3844 179.847 30.1146 179.847 31.1784C179.847 32.3916 180.249 32.9896 181.014 33.7084L181.92 34.384L183.926 35.6979C184.639 36.1665 185.097 36.5604 185.332 36.8967C185.577 37.2647 185.7 37.7564 185.7 38.3601C185.7 38.9208 185.557 39.3376 185.26 39.6021C184.993 39.8523 184.579 39.9845 184.013 39.9845C183.415 39.9845 182.937 39.7976 182.661 39.4613C182.469 39.2169 182.227 38.6361 182.224 37.8627H179.864C179.858 38.064 179.85 38.4809 179.85 38.4809C179.85 39.5159 180.154 40.2662 180.758 40.6975C181.414 41.169 182.555 41.4105 184.139 41.4105C185.723 41.4105 186.824 41.1834 187.417 40.7349C187.96 40.3209 188.236 39.5303 188.236 38.3716L188.233 38.3659Z"
+              fill="white" />
+            <path d="M170.299 41.2289V28.5156H167.737V41.2289H170.299Z" fill="white" />
+            <path
+              d="M178.855 30.1486V28.5156H172.081V41.2289H178.855V39.5959H174.64V35.43H178.691V33.774H174.64V30.1486H178.855Z"
+              fill="white" />
+            <path d="M107.252 41.2289V28.5156H104.691V41.2289H107.252Z" fill="white" />
+            <path
+              d="M115.135 41.2289H119.246V28.5156H116.685V39.4377C116.685 39.4377 113.168 28.7859 113.068 28.5156H108.98V41.2289H111.541V30.3096C111.581 30.4102 114.712 39.984 115.135 41.2289Z"
+              fill="white" />
+            <path
+              d="M128.984 38.8886V30.784C128.984 29.9531 128.688 29.4098 128.058 29.0734C127.365 28.7054 126.112 28.5156 124.326 28.5156H120.894V41.2289H124.326C126.126 41.2289 127.377 41.0449 128.07 40.674C128.696 40.3261 128.984 39.7598 128.984 38.8886ZM126.428 38.351C126.428 38.7937 126.287 39.133 126.003 39.3515C125.752 39.5528 125.364 39.6591 124.821 39.6591L124.436 39.6505L123.464 39.6074V30.4793L123.438 30.1256L124.151 30.094H124.657C125.278 30.094 125.698 30.1745 125.957 30.3384C126.166 30.4792 126.431 30.7725 126.431 31.3504V38.3539L126.428 38.351Z"
+              fill="white" />
+            <path
+              d="M138.456 38.673V28.5156H135.888V37.8335C135.888 38.6615 135.791 39.1502 135.578 39.4032C135.351 39.6764 134.983 39.8057 134.465 39.8057C133.948 39.8057 133.577 39.6706 133.347 39.3975C133.134 39.1359 133.031 38.6471 133.031 37.8076V28.5156H130.472V38.673C130.472 39.6879 130.759 40.3779 131.343 40.7574C131.998 41.2059 132.939 41.3956 134.462 41.3956C135.986 41.3956 136.915 41.2059 137.57 40.7574C138.154 40.3836 138.453 39.6821 138.453 38.673H138.456Z"
+              fill="white" />
+            <path
+              d="M147.871 38.3601C147.871 37.2389 147.581 36.4827 146.856 35.7697C146.787 35.6921 146.574 35.5139 145.959 35.0769L143.679 33.5531C142.601 32.8861 142.046 32.1156 142.046 31.2761C142.046 30.7241 142.193 30.313 142.486 30.0456C142.753 29.784 143.167 29.6546 143.696 29.6546C144.277 29.6546 144.746 29.8415 144.979 30.1693C145.209 30.4769 145.344 31.0289 145.355 31.5953H147.753C147.765 31.4745 147.776 31.2761 147.776 31.2761C147.776 30.1923 147.486 29.4246 146.925 28.9617C146.33 28.4759 145.312 28.2344 143.895 28.2344C142.259 28.2344 141.086 28.4672 140.416 28.9416C139.795 29.3815 139.487 30.1089 139.487 31.1697C139.487 32.3772 139.904 32.9983 140.649 33.6998L141.557 34.3754L143.553 35.6892C144.274 36.1579 144.729 36.5517 144.961 36.8881C145.212 37.2561 145.329 37.7535 145.329 38.3515C145.329 38.9121 145.186 39.329 144.901 39.5935C144.622 39.8436 144.214 39.9759 143.65 39.9759C143.055 39.9759 142.567 39.789 142.302 39.4526C142.104 39.2111 141.877 38.6908 141.862 37.9116H139.505C139.505 38.1215 139.49 38.4722 139.49 38.4722C139.49 39.5072 139.798 40.2576 140.393 40.6889C141.051 41.1604 142.187 41.4019 143.777 41.4019C145.367 41.4019 146.456 41.1748 147.049 40.7263C147.601 40.3123 147.877 39.5216 147.877 38.3659L147.871 38.3601Z"
+              fill="white" />
+            <path d="M156.89 28.5156H148.3V30.1486H151.322V41.2289H153.877V30.1486H156.888V28.5156H156.89Z"
+              fill="white" />
+            <path
+              d="M166.18 41.0247V36.9824C166.18 36.3269 165.973 35.8612 165.637 35.5248C165.292 35.1798 164.763 34.7025 163.788 34.6422C165.965 34.4467 165.947 32.6009 165.947 32.6009V30.6143C165.947 30.5309 165.947 30.4705 165.93 30.3958C165.924 30.3728 165.924 30.3584 165.922 30.3469C165.913 30.2923 165.907 30.2377 165.89 30.183C165.89 30.1802 165.89 30.1658 165.881 30.1572C165.384 28.4005 162.066 28.55 162.066 28.55H157.941V41.2489H160.494V35.4989L160.686 35.4874L161.322 35.4414H161.603C162.244 35.4385 162.716 35.5478 163.049 35.7605C163.426 35.9963 163.622 36.3815 163.622 36.8617V40.9959C163.622 41.0678 163.633 41.1109 163.659 41.1397C163.673 41.1684 163.734 41.2058 163.831 41.2518H166.275C166.198 41.0764 166.186 41.0477 166.186 41.0247H166.18ZM163.392 32.6383C163.392 33.0724 163.182 33.4404 162.828 33.6503C162.509 33.8429 162.06 33.9263 161.448 33.9263L161.063 33.9205L160.488 33.8745V30.5022L160.479 30.1629L160.669 30.1485L161.069 30.1112H161.425C162.029 30.1083 162.483 30.1945 162.805 30.3785C163.182 30.597 163.394 30.9507 163.394 31.3905V32.6412L163.392 32.6383Z"
+              fill="white" />
+          </svg>
+        </a>
+
+        <div class="footer-info-box">
+          <div class="footer-info-header">
+            <p class="footer-heading">동국산업에 대해 더 알고 싶으신가요?</p>
+          </div>
+          <nav class="footer-nav-list">
+            <a href="#">제품 문의</a>
+            <a href="#">투자 문의</a>
+            <a href="#">채용 문의</a>
+            <a href="#">방문 예약</a>
+            <a href="#">동국산업 자료실</a>
+          </nav>
+        </div>
+
+        <div class="footer-btns">
+          <a href="#" class="footer-btn">
+            YOUTUBE
+            <svg width="13" height="10" viewBox="0 0 16 12" fill="currentColor">
+              <path
+                d="M15.7 1.9A2 2 0 0014.3.5C13.1 0 8 0 8 0S2.9 0 1.7.5A2 2 0 00.3 1.9C0 3.1 0 6 0 6s0 2.9.3 4.1A2 2 0 001.7 11.5C2.9 12 8 12 8 12s5.1 0 6.3-.5a2 2 0 001.4-1.4C16 8.9 16 6 16 6s0-2.9-.3-4.1zM6.4 8.6V3.4L10.5 6 6.4 8.6z" />
+            </svg>
+          </a>
+          <a href="#" class="footer-btn">패밀리 사이트 +</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <a href="#">개인정보처리방침</a><span class="sep">|</span>
+        <a href="#">내부정보관리규정</a><span class="sep">|</span>
+        <a href="#">사이트맵</a><span class="sep">|</span>
+        <span>02-316-7500</span><span class="sep">|</span>
+        <span>서울특별시 중구 다동길 46</span>
+        <span class="footer-copy">Copyright(C) 2015 DONGKUK INDUSTRIES All rights Reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const wrapper = document.getElementById('orbital-wrapper');
+      const section = document.querySelector('.orbital-sticky');
+      const svg = document.getElementById('orb-svg');
+      const e1 = document.getElementById('orb-e1');
+      const e2 = document.getElementById('orb-e2');
+      const coil = document.getElementById('orb-coil');
+      const idotA = document.getElementById('orb-idot-a');
+      const idotB = document.getElementById('orb-idot-b');
+      const idotC = document.getElementById('orb-idot-c');
+      const odot1 = document.getElementById('orb-odot-1');
+      const odot2 = document.getElementById('orb-odot-2');
+      const odot3 = document.getElementById('orb-odot-3');
+      const odot4 = document.getElementById('orb-odot-4');
+      const card1 = document.getElementById('orb-card-1');
+      const card2 = document.getElementById('orb-card-2');
+      const card3 = document.getElementById('orb-card-3');
+      const card4 = document.getElementById('orb-card-4');
+      const phase1 = document.getElementById('orb-phase-1');
+      const phase2 = document.getElementById('orb-phase-2');
+      const innerTrailA = document.getElementById('orb-inner-trail-a');
+      const innerTrailB = document.getElementById('orb-inner-trail-b');
+      const innerTrailC = document.getElementById('orb-inner-trail-c');
+      const outerTrail1 = document.getElementById('orb-outer-trail-1');
+      const outerTrail2 = document.getElementById('orb-outer-trail-2');
+      const outerTrail3 = document.getElementById('orb-outer-trail-3');
+      const outerTrail4 = document.getElementById('orb-outer-trail-4');
+
+      const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+      const easeInCubic = t => t * t * t;
+      const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+      const norm = (v, lo, hi) => clamp((v - lo) / (hi - lo), 0, 1);
+
+      let W, H, cx, cy, rx_in, ry_in, rx_out, ry_out, len1 = 0, len2 = 0, ready = false;
+
+      function setup() {
+        W = section.offsetWidth;
+        H = section.offsetHeight;
+        cx = W * 0.50;
+        cy = H * 0.50;
+        const COIL_R = 420;
+        rx_in = COIL_R; ry_in = COIL_R;
+        const R_OUT = Math.min(W * 0.7, H * 0.7);
+        rx_out = R_OUT; ry_out = R_OUT;
+
+        svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+        e1.setAttribute('cx', cx); e1.setAttribute('cy', cy);
+        e1.setAttribute('rx', rx_in); e1.setAttribute('ry', ry_in);
+        e2.setAttribute('cx', cx); e2.setAttribute('cy', cy);
+        e2.setAttribute('rx', rx_out); e2.setAttribute('ry', ry_out);
+
+        coil.style.left = cx + 'px';
+        coil.style.top = cy + 'px';
+
+        len1 = e1.getTotalLength() || 1900;
+        len2 = e2.getTotalLength() || 2600;
+        e1.style.strokeDasharray = len1; e1.style.strokeDashoffset = 0;
+        e2.style.strokeDasharray = len2; e2.style.strokeDashoffset = 0;
+        ready = true;
+      }
+
+      function pt(t, ecx, ecy, erx, ery) {
+        const a = t * Math.PI * 2;
+        return { x: ecx + erx * Math.cos(a), y: ecy + ery * Math.sin(a) };
+      }
+
+      const p1l1 = document.getElementById('p1l1');
+      const p1l2 = document.getElementById('p1l2');
+      const p2l1 = document.getElementById('p2l1');
+      const p2l2 = document.getElementById('p2l2');
+      const ctaEl = document.getElementById('orb-cta');
+
+      function onScroll() {
+        if (!ready) setup();
+        const wTop = wrapper.getBoundingClientRect().top;
+        const range = wrapper.offsetHeight - window.innerHeight;
+        const p = clamp(-wTop / range, 0, 1);
+
+        coil.style.opacity = '1';
+        coil.style.transform = 'translate(-50%, -50%) scale(1)';
+        e1.style.strokeDashoffset = '0';
+        e2.style.strokeDashoffset = '0';
+
+        function setGradTrail(trailEl, gradId, t_dot, tailFraction, sweepCW, ecx, ecy, erx, ery) {
+          const t_start = sweepCW ? t_dot - tailFraction : t_dot + tailFraction;
+          const a_s = t_start * Math.PI * 2;
+          const a_e = t_dot * Math.PI * 2;
+          const pS = { x: ecx + erx * Math.cos(a_s), y: ecy + ery * Math.sin(a_s) };
+          const pE = { x: ecx + erx * Math.cos(a_e), y: ecy + ery * Math.sin(a_e) };
+          trailEl.setAttribute('d', `M ${pS.x} ${pS.y} A ${erx} ${ery} 0 0 ${sweepCW ? 1 : 0} ${pE.x} ${pE.y}`);
+          trailEl.style.stroke = `url(#${gradId})`;
+          trailEl.style.opacity = '1';
+          const grad = document.getElementById(gradId);
+          if (grad) {
+            grad.setAttribute('x1', pS.x); grad.setAttribute('y1', pS.y);
+            grad.setAttribute('x2', pE.x); grad.setAttribute('y2', pE.y);
+          }
+        }
+
+        const dp = p;
+        /* inner dots: navy=2시(0.89) gray=11시(0.625) orange=7시(0.333) */
+        const innerBase = dp * 0.25;
+        const TAIL_IN = 0.25;
+        const tA = innerBase + 0.333; const tB = innerBase + 0.625; const tC = innerBase + 0.89;
+
+        const iA = pt(tA, cx, cy, rx_in, ry_in); const iB = pt(tB, cx, cy, rx_in, ry_in); const iC = pt(tC, cx, cy, rx_in, ry_in);
+        idotA.style.left = iA.x + 'px'; idotA.style.top = iA.y + 'px'; idotA.style.opacity = '1';
+        idotB.style.left = iB.x + 'px'; idotB.style.top = iB.y + 'px'; idotB.style.opacity = '1';
+        idotC.style.left = iC.x + 'px'; idotC.style.top = iC.y + 'px'; idotC.style.opacity = '1';
+
+        setGradTrail(innerTrailA, 'trail-grad-orange', tA, TAIL_IN, true, cx, cy, rx_in, ry_in);
+        setGradTrail(innerTrailB, 'trail-grad-gray', tB, TAIL_IN, true, cx, cy, rx_in, ry_in);
+        setGradTrail(innerTrailC, 'trail-grad-navy', tC, TAIL_IN, true, cx, cy, rx_in, ry_in);
+
+        const HALF = 1 / 2;
+        const outerBase = dp * 0.25;
+        const tO1 = outerBase; const tO2 = outerBase + HALF;
+
+        const oP1 = pt(tO1, cx, cy, rx_out, ry_out); const oP2 = pt(tO2, cx, cy, rx_out, ry_out);
+
+        odot1.style.left = oP1.x + 'px'; odot1.style.top = oP1.y + 'px'; odot1.style.opacity = '1';
+        odot2.style.left = oP2.x + 'px'; odot2.style.top = oP2.y + 'px'; odot2.style.opacity = '1';
+
+        const TAIL_OUT = 1 / 6;
+        setGradTrail(outerTrail1, 'trail-grad-out-orange', tO1, TAIL_OUT, true, cx, cy, rx_out, ry_out);
+        setGradTrail(outerTrail2, 'trail-grad-out-orange-2', tO2, TAIL_OUT, true, cx, cy, rx_out, ry_out);
+
+        const t1 = norm(p, 0.25, 0.62); const t2 = norm(p, 0.28, 0.65);
+        const t3 = norm(p, 0.31, 0.68); const t4 = norm(p, 0.34, 0.71);
+        const cY = t => 220 - t * 720;
+        const cardOp = t => clamp(t / 0.15, 0, 1) * clamp((1 - t) / 0.25, 0, 1);
+        card1.style.opacity = cardOp(t1); card2.style.opacity = cardOp(t2);
+        card3.style.opacity = cardOp(t3); card4.style.opacity = cardOp(t4);
+        const cardSc = t => 0.88 + 0.12 * clamp(t / 0.15, 0, 1);
+        card1.style.transform = `translateY(${cY(t1)}px) scale(${cardSc(t1)})`;
+        card2.style.transform = `translateY(${cY(t2)}px) scale(${cardSc(t2)})`;
+        card3.style.transform = `translateY(${cY(t3)}px) scale(${cardSc(t3)})`;
+        card4.style.transform = `translateY(${cY(t4)}px) scale(${cardSc(t4)})`;
+
+        const ph1In = easeOutCubic(norm(p, 0.25, 0.40));
+        const ph1Out = easeInCubic(norm(p, 0.50, 0.62));
+        const ph1Y = (1 - ph1In) * 320 - ph1Out * 240;
+        phase1.style.opacity = ph1In * (1 - ph1Out);
+        phase1.style.transform = `translateX(-50%) translateY(calc(-50% + ${ph1Y}px))`;
+        p1l1.style.transform = 'translateY(0)'; p1l2.style.transform = 'translateY(0)';
+
+        const ph2In = easeOutCubic(norm(p, 0.62, 0.78));
+        /* ── EXIT 트랜지션: p=0.82~0.96 구간에서 phase2 위로 올라감 ── */
+        const ph2Out = easeInCubic(norm(p, 0.82, 0.96));
+        const ph2Y = (1 - ph2In) * 320 - ph2Out * 500;
+        phase2.style.opacity = ph2In * (1 - ph2Out);
+        phase2.style.transform = `translateX(-50%) translateY(calc(-50% + ${ph2Y}px))`;
+        p2l1.style.transform = 'translateY(0)'; p2l2.style.transform = 'translateY(0)';
+        ctaEl.style.opacity = clamp(1 - ph2Out * 2, 0, 1);
+
+        /* ── EXIT 트랜지션: p=0.82~0.96 구간에서 위성(dots/trails) 확 퍼지며 사라짐 ── */
+        const exitT = norm(p, 0.82, 0.96);
+        if (exitT > 0) {
+          const exitEase = easeInCubic(exitT);
+          const spreadScale = 1 + exitEase * 3.5; /* 반지름이 4.5배까지 확장 */
+          const exitOpacity = clamp(1 - exitEase * 1.5, 0, 1); /* 빠르게 사라짐 */
+          const exitBlur = exitEase * 12; /* 점점 흐려짐 */
+
+          /* inner dots 반지름 확대 + 사라짐 */
+          const rx_in_exit = rx_in * spreadScale;
+          const ry_in_exit = ry_in * spreadScale;
+          const iAe = pt(tA, cx, cy, rx_in_exit, ry_in_exit);
+          const iBe = pt(tB, cx, cy, rx_in_exit, ry_in_exit);
+          const iCe = pt(tC, cx, cy, rx_in_exit, ry_in_exit);
+          idotA.style.left = iAe.x + 'px'; idotA.style.top = iAe.y + 'px';
+          idotB.style.left = iBe.x + 'px'; idotB.style.top = iBe.y + 'px';
+          idotC.style.left = iCe.x + 'px'; idotC.style.top = iCe.y + 'px';
+          idotA.style.opacity = exitOpacity; idotB.style.opacity = exitOpacity; idotC.style.opacity = exitOpacity;
+          idotA.style.filter = `blur(${exitBlur}px)`;
+          idotB.style.filter = `blur(${exitBlur}px)`;
+          idotC.style.filter = `blur(${exitBlur}px)`;
+
+          /* inner trails 확대 + 사라짐 */
+          setGradTrail(innerTrailA, 'trail-grad-orange', tA, TAIL_IN, true, cx, cy, rx_in_exit, ry_in_exit);
+          setGradTrail(innerTrailB, 'trail-grad-gray', tB, TAIL_IN, true, cx, cy, rx_in_exit, ry_in_exit);
+          setGradTrail(innerTrailC, 'trail-grad-navy', tC, TAIL_IN, true, cx, cy, rx_in_exit, ry_in_exit);
+          innerTrailA.style.opacity = exitOpacity;
+          innerTrailB.style.opacity = exitOpacity;
+          innerTrailC.style.opacity = exitOpacity;
+
+          /* outer dots 반지름 확대 + 사라짐 */
+          const rx_out_exit = rx_out * spreadScale;
+          const ry_out_exit = ry_out * spreadScale;
+          const oP1e = pt(tO1, cx, cy, rx_out_exit, ry_out_exit);
+          const oP2e = pt(tO2, cx, cy, rx_out_exit, ry_out_exit);
+          odot1.style.left = oP1e.x + 'px'; odot1.style.top = oP1e.y + 'px';
+          odot2.style.left = oP2e.x + 'px'; odot2.style.top = oP2e.y + 'px';
+          odot1.style.opacity = exitOpacity; odot2.style.opacity = exitOpacity;
+          odot1.style.filter = `blur(${exitBlur}px)`;
+          odot2.style.filter = `blur(${exitBlur}px)`;
+
+          /* outer trails 확대 + 사라짐 */
+          setGradTrail(outerTrail1, 'trail-grad-out-orange', tO1, TAIL_OUT, true, cx, cy, rx_out_exit, ry_out_exit);
+          setGradTrail(outerTrail2, 'trail-grad-out-orange-2', tO2, TAIL_OUT, true, cx, cy, rx_out_exit, ry_out_exit);
+          outerTrail1.style.opacity = exitOpacity;
+          outerTrail2.style.opacity = exitOpacity;
+
+          /* 궤도 타원(ellipse) 자체도 확대 + 사라짐 */
+          e1.setAttribute('rx', rx_in_exit); e1.setAttribute('ry', ry_in_exit);
+          e2.setAttribute('rx', rx_out_exit); e2.setAttribute('ry', ry_out_exit);
+          e1.style.opacity = exitOpacity;
+          e2.style.opacity = exitOpacity;
+
+          /* 코일은 그대로 유지 (축소/사라짐 없음) */
+          coil.style.opacity = '1';
+          coil.style.transform = 'translate(-50%, -50%) scale(1)';
+        } else {
+          /* exit 구간 진입 전에는 blur/opacity 원래대로 */
+          [idotA, idotB, idotC].forEach(d => { d.style.filter = 'blur(0px)'; });
+          [odot1, odot2].forEach(d => { d.style.filter = 'blur(1.5px)'; });
+          e1.setAttribute('rx', rx_in); e1.setAttribute('ry', ry_in);
+          e2.setAttribute('rx', rx_out); e2.setAttribute('ry', ry_out);
+          e1.style.opacity = '1'; e2.style.opacity = '1';
+        }
+
+        /* ── 3D 코일: orbital 구간에서는 줌 상태 고정 (이동 없음) ── */
+        /* product 섹션이 이미 화면에 있으면 여기서 건드리지 않음 (onProdScroll이 담당) */
+        var prodWrap = document.getElementById('product-wrapper');
+        var prodOnScreen = prodWrap && prodWrap.getBoundingClientRect().top < window.innerHeight;
+        if (window._coil3d && !prodOnScreen) {
+          const fixedWrap = document.getElementById('coil-3d-fixed');
+          if (fixedWrap) {
+            /* orbital-sticky가 뷰포트에 걸리면 fixed로 전환 */
+            var orbRect = wrapper.getBoundingClientRect();
+            if (orbRect.top <= 0) {
+              /* sticky 동작 중: 코일도 fixed */
+              fixedWrap.classList.add('coil-fixed');
+              fixedWrap.style.transform = 'none';
+              fixedWrap.style.opacity = '1';
+            } else {
+              /* 아직 스크롤 안 됨: absolute로 orbital 위치에 배치 */
+              fixedWrap.classList.remove('coil-fixed');
+              fixedWrap.style.opacity = '1';
+            }
+          }
+          if (p < 0.96) {
+            window._coil3d.updateRotation(0.12);
+          } else {
+            const exitToProduct = norm(p, 0.96, 1.0);
+            const tRaw = 0.12 + exitToProduct * 0.08;
+            window._coil3d.updateRotation(tRaw);
+          }
+        }
+      }
+
+      coil.style.opacity = '1';
+      coil.style.transform = 'translate(-50%, -50%) scale(1)';
+      [card1, card2, card3, card4].forEach(c => { c.style.opacity = '0'; });
+      [idotA, idotB, idotC, odot1, odot2].forEach(d => { d.style.opacity = '1'; });
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', () => { setup(); onScroll(); }, { passive: true });
+      setup(); onScroll();
+    })();
+
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const fadeIO = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); fadeIO.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach(el => fadeIO.observe(el));
+
+    /* ══ NAV 컬러 전환 및 스크롤 숨김 처리 ══ */
+    (function () {
+      const nav = document.getElementById('nav');
+      const hero = document.getElementById('hero');
+      let lastY = window.scrollY;
+
+      function updateNav() {
+        const currentY = window.scrollY;
+        const delta = currentY - lastY;
+        const scrollingUp = delta < 0;
+
+        // 1. 다크 모드 전환 (히어로 섹션을 벗어났을 때)
+        if (hero) {
+          const heroBottom = hero.getBoundingClientRect().bottom;
+          const pastHero = heroBottom <= 0;
+          nav.classList.toggle('nav--dark', pastHero);
+          nav.classList.toggle('nav--solid', pastHero);
+        }
+
+        // 2. orbital 섹션 감지 - orbital 구간에서는 네비 항상 보이기
+        const orbital = document.querySelector('.orbital-sticky');
+        const inOrbital = orbital && orbital.getBoundingClientRect().top < 100 && orbital.getBoundingClientRect().bottom > 0;
+
+        if (inOrbital) {
+          nav.classList.remove('nav-hide');
+        } else if (delta > 0 && currentY > 50) {
+          nav.classList.add('nav-hide'); // 숨기기
+        } else if (scrollingUp) {
+          nav.classList.remove('nav-hide'); // 나타내기
+        }
+
+        lastY = currentY;
+      }
+
+      window.addEventListener('scroll', updateNav, { passive: true });
+      updateNav();
+    })();
+
+    (function () {
+      const wrapper = document.getElementById('invest-wrapper');
+      const track = document.getElementById('invest-track');
+      if (!wrapper || !track) return;
+      const CARDS = [...track.querySelectorAll('.ic')];
+      let curIdx = -1; let targetP = 0; let currentP = 0;
+
+      function applyIdx(idx) {
+        if (idx === curIdx) return;
+        curIdx = idx;
+        CARDS.forEach((c, i) => {
+          c.classList.remove('ic-active', 'ic-past', 'ic-next');
+          if (i === idx) c.classList.add('ic-active');
+          else if (i < idx) c.classList.add('ic-past');
+          else if (i === idx + 1) c.classList.add('ic-next');
+        });
+      }
+
+      function onScroll() {
+        const t = wrapper.getBoundingClientRect().top;
+        const r = wrapper.offsetHeight - window.innerHeight;
+        if (r > 0) targetP = Math.max(0, Math.min(1, -t / r));
+      }
+
+      function render() {
+        currentP += (targetP - currentP) * 0.055;
+        let idx = 0;
+        if (currentP < 0.26) idx = 0;
+        else if (currentP < 0.52) idx = 1;
+        else if (currentP < 0.78) idx = 2;
+        else idx = 3;
+        applyIdx(idx);
+
+        /* 👇 이 부분을 추가하세요! (겹치지 않고 트랙 전체가 위로 올라가게 함) 👇 */
+        const maxScroll = track.scrollHeight - track.parentElement.offsetHeight;
+        if (maxScroll > 0) {
+          track.style.transform = `translateY(${-currentP * maxScroll}px)`;
+        }
+        /* 👆 여기까지 👆 */
+        requestAnimationFrame(render);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll(); render();
+    })();
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+
+    (function () {
+      'use strict';
+      var wrapper = document.getElementById('product-wrapper');
+      if (!wrapper) return;
+      var steps = Array.from(document.querySelectorAll('.prod-step'));
+      var imgs = Array.from(document.querySelectorAll('.prod-coil-img'));
+      var segs = Array.from(document.querySelectorAll('.prod-arc-seg'));
+      var loadingBar = document.querySelector('.product-loading-bar');
+      var curStep = -1;
+
+      function setStep(idx) {
+        if (idx === curStep) return;
+        curStep = idx;
+        steps.forEach(function (el, i) { el.classList.toggle('prod-active', i === idx); });
+        imgs.forEach(function (el, i) { el.classList.toggle('prod-active', i === idx); });
+        segs.forEach(function (el, i) { el.style.opacity = i === idx ? '1' : '0'; });
+      }
+
+      function onProdScroll() {
+        var rect = wrapper.getBoundingClientRect();
+        var range = wrapper.offsetHeight - window.innerHeight;
+        if (range <= 0) return;
+        var p = Math.max(0, Math.min(1, -rect.top / range));
+        if (loadingBar) loadingBar.style.width = (p * 100) + '%';
+        var idx = Math.min(Math.floor(p * 3), 2);
+        setStep(idx);
+
+        /* 3D 코일: product 섹션 접근 시 이동 + 각도 변경 + 스크롤 아웃 */
+        if (window._coil3d) {
+          var vh = window.innerHeight;
+          var fixedWrap = document.getElementById('coil-3d-fixed');
+
+          if (rect.top > 0 && rect.top < vh) {
+            /* ── 섹션이 아래에서 올라오는 중: 코일 이동 (center → product) ── */
+            if (!window._coilLocked) {
+              var entry = 1 - (rect.top / vh);
+              var tRaw = 0.20 + entry * 0.15; /* 0.20→0.35 (orbital 끝에서 이어짐) */
+              window._coil3d.updateRotation(tRaw);
+            }
+            if (fixedWrap) {
+              fixedWrap.classList.add('coil-fixed');
+              fixedWrap.classList.add('coil-on-product');
+              fixedWrap.style.opacity = '1';
+            }
+          } else if (rect.top <= 0) {
+            /* ── 섹션 진입 완료 ── */
+            if (!window._coilLocked) {
+              var tRaw = 0.35 + p * 0.65;
+              if (idx >= 2) {
+                window._coilLocked = true;
+                window._coilLockedTRaw = Math.min(tRaw, 0.82);
+              }
+              window._coil3d.updateRotation(Math.min(tRaw, 0.82));
+            } else {
+              /* 잠긴 상태에서는 고정 tRaw 사용 */
+              window._coil3d.updateRotation(window._coilLockedTRaw || 0.82);
+            }
+            if (fixedWrap) fixedWrap.classList.add('coil-on-product');
+
+            /* 카드가 위로 빠질 때 코일도 같이 올라감 */
+            if (rect.bottom <= 0) {
+              if (fixedWrap) {
+                fixedWrap.style.transform = 'translateY(-100vh)';
+                fixedWrap.style.opacity = '1';
+              }
+            } else if (rect.bottom < vh) {
+              var offset = vh - rect.bottom;
+              if (fixedWrap) {
+                fixedWrap.style.transform = 'translateY(-' + offset + 'px)';
+                fixedWrap.style.opacity = '1';
+              }
+            } else {
+              if (fixedWrap) {
+                fixedWrap.style.transform = 'none';
+                fixedWrap.style.opacity = '1';
+              }
+            }
+          } else {
+            /* product 아직 안 보임 → orbital 영역 = 글자 뒤 */
+            if (fixedWrap) fixedWrap.classList.remove('coil-on-product');
+          }
+
+          /* 위로 스크롤해서 돌아가면 잠금 해제 */
+          if (window._coilLocked && (idx < 2 || rect.top > 0)) {
+            window._coilLocked = false;
+            window._coilLockedTRaw = null;
+          }
+        }
+      }
+      window.addEventListener('scroll', onProdScroll, { passive: true });
+
+      function initProd() {
+        if (!wrapper.offsetHeight) { requestAnimationFrame(initProd); return; }
+        setStep(0); onProdScroll();
+      }
+      requestAnimationFrame(initProd);
+    })();
+  </script>
+
+  <!-- ═══ RectAreaLight helper ═══ -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lights/RectAreaLightUniformsLib.js"></script>
+
+  <!-- ═══ 3D COIL — cylinder_prototype수정.html 원본 모델 통합 ═══ -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ════════════════════════════════════════════════════
+         절차적 동심원 헤어라인 뚜껑(Cap) 텍스처 생성
+         ════════════════════════════════════════════════════ */
+      function buildCapCanvas(size) {
+        var cv = document.createElement('canvas');
+        cv.width = cv.height = size;
+        var ctx = cv.getContext('2d');
+        var cx = size / 2, cy = size / 2, r = size / 2;
+
+        /* 베이스 그라디언트: 더 밝은 실버 */
+        var radGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+        radGrad.addColorStop(0.00, '#cdd0d5');
+        radGrad.addColorStop(0.20, '#c2c6cc');
+        radGrad.addColorStop(0.50, '#b5b9c0');
+        radGrad.addColorStop(0.75, '#a8acb3');
+        radGrad.addColorStop(1.00, '#9a9ea5');
+        ctx.fillStyle = radGrad;
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
+
+        ctx.save();
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.clip();
+
+        /* 동심원 헤어라인: 확 벌어진 불균일 감김 */
+        var pos = 2;
+        while (pos < r) {
+          /* 간격: 2~8px — 확실히 듬성듬성 */
+          var gap = 2.0 + Math.random() * 6.0;
+          /* 20% 확률로 큰 틈 — 감김이 크게 벌어진 느낌 */
+          if (Math.random() < 0.20) gap += 4.0 + Math.random() * 8.0;
+          pos += gap;
+          if (pos >= r) break;
+
+          var rnd = Math.random();
+          var isBright = rnd > 0.65;
+          var alpha, color;
+
+          if (isBright) {
+            alpha = 0.08 + Math.random() * 0.16;
+            color = '255,255,255';
+          } else {
+            alpha = 0.06 + Math.random() * 0.18;
+            color = '10,18,28';
+          }
+
+          ctx.strokeStyle = 'rgba(' + color + ',' + alpha.toFixed(3) + ')';
+          ctx.lineWidth = 0.4 + Math.random() * 0.8;
+          var arcStart = Math.random() * 0.2;
+          var arcEnd = Math.PI * 2 - Math.random() * 0.2;
+          ctx.beginPath(); ctx.arc(cx, cy, pos, arcStart, arcEnd); ctx.stroke();
+        }
+
+        /* 두꺼운 층 경계선 (코일 시트 가장자리) — 간헐적 */
+        pos = 8;
+        while (pos < r) {
+          pos += 6 + Math.random() * 18;
+          if (pos >= r) break;
+          if (Math.random() < 0.35) {
+            ctx.strokeStyle = 'rgba(10,15,25,' + (0.08 + Math.random() * 0.12).toFixed(3) + ')';
+            ctx.lineWidth = 0.6 + Math.random() * 0.8;
+            ctx.beginPath(); ctx.arc(cx, cy, pos, 0, Math.PI * 2); ctx.stroke();
+          }
+        }
+
+        /* (하이라이트는 조명으로 처리) */
+
+        ctx.restore();
+        return { canvas: cv, ctx: ctx };
+      }
+
+      /* ════════════════════════════════════════════════════
+         사이드 레이어 밴딩 텍스처 생성
+         ════════════════════════════════════════════════════ */
+      function buildSideCanvas(w, h) {
+        var cv = document.createElement('canvas');
+        cv.width = w; cv.height = h;
+        var ctx = cv.getContext('2d');
+
+        /* 베이스: 밝은 스틸 그레이 */
+        ctx.fillStyle = '#c0c4ca';
+        ctx.fillRect(0, 0, w, h);
+
+        /* 수직 그라디언트: 상단 밝음 → 하단 어두움 */
+        var vGrad = ctx.createLinearGradient(0, 0, 0, h);
+        vGrad.addColorStop(0.00, 'rgba(255,255,255,0.25)');
+        vGrad.addColorStop(0.30, 'rgba(255,255,255,0.08)');
+        vGrad.addColorStop(0.55, 'rgba(0,0,0,0.00)');
+        vGrad.addColorStop(0.80, 'rgba(0,0,0,0.10)');
+        vGrad.addColorStop(1.00, 'rgba(0,0,0,0.25)');
+        ctx.fillStyle = vGrad;
+        ctx.fillRect(0, 0, w, h);
+
+        /* 1차 헤어라인: 촘촘한 수평선 (강도 낮춤) */
+        var lineCount = 400;
+        for (var i = 0; i < lineCount; i++) {
+          var y = (i / lineCount) * h;
+          var a = 0.02 + Math.random() * 0.03;
+          var bright = Math.random() < 0.4;
+          ctx.strokeStyle = bright
+            ? 'rgba(255,255,255,' + a + ')'
+            : 'rgba(10,15,25,' + (a * 0.6) + ')';
+          ctx.lineWidth = 0.2 + Math.random() * 0.4;
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(w, y);
+          ctx.stroke();
+        }
+
+        /* 2차 헤어라인: 불규칙한 긁힘 자국 */
+        for (var j = 0; j < 600; j++) {
+          var y2 = Math.random() * h;
+          var xStart = Math.random() * w * 0.3;
+          var xEnd = xStart + w * 0.3 + Math.random() * w * 0.5;
+          var a2 = 0.01 + Math.random() * 0.04;
+          ctx.strokeStyle = Math.random() < 0.5
+            ? 'rgba(255,255,255,' + a2 + ')'
+            : 'rgba(0,0,10,' + a2 + ')';
+          ctx.lineWidth = 0.2 + Math.random() * 0.3;
+          ctx.beginPath();
+          ctx.moveTo(xStart, y2 + (Math.random() - 0.5) * 0.5);
+          ctx.lineTo(xEnd, y2 + (Math.random() - 0.5) * 0.5);
+          ctx.stroke();
+        }
+
+        /* 하이라이트 밴드: 코일 표면의 광택 줄기 */
+        for (var b = 0; b < 8; b++) {
+          var by = Math.random() * h;
+          var bh = 2 + Math.random() * 6;
+          var bGrad = ctx.createLinearGradient(0, by, 0, by + bh);
+          bGrad.addColorStop(0, 'rgba(255,255,255,0)');
+          bGrad.addColorStop(0.5, 'rgba(255,255,255,' + (0.06 + Math.random() * 0.12) + ')');
+          bGrad.addColorStop(1, 'rgba(255,255,255,0)');
+          ctx.fillStyle = bGrad;
+          ctx.fillRect(0, by, w, bh);
+        }
+
+        /* 미세 그레인 노이즈: 금속 표면의 입자감 */
+        var imgData = ctx.getImageData(0, 0, w, h);
+        var data = imgData.data;
+        for (var p = 0; p < data.length; p += 4) {
+          var noise = (Math.random() - 0.5) * 12;
+          data[p] = Math.max(0, Math.min(255, data[p] + noise));
+          data[p + 1] = Math.max(0, Math.min(255, data[p + 1] + noise));
+          data[p + 2] = Math.max(0, Math.min(255, data[p + 2] + noise));
+        }
+        ctx.putImageData(imgData, 0, 0);
+
+        return cv;
+      }
+
+      /* ════════════════════════════════════════════════════
+         내벽 텍스처: 아주 미세한 헤어라인 + 부드러운 그라데이션
+         ════════════════════════════════════════════════════ */
+      function buildBoreCanvas(w, h) {
+        var cv = document.createElement('canvas');
+        cv.width = w; cv.height = h;
+        var ctx = cv.getContext('2d');
+
+        /* 베이스: 밝은 스틸 그레이 */
+        ctx.fillStyle = '#c8ccd2';
+        ctx.fillRect(0, 0, w, h);
+
+        /* 부드러운 수직 그라데이션 */
+        var vGrad = ctx.createLinearGradient(0, 0, 0, h);
+        vGrad.addColorStop(0.0, 'rgba(255,255,255,0.15)');
+        vGrad.addColorStop(0.5, 'rgba(0,0,0,0.0)');
+        vGrad.addColorStop(1.0, 'rgba(0,0,0,0.12)');
+        ctx.fillStyle = vGrad;
+        ctx.fillRect(0, 0, w, h);
+
+        /* 아주 미세한 헤어라인 */
+        for (var i = 0; i < 150; i++) {
+          var y = (i / 150) * h;
+          var a = 0.01 + Math.random() * 0.015;
+          ctx.strokeStyle = Math.random() < 0.4
+            ? 'rgba(255,255,255,' + a + ')'
+            : 'rgba(10,15,25,' + a + ')';
+          ctx.lineWidth = 0.15 + Math.random() * 0.2;
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(w, y);
+          ctx.stroke();
+        }
+        return cv;
+      }
+
+      /* ════════════════════════════════════════════════════
+         Fixed position wrapper + Canvas
+         ════════════════════════════════════════════════════ */
+      var fixedWrap = document.getElementById('coil-3d-fixed');
+      if (!fixedWrap) {
+        fixedWrap = document.createElement('div');
+        fixedWrap.id = 'coil-3d-fixed';
+        /* orbital-wrapper 안에 absolute로 배치 (top:0 = 섹션 시작점) */
+        var orbWrap = document.getElementById('orbital-wrapper');
+        if (orbWrap) {
+          orbWrap.appendChild(fixedWrap);
+        } else {
+          document.body.appendChild(fixedWrap);
+        }
+      }
+      var canvas3d = document.createElement('canvas');
+      fixedWrap.innerHTML = '';
+      fixedWrap.appendChild(canvas3d);
+
+
+      /* ── 미세 색보정 ── */
+      /* canvas CSS 필터 제거 — alpha 캔버스에서 프린징 유발 */
+
+      /* ════════════════════════════════════════════════════
+         THREE.JS 기본 설정
+         ════════════════════════════════════════════════════ */
+      var renderer = new THREE.WebGLRenderer({ canvas: canvas3d, antialias: true, alpha: true, premultipliedAlpha: false });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setClearColor(0xC8CACF, 0); /* 실버 — 프린징이 코일색과 자연스럽게 블렌딩 */
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.10;
+      renderer.outputEncoding = THREE.sRGBEncoding;
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.VSMShadowMap;
+
+      var scene = new THREE.Scene();
+      window._scene = scene;
+      var camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+      camera.position.set(0, 0.3, 3.8);
+      camera.lookAt(0, 0, 0);
+
+      /* ════════════════════════════════════════════════════
+         스튜디오 환경 맵 생성 (프리미엄 스튜디오)
+         ════════════════════════════════════════════════════ */
+      (function buildEnvMap() {
+        try {
+          var W = 2048, H = 1024;
+          var envCv = document.createElement('canvas');
+          envCv.width = W; envCv.height = H;
+          var ectx = envCv.getContext('2d');
+
+          /* 깊은 어둠 배경 */
+          ectx.fillStyle = '#020304';
+          ectx.fillRect(0, 0, W, H);
+
+          /* ━━━ 메인 소프트박스 (좌상단, 크고 부드러움) ━━━ */
+          var mainBox = ectx.createRadialGradient(
+            W * 0.22, H * 0.28, 0, W * 0.22, H * 0.28, W * 0.30
+          );
+          mainBox.addColorStop(0.00, 'rgba(255,252,248,1.00)');
+          mainBox.addColorStop(0.10, 'rgba(255,250,245,0.95)');
+          mainBox.addColorStop(0.30, 'rgba(240,238,235,0.65)');
+          mainBox.addColorStop(0.55, 'rgba(180,185,195,0.25)');
+          mainBox.addColorStop(0.80, 'rgba(80,90,110,0.06)');
+          mainBox.addColorStop(1.00, 'rgba(0,0,0,0)');
+          ectx.fillStyle = mainBox;
+          ectx.fillRect(0, 0, W, H);
+
+          /* ━━━ 보조 소프트박스 (우측, 쿨톤) ━━━ */
+          var fillBox = ectx.createRadialGradient(
+            W * 0.78, H * 0.35, 0, W * 0.78, H * 0.35, W * 0.20
+          );
+          fillBox.addColorStop(0.00, 'rgba(220,230,250,0.60)');
+          fillBox.addColorStop(0.40, 'rgba(180,195,220,0.30)');
+          fillBox.addColorStop(1.00, 'rgba(0,0,0,0)');
+          ectx.fillStyle = fillBox;
+          ectx.fillRect(0, 0, W, H);
+
+          /* ━━━ 수평 스트립라이트 (넓은 띠 — 옆면 반사) ━━━ */
+          var strip1 = ectx.createLinearGradient(0, H * 0.40, 0, H * 0.58);
+          strip1.addColorStop(0.00, 'rgba(0,0,0,0)');
+          strip1.addColorStop(0.15, 'rgba(210,218,235,0.35)');
+          strip1.addColorStop(0.40, 'rgba(250,250,255,0.80)');
+          strip1.addColorStop(0.50, 'rgba(255,255,255,1.00)');
+          strip1.addColorStop(0.60, 'rgba(250,250,255,0.80)');
+          strip1.addColorStop(0.85, 'rgba(210,218,235,0.35)');
+          strip1.addColorStop(1.00, 'rgba(0,0,0,0)');
+          ectx.fillStyle = strip1;
+          ectx.fillRect(0, H * 0.38, W, H * 0.22);
+
+          /* ━━━ 하단 바닥 반사 (약한 워밍) ━━━ */
+          var floor = ectx.createLinearGradient(0, H * 0.75, 0, H);
+          floor.addColorStop(0.00, 'rgba(0,0,0,0)');
+          floor.addColorStop(0.40, 'rgba(40,35,30,0.15)');
+          floor.addColorStop(1.00, 'rgba(25,22,18,0.30)');
+          ectx.fillStyle = floor;
+          ectx.fillRect(0, H * 0.75, W, H * 0.25);
+
+          /* ━━━ 상단 엣지 림라이트 ━━━ */
+          var topRim = ectx.createLinearGradient(0, 0, 0, H * 0.12);
+          topRim.addColorStop(0.00, 'rgba(200,210,230,0.25)');
+          topRim.addColorStop(1.00, 'rgba(0,0,0,0)');
+          ectx.fillStyle = topRim;
+          ectx.fillRect(0, 0, W, H * 0.12);
+
+          /* ━━━ 작은 하이라이트 포인트 (스페큘러 핀포인트) ━━━ */
+          var pinLight = ectx.createRadialGradient(
+            W * 0.35, H * 0.42, 0, W * 0.35, H * 0.42, W * 0.04
+          );
+          pinLight.addColorStop(0.00, 'rgba(255,255,255,0.90)');
+          pinLight.addColorStop(0.50, 'rgba(255,255,255,0.30)');
+          pinLight.addColorStop(1.00, 'rgba(0,0,0,0)');
+          ectx.fillStyle = pinLight;
+          ectx.fillRect(W * 0.25, H * 0.35, W * 0.2, H * 0.15);
+
+          window._envCanvas = envCv; /* GUI 토글용 */
+
+          var envTex = new THREE.CanvasTexture(envCv);
+          envTex.mapping = THREE.EquirectangularReflectionMapping;
+          envTex.encoding = THREE.sRGBEncoding;
+
+          var pmrem = new THREE.PMREMGenerator(renderer);
+          pmrem.compileEquirectangularShader();
+          var envRT = pmrem.fromEquirectangular(envTex);
+          window._proceduralEnvTex = envRT.texture; /* 프로시저럴 보관 */
+          scene.environment = envRT.texture;
+          envTex.dispose();
+          pmrem.dispose();
+        } catch (e) { console.warn('EnvMap skipped:', e); }
+        renderer.setRenderTarget(null);
+
+        /* ── HDRI 환경맵 로드 (workshop) ── */
+        try {
+          new THREE.RGBELoader()
+            .setDataType(THREE.UnsignedByteType)
+            .load('assets/workshop.hdr', function (hdrTex) {
+              var pmrem2 = new THREE.PMREMGenerator(renderer);
+              pmrem2.compileEquirectangularShader();
+              var hdrRT = pmrem2.fromEquirectangular(hdrTex);
+              scene.environment = hdrRT.texture;
+              window._hdriEnvTex = hdrRT.texture;
+              hdrTex.dispose();
+              pmrem2.dispose();
+              renderer.setRenderTarget(null);
+            });
+        } catch (e) { console.warn('HDRI load skipped:', e); }
+      })();
+
+      /* ════════════════════════════════════════════════════
+         조명 — 최소화. 환경맵이 반사를 담당.
+         ════════════════════════════════════════════════════ */
+      var ambientLight = new THREE.AmbientLight(0x8898a8, 0.10);
+      scene.add(ambientLight);
+
+      /* 좌상단광: 환경맵의 밝은 영역과 같은 방향으로 보강 */
+      var keyLight = new THREE.DirectionalLight(0xffffff, 1.80);
+      keyLight.position.set(0, 2.5, 1.7);
+      keyLight.castShadow = true;
+      keyLight.shadow.mapSize.width = 2048;
+      keyLight.shadow.mapSize.height = 2048;
+      keyLight.shadow.camera.near = 0.1;
+      keyLight.shadow.camera.far = 20;
+      keyLight.shadow.camera.left = -5;
+      keyLight.shadow.camera.right = 5;
+      keyLight.shadow.camera.top = 5;
+      keyLight.shadow.camera.bottom = -5;
+      keyLight.shadow.bias = -0.001;
+      keyLight.shadow.normalBias = 0.05;
+      keyLight.shadow.radius = 8;
+      scene.add(keyLight);
+
+      /* 안쪽 엣지 보강 */
+      var rimLight = new THREE.DirectionalLight(0xd0dce8, 0.40);
+      rimLight.position.set(0, 0, -3);
+      scene.add(rimLight);
+
+      /* 옆면 수직 스트립 */
+      THREE.RectAreaLightUniformsLib.init();
+      var sideLight = new THREE.RectAreaLight(0xffffff, 12.0, 0.3, 3.0);
+      sideLight.position.set(2.5, 0, 1.5);
+      sideLight.lookAt(0, 0, 0);
+      scene.add(sideLight);
+
+      /* 앞면 대각선 라이트 — yawGroup에 나중에 추가 (코일과 동행) */
+      var diagLight = new THREE.RectAreaLight(0xffffff, 1.0, 12.0, 0.22);
+      diagLight.position.set(-1.4, -0.7, 1.3);
+      diagLight.lookAt(0, 0, 0);
+      diagLight.rotation.z = 0.90;
+      /* scene.add 하지 않음 — yawGroup에 추가 */
+
+      var diagLight3 = new THREE.RectAreaLight(0xf0f4ff, 22.0, 20.0, 0.25);
+      diagLight3.position.set(-0.3, 0.9, 1.3);
+      diagLight3.lookAt(0, 0, 0);
+      diagLight3.rotation.z = 0.20;
+
+      /* 중앙 고정용: 사선 빛 */
+      var centerDiag = new THREE.RectAreaLight(0xffffff, 1.0, 20.0, 0.3);
+      centerDiag.position.set(0, 0.3, 1.5);
+      centerDiag.lookAt(0, 0, 0);
+      centerDiag.rotation.z = -1.6;
+      scene.add(centerDiag);
+
+      window._coilLights = {
+        ambient: ambientLight,
+        keyLight: keyLight,
+        rimLight: rimLight,
+        sideLight: sideLight,
+        diagLight: diagLight,
+        diagLight3: diagLight3,
+        centerDiag: centerDiag
+      };
+
+      /* ════════════════════════════════════════════════════
+         텍스처 + 재질
+         ════════════════════════════════════════════════════ */
+      var capData = buildCapCanvas(2048);
+      var capTex = new THREE.CanvasTexture(capData.canvas);
+      capTex.encoding = THREE.sRGBEncoding;
+
+      var STEEL_COLOR = 0xBABDC3;
+
+      /* ── 절차적 노멀맵: 방향성 미세 스크래치 ── */
+      function buildScratchNormalMap(w, h, scratchCount, horizontal) {
+        var cv = document.createElement('canvas');
+        cv.width = w; cv.height = h;
+        var ctx = cv.getContext('2d');
+        ctx.fillStyle = 'rgb(128,128,255)';
+        ctx.fillRect(0, 0, w, h);
+
+        /* 다양한 굵기/길이의 불규칙 스크래치 */
+        for (var i = 0; i < scratchCount; i++) {
+          var x = Math.random() * w;
+          var y = Math.random() * h;
+          var len = 8 + Math.random() * 160;
+          var angle = horizontal
+            ? (Math.random() - 0.5) * 0.6 + (Math.random() < 0.08 ? (Math.random() - 0.5) * 1.5 : 0)
+            : Math.random() * Math.PI;
+          var bright = 128 + (Math.random() - 0.5) * 30;
+
+          ctx.strokeStyle = 'rgb(' + Math.round(bright) + ',' + Math.round(128 + (Math.random() - 0.5) * 14) + ',255)';
+          ctx.lineWidth = 0.2 + Math.random() * 0.9;
+          ctx.globalAlpha = 0.15 + Math.random() * 0.55;
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          /* 살짝 구부러진 곡선 */
+          var mx = x + Math.cos(angle) * len * 0.5 + (Math.random() - 0.5) * 6;
+          var my = y + Math.sin(angle) * len * 0.5 + (Math.random() - 0.5) * 6;
+          var ex = x + Math.cos(angle) * len;
+          var ey = y + Math.sin(angle) * len;
+          ctx.quadraticCurveTo(mx, my, ex, ey);
+          ctx.stroke();
+        }
+        /* 깊은 강한 스크래치 소수 추가 */
+        for (var j = 0; j < Math.floor(scratchCount * 0.05); j++) {
+          var x2 = Math.random() * w;
+          var y2 = Math.random() * h;
+          var len2 = 60 + Math.random() * 200;
+          var angle2 = horizontal ? (Math.random() - 0.5) * 0.25 : Math.random() * Math.PI;
+          ctx.strokeStyle = 'rgb(' + Math.round(128 + (Math.random() - 0.5) * 40) + ',128,255)';
+          ctx.lineWidth = 0.8 + Math.random() * 1.2;
+          ctx.globalAlpha = 0.5 + Math.random() * 0.3;
+          ctx.beginPath();
+          ctx.moveTo(x2, y2);
+          ctx.lineTo(x2 + Math.cos(angle2) * len2, y2 + Math.sin(angle2) * len2);
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
+        return cv;
+      }
+      function buildCapNormalMap(size) {
+        var cv = document.createElement('canvas');
+        cv.width = size; cv.height = size;
+        var ctx = cv.getContext('2d');
+        /* 기본 플랫 노멀 */
+        ctx.fillStyle = 'rgb(128,128,255)';
+        ctx.fillRect(0, 0, size, size);
+
+        var cx = size / 2, cy = size / 2;
+        var maxR = size / 2;
+
+        /* 코일 층 경계 — 각 층마다 단차(step)를 노멀로 표현 */
+        var layerPos = 4;
+        while (layerPos < maxR) {
+          /* 층 간격: 불규칙 (강판 두께 변화) */
+          var layerGap = 1.0 + Math.random() * 3.5;
+          layerPos += layerGap;
+          if (layerPos >= maxR) break;
+
+          /* 단차 폭: 0.8~2.0px */
+          var stepW = 1.4 * (0.8 + Math.random() * 0.4);
+          var stepStrength = 8 * (0.7 + Math.random() * 0.6);
+
+          /* 안쪽 밝은 면 (노멀이 안쪽을 향함 → R > 128) */
+          ctx.strokeStyle = 'rgb(' + Math.round(128 + stepStrength) + ',128,255)';
+          ctx.lineWidth = stepW;
+          ctx.globalAlpha = 0.7 + Math.random() * 0.3;
+          ctx.beginPath();
+          ctx.arc(cx, cy, layerPos - stepW * 0.5, 0, Math.PI * 2);
+          ctx.stroke();
+
+          /* 바깥쪽 어두운 면 (노멀이 바깥을 향함 → R < 128) */
+          ctx.strokeStyle = 'rgb(' + Math.round(128 - stepStrength) + ',128,255)';
+          ctx.lineWidth = stepW;
+          ctx.beginPath();
+          ctx.arc(cx, cy, layerPos + stepW * 0.5, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+
+        ctx.globalAlpha = 1;
+        return cv;
+      }
+
+      /* ── 러프니스 변화맵: 미세한 광택 차이 ── */
+      function buildRoughnessMap(w, h) {
+        var cv = document.createElement('canvas');
+        cv.width = w; cv.height = h;
+        var ctx = cv.getContext('2d');
+        /* 기본 회색 (0.5 = 기본 roughness) */
+        ctx.fillStyle = '#808080';
+        ctx.fillRect(0, 0, w, h);
+        /* 부드러운 밝기 변화: 큰 패치 단위 */
+        for (var i = 0; i < 60; i++) {
+          var x = Math.random() * w;
+          var y = Math.random() * h;
+          var r = 30 + Math.random() * 80;
+          var v = 120 + Math.random() * 16;
+          var grad = ctx.createRadialGradient(x, y, 0, x, y, r);
+          grad.addColorStop(0, 'rgba(' + Math.round(v) + ',' + Math.round(v) + ',' + Math.round(v) + ',0.3)');
+          grad.addColorStop(1, 'rgba(128,128,128,0)');
+          ctx.fillStyle = grad;
+          ctx.fillRect(x - r, y - r, r * 2, r * 2);
+        }
+        return cv;
+      }
+
+      var capNormCv = buildCapNormalMap(1024);
+      window._capNormCv = capNormCv;
+      var sideNormCv = buildScratchNormalMap(512, 256, 400, true);
+      var roughCv = buildRoughnessMap(512, 512);
+
+      /* 원본 이미지 데이터 캐시 (노이즈 적용 전) */
+      var _origCapData = capNormCv.getContext('2d').getImageData(0, 0, 1024, 1024);
+      var _origSideData = sideNormCv.getContext('2d').getImageData(0, 0, 512, 256);
+      var _origRoughData = roughCv.getContext('2d').getImageData(0, 0, 512, 512);
+
+      var capNormTex = new THREE.CanvasTexture(capNormCv);
+      window._capNormTex = capNormTex;
+      var sideNormTex = new THREE.CanvasTexture(sideNormCv);
+      sideNormTex.wrapS = THREE.RepeatWrapping;
+      sideNormTex.wrapT = THREE.ClampToEdgeWrapping;
+      sideNormTex.repeat.set(3, 1);
+
+      var roughMapTex = new THREE.CanvasTexture(roughCv);
+
+      /* 노이즈 강도 실시간 재적용 */
+      window._noiseStrength = 1.0;
+      window._reapplyNoise = function (strength) {
+        /* cap normal */
+        var ctx1 = capNormCv.getContext('2d');
+        var d1 = ctx1.createImageData(1024, 1024);
+        var s1 = _origCapData.data, t1 = d1.data;
+        var n = strength * 10;
+        for (var i = 0; i < s1.length; i += 4) {
+          var noise = (Math.random() - 0.5) * n;
+          t1[i] = Math.max(0, Math.min(255, s1[i] + noise));
+          t1[i + 1] = Math.max(0, Math.min(255, s1[i + 1] + noise));
+          t1[i + 2] = s1[i + 2]; t1[i + 3] = s1[i + 3];
+        }
+        ctx1.putImageData(d1, 0, 0);
+        capNormTex.needsUpdate = true;
+
+        /* side normal */
+        var ctx2 = sideNormCv.getContext('2d');
+        var d2 = ctx2.createImageData(512, 256);
+        var s2 = _origSideData.data, t2 = d2.data;
+        var n2 = strength * 12;
+        for (var i = 0; i < s2.length; i += 4) {
+          var noise = (Math.random() - 0.5) * n2;
+          t2[i] = Math.max(0, Math.min(255, s2[i] + noise));
+          t2[i + 1] = Math.max(0, Math.min(255, s2[i + 1] + noise));
+          t2[i + 2] = s2[i + 2]; t2[i + 3] = s2[i + 3];
+        }
+        ctx2.putImageData(d2, 0, 0);
+        sideNormTex.needsUpdate = true;
+
+        /* roughness */
+        var ctx3 = roughCv.getContext('2d');
+        var d3 = ctx3.createImageData(512, 512);
+        var s3 = _origRoughData.data, t3 = d3.data;
+        var n3 = strength * 30;
+        for (var i = 0; i < s3.length; i += 4) {
+          var noise = (Math.random() - 0.5) * n3;
+          t3[i] = Math.max(0, Math.min(255, s3[i] + noise));
+          t3[i + 1] = Math.max(0, Math.min(255, s3[i + 1] + noise));
+          t3[i + 2] = Math.max(0, Math.min(255, s3[i + 2] + noise));
+          t3[i + 3] = s3[i + 3];
+        }
+        ctx3.putImageData(d3, 0, 0);
+        roughMapTex.needsUpdate = true;
+      };
+      window._reapplyNoise(0); /* 기본: 노이즈 없음 */
+
+      var matCap = new THREE.MeshPhysicalMaterial({
+        map: capTex, color: 0xffffff,
+        roughness: 0.30, metalness: 0.85, envMapIntensity: 2.5,
+        clearcoat: 0.50, clearcoatRoughness: 0.04,
+        normalMap: capNormTex, normalScale: new THREE.Vector2(0.35, 0.35),
+        roughnessMap: roughMapTex
+      });
+
+      var sideCv = buildSideCanvas(1024, 256);
+      var sideTex = new THREE.CanvasTexture(sideCv);
+      sideTex.encoding = THREE.sRGBEncoding;
+      sideTex.wrapS = THREE.RepeatWrapping;
+      sideTex.wrapT = THREE.ClampToEdgeWrapping;
+      sideTex.repeat.set(3, 1);
+
+      /* 외벽 요철용 범프맵 */
+      var bumpCv = document.createElement('canvas');
+      bumpCv.width = 512; bumpCv.height = 256;
+      var bumpCtx = bumpCv.getContext('2d');
+      bumpCtx.fillStyle = '#808080';
+      bumpCtx.fillRect(0, 0, 512, 256);
+      /* 수평 띠 형태 요철 — 코일 감김 경계 */
+      for (var bi = 0; bi < 256; bi++) {
+        var bv = 128 + (Math.random() - 0.5) * 30;
+        if (Math.random() < 0.06) bv += (Math.random() - 0.5) * 60;
+        bumpCtx.fillStyle = 'rgb(' + Math.round(bv) + ',' + Math.round(bv) + ',' + Math.round(bv) + ')';
+        bumpCtx.fillRect(0, bi, 512, 1);
+      }
+      var sideBumpTex = new THREE.CanvasTexture(bumpCv);
+      sideBumpTex.wrapS = THREE.RepeatWrapping;
+      sideBumpTex.wrapT = THREE.ClampToEdgeWrapping;
+      sideBumpTex.repeat.set(3, 1);
+
+      var matSide = new THREE.MeshPhysicalMaterial({
+        map: sideTex, color: 0xffffff,
+        roughness: 0.04, metalness: 0.85, envMapIntensity: 2.5,
+        normalMap: sideNormTex, normalScale: new THREE.Vector2(0.15, 0.15),
+        roughnessMap: roughMapTex,
+        bumpMap: sideBumpTex, bumpScale: 0.002
+      });
+
+      /* 제품별 재질 프리셋 — 전체적으로 광택 강화 + 제품 간 차이 극대화 */
+      var matPresets = {
+        /* 니켈: 거울처럼 반짝이는 프리미엄 광택 */
+        nickel: { capR: 0.20, capM: 0.95, capEnv: 3.5, capCC: 0.80, capNS: 0.35, sideR: 0.20, sideM: 0.95, sideEnv: 3.0 },
+        /* 냉연: 새틴 피니시 — 약간 무광 */
+        coldRoll: { capR: 0.45, capM: 0.88, capEnv: 0.4, capCC: 0.0, capNS: 0.35, sideR: 0.40, sideM: 0.88, sideEnv: 0.5 },
+        /* QT: 산업용 강판 — 어둡고 거친 느낌 */
+        qt: { capR: 0.50, capM: 0.70, capEnv: 0.0, capCC: 0.0, capNS: 0.35, sideR: 0.55, sideM: 0.70, sideEnv: 0.0 },
+        /* */
+        hero: { capR: 0.30, capM: 0.85, capEnv: 2.5, capCC: 0.50, capNS: 0.35, sideR: 0.04, sideM: 0.85, sideEnv: 2.5 }
+      };
+      window._matPresets = matPresets;
+      function applyMatPreset(name) {
+        var p = matPresets[name]; if (!p) return;
+        if (window._matLock) return;
+        matCap.roughness = p.capR; matCap.metalness = p.capM;
+        var em = (name === 'hero') ? 1.0 : (window._envMultiplier || 1.0);
+        matCap.envMapIntensity = p.capEnv * em;
+        matCap._presetR = p.capR;
+        matCap._presetEnv = p.capEnv;
+        matCap.clearcoat = p.capCC; matCap.clearcoatRoughness = 0.20;
+        if (p.capNS !== undefined) matCap.normalScale.set(p.capNS, p.capNS);
+        matSide.roughness = p.sideR; matSide.metalness = p.sideM;
+        matSide.envMapIntensity = p.sideEnv * em;
+        matSide._presetEnv = p.sideEnv;
+        /* bore도 동기화 (GUI 잠금 아닐 때만) */
+        if (!window._boreLock) {
+          matBore.roughness = Math.max(p.sideR + 0.05, 0.20);
+          matBore.metalness = p.sideM;
+          matBore.envMapIntensity = 0.1;
+        }
+
+      }
+      window._applyMatPreset = applyMatPreset;
+      function lerpMatPreset(from, to, t) {
+        var a = matPresets[from], b = matPresets[to]; if (!a || !b) return;
+        if (window._matLock) return;
+        var _l = function (x, y, u) { return x + (y - x) * u; };
+        matCap.roughness = _l(a.capR, b.capR, t);
+        matCap._presetR = _l(a.capR, b.capR, t);
+        matCap.metalness = _l(a.capM, b.capM, t);
+        var em = window._envMultiplier || 1.0;
+        matCap.envMapIntensity = _l(a.capEnv, b.capEnv, t) * em;
+        matCap._presetEnv = _l(a.capEnv, b.capEnv, t);
+        matCap.clearcoat = _l(a.capCC, b.capCC, t);
+        if (a.capNS !== undefined && b.capNS !== undefined) matCap.normalScale.set(_l(a.capNS, b.capNS, t), _l(a.capNS, b.capNS, t));
+        matSide.roughness = _l(a.sideR, b.sideR, t);
+        matSide.metalness = _l(a.sideM, b.sideM, t);
+        matSide.envMapIntensity = _l(a.sideEnv, b.sideEnv, t) * em;
+        matSide._presetEnv = _l(a.sideEnv, b.sideEnv, t);
+        /* bore도 동기화 (GUI 잠금 아닐 때만) */
+        if (!window._boreLock) {
+          matBore.roughness = Math.max(_l(a.sideR, b.sideR, t) + 0.05, 0.20);
+          matBore.metalness = _l(a.sideM, b.sideM, t);
+          matBore.envMapIntensity = 0.1;
+        }
+
+      }
+
+      /* 안쪽 내벽: 사이드 텍스쳐 공유 + 노멀맵으로 디테일 */
+      var boreTex = new THREE.CanvasTexture(buildBoreCanvas(512, 128));
+      boreTex.encoding = THREE.sRGBEncoding;
+      boreTex.wrapS = THREE.RepeatWrapping;
+      boreTex.wrapT = THREE.ClampToEdgeWrapping;
+      boreTex.repeat.set(2, 1);
+      /* bore용 노멀맵 (사이드와 공유, 별도 repeat) */
+      var boreNormTex = new THREE.CanvasTexture(buildScratchNormalMap(512, 256, 300, true));
+      boreNormTex.wrapS = THREE.RepeatWrapping;
+      boreNormTex.wrapT = THREE.ClampToEdgeWrapping;
+      boreNormTex.repeat.set(2, 1);
+      var matBore = new THREE.MeshPhysicalMaterial({
+        map: boreTex, color: 0xb8bcc4, roughness: 0.25, metalness: 0.85,
+        envMapIntensity: 0.1, side: THREE.BackSide,
+        normalMap: boreNormTex, normalScale: new THREE.Vector2(0.20, 0.20)
+      });
+
+      /* */
+      window._coilMats = {
+        cap: matCap, side: matSide, bore: matBore,
+        _capNorm: capNormTex, _sideNorm: sideNormTex, _roughMap: roughMapTex
+      };
+
+      /* ════════════════════════════════════════════════════
+         구멍 뚫린 원통 형태 구성
+         ════════════════════════════════════════════════════ */
+      var SCALE = 1.5 / 3;
+      var OUTER_R = 1.0 * SCALE;
+      var INNER_R = OUTER_R * 0.48;
+      var MAIN_H = 1.05 * SCALE;
+
+      var yawGroup = new THREE.Group();
+      var orientGroup = new THREE.Group();
+      var rollGroup = new THREE.Group();
+
+      orientGroup.rotation.x = -Math.PI / 2;
+      orientGroup.position.x = OUTER_R;
+      yawGroup.add(orientGroup);
+      orientGroup.add(rollGroup);
+      scene.add(yawGroup);
+
+      /* 대각선 라이트를 yawGroup에 추가 → 코일과 함께 이동 */
+      yawGroup.add(diagLight);
+      yawGroup.add(diagLight3);
+      /* keyLight도 yawGroup에 → 그림자가 코일 따라감 */
+      yawGroup.add(keyLight);
+      yawGroup.add(keyLight.target);
+
+      /* 바깥쪽 큰 벽 */
+      var WALL_EXT = 0.008;
+      var outerWall = new THREE.Mesh(
+        new THREE.CylinderGeometry(OUTER_R, OUTER_R, MAIN_H, 128, 1, true), matSide
+      );
+      outerWall.castShadow = false;
+      rollGroup.add(outerWall);
+
+      /* 앞면 뚜껑 — 내경을 챔퍼 끝에 맞춤 */
+      var BEVEL_R = 0.015 * SCALE;
+      var topCapMesh = new THREE.Mesh(new THREE.RingGeometry(INNER_R + BEVEL_R - 0.002, OUTER_R + 0.004, 128, 1), matCap);
+      topCapMesh.rotation.x = -Math.PI / 2;
+      topCapMesh.position.y = MAIN_H / 2;
+      topCapMesh.castShadow = false;
+      rollGroup.add(topCapMesh);
+
+      /* 뒷면 뚜껑 */
+      var botCapMesh = new THREE.Mesh(new THREE.RingGeometry(INNER_R + BEVEL_R - 0.002, OUTER_R + 0.004, 128, 1), matCap);
+      botCapMesh.rotation.x = Math.PI / 2;
+      botCapMesh.position.y = -MAIN_H / 2;
+      botCapMesh.castShadow = false;
+      rollGroup.add(botCapMesh);
+
+      /* ── 고정 스트랩 밴드 (외벽 둘레 / 벨트 부분 돌출) ── */
+      var STRAP_R = OUTER_R + 0.003;
+      var STRAP_THICK = 0.003;       /* 물리 두께 (clipSurfR 계산용) */
+      var BAND_WIDTH = 0.018;        /* 띠 너비 (코일 축 방향) — 70% */
+      var BAND_DEPTH = 0.002;       /* 띠 두께 — 얇게 */
+      var matStrap = matSide.clone();
+      // matStrap.color.set(0x404448);
+      matStrap.map = null;
+      matStrap.normalMap = null;
+      matStrap.roughnessMap = null;
+      matStrap.roughness = 0.05;
+      matStrap.metalness = 0.8;
+      matStrap.needsUpdate = true;
+
+      /* ── 벨트 클립 파라미터 ── */
+      var _clipAngle = Math.PI * 1.52;
+      var BULGE_AMOUNT = 0.01;
+      var BULGE_WIDTH = Math.PI / 5;  /* 36° 양쪽 — 넓은 범위 */
+
+      /* 커스텀 BufferGeometry — 두께 + 엣지 면 있는 금속 밴드 */
+      function createFlatBandStrap(clipAngle) {
+        var segs = 256;
+        var halfW = BAND_WIDTH / 2;
+        var halfD = BAND_DEPTH / 2;
+        var R = STRAP_R;
+        var H = BULGE_AMOUNT;
+
+        var positions = [];
+        var normals = [];
+        var indices = [];
+
+        for (var i = 0; i <= segs; i++) {
+          var theta = (i / segs) * Math.PI * 2;
+          var r = R;
+
+          var diff = theta - clipAngle;
+          while (diff > Math.PI) diff -= Math.PI * 2;
+          while (diff < -Math.PI) diff += Math.PI * 2;
+          var absDiff = Math.abs(diff);
+
+          if (absDiff < BULGE_WIDTH) {
+            /* 파워 커브: 멀리서 천천히, 벨트 근처 급상승 → 팽팽한 느낌 */
+            var t = 1.0 - absDiff / BULGE_WIDTH;
+            r = R + H * t * t * t;
+          }
+
+          var cosT = Math.cos(theta), sinT = Math.sin(theta);
+          var rO = r + halfD, rI = r - halfD;
+
+          /* 0: outer -Z   1: outer +Z  (노멀: 방사 외향) */
+          positions.push(rO * cosT, rO * sinT, -halfW);
+          normals.push(cosT, sinT, 0);
+          positions.push(rO * cosT, rO * sinT, halfW);
+          normals.push(cosT, sinT, 0);
+          /* 2: inner -Z   3: inner +Z  (노멀: 방사 내향) */
+          positions.push(rI * cosT, rI * sinT, -halfW);
+          normals.push(-cosT, -sinT, 0);
+          positions.push(rI * cosT, rI * sinT, halfW);
+          normals.push(-cosT, -sinT, 0);
+          /* 4: outer +Z (edge)  5: inner +Z (edge)  (노멀: +Z) */
+          positions.push(rO * cosT, rO * sinT, halfW);
+          normals.push(0, 0, 1);
+          positions.push(rI * cosT, rI * sinT, halfW);
+          normals.push(0, 0, 1);
+          /* 6: outer -Z (edge)  7: inner -Z (edge)  (노멀: -Z) */
+          positions.push(rO * cosT, rO * sinT, -halfW);
+          normals.push(0, 0, -1);
+          positions.push(rI * cosT, rI * sinT, -halfW);
+          normals.push(0, 0, -1);
+        }
+
+        for (var i = 0; i < segs; i++) {
+          var b = i * 8, n = (i + 1) * 8;
+          /* 외면 */
+          indices.push(b, n, b + 1);
+          indices.push(b + 1, n, n + 1);
+          /* 내면 (역순) */
+          indices.push(b + 2, b + 3, n + 2);
+          indices.push(b + 3, n + 3, n + 2);
+          /* 상단 엣지 +Z */
+          indices.push(b + 4, n + 4, b + 5);
+          indices.push(b + 5, n + 4, n + 5);
+          /* 하단 엣지 -Z */
+          indices.push(b + 6, b + 7, n + 6);
+          indices.push(b + 7, n + 7, n + 6);
+        }
+
+        var geo = new THREE.BufferGeometry();
+        geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+        geo.setAttribute('normal', new THREE.Float32BufferAttribute(normals, 3));
+        geo.setIndex(indices);
+        return new THREE.Mesh(geo, matStrap);
+      }
+
+      var strap1 = createFlatBandStrap(_clipAngle);
+      strap1.rotation.x = Math.PI / 2;
+      strap1.position.y = MAIN_H * 0.25;
+      rollGroup.add(strap1);
+      var strap2 = createFlatBandStrap(_clipAngle);
+      strap2.rotation.x = Math.PI / 2;
+      strap2.position.y = -MAIN_H * 0.25;
+      rollGroup.add(strap2);
+      window._matStrap = matStrap;
+      window._strap1 = strap1;
+      window._strap2 = strap2;
+
+      /* ── 벨트 클립 (원래 디자인 — 판 + 플랜지) ── */
+      var matClip = new THREE.MeshPhysicalMaterial({
+        color: 0x0e0f12, roughness: 0.55, metalness: 0.85,
+        clearcoat: 0.0, clearcoatRoughness: 0.5,
+        envMapIntensity: 2.0
+      });
+      window._matClip = matClip;
+
+      var clipSurfR = STRAP_R + STRAP_THICK;
+      var _clipMeshes = [];
+
+      function createClipMesh() {
+        var g = new THREE.Group();
+        var pw = 0.04 * SCALE;
+        var ph = BAND_WIDTH + 0.004;
+        var pd = 0.02;
+
+        /* === 복합 결합 클립 (Industrial Seal Buckle) === */
+
+        /* 1. 베이스 플레이트 — 넓은 하단 */
+        var baseH = 0.0025;
+        var base = new THREE.Mesh(
+          new THREE.BoxGeometry(pw * 1.2, baseH, ph * 1.2), matClip
+        );
+        base.position.y = -pd * 0.35;
+        g.add(base);
+
+        /* 2. 양쪽 측벽 — 높은 벽 */
+        var wallH = pd * 0.6;
+        var wallT = 0.002;
+        var wallGeo = new THREE.BoxGeometry(pw * 1.0, wallH, wallT);
+        [-1, 1].forEach(function (s) {
+          var w = new THREE.Mesh(wallGeo, matClip);
+          w.position.z = s * ph * 0.55;
+          w.position.y = -pd * 0.35 + baseH / 2 + wallH / 2;
+          g.add(w);
+        });
+
+        /* 3. 상판 — 측벽 위를 덮는 판 */
+        var topH = 0.003;
+        var top = new THREE.Mesh(
+          new THREE.BoxGeometry(pw * 1.05, topH, ph * 1.15), matClip
+        );
+        top.position.y = -pd * 0.35 + baseH + wallH;
+        g.add(top);
+
+        /* 4. 중앙 잠금 블록 — 상판 위 돌출 */
+        var lockW = pw * 0.35;
+        var lockH = 0.004;
+        var lockD = ph * 0.5;
+        var lock = new THREE.Mesh(
+          new THREE.BoxGeometry(lockW, lockH, lockD), matClip
+        );
+        lock.position.y = -pd * 0.35 + baseH + wallH + topH / 2 + lockH / 2;
+        g.add(lock);
+
+        /* 5. 잠금 블록 위 래치 바 — 가로 방향 바 */
+        var latchW = pw * 0.6;
+        var latchH = 0.002;
+        var latchD = lockD * 0.4;
+        var latch = new THREE.Mesh(
+          new THREE.BoxGeometry(latchW, latchH, latchD), matClip
+        );
+        latch.position.y = lock.position.y + lockH / 2 + latchH / 2;
+        g.add(latch);
+
+        /* 6. 양쪽 보강 거싯 — 측벽-베이스 모서리 삼각 보강 */
+        var gusW = pw * 0.3;
+        var gusH = wallH * 0.4;
+        var gusT = wallT * 1.5;
+        var gusGeo = new THREE.BoxGeometry(gusW, gusH, gusT);
+        [-1, 1].forEach(function (sz) {
+          [-1, 1].forEach(function (sx) {
+            var gus = new THREE.Mesh(gusGeo, matClip);
+            gus.position.x = sx * pw * 0.35;
+            gus.position.z = sz * ph * 0.55;
+            gus.position.y = -pd * 0.35 + baseH / 2 + gusH / 2;
+            g.add(gus);
+          });
+        });
+
+        /* 7. 가이드 핀 — 베이스 양쪽 끝 수직 돌기 */
+        var pinW = 0.002;
+        var pinH = wallH * 0.7;
+        var pinD = 0.002;
+        var pinGeo = new THREE.BoxGeometry(pinW, pinH, pinD);
+        [-1, 1].forEach(function (s) {
+          var pin = new THREE.Mesh(pinGeo, matClip);
+          pin.position.x = s * pw * 0.55;
+          pin.position.y = -pd * 0.35 + baseH / 2 + pinH / 2;
+          g.add(pin);
+        });
+
+        /* 8. 내부 채널 릿지 — 베이스 위 스트랩 가이드용 돌기 */
+        var ridgeW = pw * 0.8;
+        var ridgeH = 0.001;
+        var ridgeD = 0.002;
+        var ridgeGeo = new THREE.BoxGeometry(ridgeW, ridgeH, ridgeD);
+        [-1, 1].forEach(function (s) {
+          var ridge = new THREE.Mesh(ridgeGeo, matClip);
+          ridge.position.z = s * ph * 0.25;
+          ridge.position.y = -pd * 0.35 + baseH + ridgeH / 2;
+          g.add(ridge);
+        });
+
+        /* 9. 상판 슬롯 마크 — 어두운 홈 2개 */
+        var slotMat = matClip.clone();
+        slotMat.color.set(0x080810);
+        var slotW = pw * 0.12;
+        var slotH = topH * 1.01;
+        var slotD = ph * 0.3;
+        var slotGeo = new THREE.BoxGeometry(slotW, slotH, slotD);
+        [-1, 1].forEach(function (s) {
+          var slot = new THREE.Mesh(slotGeo, slotMat);
+          slot.position.x = s * pw * 0.3;
+          slot.position.y = top.position.y;
+          g.add(slot);
+        });
+
+        return g;
+      }
+
+      var _clipRot = { x: 1.5, y: 0, z: -1.6 };
+
+      function positionClip(clipMesh, strapY, angle) {
+        var r = OUTER_R + 0.005;  /* 코일 외벽 표면에 밀착 */
+        clipMesh.position.set(
+          r * Math.cos(angle),
+          strapY,
+          r * Math.sin(angle)
+        );
+        clipMesh.rotation.order = 'YXZ';
+        clipMesh.rotation.set(_clipRot.x, -angle + _clipRot.y, _clipRot.z);
+      }
+
+      window._clipRot = _clipRot;
+      window._refreshClips = function () {
+        _clipMeshes.forEach(function (c) { positionClip(c.mesh, c.y, _clipAngle); });
+      };
+
+      /* 스트랩 재생성 (클립 각도 변경 시) */
+      function rebuildStraps(newAngle) {
+        rollGroup.remove(strap1);
+        rollGroup.remove(strap2);
+        if (strap1.geometry) strap1.geometry.dispose();
+        if (strap2.geometry) strap2.geometry.dispose();
+        strap1 = createFlatBandStrap(newAngle);
+        strap1.rotation.x = Math.PI / 2;
+        strap1.position.y = MAIN_H * 0.25;
+        rollGroup.add(strap1);
+        strap2 = createFlatBandStrap(newAngle);
+        strap2.rotation.x = Math.PI / 2;
+        strap2.position.y = -MAIN_H * 0.25;
+        rollGroup.add(strap2);
+        window._strap1 = strap1;
+        window._strap2 = strap2;
+      }
+
+      var clip1 = createClipMesh();
+      positionClip(clip1, MAIN_H * 0.25, _clipAngle);
+      rollGroup.add(clip1);
+      _clipMeshes.push({ mesh: clip1, y: MAIN_H * 0.25 });
+
+      var clip2 = createClipMesh();
+      positionClip(clip2, -MAIN_H * 0.25, _clipAngle);
+      rollGroup.add(clip2);
+      _clipMeshes.push({ mesh: clip2, y: -MAIN_H * 0.25 });
+
+      window._updateClipAngle = function (a) {
+        _clipAngle = a;
+        _clipMeshes.forEach(function (c) { positionClip(c.mesh, c.y, a); });
+        rebuildStraps(a);
+      };
+
+      /* 안쪽 구멍 내벽 — 캡 면보다 양쪽 돌출 (틈 방지) */
+      var innerWall = new THREE.Mesh(
+        new THREE.CylinderGeometry(INNER_R, INNER_R, MAIN_H + WALL_EXT * 2, 64, 1, true), matBore
+      );
+      innerWall.castShadow = false;
+      rollGroup.add(innerWall);
+
+      /* 45도 챔퍼 — 내벽(INNER_R)에서 캡면으로 확장 */
+      var matChamfer = matCap.clone();
+      matChamfer.side = THREE.DoubleSide;
+
+      /* 앞면 챔퍼 (카메라쪽) — 캡면(INNER_R+BEVEL_R)에서 내벽(INNER_R)으로 */
+      var chamferPtsFront = [
+        new THREE.Vector2(INNER_R, -MAIN_H / 2 + BEVEL_R),
+        new THREE.Vector2(INNER_R + BEVEL_R, -MAIN_H / 2)
+      ];
+      var chamferFront = new THREE.Mesh(new THREE.LatheGeometry(chamferPtsFront, 128), matChamfer);
+      chamferFront.castShadow = false;
+      rollGroup.add(chamferFront);
+
+      /* 뒷면 챔퍼 (바깥 향함) */
+      var chamferPtsBack = [
+        new THREE.Vector2(INNER_R + BEVEL_R, MAIN_H / 2),
+        new THREE.Vector2(INNER_R, MAIN_H / 2 - BEVEL_R)
+      ];
+      var chamferBack = new THREE.Mesh(new THREE.LatheGeometry(chamferPtsBack, 128), matChamfer);
+      chamferBack.castShadow = false;
+      rollGroup.add(chamferBack);
+
+      /* ── 솔리드 그림자 캐스터 (카메라에 안 보임, 그림자만) ── */
+      var shadowCasterMat = new THREE.MeshBasicMaterial();
+      shadowCasterMat.colorWrite = false;
+      var shadowCaster = new THREE.Mesh(
+        new THREE.CylinderGeometry(OUTER_R, OUTER_R, MAIN_H, 64, 1, false), shadowCasterMat
+      );
+      shadowCaster.castShadow = true;
+      rollGroup.add(shadowCaster);
+
+      /* ── 그림자 받는 바닥면 (코일과 함께 이동) ── */
+      var shadowMat = new THREE.ShadowMaterial({ opacity: 0.3 });
+      var shadowPlane = new THREE.Mesh(
+        new THREE.PlaneGeometry(10, 10), shadowMat
+      );
+      shadowPlane.rotation.x = -Math.PI / 2;
+      shadowPlane.position.set(0.0, -0.55, 0.0);
+      shadowPlane.receiveShadow = true;
+      shadowPlane.visible = false;
+      yawGroup.add(shadowPlane);
+      window._shadowPlane = shadowPlane;
+      window._shadowMat = shadowMat;
+
+
+      /* ════════════════════════════════════════════════════
+         캔버스 = 뷰포트 전체. 위치/크기는 3D 씬에서 처리.
+         ════════════════════════════════════════════════════ */
+      function resize3d() {
+        var vw = window.innerWidth;
+        var vh = window.innerHeight;
+        renderer.setSize(vw, vh, false);
+        camera.aspect = vw / vh;
+        camera.updateProjectionMatrix();
+      }
+
+      /* t=0: 화면 중앙(orbital), t=1: 오른쪽(product) — 카메라 X 오프셋으로 처리 */
+      window._coilMoveT = 0;
+      function updatePosition(t) {
+        t = Math.max(0, Math.min(1, t));
+        window._coilMoveT = t;
+      }
+
+      /* ════════════════════════════════════════════════════
+         스크롤 애니메이션 파라미터 (원본 8단계 타임라인)
+         ════════════════════════════════════════════════════ */
+      var lerp3d = function (a, b, t) { return a + (b - a) * t; };
+      var clamp01 = function (v) { return Math.max(0, Math.min(1, v)); };
+
+      /* 색상 프리셋: 니켈(밝은 실버) → 냉연(중간 그레이) → QT(차콜) */
+      var colorBase = new THREE.Color(0xE0E2E6);  /* 니켈: 밝고 깨끗한 실버 */
+      var colorDark1 = new THREE.Color(0x9EA2AA); /* 냉연: 중성적 실버그레이 */
+      var colorDark2 = new THREE.Color(0x3A3E46); /* QT: 짙은 그레이 (밝게 조정) */
+
+      var deg0 = 0;
+      var deg1 = -53 * (Math.PI / 180);
+      var deg2 = -46 * (Math.PI / 180);
+      var deg3 = -39 * (Math.PI / 180);
+
+      var ROLL_END = Math.PI * 5.50;
+      var X_END = 0.5;
+      var CAM_Y_START = 0.3, CAM_Y_END = 0.53;
+      var CAM_Z_START = 2.8, CAM_Z_END = 2.7;
+
+      /* ════════════════════════════════════════════════════
+         window._coil3d 노출 + 렌더 루프
+         ════════════════════════════════════════════════════ */
+      /* 초기 재질: hero 프리셋 적용 */
+      applyMatPreset('hero');
+
+      window._coil3d = {
+        _lastT: 0,
+        render: function () {
+          try { renderer.render(scene, camera); } catch (e) { }
+        },
+        updatePosition: function (t) {
+          window._coil3d._lastT = t;
+          updatePosition(t);
+        },
+        /* 8단계 타임라인 기반 회전 업데이트 */
+        updateRotation: function (tRaw) {
+          /* */
+          var ov = window._coilOverrides || {};
+          var _deg1 = ov.deg1 !== undefined ? ov.deg1 : deg1;
+          var _deg2 = ov.deg2 !== undefined ? ov.deg2 : deg2;
+          var _deg3 = ov.deg3 !== undefined ? ov.deg3 : deg3;
+          var _CAM_Y_END = ov.camY !== undefined ? ov.camY : CAM_Y_END;
+          var _CAM_Z_END = ov.camZ !== undefined ? ov.camZ : CAM_Z_END;
+          var _lookAtY = ov.lookAtY !== undefined ? ov.lookAtY : -0.01;
+          var _scale = ov.scale !== undefined ? ov.scale : 1.0;
+
+          var currentYaw = 0, currentX = 0, currentZ = 0, currentRoll = 0;
+          var camZOverride = null;
+
+          if (tRaw < 0.10) {
+            var localT = tRaw / 0.10;
+            yawGroup.scale.setScalar(lerp3d(0.90 * 1.38, 1.38, localT));
+            camZOverride = lerp3d(5.0, CAM_Z_START, localT);
+            currentYaw = deg0; currentX = 0; currentRoll = 0;
+            matSide.color.copy(colorBase);
+            matCap.color.copy(colorBase);
+            matBore.color.copy(colorBase);
+            if (window._matStrap) window._matStrap.color.set(0x404448);
+            applyMatPreset('hero');
+          } else if (tRaw < 0.15) {
+            yawGroup.scale.setScalar(1.38);
+            camZOverride = CAM_Z_START;
+            currentYaw = deg0; currentX = 0; currentRoll = 0;
+            matSide.color.copy(colorBase);
+            matCap.color.copy(colorBase);
+            matBore.color.copy(colorBase);
+            if (window._matStrap) window._matStrap.color.set(0x404448);
+            applyMatPreset('hero');
+          } else if (tRaw < 0.35) {
+            var localT = clamp01((tRaw - 0.15) / 0.20);
+            var m = localT < 0.5 ? 2 * localT * localT : 1 - Math.pow(-2 * localT + 2, 2) / 2;
+            currentYaw = lerp3d(deg0, _deg1, m);
+            currentX = lerp3d(0, X_END, m);
+            currentRoll = lerp3d(0, ROLL_END, m);
+            currentZ = lerp3d(0, 0.4, m);
+            yawGroup.scale.setScalar(lerp3d(1.35, _scale, m));
+            matSide.color.copy(colorBase);
+            matCap.color.copy(colorBase);
+            matBore.color.copy(colorBase);
+            if (window._matStrap) window._matStrap.color.set(0x404448);
+            lerpMatPreset('hero', 'nickel', m);
+          } else if (tRaw < 0.67) {
+            /* 니켈 → 냉연: 0.45~0.67 (텍스트 전환점 tRaw≈0.57 중심) */
+            var localT = clamp01((tRaw - 0.45) / 0.22);
+            localT = localT < 0.5 ? 2 * localT * localT : 1 - Math.pow(-2 * localT + 2, 2) / 2;
+            if (window._snapMode) localT = clamp01((localT - 0.35) / 0.30);
+            yawGroup.scale.setScalar(_scale);
+            currentYaw = lerp3d(_deg1, _deg2, localT);
+            currentX = X_END; currentZ = lerp3d(0.4, 0.4, localT); currentRoll = ROLL_END;
+            matSide.color.lerpColors(colorBase, colorDark1, localT);
+            matCap.color.lerpColors(colorBase, colorDark1, localT);
+            matBore.color.lerpColors(colorBase, colorDark1, localT);
+            if (window._matStrap) window._matStrap.color.lerpColors(new THREE.Color(0x404448), new THREE.Color(0x282830), localT);
+            lerpMatPreset('nickel', 'coldRoll', localT);
+          } else if (tRaw < 0.82) {
+            /* 냉연 → QT: 0.67~0.82 (텍스트 전환점 tRaw≈0.78 중심) */
+            var localT = clamp01((tRaw - 0.67) / 0.15);
+            localT = localT < 0.5 ? 2 * localT * localT : 1 - Math.pow(-2 * localT + 2, 2) / 2;
+            if (window._snapMode) localT = clamp01((localT - 0.35) / 0.30);
+            yawGroup.scale.setScalar(_scale);
+            currentYaw = lerp3d(_deg2, _deg3, localT);
+            currentX = X_END; currentZ = 0.4; currentRoll = ROLL_END;
+            matSide.color.lerpColors(colorDark1, colorDark2, localT);
+            matCap.color.lerpColors(colorDark1, colorDark2, localT);
+            matBore.color.lerpColors(colorDark1, colorDark2, localT);
+            if (window._matStrap) window._matStrap.color.lerpColors(new THREE.Color(0x282830), new THREE.Color(0x0c0c0c), localT);
+            lerpMatPreset('coldRoll', 'qt', localT);
+          } else {
+            yawGroup.scale.setScalar(_scale);
+            currentYaw = _deg3; currentX = X_END; currentRoll = ROLL_END; currentZ = 0.4;
+            matSide.color.copy(colorDark2);
+            matCap.color.copy(colorDark2);
+            matBore.color.copy(colorDark2);
+            if (window._matStrap) window._matStrap.color.set(0x0c0c0c);
+            applyMatPreset('qt');
+          }
+
+          /* 모델 이동: 카메라는 고정, 모델이 오른쪽으로 이동 */
+          var moveRatio = X_END > 0 ? currentX / X_END : 0;
+          var et = moveRatio < 0.5 ? 2 * moveRatio * moveRatio : 1 - Math.pow(-2 * moveRatio + 2, 2) / 2;
+          updatePosition(moveRatio);
+
+          /* 모델 X/Y: et 비율에 따라 이동 (양수=오른쪽/위) */
+          var modelXEnd = ov.modelX !== undefined ? ov.modelX : 0.75;
+          var modelYEnd = ov.modelY !== undefined ? ov.modelY : 0.3;
+          var curScale = yawGroup.scale.x;
+          yawGroup.position.set(
+            -OUTER_R * curScale + lerp3d(0, modelXEnd, et),
+            lerp3d(0, modelYEnd, et),
+            currentZ
+          );
+          yawGroup.rotation.y = currentYaw;
+          orientGroup.rotation.y = 0;
+          rollGroup.rotation.y = currentRoll;
+
+          /* 카메라: X 고정, Y/Z만 변화 */
+          camera.position.x = 0;
+          camera.position.y = lerp3d(CAM_Y_START, _CAM_Y_END, et);
+          camera.position.z = (camZOverride !== null) ? camZOverride : lerp3d(CAM_Z_START, _CAM_Z_END, et);
+          camera.lookAt(0, et * _lookAtY, 0);
+
+          /* (재질은 프리셋/lerp에서 일원화 관리 — et 보간 제거) */
+
+          /* 중앙 상태: hero 프리셋 → 이동 시 프리셋으로 서서히 전환 */
+          var _hp = matPresets.hero;
+          var centerCapR = _hp.capR, centerSideR = _hp.sideR;
+          var centerCapEnv = _hp.capEnv, centerSideEnv = _hp.sideEnv;
+          var centerCapM = _hp.capM, centerSideM = _hp.sideM;
+          matCap.roughness = centerCapR + (matCap.roughness - centerCapR) * et;
+          matSide.roughness = centerSideR + (matSide.roughness - centerSideR) * et;
+          matCap.envMapIntensity = centerCapEnv + (matCap.envMapIntensity - centerCapEnv) * et;
+          matSide.envMapIntensity = centerSideEnv + (matSide.envMapIntensity - centerSideEnv) * et;
+          matCap.metalness = centerCapM + (matCap.metalness - centerCapM) * et;
+          matSide.metalness = centerSideM + (matSide.metalness - centerSideM) * et;
+          matBore.roughness = Math.max(matBore.roughness, 0.20 + (0.15 * (1.0 - et)));
+
+          /* 중앙 사선광: 이동 시 페이드아웃 */
+          centerDiag.intensity = 1.0 * (1.0 - et);
+
+          /* 그림자: 안착 시 페이드인 (et 0.6 이후) */
+          var shadowT = Math.max(0, (et - 0.6) / 0.4);
+          shadowPlane.visible = shadowT > 0.01;
+          shadowMat.opacity = 0.37 * shadowT;
+        }
+      };
+
+      /* 렌더 루프 */
+      function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener('resize', function () {
+        resize3d();
+        if (window._composer) window._composer.setSize(renderer.domElement.width, renderer.domElement.height);
+      }, { passive: true });
+
+      /* 초기: 뷰포트 크기 설정 + 줌인 상태로 중앙에 표시 */
+      resize3d();
+      window._coil3d.updateRotation(0.12);
+      renderer.render(scene, camera);
+    })();
+  </script>
+
+
+
+  <script src="js/gnb.js"></script>
+</body>
+
+</html>

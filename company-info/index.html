@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DK Steel - 제품정보 센터</title>
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+
+    <style>
+        /* ================= Reset & Base ================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', sans-serif;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        body {
+            background-color: #FFFFFF;
+            color: #000;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1920px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* ================= Header & Hero ================= */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 689px;
+            background: url('assets/Page Header.png') no-repeat center top / cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .hero-title-group {
+            position: absolute;
+            top: 200px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 995px;
+            text-align: center;
+        }
+
+        .hero-subtitle {
+            font-size: 26px;
+            font-weight: 700;
+            line-height: 150%;
+            color: #FFFFFF;
+            margin: 0;
+        }
+
+        .hero-maintitle {
+            font-size: 80px;
+            font-weight: 700;
+            line-height: 140%;
+            letter-spacing: 0%;
+            color: #FFFFFF;
+            margin: 0;
+        }
+
+        /* GNB Header */
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 80px;
+            z-index: 10;
+            transition: transform 0.3s ease;
+            will-change: transform;
+        }
+
+        .header.nav-hidden {
+            transform: translateY(-100%);
+        }
+
+        .logo-box {
+            width: 163px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-box img {
+            width: 163px;
+            height: 27px;
+            display: block;
+        }
+
+        .utils {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 24px;
+            height: 44px;
+        }
+
+        .utils-text {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 16px;
+            height: 44px;
+        }
+
+        .utils-text a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 44px;
+            padding: 4px 8px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #FFFFFF;
+            line-height: 160%;
+        }
+
+        .divider {
+            width: 1px;
+            height: 22px;
+            background-color: #ffffff;
+            flex-shrink: 0;
+        }
+
+        .btn-menu {
+            width: 44px;
+            height: 44px;
+            border-radius: 100px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 8.86px;
+        }
+
+        .btn-menu span {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: #FFFFFF;
+        }
+
+        /* ================= 동국산업의 기준 (Standards Section) ================= */
+        .standards-section {
+            position: relative;
+            /* 💡 1. 궤도 선이 아래로 뚫고 나가지 못하게 기준점 설정 */
+            width: 100%;
+            /* 반응형을 위해 1920px에서 변경 */
+            max-width: 1920px;
+            height: 1333px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 120px;
+            background: #FFFFFF;
+            overflow: hidden;
+            /* 💡 2. 삐져나온 3206px짜리 거대 궤도를 여기서 완벽하게 잘라냅니다 */
+        }
+
+        .section-title {
+            font-size: 80px;
+            font-weight: 700;
+            line-height: 140%;
+            text-align: center;
+            margin-bottom: 240px;
+            color: #000000;
+        }
+
+        .slider-wrapper {
+            width: 100%;
+            position: relative;
+            height: 560px;
+            overflow: hidden;
+            /* 궤도(z-index:0)보다 위에 위치하도록 */
+            z-index: 1;
+        }
+
+        .slider-track {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            gap: 30px;
+            width: max-content;
+        }
+
+        .standard-card {
+            position: relative;
+            flex-shrink: 0;
+            width: 498px;
+            height: 402px;
+            border-radius: 30px;
+            background-color: #555;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.6;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 5;
+            /* 궤도보다 위에 오도록 설정 */
+        }
+
+        /* ===== 궤도 원 ===== */
+        .orb-wrapper {
+            position: absolute;
+            /* 💡 3. 기준점이 부모(standards-section)로 바뀌었으므로 top 위치를 재계산(1125 - 상단영역689) */
+            top: 436px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3206px;
+            height: 3206px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb-orbit {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: relative;
+            border: 1px dashed #D3D3D3;
+            /* 💡 카드 슬라이드 속도(0.5s)와 완벽히 맞춤 */
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .orb-orbit::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            border-radius: 50%;
+            padding: 3px;
+
+            /* 💡 72도 간격으로 반복되는 그라데이션 (자동으로 5개가 그려짐) */
+            background: repeating-conic-gradient(from -35deg at 50% 50%,
+                    rgba(242, 113, 0, 0) 0deg,
+                    /* 시작 투명 */
+                    #F27100 35deg,
+                    /* 중앙 주황색 */
+                    rgba(242, 113, 0, 0) 70deg,
+                    /* 끝 투명 */
+                    transparent 70deg,
+                    /* 빈 공간 투명 */
+                    transparent 72deg
+                    /* 72도마다 반복 */
+                );
+
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        /* 💡 5개의 점을 배치하기 위한 래퍼 추가 */
+        .orb-dot-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+        }
+
+        .orb-main-dot {
+            position: absolute;
+            top: -16.5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 33px;
+            height: 33px;
+            background: #F27100;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+
+
+        .card-icon {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            width: 50px;
+            height: 50px;
+            background: var(--active-icon) no-repeat center/contain;
+            opacity: 1;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .standard-card.active .card-icon {
+            width: 88px;
+            height: 88px;
+            opacity: 1;
+        }
+
+        .card-text-area {
+            position: absolute;
+            top: 250px;
+            left: 40px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-title {
+            font-size: 44px;
+            font-weight: 700;
+            line-height: 150%;
+            color: #FFFFFF;
+            margin: 0;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-desc {
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 150%;
+            color: #FFFFFF;
+            margin: 0;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .standard-card.active {
+            width: 716px;
+            height: 560px;
+            background: #F27100 !important;
+            opacity: 1;
+        }
+
+        /* Active state transitions handled in .standard-card.active .card-icon above */
+
+        .standard-card.active .card-text-area {
+            top: 158px;
+            left: 40px;
+            gap: 116px;
+        }
+
+        .standard-card.active .card-title {
+            width: 636px;
+            height: 132px;
+            font-size: 44px;
+            display: flex;
+            align-items: center;
+        }
+
+        .standard-card.active .card-desc {
+            width: 636px;
+            height: 108px;
+            opacity: 1;
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: 12px;
+            margin-top: 60px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #E9E9E9;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: #000000;
+        }
+
+        /* ================= 글로벌 비즈니스 ================= */
+        .global-section {
+            padding: 8% 4%;
+            background: #F1EDEA;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 40px;
+            position: relative;
+            min-height: 800px;
+        }
+
+        .global-header {
+            max-width: 1680px;
+            margin: 0 auto;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .global-header h4 {
+            font-size: clamp(18px, 1.5vw, 24px);
+            color: #7A7A7A;
+            margin-bottom: 16px;
+        }
+
+        .global-header h2 {
+            font-size: clamp(40px, 4vw, 60px);
+            font-weight: 700;
+            color: #000;
+        }
+
+        .global-stats {
+            display: flex;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 16px;
+            max-width: 1680px;
+            margin: 0 auto;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .stat-box {
+            width: clamp(200px, 20vw, 240px);
+            height: clamp(200px, 20vw, 240px);
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .stat-box p {
+            font-size: clamp(18px, 1.5vw, 24px);
+            color: #4E4E4E;
+            text-align: left;
+        }
+
+        .stat-box strong {
+            font-size: clamp(50px, 5vw, 80px);
+            font-weight: 600;
+            color: #000;
+        }
+
+        .map-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 1400px;
+            aspect-ratio: 14/8;
+            background: url('https://via.placeholder.com/1400x800/F1EDEA/cccccc?text=World+Map') no-repeat center/contain;
+            z-index: 1;
+        }
+
+        .map-marker {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            color: #FFF;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: clamp(14px, 1vw, 20px);
+            transform: translate(-50%, -50%);
+        }
+
+        .marker-china {
+            top: 60%;
+            left: 35%;
+        }
+
+        .marker-japan {
+            top: 55%;
+            left: 45%;
+        }
+
+        .marker-america {
+            top: 40%;
+            left: 80%;
+        }
+
+        /* ================= 🌟 제품 (Products Section) 🌟 ================= */
+        .products-section {
+            padding: 120px;
+            background: #FFFFFF;
+            display: flex;
+            justify-content: center;
+        }
+
+        .products-container {
+            display: flex;
+            gap: 24px;
+            width: 1680px;
+            height: 808px;
+        }
+
+        .product-card {
+            position: relative;
+            flex: 329;
+            /* Using ratios instead of fixed pixels for fixed container width */
+            height: 808px;
+            border-radius: 20px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            cursor: pointer;
+            transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .product-card.expanded {
+            flex: 974;
+        }
+
+        /* 전체 콘텐츠 래퍼 */
+        .pc-content {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+        }
+
+        /* 닫혀있을 때 하단 타이틀 */
+        .pc-title-small {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 150%;
+            color: #FFFFFF;
+            margin: 0;
+            opacity: 1;
+            transition: opacity 0.2s ease;
+            white-space: nowrap;
+        }
+
+        /* 열렸을 때 상단 왼쪽 텍스트 그룹 */
+        .pc-expanded-content {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            right: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease 0.15s;
+        }
+
+        /* 텍스트 그룹 */
+        .pc-text-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .pc-text-group h3 {
+            font-size: 60px;
+            font-weight: 700;
+            line-height: 140%;
+            color: #FFFFFF;
+            margin: 0;
+        }
+
+        .pc-text-group p {
+            font-size: 26px;
+            font-weight: 700;
+            line-height: 150%;
+            color: #FFFFFF;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        /* 버튼 그룹: 우측 하단 */
+        .pc-btn-group {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            display: flex;
+            gap: 4px;
+        }
+
+        .pc-btn-text {
+            width: 140px;
+            height: 64px;
+            background: #FFFFFF;
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-weight: 500;
+            color: #000000;
+            border: none;
+            cursor: pointer;
+        }
+
+        .pc-btn-icon {
+            width: 64px;
+            height: 64px;
+            background: transparent;
+            border-radius: 14px;
+            border: 2px solid #FFFFFF;
+            display: flex;
+            justify-content: center;
+            color: #ffffff;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        /* 호버 시 시각적 제어 */
+        .product-card:hover .pc-title-small,
+        .product-card.expanded .pc-title-small {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .product-card:hover .pc-expanded-content,
+        .product-card.expanded .pc-expanded-content {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* 버튼: 기본 숨김 및 클릭 방지 */
+        .pc-btn-group {
+            opacity: 0;
+            pointer-events: none;
+            /* 💡 평소에는 클릭을 아예 무시합니다 */
+            transition: opacity 0.25s ease 0.15s;
+        }
+
+        /* 💡 핵심 수정: :hover 부분을 지우고 .expanded일 때만 활성화합니다 */
+        .product-card.expanded .pc-btn-group {
+            opacity: 1;
+            pointer-events: auto;
+            /* 💡 카드가 확장되었을 때만 클릭이 가능해집니다 */
+        }
+
+        /* ===== Support Section (소프트 코딩 & 피그마 스펙 반영) ===== */
+        /* 배너 전체 틀 */
+        .support-section {
+            padding: clamp(40px, 4.16vw, 80px) 0;
+            background: #fff;
+        }
+
+        .support-banner {
+            position: relative;
+            /* 내부 요소들의 절대 위치 기준점 */
+            width: 100%;
+            max-width: 1680px;
+            height: clamp(140px, 10.93vw, 210px);
+            margin: 0 auto;
+            background: #F8F9FB;
+            border-radius: clamp(12px, 1.04vw, 20px);
+            /* 💡 Flex를 완전히 제거하여 요소들이 서로 엮이지 않게 만듦 */
+            display: block;
+            box-sizing: border-box;
+        }
+
+        /* 💡 완전 독립 로고 (좌측에 절대 위치로 못 박음) */
+        .support-icon {
+            position: absolute;
+            /* 배너 안에서 혼자 둥둥 떠 있음 */
+            left: clamp(15px, 1.56vw, 30px);
+            top: clamp(20px, 2.08vw, 40px);
+            /* 높이 210 기준 정중앙 여백 */
+            width: clamp(80px, 6.77vw, 130px);
+            height: clamp(80px, 6.77vw, 130px);
+            background: url('../assets/common/ic-support.svg') no-repeat center/contain;
+        }
+
+        .support-icon::before {
+            content: '';
+            position: absolute;
+            width: clamp(50px, 4.89vw, 94px);
+            height: clamp(50px, 4.89vw, 94px);
+            left: clamp(10px, 0.93vw, 18px);
+            top: clamp(10px, 0.93vw, 18px);
+            background: linear-gradient(180deg, #F3782B 50%, #FF9933 100%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        /* 💡 3번 박스 (1450 x 99) */
+        .support-content-box {
+            position: absolute;
+            right: clamp(25px, 2.6vw, 50px);
+            /* 오른쪽 벽 50px 위치 고정 */
+            top: clamp(27.75px, 2.89vw, 55.5px);
+            /* 위쪽 벽 55.5px 위치 고정 */
+            width: clamp(800px, 75.52vw, 1450px);
+            height: clamp(60px, 5.15vw, 99px);
+            display: flex;
+            flex-direction: row;
+
+            /* 💡 핵심: 텍스트는 맨 왼쪽, 화살표는 맨 오른쪽으로 자동 배치 */
+            justify-content: space-between;
+
+            /* 화살표와 텍스트가 박스 안에서 어떤 높이에 있을지 결정 (위쪽 정렬: flex-start, 중앙 정렬: center) */
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        /* 💡 2번 박스: 텍스트 정보 그룹 */
+        .support-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* 99px 박스 안에서 텍스트를 위아래 중앙 정렬 */
+            height: 100%;
+            padding: 0;
+            gap: clamp(8px, 0.83vw, 16px);
+        }
+
+        .support-info h3 {
+            font-family: 'Pretendard', sans-serif;
+            font-weight: 700;
+            font-size: clamp(32px, 1.66vw, 32px);
+            line-height: 150%;
+            color: #1B1B1B;
+            margin: 0;
+        }
+
+        .support-info p {
+            font-family: 'Pretendard', sans-serif;
+            font-weight: 400;
+            font-size: clamp(22px, 1.14vw, 22px);
+            line-height: 160%;
+            color: #4E4E4E;
+            margin: 0;
+            word-break: keep-all;
+        }
+
+        /* 💡 화살표 아이콘 */
+        .btn-arrow-right {
+            width: clamp(40px, 3.33vw, 64px);
+            height: clamp(40px, 3.33vw, 64px);
+            flex: none;
+
+            /* 💡 핵심 해결책: 부모 박스의 중앙 정렬을 무시하고 나 홀로 위쪽 벽에 찰싹 붙음! */
+            align-self: flex-start;
+            margin-top: 0;
+            /* 혹시 모를 여백 원천 차단 */
+
+            display: flex;
+            align-items: center;
+            /* 아이콘 자체(→)의 텍스트 중앙 정렬 */
+            justify-content: center;
+            background: transparent;
+            border: none;
+            color: #111111;
+            font-size: clamp(20px, 1.56vw, 30px);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* ===== TOP 버튼 ===== */
+        .btn-top {
+            position: fixed;
+            right: 80px;
+            bottom: 80px;
+            /* 기본적으로 화면 아래에서 80px 띄움 */
+            width: 60px;
+            /* 💡 피그마 스펙에 맞춰 버튼 크기 조절 필요 */
+            height: 60px;
+            z-index: 999;
+            /* 다른 요소들보다 항상 위에 오도록 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            /* 처음에 숨겨두었다가 스크롤하면 나타나게 하기 위한 설정 */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            /* 🚨 주의: bottom에는 transition을 주지 마세요! (스크롤 시 덜덜거림 방지) */
+        }
+
+        /* 스크롤 시 버튼이 나타나게 하는 클래스 */
+        .btn-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .btn-top img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* ===== Footer (1920 기준 반응형 소프트 코딩) ===== */
+        .footer {
+            width: 100%;
+            /* 1. 푸터 전체 사이즈 1920 x 490 (1920px일때 490px을 유지하며 부드럽게 축소됨) */
+            height: clamp(300px, 25.52vw, 490px);
+
+            /* 2, 3-1, 4. 벽과의 간격 요구사항 (위80, 좌우80, 아래50)을 안쪽 여백으로 한 번에 해결 */
+            padding: clamp(40px, 4.16vw, 80px) clamp(20px, 4.16vw, 80px) clamp(30px, 2.6vw, 50px);
+
+            box-sizing: border-box;
+            background: url('../assets/common/footer-bg.svg') no-repeat center/cover;
+            background-color: #111;
+            /* 이미지 로드 실패 대비 배경색 */
+            color: #FFFFFF;
+
+            /* Flexbox로 상단영역은 위로, 하단영역은 아래로 완벽히 분리 */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* 상단 묶음 (로고 & 버튼) */
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            /* 양 끝단으로 밀어냄 */
+            align-items: flex-start;
+            width: 100%;
+            max-width: 1760px;
+            /* 1920 - 160(좌우여백 80x2) */
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            width: clamp(150px, 11.97vw, 230px);
+            height: clamp(30px, 2.39vw, 46px);
+        }
+
+        .footer-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* 3. 우측 버튼 3개 그룹 박스 크기 (522 x 60) */
+        .footer-btn-group {
+            display: flex;
+            gap: clamp(6px, 0.625vw, 12px);
+            /* 내부 버튼 간격 12px */
+            width: clamp(300px, 27.18vw, 522px);
+            height: clamp(40px, 3.125vw, 60px);
+        }
+
+        .footer-btn {
+            flex: 1;
+            /* 3개의 버튼이 522px 안에서 1:1:1 비율로 꽉 차게 배분됨 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            background: #7A7A7A;
+            border-radius: clamp(8px, 0.72vw, 14px);
+            color: #FFFFFF;
+            font-size: clamp(12px, 0.93vw, 18px);
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.3s;
+            box-sizing: border-box;
+        }
+
+        .footer-btn:hover {
+            background: #555;
+        }
+
+        /* 하단 묶음 (구분선 & 하단 텍스트 정보) */
+        .footer-bottom {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 1760px;
+            margin: 0 auto;
+            /* 5. 회색 선과 아래 텍스트 박스 사이 간격 24px */
+            gap: clamp(12px, 1.25vw, 24px);
+        }
+
+        .footer-divider {
+            width: 100%;
+            height: 1px;
+            background: rgba(225, 225, 225, 0.5);
+        }
+
+        /* 4. 하단 텍스트 영역 박스 크기 (1760 x 30) */
+        .footer-bottom-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: clamp(20px, 1.56vw, 30px);
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            gap: clamp(4px, 0.41vw, 8px);
+        }
+
+        .footer-links a {
+            color: #FFFFFF;
+            font-size: clamp(11px, 0.83vw, 16px);
+            text-decoration: none;
+        }
+
+        .footer-links .bar {
+            width: 1px;
+            height: clamp(8px, 0.62vw, 12px);
+            background: #D3D3D3;
+        }
+
+        .footer-copy {
+            color: #FFFFFF;
+            font-size: clamp(11px, 0.83vw, 16px);
+            text-align: right;
+        }
+
+        .btn-top {
+            position: fixed;
+            right: 40px;
+            bottom: 40px;
+            width: 60px;
+            height: 60px;
+            background: #1B1B1B;
+            border-radius: 50%;
+            color: #FFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 100;
+            font-weight: 700;
+        }
+    </style>
+  <link rel="stylesheet" href="../css/gnb.css">
+</head>
+
+<body data-page="company-info">
+
+    <div class="container">
+
+        <section class="hero-section">
+            <header class="header">
+                <div class="logo-box">
+                    <img src="assets/로고.svg" alt="DK Steel">
+                </div>
+
+                <div class="utils">
+                    <div class="utils-text">
+                        <a href="#" class="item-inquiry">문의</a>
+                        <a href="#" class="item-lang">KR</a>
+                    </div>
+                    <div class="divider"></div>
+                    <button class="btn-menu">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="hero-title-group">
+                <p class="hero-subtitle">신뢰로 쌓아온 품질, 세계로 향하는 소재</p>
+                <h1 class="hero-maintitle">글로벌 철강 메이커의 새로운<br>기준, 동국산업</h1>
+            </div>
+        </section>
+
+        <section class="standards-section">
+            <h2 class="section-title">기대를 확신으로 바꾼<br>동국산업의 기준</h2>
+
+            <!-- [Layer] 궤도 및 메인 도트 -->
+            <div class="orb-wrapper">
+                <div class="orb-orbit" id="orbOrbit">
+                    <div class="orb-dot-wrapper" style="transform: rotate(0deg);">
+                        <div class="orb-main-dot"></div>
+                    </div>
+                    <div class="orb-dot-wrapper" style="transform: rotate(72deg);">
+                        <div class="orb-main-dot"></div>
+                    </div>
+                    <div class="orb-dot-wrapper" style="transform: rotate(144deg);">
+                        <div class="orb-main-dot"></div>
+                    </div>
+                    <div class="orb-dot-wrapper" style="transform: rotate(216deg);">
+                        <div class="orb-main-dot"></div>
+                    </div>
+                    <div class="orb-dot-wrapper" style="transform: rotate(288deg);">
+                        <div class="orb-main-dot"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider-wrapper">
+                <div class="slider-track" id="sliderTrack">
+
+                    <div class="standard-card slide-item"
+                        style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('assets/대규모.png'); --active-icon: url('assets/대규모1.svg');">
+                        <div class="card-icon"></div>
+                        <div class="card-text-area">
+                            <h3 class="card-title">대규모 투자를 통한<br>생산 인프라</h3>
+                            <p class="card-desc">친환경 수소 열처리 및 1,330억 규모 니켈도금강판 전용 라인의 대규모 투자는 제조 공정의 지속가능성을 높이는 동시에,
+                                시장에서의 독보적인 경쟁력을 입증합니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="standard-card slide-item"
+                        style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('assets/세계시장.png'); --active-icon: url('assets/세계시장1.svg');">
+                        <div class="card-icon"></div>
+                        <div class="card-text-area">
+                            <h3 class="card-title">세계 시장이 인정한<br>품질과 대응력</h3>
+                            <p class="card-desc"><br>세계 시장의 높은 진입 장벽을 넘어서는 정밀한 공정 대응력으로 글로벌 고객사의 신뢰를 확보했습니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="standard-card slide-item active"
+                        style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('assets/품질의.png'); --active-icon: url('assets/품질의1.svg');">
+                        <div class="card-icon"></div>
+                        <div class="card-text-area">
+                            <h3 class="card-title">품질의 기본이 되는<br>원료 선택의 기준</h3>
+                            <p class="card-desc">국산 고청정 강판과 CLASS 1 고순도 원료(99.9%)를 사용합니다. 가격 변동에 타협하지 않으며 엄격한 기준으로 최고급
+                                원료를 선택합니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="standard-card slide-item"
+                        style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('assets/산업별.png'); --active-icon: url('assets/산업별1.svg');">
+                        <div class="card-icon"></div>
+                        <div class="card-text-area">
+                            <h3 class="card-title">산업별 최적화된<br>맞춤 소재 솔루션</h3>
+                            <p class="card-desc"><br>엔진·변속기 등 고도의 신뢰성이 요구되는 분야에서도 고객사의 비즈니스 가치를 극대화하는최적화된 맞춤형 솔루션을
+                                제안합니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="standard-card slide-item"
+                        style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('assets/경험이.png'); --active-icon: url('assets/경험이1.svg');">
+                        <div class="card-icon"></div>
+                        <div class="card-text-area">
+                            <h3 class="card-title">경험이 축적된<br>정밀 제어 기술</h3>
+                            <p class="card-desc"><br>오랜 기간 축적된 고탄소강 공정 역량과 고객 맞춤형 대응 경험은 동국산업만의 독보적인 자부심입니다.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="slider-dots" id="sliderDots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </section>
+
+        <section class="global-section">
+            <div class="map-container">
+                <div class="map-marker marker-china">CHINA</div>
+                <div class="map-marker marker-japan">JAPAN</div>
+                <div class="map-marker marker-america">AMERICA</div>
+            </div>
+            <div class="global-header">
+                <h4>글로벌 비즈니스</h4>
+                <h2>기술과 파트너십으로<br>미래 가치를 이어갑니다.</h2>
+            </div>
+            <div class="global-stats">
+                <div class="stat-box">
+                    <p>글로벌 파트너</p><strong>00</strong>
+                </div>
+                <div class="stat-box">
+                    <p>수출국</p><strong>00</strong>
+                </div>
+            </div>
+        </section>
+
+        <section class="products-section">
+            <div class="products-container">
+
+                <div class="product-card expanded"
+                    style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('assets/니켈도금강판.png');">
+                    <div class="pc-content">
+                        <h3 class="pc-title-small">니켈도금강판</h3>
+                        <div class="pc-expanded-content">
+                            <div class="pc-text-group">
+                                <h3>니켈도금강판</h3>
+                                <p>차세대 에너지 산업을 위한 고기능 소재</p>
+                            </div>
+                        </div>
+                        <div class="pc-btn-group" onclick="location.href='product니켈.html'" style="cursor: pointer;">
+                            <button class="pc-btn-text">더 알아보기</button>
+                            <button class="pc-btn-icon">
+                                <svg width="15" height="11" viewBox="0 0 15 11" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 5.5H13.5M13.5 5.5L8.5 1M13.5 5.5L8.5 10" stroke="#FFFFFF"
+                                        stroke-width="2" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card"
+                    style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('assets/냉연강판.png');">
+                    <div class="pc-content">
+                        <h3 class="pc-title-small">냉연강판</h3>
+                        <div class="pc-expanded-content">
+                            <div class="pc-text-group">
+                                <h3>냉연강판</h3>
+                                <p>정밀 공정에 최적화된 고품질 강판</p>
+                            </div>
+                        </div>
+                        <div class="pc-btn-group" onclick="location.href='product냉연강판.html'" style="cursor: pointer;">
+                            <button class="pc-btn-text">더 알아보기</button>
+                            <button class="pc-btn-icon">
+                                <svg width="15" height="11" viewBox="0 0 15 11" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 5.5H13.5M13.5 5.5L8.5 1M13.5 5.5L8.5 10" stroke="#FFFFFF"
+                                        stroke-width="2" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card"
+                    style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('assets/열처리강판.png');">
+                    <div class="pc-content">
+                        <h3 class="pc-title-small">Q/T 열처리강판</h3>
+                        <div class="pc-expanded-content">
+                            <div class="pc-text-group">
+                                <h3>Q/T 열처리강판</h3>
+                                <p>강도와 내구성을 고루 갖춘 산업용 소재</p>
+                            </div>
+                        </div>
+                        <div class="pc-btn-group" onclick="location.href='productQT열처리강판.html'"
+                            style="cursor: pointer;">
+                            <button class="pc-btn-text">더 알아보기</button>
+                            <button class="pc-btn-icon">
+                                <svg width="15" height="11" viewBox="0 0 15 11" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 5.5H13.5M13.5 5.5L8.5 1M13.5 5.5L8.5 10" stroke="#FFFFFF"
+                                        stroke-width="2" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 고객지원 -->
+        <section class="support-section">
+            <div class="support-banner">
+
+                <div class="support-icon"></div>
+
+                <div class="support-content-box">
+
+                    <div class="support-info">
+                        <h3>동국산업에 대해 더 알고 싶으신가요?</h3>
+                        <p>제품, 기술, 협력, 채용 등 다양한 문의를 남겨주시면 담당자가 확인 후 안내드립니다.</p>
+                    </div>
+
+                    <a class="btn-arrow-right">→</a>
+
+                </div>
+
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <img src="../assets/common/footer-logo.svg" alt="DK Steel Logo">
+                </div>
+
+                <div class="footer-btn-group">
+                    <a href="#" class="footer-btn">방문예약</a>
+                    <a href="#" class="footer-btn">
+                        YOUTUBE
+                        <img src="../assets/common/ic-youtube.svg" alt="Youtube" width="20" height="20">
+                    </a>
+                    <a href="#" class="footer-btn">
+                        패밀리 사이트
+                        <svg width="13.5" height="13.5" viewBox="0 0 13.5 13.5" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.75 0V13.5M0 6.75H13.5" stroke="white" stroke-width="1.5" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-divider"></div>
+                <div class="footer-bottom-info">
+                    <div class="footer-links">
+                        <a href="#">개인정보처리방침</a>
+                        <div class="bar"></div>
+                        <a href="#">내부정보관리규정</a>
+                        <div class="bar"></div>
+                        <a href="#">사이트맵</a>
+                        <div class="bar"></div>
+                        <a href="#">02-316-7500</a>
+                        <div class="bar"></div>
+                        <a href="#">서울특별시 중구 다동길 46</a>
+                    </div>
+                    <p class="footer-copy">Copyright(C) 2015 DONGKUK INDUSTRIES All rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <a href="#" id="btn-top" class="btn-top">
+            <img src="../assets/common/btn-top.svg" alt="맨 위로 가기">
+        </a>
+
+        <div class="btn-top">TOP</div>
+    </div>
+
+    <script>
+        (function () {
+            const nav = document.querySelector('.header');
+            if (!nav) return;
+
+            let lastY = window.scrollY;
+            let ticking = false;
+            const threshold = 8;
+            const revealOffset = 80;
+
+            function updateNav() {
+                const currentY = window.scrollY;
+                const delta = currentY - lastY;
+
+                if (currentY <= revealOffset) {
+                    nav.classList.remove('nav-hidden');
+                } else if (Math.abs(delta) >= threshold) {
+                    nav.classList.toggle('nav-hidden', delta > 0);
+                }
+
+                lastY = currentY;
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', () => {
+                if (ticking) return;
+                ticking = true;
+                window.requestAnimationFrame(updateNav);
+            }, { passive: true });
+
+            updateNav();
+        })();
+
+        // 무한 슬라이더 스크립트 
+        const wrapper = document.querySelector('.slider-wrapper');
+        const track = document.getElementById('sliderTrack');
+        const originalCards = Array.from(document.querySelectorAll('.slide-item'));
+        const dots = document.querySelectorAll('.dot');
+
+        originalCards.forEach(card => {
+            let clone = card.cloneNode(true);
+            clone.classList.remove('active');
+            track.appendChild(clone);
+        });
+        for (let i = originalCards.length - 1; i >= 0; i--) {
+            let clone = originalCards[i].cloneNode(true);
+            clone.classList.remove('active');
+            track.prepend(clone);
+        }
+
+        const allCards = document.querySelectorAll('.slide-item');
+        let currentIndex = 7;
+        let isScrolling = false;
+
+        function getTranslateX(index) {
+            const wrapperWidth = wrapper.clientWidth;
+            return (wrapperWidth / 2) - (index * 528 + 358);
+        }
+
+        function updateCarousel(index, animate = true) {
+            if (animate) {
+                track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            } else {
+                track.style.transition = 'none';
+            }
+
+            track.style.transform = `translate3d(${getTranslateX(index)}px, 0, 0)`;
+
+            allCards.forEach((c, i) => {
+                if (i === index) c.classList.add('active');
+                else c.classList.remove('active');
+            });
+
+            dots.forEach(d => d.classList.remove('active'));
+            let dotIndex = index % 5;
+            if (dotIndex < 0) dotIndex += 5;
+            dots[dotIndex].classList.add('active');
+
+            // 💡 궤도 회전 연동 (슬라이드 1칸당 72도 회전)
+            const orbOrbit = document.getElementById('orbOrbit');
+            if (orbOrbit) {
+                // 카드가 눈속임(순간이동)을 할 때는 궤도도 애니메이션을 끕니다!
+                if (animate) {
+                    orbOrbit.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                } else {
+                    orbOrbit.style.transition = 'none';
+                }
+
+                const rotationAngle = (index - 7) * -72;
+                orbOrbit.style.transform = `rotate(${rotationAngle}deg)`;
+            }
+        }
+
+        window.addEventListener('resize', () => {
+            updateCarousel(currentIndex, false);
+        });
+
+        updateCarousel(currentIndex, false);
+
+        // 💡 눈속임 순간이동 시, 카드 크기가 변하는 애니메이션을 강제로 차단하는 함수
+        function checkAndReset() {
+            if (currentIndex >= 10 || currentIndex <= 4) {
+                // 1. 트랙 전체의 애니메이션 강제 종료 (.no-transition 적용)
+                track.classList.add('no-transition');
+
+                // 2. 인덱스 순간이동
+                if (currentIndex >= 10) currentIndex -= 5;
+                else if (currentIndex <= 4) currentIndex += 5;
+
+                // 3. 궤도와 카드의 위치를 애니메이션 없이(false) 즉시 변경
+                updateCarousel(currentIndex, false);
+
+                // 4. 브라우저에게 변경사항 즉시 렌더링 강제 (Reflow)
+                void track.offsetWidth;
+
+                // 5. 다시 애니메이션 켜기
+                track.classList.remove('no-transition');
+            }
+            isScrolling = false;
+        }
+
+        wrapper.addEventListener('wheel', (e) => {
+            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+
+            e.preventDefault();
+            if (isScrolling) return;
+
+            isScrolling = true;
+            let direction = e.deltaY > 0 ? 1 : -1;
+            currentIndex += direction;
+
+            updateCarousel(currentIndex, true);
+
+            // 💡 0.5초 뒤에 눈속임 함수 실행
+            setTimeout(checkAndReset, 500);
+        }, { passive: false });
+
+        dots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+                if (isScrolling) return;
+                isScrolling = true;
+                currentIndex = idx + 5;
+                updateCarousel(currentIndex, true);
+
+                // 💡 0.5초 뒤에 눈속임 함수 실행
+                setTimeout(checkAndReset, 500);
+            });
+        });
+
+        allCards.forEach((card, idx) => {
+            card.addEventListener('click', () => {
+                if (isScrolling || idx === currentIndex) return;
+                isScrolling = true;
+                currentIndex = idx;
+                updateCarousel(currentIndex, true);
+
+                // 💡 0.5초 뒤에 눈속임 함수 실행
+                setTimeout(checkAndReset, 500);
+            });
+        });
+
+        // 🌟 제품 카드 확장 아코디언 스크립트 🌟
+        const productCards = document.querySelectorAll('.product-card');
+        productCards.forEach(card => {
+            const expandCard = () => {
+                productCards.forEach(c => c.classList.remove('expanded'));
+                card.classList.add('expanded');
+            };
+
+            card.addEventListener('click', expandCard);
+            card.addEventListener('mouseenter', expandCard);
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const btnTop = document.getElementById('btn-top');
+
+            // 💡 HTML에 있는 푸터의 클래스 이름과 똑같이 맞춰주세요! (현재 .footer로 가정)
+            const footer = document.querySelector('.footer');
+
+            if (!btnTop) return;
+
+            // 1. 버튼 클릭 시 맨 위로 부드럽게 스크롤
+            btnTop.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // 2. 스크롤할 때 버튼 위치 계산
+            window.addEventListener('scroll', function () {
+                const scrollY = window.scrollY; // 현재 스크롤한 위치
+                const windowHeight = window.innerHeight; // 현재 화면 높이
+                const scrollBottom = scrollY + windowHeight; // 현재 화면 맨 아랫부분의 절대 위치
+
+                // 스크롤을 300px 이상 내리면 버튼 나타나게 하기
+                if (scrollY > 300) {
+                    btnTop.classList.add('show');
+                } else {
+                    btnTop.classList.remove('show');
+                }
+
+                // 푸터와 부딪히는지 계산하기
+                if (footer) {
+                    const footerTop = footer.offsetTop; // 문서 전체에서 푸터가 시작되는 높이 위치
+                    const overlap = scrollBottom - footerTop; // 화면 밑바닥이 푸터를 얼마나 침범했는지 계산
+
+                    if (overlap > 0) {
+                        // 푸터가 화면에 보이기 시작하면: 기본 80px + 화면에 보이는 푸터 높이만큼 더 위로 올림!
+                        btnTop.style.bottom = `${80 + overlap}px`;
+                    } else {
+                        // 푸터가 화면에 없으면: 기본 80px 유지
+                        btnTop.style.bottom = '80px';
+                    }
+                }
+            });
+        });
+    </script>
+  <script src="../js/gnb.js"></script>
+</body>
+
+</html>

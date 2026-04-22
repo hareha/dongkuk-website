@@ -1,0 +1,768 @@
+        /* 📍 ===== 원통형 배터리 경쟁력 (피그마 반영) ===== */
+        .battery-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 120px;
+            gap: 80px;
+            position: relative;
+            width: 1920px;
+            height: 2059px;
+            background: #FFFFFF;
+            margin: 0 auto;
+        }
+
+        .bat-title {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0px;
+            gap: 50px;
+            width: 1631px;
+            height: 140px;
+        }
+
+        .bat-title h2 {
+            width: 1631px;
+            height: 140px;
+            font-family: 'Pretendard', sans-serif;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 50px;
+            line-height: 140%;
+            display: flex;
+            align-items: center;
+            color: #000000;
+            margin: 0;
+        }
+
+        .bat-compare {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0px;
+            gap: 50px;
+            isolation: isolate;
+            width: 1680px;
+            height: 765px;
+        }
+
+        .bat-comp-top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0px;
+            gap: 20px;
+            width: 1680px;
+            height: 597px;
+            z-index: 0;
+        }
+
+        .bat-comp-cards {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-end;
+            padding: 0px;
+            gap: 120px;
+            width: 1676px;
+            height: 506px;
+        }
+
+        .bat-card-pouch {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0px 0px 30px;
+            gap: 20px;
+            width: 280px;
+            height: 208px;
+        }
+
+        .bat-img-pouch {
+            width: 280px;
+            height: 178px;
+            background: url('dikel가치/파우치형.png') no-repeat center/contain;
+            transform: matrix(-1, 0, 0, 1, 0, 0);
+        }
+
+        .bat-card-prism {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0px 0px 30px;
+            gap: 20px;
+            width: 280px;
+            height: 213px;
+        }
+
+        .bat-img-prism {
+            width: 280px;
+            height: 183px;
+            background: url('dikel가치/각형.png') no-repeat center/contain;
+        }
+
+        .bat-card-cyl {
+            width: 802px;
+            height: 506px;
+            position: relative;
+        }
+
+        .bat-cyl-bg1 {
+            position: absolute;
+            width: 802px;
+            height: 506px;
+            left: 437px;
+            top: 0px;
+        }
+
+        .bat-cyl-bg2 {
+            position: absolute;
+            width: 697.85px;
+            height: 364px;
+            left: 51.66px;
+            top: 3px;
+            transform: matrix(-1, 0, 0, 1, 0, 0);
+        }
+
+        .bat-cyl-ellipse1 {
+            box-sizing: border-box;
+            position: absolute;
+            width: 706.32px;
+            height: 706.32px;
+            left: -8.47px;
+            top: 0px;
+            transform: matrix(-1, 0, 0, 1, 0, 0);
+        }
+
+        .bat-cyl-ellipse2 {
+            box-sizing: border-box;
+            position: absolute;
+            width: 706.32px;
+            height: 706.32px;
+            left: -8.47px;
+            top: 0px;
+            border: 197.77px solid #FCE3CC;
+            transform: matrix(-1, 0, 0, 1, 0, 0);
+        }
+
+        .bat-cyl-union-grp {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 0px;
+            gap: 18.63px;
+            position: absolute;
+            width: 1009.96px;
+            height: 961.18px;
+            left: -297.95px;
+            top: -283.84px;
+            transform: rotate(45deg);
+        }
+
+        .bat-cyl-union {
+            width: 805.21px;
+            height: 762.23px;
+            background: #FCE3CC;
+            transform: rotate(45deg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bat-cyl-img-wrap {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0px;
+            position: absolute;
+            width: 611px;
+            height: 397px;
+            left: 91.58px;
+            top: 132px;
+        }
+
+        .bat-cyl-img {
+            width: 472.66px;
+            height: 397px;
+            background: url('dikel가치/원통형.png') no-repeat center/contain;
+            mix-blend-mode: normal;
+        }
+
+        .bat-labels-row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 0px;
+            gap: 20px;
+            width: 1680px;
+            height: 71px;
+        }
+
+        .bat-label {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 16px 20px;
+            gap: 10px;
+            height: 71px;
+            background: #F1F3F7;
+            border-radius: 600px;
+            font-family: 'Pretendard', sans-serif;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 26px;
+            line-height: 150%;
+            box-sizing: border-box;
+        }
+
+        .bat-label.side { width: 384px; color: #7A7A7A; }
+        .bat-label.center { width: 872px; color: #363636; }
+
+        .bat-desc {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0px;
+            gap: 16px;
+            width: 1676px;
+            height: 118px;
+            z-index: 1;
+        }
+
+        .bat-desc-title {
+            width: 762px;
+            height: 66px;
+            font-family: 'Pretendard', sans-serif;
+            font-weight: 700;
+            font-size: 44px;
+            line-height: 150%;
+            text-align: center;
+            color: #222222;
+            margin: 0;
+        }
+
+        .bat-desc-text {
+            width: 1676px;
+            height: 36px;
+            font-family: 'Pretendard', sans-serif;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 150%;
+            text-align: center;
+            color: #4E4E4E;
+            margin: 0;
+        }
+
+        .bat-float-tag {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 16px 24px;
+            gap: 10px;
+            position: absolute;
+            height: 71px;
+            background: #F27100;
+            box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.06);
+            border-radius: 1000px;
+            font-family: 'Pretendard', sans-serif;
+            font-weight: 700;
+            font-size: 26px;
+            line-height: 150%;
+            color: #FFFFFF;
+            text-align: center;
+            white-space: nowrap;
+            box-sizing: border-box;
+        }
+
+        .bat-tag1 { width: 167px; left: 509px; top: 66px; z-index: 2; }
+        .bat-tag2 { width: 218px; left: 1034px; top: 304px; z-index: 3; }
+        .bat-tag3 { width: 195px; left: 428px; top: 304px; z-index: 4; }
+        .bat-tag4 { width: 167px; left: 989px; top: 66px; z-index: 5; }
+
+        .bat-sys {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0px;
+            gap: 50px;
+            width: 1680px;
+            height: 754px;
+            position: relative;
+        }
+
+        .bat-sys-bg {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            padding: 0px;
+            gap: 24px;
+            width: 1680px;
+            height: 586px;
+            background: #F1F3F7;
+            border-radius: 30px;
+            position: relative;
+        }
+
+        .bat-sys-dash1 {
+            position: absolute;
+            width: 268.02px;
+            height: 50.75px;
+            left: 974px;
+            top: 290px;
+            border: 2px dashed #000000;
+            transform: matrix(1, 0.09, 0.09, -1, 0, 0);
+            z-index: 5;
+            box-sizing: border-box;
+        }
+
+        .bat-sys-dash2 {
+            position: absolute;
+            width: 268.02px;
+            height: 50.75px;
+            left: 434px;
+            top: 140px;
+            border: 2px dashed #000000;
+            transform: rotate(12.78deg);
+            z-index: 5;
+            box-sizing: border-box;
+        }
+
+        /* Override bsys-card styles to match user's exact specification while keeping internal HTML */
+        .bsys-card {
+            box-sizing: border-box;
+            width: 1680px;
+            height: 580px;
+            background: #F8F9FB;
+            border-radius: 30px;
+            position: relative;
+            margin: 0;
+        }
+
+        /* Adjust images inside bsys-card */
+        .bsys-items .bsys-item { position: relative; }
+        .bsys-img-cell {
+            position: absolute;
+            width: 379px;
+            height: 324px;
+            left: 74.58px;
+            top: 47.45px;
+            transform: rotate(-13.42deg);
+        }
+        .bsys-img-module {
+            position: absolute;
+            width: 284px;
+            height: 342px;
+            left: 98px;
+            top: 29px;
+        }
+        .bsys-img-pack {
+            position: absolute;
+            width: 501px;
+            height: 359px;
+            left: 0px;
+            top: 21px;
+        }
+
+        .bat-line-386 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 70.34px;
+            top: 70.35px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-387 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 83.52px;
+            top: 83.52px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-388 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 96.68px;
+            top: 96.68px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-389 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 109.86px;
+            top: 109.85px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-390 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 123.02px;
+            top: 123.02px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-391 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 136.19px;
+            top: 136.19px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-392 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 149.37px;
+            top: 149.36px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-393 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 162.53px;
+            top: 162.54px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-394 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 175.71px;
+            top: 175.7px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-395 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 188.88px;
+            top: 188.88px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-396 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 202.05px;
+            top: 202.04px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-397 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 215.22px;
+            top: 215.21px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-398 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 228.4px;
+            top: 228.39px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-399 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 241.56px;
+            top: 241.55px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-400 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 254.73px;
+            top: 254.73px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-401 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 267.91px;
+            top: 267.9px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-402 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 281.07px;
+            top: 281.07px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-403 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 294.25px;
+            top: 294.24px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-404 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 307.42px;
+            top: 307.41px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-405 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 320.59px;
+            top: 320.58px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-406 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 333.76px;
+            top: 333.75px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-407 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 346.93px;
+            top: 346.92px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-408 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 360.09px;
+            top: 360.09px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-409 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 373.26px;
+            top: 373.27px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-410 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 386.44px;
+            top: 386.43px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-411 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 399.6px;
+            top: 399.6px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-412 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 412.78px;
+            top: 412.77px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-413 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 425.94px;
+            top: 425.94px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-414 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 439.11px;
+            top: 439.11px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-415 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 452.29px;
+            top: 452.28px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-416 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 465.45px;
+            top: 465.45px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-417 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 478.63px;
+            top: 478.62px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-418 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 491.8px;
+            top: 491.79px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-419 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 504.97px;
+            top: 504.96px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-420 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 518.14px;
+            top: 518.13px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-421 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 531.31px;
+            top: 531.3px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-422 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 544.48px;
+            top: 544.47px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-423 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 557.65px;
+            top: 557.65px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-424 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 570.82px;
+            top: 570.81px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-425 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 583.99px;
+            top: 583.99px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-426 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 597.17px;
+            top: 597.16px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-427 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 610.33px;
+            top: 610.32px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-428 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 623.51px;
+            top: 623.5px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }
+        .bat-line-429 {
+            position: absolute;
+            width: 762.22px;
+            height: 0px;
+            left: 636.68px;
+            top: 636.67px;
+            border: 4.29822px solid #A7A7A7;
+            transform: rotate(135deg);
+        }

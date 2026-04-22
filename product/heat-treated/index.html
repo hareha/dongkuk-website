@@ -1,0 +1,2529 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>열처리강판</title>
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <style>
+        /* ===== Reset ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', sans-serif;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        html {
+            font-size: clamp(12px, 0.833vw, 16px);
+            /* 16px @ 1920px */
+        }
+
+        body {
+            background: #fff;
+            color: #111;
+            min-width: 1280px;
+        }
+
+        /* ===== Layout helpers ===== */
+        .inner {
+            max-width: 1920px;
+            margin: 0 auto;
+            padding: 0 120px;
+        }
+
+        /* ===== GNB ===== */
+
+        .gnb-utils-links a {
+            font-family: 'Pretendard', sans-serif;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 160%;
+            color: #7A7A7A;
+            text-decoration: none;
+            padding: 4px 8px;
+            border-radius: 50px;
+        }
+
+        /* ===== Page Header ===== */
+        .page-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            gap: 0;
+            width: 100%;
+            background: #FFFFFF;
+        }
+
+        .page-header h1 {
+            width: 100%;
+            max-width: 948px;
+            height: 106px;
+            margin: 70px auto 0;
+            font-family: 'Pretendard', sans-serif;
+            font-size: 80px;
+            font-weight: 700;
+            color: #000000;
+            line-height: 140%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* ===== 탭 내비게이션 ===== */
+        .tab-nav {
+            margin-top: 100px;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            border-bottom: 1px solid #E9E9E9;
+        }
+
+        .tab-item {
+            width: 316px;
+            height: 60px;
+            padding: 0 20px 21px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            font-family: 'Pretendard', sans-serif;
+            font-weight: 700;
+            font-size: 26px;
+            line-height: 150%;
+            letter-spacing: 0%;
+            color: #A7A7A7;
+            cursor: pointer;
+            box-sizing: border-box;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .tab-item.active {
+            color: #1B1B1B;
+            border-bottom: 2px solid #1B1B1B;
+        }
+
+        /* ===== Hero Text ===== */
+        .hero-text-section {
+            padding: 100px 80px 0;
+            text-align: center;
+        }
+
+        .hero-text-section h2 {
+            font-size: 3.75rem;
+            /* 60px */
+            font-weight: 700;
+            color: #E9E9E9;
+            line-height: 1.4;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-text-section h2 em {
+            font-style: normal;
+            color: #E9E9E9;
+        }
+
+        .hero-text-section h2 .char {
+            transition: color 0.15s ease;
+        }
+
+        .hero-text-section h2 .char.active {
+            color: #363636;
+        }
+
+        .hero-text-section h2 em .char.active {
+            color: #363636;
+        }
+
+        /* ===== Feature Cards (Figma Implementation) ===== */
+        .feature-cards {
+            padding: 60px 0 0;
+            display: flex;
+            justify-content: center;
+            background: #fff;
+        }
+
+        .fcards-row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 0px;
+            gap: 24px;
+            width: 1436px;
+            height: 540px;
+        }
+
+        .fcard {
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .fcard .label-text {
+            position: absolute;
+            left: 40px;
+            top: 50px;
+            font-size: 26px;
+            font-weight: 700;
+            line-height: 150%;
+            z-index: 10;
+        }
+
+        .fcard .title-text {
+            position: absolute;
+            left: 40px;
+            font-size: 60px;
+            font-weight: 700;
+            line-height: 140%;
+            display: flex;
+            align-items: center;
+            z-index: 10;
+        }
+
+        /* 1. Premium Card (470 x 540) */
+        .fcard-premium {
+            width: 470px;
+            height: 540px;
+        }
+
+        .fcard-premium .bg-main {
+            position: absolute;
+            width: 470px;
+            height: 460px;
+            left: 0;
+            top: 0;
+            background: #5A2A00;
+            border-radius: 30px 30px 0px 0px;
+            z-index: 1;
+        }
+
+        .fcard-premium .bg-circle {
+            position: absolute;
+            width: 486px;
+            height: 470px;
+            left: -8px;
+            top: 306px;
+            background: #ffffff;
+            border-radius: 99999px;
+            z-index: 2;
+        }
+
+        .fcard-premium .product-img {
+            position: absolute;
+            width: 470px;
+            height: 228px;
+            left: 0;
+            top: 312px;
+            background: url('assets/열처리강판.png') no-repeat center/contain;
+            border-radius: 0px 0px 8px 8px;
+            z-index: 3;
+        }
+
+        .fcard-premium .label-text {
+            color: #FFFFFF;
+        }
+
+        .fcard-premium .title-text {
+            color: #FFFFFF;
+            top: 183px;
+        }
+
+        /* 2. Stable Card (460 x 540) */
+        .fcard-stable {
+            width: 460px;
+            height: 540px;
+            background: #F27100;
+            border-radius: 30px;
+        }
+
+        .fcard-stable .label-text {
+            color: #FFFFFF;
+        }
+
+        .fcard-stable .title-text {
+            color: #FFFFFF;
+            top: 396px;
+        }
+
+        /* 3. Next-Gen Card (460 x 540) */
+        .fcard-nextgen {
+            width: 460px;
+            height: 540px;
+            background: #F1F3F7;
+            border-radius: 30px;
+        }
+
+        .fcard-nextgen .label-text {
+            color: #222222;
+        }
+
+        .fcard-nextgen .title-text {
+            color: #000000;
+            top: 396px;
+        }
+
+        /* ===== Product Tabs 최적화 ===== */
+        .product-tabs {
+            display: flex;
+            align-items: center;
+            /* 👈 세로 중앙 정렬 완벽 보장 */
+            justify-content: center;
+            padding: 10px;
+            gap: 4px;
+            margin: 110px auto 130px;
+            width: fit-content;
+            /* 👈 고정 픽셀(413px) 대신, 내부 탭들 크기에 맞춰 겉옷이 자연스럽게 늘어나도록 설정 */
+            height: 78px;
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.16);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            /* 👈 바깥 박스는 16px, 안쪽 탭은 12px로 주어야 곡률이 예쁘게 맞아떨어집니다 */
+            z-index: 50;
+            box-sizing: border-box;
+        }
+
+        .ptab {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 24px;
+            /* 👈 각 탭의 고정 너비를 지우고, 양옆 여백(24px)으로 글자를 감싸게 하여 텍스트 길이에 따라 유연하게 반응 */
+            height: 58px;
+            border-radius: 12px;
+            font-family: 'Pretendard', sans-serif;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 160%;
+            color: #363636;
+            cursor: pointer;
+            background: transparent;
+            transition: all 0.2s ease-in-out;
+            white-space: nowrap;
+            box-sizing: border-box;
+        }
+
+        .ptab.active {
+            background: #000000;
+            color: #FFFFFF;
+            font-weight: 700;
+            /* 👈 활성화 시 글씨를 살짝 더 두껍게 강조 (가독성 향상) */
+        }
+
+        /* ===== 제품소개 ===== */
+        .product-intro {
+            padding: 0 0 0;
+        }
+
+        .product-intro .inner {
+            display: flex;
+            gap: 6.25rem;
+            align-items: flex-start;
+        }
+
+        .pi-left {
+            width: 743px;
+            height: 656px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .pi-top-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0px 0px 60px;
+            gap: 20px;
+            width: 743px;
+        }
+
+        .pi-label {
+            width: 743px;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 150%;
+            color: #7A7A7A;
+            margin: 0;
+        }
+
+        .pi-main-texts {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 40px;
+            width: 743px;
+        }
+
+        .pi-title {
+            width: auto;
+            /* 💡 고정값 260px을 auto로 변경하여 글자 길이에 맞게 늘어나도록 수정 */
+            white-space: nowrap;
+            /* 💡 텍스트가 절대 줄바꿈되지 않고 한 줄로 유지되도록 강제 */
+            height: 70px;
+            font-size: 50px;
+            font-weight: 700;
+            line-height: 140%;
+            display: flex;
+            align-items: center;
+            color: #000000;
+            margin: 0;
+        }
+
+        .pi-subtitle-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 30px;
+            width: 743px;
+        }
+
+        .pi-subtitle {
+            width: auto;
+            font-size: 26px;
+            font-weight: 700;
+            line-height: 150%;
+            color: #1B1B1B;
+            margin: 0;
+        }
+
+        .pi-description-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+            width: 743px;
+        }
+
+        .pi-desc {
+            width: 743px;
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 160%;
+            color: #4E4E4E;
+            margin: 0;
+        }
+
+        /* Brochure Download */
+        .pi-brochure-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+            width: 464px;
+        }
+
+        .pi-brochure-label {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 150%;
+            color: #222222;
+        }
+
+        .pi-brochure-btns {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+            width: 464px;
+        }
+
+        .btn-round {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px 24px;
+            padding-left: 32px;
+            gap: 8px;
+            height: 53px;
+            background: #F27100;
+            border-radius: 100px;
+            color: #FFFFFF;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: opacity 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-round:hover {
+            opacity: 0.9;
+        }
+
+        .btn-round .btn-label {
+            line-height: 160%;
+            font-size: 18px;
+        }
+
+        .ic-download {
+            width: 24px;
+            height: 24px;
+            position: relative;
+        }
+
+        .ic-download svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .br-btn {
+            padding: 0.625rem 1.375rem;
+            border-radius: 50px;
+            font-size: 0.9375rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: opacity .2s;
+        }
+
+        .br-btn.on {
+            background: #F27100;
+            color: #fff;
+        }
+
+        .br-btn.off {
+            background: #F0F2F4;
+            color: #363636;
+        }
+
+        .br-btn:hover {
+            opacity: 0.82;
+        }
+
+        .pi-right {
+            width: 828px;
+            height: 720px;
+            border-radius: 1rem;
+            overflow: hidden;
+            background: #D0D8E0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9E9E9E;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .pi-right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ===== Accordion (Figma Specs) ===== */
+        .accordion {
+            padding: 40px 0 100px;
+            background: #fff;
+        }
+
+        .accordion .inner {
+            max-width: 1680px;
+            margin: 0 auto;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .acc-item {
+            width: 1680px;
+        }
+
+        .acc-header {
+            width: 100%;
+            height: 140px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-right: 24px;
+            cursor: pointer;
+            border-bottom: 1px solid #D6D6D6;
+        }
+
+        .acc-header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 0 auto 0 0;
+        }
+
+        .acc-dot {
+            width: 24px;
+            height: 24px;
+            background: #D3D3D3;
+            border-radius: 50%;
+            -webkit-mask-image: radial-gradient(circle, transparent 25%, black 25%);
+            mask-image: radial-gradient(circle, transparent 25%, black 25%);
+            transition: background 0.3s ease;
+        }
+
+        .acc-item.open .acc-dot {
+            background: #F27100;
+        }
+
+        .acc-title {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 150%;
+            color: #222222;
+        }
+
+        .acc-dropdown-icon {
+            width: 64px;
+            height: 64px;
+            background: transparent;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .acc-dropdown-icon img.minus {
+            display: none;
+        }
+
+        .acc-item.open .acc-dropdown-icon img.plus {
+            display: none;
+        }
+
+        .acc-item.open .acc-dropdown-icon img.minus {
+            display: block;
+        }
+
+        .acc-body {
+            display: none;
+            width: 1680px;
+        }
+
+        .acc-item.open .acc-body {
+            display: block;
+        }
+
+        /* 💡 아코디언 펼침 내용 박스 */
+        .acc-content-box {
+            width: 1680px;
+            background: transparent;
+            /* 👈 회색(#F1F3F7)이었던 배경을 투명색으로 변경 */
+            border-radius: 30px;
+            padding: 48px 44px;
+            /* 👈 피그마 스펙의 패딩 값 적용 */
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        /* Specification Grids */
+        .spec-grid-group {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            width: 1584px;
+        }
+
+        .spec-grid-label {
+            font-size: 24px;
+            font-weight: 700;
+            color: #363636;
+        }
+
+        .spec-grid-row {
+            display: flex;
+            width: 1584px;
+        }
+
+        .spec-grid-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spec-head {
+            height: 100px;
+            background: #F9FAFE;
+            border-top: 1px solid #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: #363636;
+            text-align: center;
+        }
+
+        .spec-value {
+            height: 100px;
+            background: #FFFFFF;
+            border-top: 1px solid #D6D6D6;
+            border-right: 1px solid #D6D6D6;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            /* 👈 좌측 정렬로 변경 */
+            padding-left: 24px;
+            /* 👈 왼쪽 벽과 24px 간격 유지 */
+            font-size: 20px;
+            font-weight: 400;
+            color: #363636;
+            text-align: left;
+            box-sizing: border-box;
+        }
+
+        .spec-grid-col:last-child .spec-value {
+            border-right: none;
+        }
+
+        /* ── 기계적 물성 하단 범례(Legend) 박스 (Figma Specs 적용) ── */
+        .spec-legend {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 16px;
+            gap: 4px;
+            /* 3.8px 올림 */
+            width: 167px;
+            height: 118px;
+            /* 117.6px 올림 */
+            background: #F8F9FB;
+            border-radius: 16px;
+            box-sizing: border-box;
+            margin-top: -10px;
+            /* 위쪽 표와의 간격을 맞추기 위한 여백 (필요시 조절) */
+        }
+
+        .legend-item {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 4px;
+            height: 26px;
+        }
+
+        .legend-tag {
+            font-family: 'Pretendard', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 160%;
+            color: #363636;
+        }
+
+        .legend-desc {
+            font-family: 'Pretendard', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 160%;
+            color: #363636;
+        }
+
+        /* ===== 활용분야 (소프트 코딩 적용) ===== */
+        .usage-section {
+            width: 100%;
+            background: #FFFFFF;
+            padding: 100px 0;
+            /* 위아래 여백으로 자연스럽게 높이 확보 */
+        }
+
+        .usage-section .inner {
+            max-width: 1920px;
+            margin: 0 auto;
+            padding: 0 120px;
+            display: flex;
+            flex-direction: column;
+            gap: 72px;
+            /* 타이틀과 컨텐츠 사이의 간격 */
+        }
+
+        .usage-title {
+            font-family: 'Pretendard', sans-serif;
+            font-size: 50px;
+            font-weight: 700;
+            color: #000000;
+            line-height: 140%;
+            margin: 0;
+        }
+
+        .usage-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            /* 부모(inner)의 패딩을 제외한 1680px 자동 할당 */
+        }
+
+        /* ── 왼쪽 메뉴 영역 ── */
+        .usage-left {
+            display: flex;
+            flex-direction: column;
+            width: 572px;
+            gap: 20px;
+        }
+
+        .usage-menu-item {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .umi-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            width: 100%;
+            height: 66px;
+        }
+
+        /* 아이콘 공통 및 좌우 반전(Soft) */
+        .umi-icon {
+            width: 26px;
+            height: 53px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            flex-shrink: 0;
+            transform: scaleX(1);
+            /* 좌우 반전 */
+        }
+
+        /* 💡 로컬 절대 경로 대신 상대 경로 사용 */
+        .usage-menu-item .umi-icon {
+            background-image: url('../../assets/common/ic-semicircle-gray.svg');
+        }
+
+        .usage-menu-item.active .umi-icon {
+            background-image: url('../../assets/common/ic-semicircle.svg');
+        }
+
+        .umi-title {
+            font-size: 44px;
+            font-weight: 700;
+            line-height: 150%;
+            color: #A7A7A7;
+            transition: color 0.3s;
+        }
+
+        .usage-menu-item.active .umi-title {
+            color: #1B1B1B;
+        }
+
+        /* 텍스트 박스 공통 설정 (항상 노출, 색상만 변경) */
+        .umi-desc {
+            width: 492px;
+            margin: 0 0 0 40px;
+            /* 왼쪽 아이콘 너비만큼 여백 40px */
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 160%;
+            color: #A7A7A7;
+            /* 비활성 상태 색상 (연한 회색) */
+            display: block;
+            /* 💡 아코디언 숨김 해제! 항상 노출 */
+            word-break: keep-all;
+            transition: color 0.3s;
+            /* 부드러운 색상 전환 */
+        }
+
+        /* 활성 상태 텍스트 색상 */
+        .usage-menu-item.active .umi-desc {
+            color: #4E4E4E;
+            /* 활성 상태 색상 (기본 회색) */
+        }
+
+        /* ── 오른쪽 컨텐츠 영역 ── */
+        .usage-right {
+            width: 1004px;
+            position: relative;
+            /* 탭 전환을 위해 부모 높이를 고정(비디오494 + 갭30 + 부품150 + 갭30 + 푸터35) */
+            height: 739px;
+        }
+
+        .usage-tab-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s;
+        }
+
+        .usage-tab-content.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .utc-video {
+            width: 100%;
+            height: 494px;
+            border-radius: 30px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .utc-parts {
+            display: flex;
+            gap: 9px;
+            width: 100%;
+            height: 150px;
+        }
+
+        .utc-part-box {
+            flex: 1;
+            height: 150px;
+            background: #ECEDF0;
+            border-radius: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .utc-part-box img {
+            width: 118px;
+            height: 118px;
+            object-fit: contain;
+        }
+
+        .utc-footer-info {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            width: 100%;
+            height: 35px;
+        }
+
+        .utc-footer-icon {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        .utc-footer-text {
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 160%;
+            color: #4E4E4E;
+        }
+
+        /* ===== 공정과정 (Scroll-Driven) ===== */
+
+        /* Auto-play: 스크롤 고정 없이 자연스럽게 흐름 */
+        .process-scroll-outer {
+            position: relative;
+            background: #FFFFFF;
+        }
+
+        .process-sticky {
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 0;
+            overflow: hidden;
+        }
+
+        /* The big 1860×1080 card */
+        .process-card {
+            width: 1860px;
+            height: 1080px;
+            background: #F1EDEA;
+            border-radius: 30px;
+            position: relative;
+            flex-shrink: 0;
+            font-family: 'Pretendard', sans-serif;
+            overflow: visible;
+        }
+
+        /* ── Header ── */
+        .ps-header {
+            position: absolute;
+            width: 1620px;
+            height: 126px;
+            left: 120px;
+            top: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .ps-title-box {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .ps-label {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 150%;
+            color: #7A7A7A;
+            margin: 0;
+        }
+
+        .ps-title {
+            font-size: 50px;
+            font-weight: 700;
+            line-height: 140%;
+            color: #000;
+            margin: 0;
+        }
+
+        .ps-toggle {
+            display: flex;
+            flex-direction: row;
+            padding: 12px;
+            gap: 4px;
+            width: 304px;
+            height: 82px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 70px;
+        }
+
+        .ps-toggle-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 138px;
+            height: 58px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 160%;
+            cursor: pointer;
+            background: transparent;
+            color: #7A7A7A;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .ps-toggle-btn.active {
+            background: #FFFFFF;
+            color: #1B1B1B;
+        }
+
+        /* ── Diagram area: 1860×486, top:240 ── */
+        .ps-diagram-area {
+            position: absolute;
+            width: 1860px;
+            height: 486px;
+            left: 0;
+            top: 240px;
+            overflow: visible;
+        }
+
+        /* Default background SVG */
+        .ps-diagram-default {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+        }
+
+        /* Each step's highlight SVG – hidden by default */
+        .ps-step-img {
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .ps-step-img.visible {
+            opacity: 1;
+        }
+
+        /* ── Tooltip (speech bubble) ── */
+        /* Positions are relative to .ps-diagram-area (same coordinate space as Figma) */
+        .ps-bubble {
+            position: absolute;
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 24px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        .ps-bubble.visible {
+            opacity: 1;
+        }
+
+        .ps-bubble h3 {
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 150%;
+            color: #000;
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .ps-bubble p {
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 160%;
+            color: #4E4E4E;
+            margin: 0;
+            width: 321px;
+        }
+
+        /* Arrow variants */
+        .ps-bubble .bubble-arrow {
+            position: absolute;
+            width: 0;
+            height: 0;
+        }
+
+        /* Arrow pointing UP (tip on top, box below) */
+        .arrow-up {
+            border-left: 11.5px solid transparent;
+            border-right: 11.5px solid transparent;
+            border-bottom: 19px solid #FFFFFF;
+            left: 44px;
+        }
+
+        /* Arrow pointing DOWN (tip at bottom, box above) */
+        .arrow-down {
+            border-left: 11.5px solid transparent;
+            border-right: 11.5px solid transparent;
+            border-top: 19px solid #FFFFFF;
+            left: 44px;
+        }
+
+        /* Arrow pointing DOWN, anchored right-ish */
+        .arrow-down-right {
+            border-left: 11.5px solid transparent;
+            border-right: 11.5px solid transparent;
+            border-top: 19px solid #FFFFFF;
+            left: 314px;
+        }
+
+        /* ── Progress bar: absolute within card ── */
+        .ps-progress {
+            position: absolute;
+            width: 1680px;
+            height: 182px;
+            left: 90px;
+            top: 808px;
+            background: #FFFFFF;
+            border-radius: 30px;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .ps-steps {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 16px;
+            width: 1600px;
+            height: 102px;
+        }
+
+        .ps-step {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+            flex: 1;
+            height: 102px;
+            cursor: pointer;
+        }
+
+        .ps-step-line {
+            width: 100%;
+            height: 0;
+            border-top: 6px solid #E9E9E9;
+            transition: border-color 0.3s;
+        }
+
+        .ps-step.active .ps-step-line,
+        .ps-step.done .ps-step-line {
+            border-top-color: #F27100;
+        }
+
+        .ps-step-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .ps-step-num {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 160%;
+            color: #A7A7A7;
+            transition: color 0.3s;
+        }
+
+        .ps-step-name {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 150%;
+            color: #A7A7A7;
+            transition: color 0.3s;
+        }
+
+        .ps-step.done .ps-step-num {
+            color: #363636;
+        }
+
+        .ps-step.done .ps-step-name {
+            color: #4E4E4E;
+        }
+
+        .ps-step.active .ps-step-num,
+        .ps-step.active .ps-step-name {
+            color: #F27100;
+        }
+
+        /* ===== Support Section (소프트 코딩 & 피그마 스펙 반영) ===== */
+        /* 배너 전체 틀 */
+        .support-section {
+            padding: clamp(40px, 4.16vw, 80px) 0;
+            background: #fff;
+        }
+
+        .support-banner {
+            position: relative;
+            /* 내부 요소들의 절대 위치 기준점 */
+            width: 100%;
+            max-width: 1680px;
+            height: clamp(140px, 10.93vw, 210px);
+            margin: 0 auto;
+            background: #F8F9FB;
+            border-radius: clamp(12px, 1.04vw, 20px);
+            /* 💡 Flex를 완전히 제거하여 요소들이 서로 엮이지 않게 만듦 */
+            display: block;
+            box-sizing: border-box;
+        }
+
+        /* 💡 완전 독립 로고 (좌측에 절대 위치로 못 박음) */
+        .support-icon {
+            position: absolute;
+            /* 배너 안에서 혼자 둥둥 떠 있음 */
+            left: clamp(15px, 1.56vw, 30px);
+            top: clamp(20px, 2.08vw, 40px);
+            /* 높이 210 기준 정중앙 여백 */
+            width: clamp(80px, 6.77vw, 130px);
+            height: clamp(80px, 6.77vw, 130px);
+            background: url('../../assets/common/ic-support.svg') no-repeat center/contain;
+        }
+
+        .support-icon::before {
+            content: '';
+            position: absolute;
+            width: clamp(50px, 4.89vw, 94px);
+            height: clamp(50px, 4.89vw, 94px);
+            left: clamp(10px, 0.93vw, 18px);
+            top: clamp(10px, 0.93vw, 18px);
+            background: linear-gradient(180deg, #F3782B 50%, #FF9933 100%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        /* 💡 3번 박스 (1450 x 99) */
+        .support-content-box {
+            position: absolute;
+            right: clamp(25px, 2.6vw, 50px);
+            /* 오른쪽 벽 50px 위치 고정 */
+            top: clamp(27.75px, 2.89vw, 55.5px);
+            /* 위쪽 벽 55.5px 위치 고정 */
+            width: clamp(800px, 75.52vw, 1450px);
+            height: clamp(60px, 5.15vw, 99px);
+            display: flex;
+            flex-direction: row;
+
+            /* 💡 핵심: 텍스트는 맨 왼쪽, 화살표는 맨 오른쪽으로 자동 배치 */
+            justify-content: space-between;
+
+            /* 화살표와 텍스트가 박스 안에서 어떤 높이에 있을지 결정 (위쪽 정렬: flex-start, 중앙 정렬: center) */
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        /* 💡 2번 박스: 텍스트 정보 그룹 */
+        .support-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* 99px 박스 안에서 텍스트를 위아래 중앙 정렬 */
+            height: 100%;
+            padding: 0;
+            gap: clamp(8px, 0.83vw, 16px);
+        }
+
+        .support-info h3 {
+            font-family: 'Pretendard', sans-serif;
+            font-weight: 700;
+            font-size: clamp(32px, 1.66vw, 32px);
+            line-height: 150%;
+            color: #1B1B1B;
+            margin: 0;
+        }
+
+        .support-info p {
+            font-family: 'Pretendard', sans-serif;
+            font-weight: 400;
+            font-size: clamp(22px, 1.14vw, 22px);
+            line-height: 160%;
+            color: #4E4E4E;
+            margin: 0;
+            word-break: keep-all;
+        }
+
+        /* 💡 화살표 아이콘 */
+        .btn-arrow-right {
+            width: clamp(40px, 3.33vw, 64px);
+            height: clamp(40px, 3.33vw, 64px);
+            flex: none;
+
+            /* 💡 핵심 해결책: 부모 박스의 중앙 정렬을 무시하고 나 홀로 위쪽 벽에 찰싹 붙음! */
+            align-self: flex-start;
+            margin-top: 0;
+            /* 혹시 모를 여백 원천 차단 */
+
+            display: flex;
+            align-items: center;
+            /* 아이콘 자체(→)의 텍스트 중앙 정렬 */
+            justify-content: center;
+            background: transparent;
+            border: none;
+            color: #111111;
+            font-size: clamp(20px, 1.56vw, 30px);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* ===== TOP 버튼 ===== */
+        .btn-top {
+            position: fixed;
+            right: 80px;
+            bottom: 80px;
+            /* 기본적으로 화면 아래에서 80px 띄움 */
+            width: 60px;
+            /* 💡 피그마 스펙에 맞춰 버튼 크기 조절 필요 */
+            height: 60px;
+            z-index: 999;
+            /* 다른 요소들보다 항상 위에 오도록 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            /* 처음에 숨겨두었다가 스크롤하면 나타나게 하기 위한 설정 */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            /* 🚨 주의: bottom에는 transition을 주지 마세요! (스크롤 시 덜덜거림 방지) */
+        }
+
+        /* 스크롤 시 버튼이 나타나게 하는 클래스 */
+        .btn-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .btn-top img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* ===== Footer (1920 기준 반응형 소프트 코딩) ===== */
+        .footer {
+            width: 100%;
+            height: clamp(300px, 25.52vw, 490px);
+            padding: clamp(40px, 4.16vw, 80px) clamp(20px, 4.16vw, 80px) clamp(30px, 2.6vw, 50px);
+            box-sizing: border-box;
+            background: url('../../assets/common/footer-bg.svg') no-repeat center/cover;
+            background-color: #111;
+            color: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 1760px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            width: clamp(150px, 11.97vw, 230px);
+            height: clamp(30px, 2.39vw, 46px);
+        }
+
+        .footer-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .footer-btn-group {
+            display: flex;
+            gap: clamp(6px, 0.625vw, 12px);
+            width: clamp(300px, 27.18vw, 522px);
+            height: clamp(40px, 3.125vw, 60px);
+        }
+
+        .footer-btn {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            background: #7A7A7A;
+            border-radius: clamp(8px, 0.72vw, 14px);
+            color: #FFFFFF;
+            font-size: clamp(12px, 0.93vw, 18px);
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.3s;
+            box-sizing: border-box;
+        }
+
+        .footer-btn:hover {
+            background: #555;
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 1760px;
+            margin: 0 auto;
+            gap: clamp(12px, 1.25vw, 24px);
+        }
+
+        .footer-divider {
+            width: 100%;
+            height: 1px;
+            background: rgba(225, 225, 225, 0.5);
+        }
+
+        .footer-bottom-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: clamp(20px, 1.56vw, 30px);
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            gap: clamp(4px, 0.41vw, 8px);
+        }
+
+        .footer-links a {
+            color: #FFFFFF;
+            font-size: clamp(11px, 0.83vw, 16px);
+            text-decoration: none;
+        }
+
+        .footer-links .bar {
+            width: 1px;
+            height: clamp(8px, 0.62vw, 12px);
+            background: #D3D3D3;
+        }
+
+        .footer-copy {
+            color: #FFFFFF;
+            font-size: clamp(11px, 0.83vw, 16px);
+            text-align: right;
+        }
+
+        /* ===== Responsive: 1280–1760 ===== */
+        @media (max-width: 1760px) {
+            .inner {
+                padding: 0 5vw;
+            }
+
+            .feature-cards {
+                padding: 2.5rem 5vw 0;
+            }
+
+            .hero-text-section {
+                padding: 5rem 5vw 0;
+            }
+
+            .product-tabs {
+                padding: 2.5rem 5vw;
+            }
+        }
+
+        @media (max-width: 1440px) {
+            html {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 1280px) {
+            html {
+                font-size: 13px;
+            }
+        }
+
+        /* ===== 제품등급 테이블 ===== */
+        .grade-table {
+            display: flex;
+            flex-direction: row;
+            width: 1584px;
+            height: 600px;
+        }
+
+        .grade-left {
+            display: flex;
+            flex-direction: row;
+            flex-shrink: 0;
+        }
+
+        .grade-col {
+            display: flex;
+            flex-direction: column;
+            width: 342px;
+            flex-shrink: 0;
+        }
+
+        .grade-th {
+            height: 100px;
+            background: linear-gradient(0deg, #F9FAFE, #F9FAFE), #FCFDFF;
+            border-top: 1px solid #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* 💡 가로 방향 중앙 정렬 */
+            align-items: center;
+            /* 세로 방향 중앙 정렬 */
+            width: 100%;
+            padding: 0 24px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #363636;
+            box-sizing: border-box;
+        }
+
+        .grade-td {
+            display: flex;
+            align-items: center;
+            padding: 18px 24px;
+            background: #FFFFFF;
+            border-top: 1px solid #D6D6D6;
+            border-right: 1px solid #D6D6D6;
+            font-size: 20px;
+            font-weight: 400;
+            color: #363636;
+            box-sizing: border-box;
+        }
+
+        .grade-td-100 {
+            height: 100px;
+        }
+
+        .grade-td-200 {
+            height: 200px;
+        }
+
+        .grade-right {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .grade-micro-cells {
+            display: flex;
+            flex-direction: row;
+            flex: 1;
+        }
+
+        .grade-micro-cell {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 18px 24px;
+            background: #FFFFFF;
+            border-top: 1px solid #D6D6D6;
+            border-right: 1px solid #D6D6D6;
+            font-size: 20px;
+            font-weight: 400;
+            color: #363636;
+            box-sizing: border-box;
+            gap: 8px;
+            line-height: 160%;
+        }
+
+        .grade-micro-cell:last-child {
+            border-right: none;
+        }
+
+        .grade-footnote {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 4px;
+            font-family: 'Pretendard';
+            font-size: 16px;
+            line-height: 160%;
+            color: #363636;
+        }
+
+        .grade-footnote strong {
+            font-weight: 700;
+        }
+
+        /* ===== 제품사양 차트 ===== */
+        .spec-note {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 160%;
+            color: #F27100;
+        }
+
+        .spec-chart-panel {
+            width: 890px;
+            background: #F8F9FB;
+            border-radius: 30px;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .spec-chart-inner {
+            width: 810px;
+            height: 416px;
+            position: relative;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        .chart-border-rect {
+            position: absolute;
+            left: 131px;
+            top: 36px;
+            width: 580px;
+            height: 344px;
+            border: 1px solid #7A7A7A;
+        }
+
+        .chart-dashed-area {
+            position: absolute;
+            left: 174px;
+            top: 79px;
+            width: 494px;
+            height: 258px;
+            background: #F1EDEA;
+            border: 1px dashed #A7A7A7;
+            z-index: 1;
+        }
+
+        .chart-orange-area {
+            position: absolute;
+            left: 174px;
+            top: 79px;
+            width: 494px;
+            height: 219px;
+            background: #FAC699;
+            border: 1px solid #F27100;
+            z-index: 2;
+        }
+
+        .chart-text {
+            position: absolute;
+            font-size: 18px;
+            font-weight: 500;
+            color: #7A7A7A;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .chart-axis-label {
+            position: absolute;
+            font-size: 16px;
+            font-weight: 400;
+            color: #4E4E4E;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .chart-tick-val {
+            position: absolute;
+            font-size: 18px;
+            font-weight: 500;
+            color: #000;
+            pointer-events: none;
+        }
+
+        .chart-tick-h {
+            position: absolute;
+            height: 0;
+            border-top: 1px dashed #A7A7A7;
+            pointer-events: none;
+        }
+
+        .chart-tick-v {
+            position: absolute;
+            width: 0;
+            border-left: 1px solid #7A7A7A;
+            pointer-events: none;
+        }
+
+        /* ===== 제품설비 ===== */
+        .equip-box {
+            width: 1680px;
+            background: #F1F3F7;
+            border-radius: 30px;
+            padding: 48px;
+            display: flex;
+            flex-direction: row;
+            gap: 48px;
+            box-sizing: border-box;
+            height: 800px;
+            align-items: flex-start;
+        }
+
+        .equip-img-box {
+            width: 704px;
+            height: 704px;
+            background: #FFFFFF;
+            border-radius: 20px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .equip-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .equip-info {
+            display: flex;
+            flex-direction: column;
+            gap: 120px;
+            padding-top: 20px;
+            flex: 1;
+        }
+
+        .equip-texts {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .equip-title {
+            font-size: 44px;
+            font-weight: 700;
+            line-height: 150%;
+            color: #363636;
+        }
+
+        .equip-desc {
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 160%;
+            color: #4E4E4E;
+        }
+
+        .equip-tags {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .equip-tags-row {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+
+        .equip-tag {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            background: #FFFFFF;
+            border-radius: 999px;
+            font-size: 22px;
+            font-weight: 400;
+            color: #363636;
+            white-space: nowrap;
+        }
+    </style>
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="../../css/gnb.css">
+</head>
+
+<body data-page="heat-treated">
+
+    <!-- GNB -->
+    <header class="gnb">
+        <div class="gnb-logo">
+            <a href="index.html">
+                <img src="../../assets/common/logo.svg" alt="동국산업 로고">
+            </a>
+        </div>
+        <div class="gnb-utils">
+            <div class="gnb-utils-links">
+                <a href="#">문의</a>
+
+                <a href="#">KR</a>
+            </div>
+            <span class="gnb-divider"></span>
+            <button class="gnb-menu-btn" aria-label="메뉴"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Q/T 열처리강판</h1>
+        <nav class="tab-nav">
+            <div class="tab-item active" onclick="location.href='productQ:T열처리강판.html'">제품소개</div>
+            <div class="tab-item" onclick="location.href='브랜드리소스.html'">브랜드 리소스</div>
+            <div class="tab-item" onclick="location.href='dikel가치.html'">DiKel 가치</div>
+        </nav>
+    </section>
+
+    <!-- Hero Text -->
+    <section class="hero-text-section">
+        <h2>빈틈없는 내구성으로,<br>시장과 품질의 기준을 만듭니다.</h2>
+    </section>
+
+    <!-- Feature Cards Section -->
+    <section class="feature-cards">
+        <div class="fcards-row">
+            <!-- Premium -->
+            <div class="fcard fcard-premium">
+                <div class="label-text">국내 3사 중<br>압도적인 생산 규모</div>
+                <div class="title-text">No.1</div>
+                <div class="bg-main"></div>
+                <div class="bg-circle"></div>
+                <div class="product-img"></div>
+            </div>
+
+            <!-- Stable -->
+            <div class="fcard fcard-stable">
+                <div class="label-text">탄소감축 및 환경을 고려한<br>친환경 생산 설비</div>
+                <div class="title-text">ECO</div>
+            </div>
+
+            <!-- Next-Gen -->
+            <div class="fcard fcard-nextgen">
+                <div class="label-text">미세 조직 제어 기술로<br>최상위 품질 완성</div>
+                <div class="title-text">Quality</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Tabs -->
+    <div class="product-tabs">
+        <div class="ptab" onclick="location.href='product니켈.html'">니켈도금강판</div>
+        <div class="ptab" onclick="location.href='product냉연강판.html'">냉연강판</div>
+        <div class="ptab active">Q/T열처리강판</div>
+    </div>
+
+    <!-- 제품소개 -->
+    <section class="product-intro">
+        <div class="inner">
+            <div class="pi-left">
+                <div class="pi-top-content">
+                    <div class="pi-main-texts">
+                        <h1 class="pi-title">Q/T 열처리강판</h1>
+                        <div class="pi-subtitle-group">
+                            <h2 class="pi-subtitle">강도와 내구성을 고루 갖춘 산업용 소재</h2>
+                            <div class="pi-description-stack">
+                                <p class="pi-desc">Q/T 열처리강판은 냉연강판을 고온 가열, 급속냉각, 재가열 공정을 거쳐<br>
+                                    내부 미세조직을 정밀하게 제어한 고성능 강판입니다.</p>
+                                <p class="pi-desc">특히 동국산업의 Q/T 열처리강판은 독보적 열처리 기술력을 기반으로,<br>
+                                    얇은 두께에도 높은 하중을 견디는 고강도 제품입니다.</p>
+                                <p class="pi-desc">이런 Q/T 열처리강판은 다양한 고객의 요구에 대응하는 맞춤 생산을 통해,<br>
+                                    여러 산업 전반에 적용되어 산업을 지탱하는 핵심 소재로 활용됩니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pi-brochure-section">
+                    <p class="pi-brochure-label">브로슈어 다운로드</p>
+                    <div class="pi-brochure-btns">
+                        <button class="btn-round">
+                            <span class="btn-label">KR/EN</span>
+                            <div class="ic-download">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 3V15M12 15L8 11M12 15L16 11M5 19H19" stroke="white" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                        </button>
+                        <button class="btn-round">
+                            <span class="btn-label">JP/EN</span>
+                            <div class="ic-download">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 3V15M12 15L8 11M12 15L16 11M5 19H19" stroke="white" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                        </button>
+                        <button class="btn-round">
+                            <span class="btn-label">CM/EN</span>
+                            <div class="ic-download">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 3V15M12 15L8 11M12 15L16 11M5 19H19" stroke="white" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+            <div class="pi-right">
+                <img src="assets/img_열처리강판.png" alt="열처리강판">
+            </div>
+        </div>
+    </section>
+
+    <!-- Accordion Section (Product Specs & Range) -->
+    <div class="accordion">
+        <div class="inner">
+            <!-- 1. 제품등급 -->
+            <div class="acc-item">
+                <div class="acc-header" onclick="toggleAcc(this)">
+                    <div class="acc-header-left">
+                        <div class="acc-dot"></div>
+                        <span class="acc-title">제품등급</span>
+                    </div>
+                    <div class="acc-dropdown-icon">
+                        <img src="../../assets/common/ic-dropdown.svg" class="plus" alt="열기">
+                        <img src="../../assets/common/ic-dropdown-m.svg" class="minus" alt="닫기">
+                    </div>
+                </div>
+                <div class="acc-body">
+                    <div class="acc-content-box" style="padding:48px; gap:0;">
+                        <div class="grade-table">
+                            <!-- 등급 컬럼 -->
+                            <div class="grade-left">
+                                <div class="grade-col">
+                                    <div class="grade-th">등급</div>
+                                    <div class="grade-td grade-td-100">S35C~S75C</div>
+                                    <div class="grade-td grade-td-100">SK</div>
+                                    <div class="grade-td grade-td-100">SCM</div>
+                                    <div class="grade-td grade-td-100">SKS</div>
+                                    <div class="grade-td grade-td-100">Spring</div>
+                                </div>
+                                <!-- 허용 오차 범위 컬럼 -->
+                                <div class="grade-col">
+                                    <div class="grade-th">허용 오차 범위</div>
+                                    <div class="grade-td grade-td-200">1600~2300N/mm²<br>(Max. ±30)</div>
+                                    <div class="grade-td grade-td-200">1300N/mm²<br>(Max. ±40)</div>
+                                    <div class="grade-td grade-td-100">1100~1300N/mm²<br>(Max. ±40)</div>
+                                </div>
+                            </div>
+                            <!-- 미세 구조 컬럼 -->
+                            <div class="grade-right">
+                                <div class="grade-th" style="width:100%;">미세 구조</div>
+                                <div class="grade-micro-cells">
+                                    <div class="grade-micro-cell">
+                                        퀜칭 방식: Martempering (Martensite)<br>표면 색상: Bright / Light Yellow
+                                    </div>
+                                    <div class="grade-micro-cell">
+                                        퀜칭 방식: Austempering (Bainite)<br>표면 색상: Grey-Blue
+                                    </div>
+                                    <div class="grade-micro-cell">
+                                        퀜칭 방식: Patenting (Sorbite)<br>표면 색상: Bright
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grade-footnote">
+                            <strong>*허용 오차 범위(Tolerance):</strong>
+                            <span>두께에 따라 상이</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. 제품사양 -->
+            <div class="acc-item">
+                <div class="acc-header" onclick="toggleAcc(this)">
+                    <div class="acc-header-left">
+                        <div class="acc-dot"></div>
+                        <span class="acc-title">제품사양</span>
+                    </div>
+                    <div class="acc-dropdown-icon">
+                        <img src="../../assets/common/ic-dropdown.svg" class="plus" alt="열기">
+                        <img src="../../assets/common/ic-dropdown-m.svg" class="minus" alt="닫기">
+                    </div>
+                </div>
+                <div class="acc-body">
+                    <div class="acc-content-box" style="padding:48px 44px; gap:30px;">
+                        <p class="spec-note"
+                            style="color: #F27100; font-size: 20px; font-weight: 400; line-height: 160%;">표의 색상 영역에서 제품별
+                            상세 생산 범위를 확인해 보세요.</p>
+                        <div style="width: 890px; border-radius: 30px; overflow: hidden; background: #F8F9FB;">
+                            <img src="assets/제품사양.png" alt="제품사양" style="width: 100%; display: block;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── 구 "생산범위" 아이템 자리를 제품설비로 대체 ── -->
+            <!-- 3. 제품설비 -->
+            <div class="acc-item">
+                <div class="acc-header" onclick="toggleAcc(this)">
+                    <div class="acc-header-left">
+                        <div class="acc-dot"></div>
+                        <span class="acc-title">제품설비</span>
+                    </div>
+                    <div class="acc-dropdown-icon">
+                        <img src="../../assets/common/ic-dropdown.svg" class="plus" alt="열기">
+                        <img src="../../assets/common/ic-dropdown-m.svg" class="minus" alt="닫기">
+                    </div>
+                </div>
+                <div class="acc-body">
+                    <div class="acc-content-box" style="padding:30px 0;">
+                        <div class="equip-box">
+                            <div class="equip-img-box">
+                                <img src="assets/열처리2.png" alt="수소 열처리 설비">
+                            </div>
+                            <div class="equip-info">
+                                <div class="equip-texts">
+                                    <p class="equip-title">수소 열처리 기반 친환경 생산 설비</p>
+                                    <p class="equip-desc">
+                                        동국산업은 친환경 수소 열처리 설비를 기반으로 Q/T 열처리강판을 생산함으로써,<br>
+                                        탄소 배출을 절감하고, 산세 공정 없는 생산으로 수질 오염을 방지합니다.<br>
+                                        이를 통해 생산 전 과정에서의 환경 부담을 줄이고, 지속가능한 제조 환경 구축에 기여합니다.</p>
+                                </div>
+                                <div class="equip-tags">
+                                    <div class="equip-tags-row">
+                                        <span class="equip-tag">수소 열처리 기술</span>
+                                        <span class="equip-tag">무산세 생산 공정</span>
+                                        <span class="equip-tag">지속가능 제조 환경</span>
+                                    </div>
+                                    <div class="equip-tags-row">
+                                        <span class="equip-tag">수질 오염 최소화</span>
+                                        <span class="equip-tag">탄소 배출 절감</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </section>
+
+    <!-- 활용분야 -->
+    <section class="usage-section">
+        <div class="inner">
+            <h2 class="usage-title">주요 적용분야</h2>
+
+            <div class="usage-content">
+                <div class="usage-left">
+                    <div class="usage-menu-item active" onclick="setUsageTab(0)">
+                        <div class="umi-header">
+                            <div class="umi-icon"></div>
+                            <span class="umi-title">모빌리티 산업</span>
+                        </div>
+                        <p class="umi-desc" style="height: 105px;">
+                            충격과 하중을 견디는 동국산업의 고강도 Q/T 열처리강판<br>
+                            은 자동차의 핵심 부품에 적용되어 탑승자의 안전을 책임<br>
+                            집니다.
+                        </p>
+                    </div>
+
+                    <div class="usage-menu-item" onclick="setUsageTab(1)">
+                        <div class="umi-header">
+                            <div class="umi-icon"></div>
+                            <span class="umi-title">산업용 부품</span>
+                        </div>
+                        <p class="umi-desc" style="height: 70px;">
+                            산업 전반의 수명을 늘리는 동국산업의 Q/T 열처리강판은<br>
+                            우수한 표면 품질로 시공 및 절삭용 공구의 정밀도를 극대<br>
+                            화합니다. </p>
+                    </div>
+                </div>
+
+                <div class="usage-right">
+
+                    <div class="usage-tab-content active" id="usage-tab-0">
+                        <div class="utc-video" style="background-image: url('assets/video.png');"></div>
+                        <div class="utc-parts">
+                            <div class="utc-part-box">
+                                <img src="assets/모빌리티1.svg" alt="모빌리티 01">
+                            </div>
+                            <div class="utc-part-box">
+                                <img src="assets/모빌리티2.svg" alt="모빌리티 02">
+                            </div>
+                            <div class="utc-part-box">
+                                <img src="assets/모빌리티3.svg" alt="모빌리티 03">
+                            </div>
+                            <div class="utc-part-box">
+                                <img src="assets/모빌리티4.svg" alt="모빌리티 04">
+                            </div>
+                            <div class="utc-part-box">
+                                <img src="assets/모빌리티5.svg" alt="모빌리티 05">
+                            </div>
+                        </div>
+                        <div class="utc-footer-info">
+                            <img src="../../assets/common/dk-industry.svg" class="utc-footer-icon" alt="icon">
+                            <span class="utc-footer-text">동국산업의 정밀 소재가 다양한 분야의 핵심 부품으로 탄생합니다.</span>
+                        </div>
+                    </div>
+
+                    <div class="usage-tab-content" id="usage-tab-1">
+                        <div class="utc-video" style="background-image: url('assets/video1.png');"></div>
+
+                        <div class="utc-parts">
+                            <div class="utc-part-box">
+                                <img src="assets/산업용부품1.svg" alt="산업용 부품 01">
+                            </div>
+                            <div class="utc-part-box">
+                                <img src="assets/산업용부품2.svg" alt="산업용 부품 02">
+                            </div>
+                            <div class="utc-part-box">
+                                <img src="assets/산업용부품3.svg" alt="산업용 부품 03">
+                            </div>
+                            <div class="utc-part-box">
+                                <img src="assets/산업용부품4.svg" alt="산업용 부품 04">
+                            </div>
+                            <div class="utc-part-box">
+                                <img src="assets/산업용부품5.svg" alt="산업용 부품 05">
+                            </div>
+                        </div>
+
+                        <div class="utc-footer-info">
+                            <img src="../../assets/common/dk-industry.svg" class="utc-footer-icon" alt="icon">
+                            <span class="utc-footer-text">동국산업의 정밀 소재가 다양한 분야의 핵심 부품으로 탄생합니다.</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 공정과정 (Scroll-Driven) -->
+    <section class="process-scroll-outer" id="process-section">
+        <div class="process-sticky">
+            <div class="process-card" id="process-card">
+
+                <!-- ── Header ── -->
+                <div class="ps-header">
+                    <div class="ps-title-box">
+                        <h2 class="ps-title">Q/T 열처리강판의 공정과정</h2>
+                    </div>
+                </div>
+
+                <!-- ── Diagram area ── -->
+                <div class="ps-diagram-area" id="diagram-열처리">
+
+                    <!-- Default background -->
+                    <img class="ps-diagram-default" src="assets/T 열처리_Default.svg" alt="">
+
+                    <!-- Step SVG overlays (Figma pixel positions) -->
+                    <!-- 01 냉연코일 세팅: 257×356 @ left:361 top:79 -->
+                    <img class="ps-step-img" id="img-step-0" src="assets/1.냉연코일 세팅.svg" alt=""
+                        style="width:257px;height:356px;left:361px;top:79px;">
+
+                    <!-- 02 열처리: 374.5×356 @ left:567.5 top:79 -->
+                    <img class="ps-step-img" id="img-step-1" src="assets/2.열처리.svg" alt=""
+                        style="width:374.5px;height:356px;left:567.5px;top:79px;">
+
+                    <!-- 03 정밀컷팅: 227×356 @ left:929 top:79 -->
+                    <img class="ps-step-img" id="img-step-2" src="assets/3.정밀컷팅.svg" alt=""
+                        style="width:227px;height:356px;left:929px;top:79px;">
+
+                    <!-- 04 포장정리: 382×356 @ left:1156 top:79 -->
+                    <img class="ps-step-img" id="img-step-3" src="assets/4.포장정리.svg" alt=""
+                        style="width:382px;height:356px;left:1156px;top:79px;">
+
+                    <!-- ── Tooltips (positioned relative to diagram area) ── -->
+
+                    <!-- 01 냉연코일 세팅: 381×128 @ left:416 top:327, arrow UP -->
+                    <div class="ps-bubble" id="bubble-0" style="width:381px;min-height:128px;left:416px;top:327px;">
+                        <span class="bubble-arrow arrow-up" style="top:-19px;"></span>
+                        <h3>냉연코일 세팅</h3>
+                        <p>Q/T 열처리강판 공정의 원재료를 준비합니다.</p>
+                    </div>
+
+                    <!-- 02 열처리: 381×157 @ left:713 top:-20, arrow DOWN -->
+                    <div class="ps-bubble" id="bubble-1" style="width:381px;min-height:157px;left:713px;top:-20px;">
+                        <h3>열처리</h3>
+                        <p>고온 가열과 급속 냉각, 재가열 과정을 거쳐 소재 내부 미세 조직을 정밀하게 제어합니다.</p>
+                        <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
+                    </div>
+
+                    <!-- 03 정밀컷팅: 381×157 @ left:984 top:3, arrow DOWN -->
+                    <div class="ps-bubble" id="bubble-2" style="width:381px;min-height:157px;left:984px;top:3px;">
+                        <h3>정밀컷팅</h3>
+                        <p>고객이 요구한 규격에 맞게 소재를 절단합니다.</p>
+                        <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
+                    </div>
+
+                    <!-- 04 포장정리: 281×128 @ left:1291 top:67, arrow DOWN -->
+                    <div class="ps-bubble" id="bubble-3" style="width:281px;min-height:128px;left:1291px;top:67px;">
+                        <h3>포장정리</h3>
+                        <p>완성된 제품을 보호 포장합니다.</p>
+                        <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
+                    </div>
+
+                </div><!-- /diagram-열처리 -->
+
+                <!-- ── Progress Bar ── -->
+                <div class="ps-progress">
+                    <div class="ps-steps" id="ps-steps-bar">
+                        <div class="ps-step" data-step="0" onclick="activateStep(0)">
+                            <div class="ps-step-line"></div>
+                            <div class="ps-step-text">
+                                <div class="ps-step-num">01</div>
+                                <div class="ps-step-name">냉연코일 세팅</div>
+                            </div>
+                        </div>
+                        <div class="ps-step" data-step="1" onclick="activateStep(1)">
+                            <div class="ps-step-line"></div>
+                            <div class="ps-step-text">
+                                <div class="ps-step-num">02</div>
+                                <div class="ps-step-name">열처리</div>
+                            </div>
+                        </div>
+                        <div class="ps-step" data-step="2" onclick="activateStep(2)">
+                            <div class="ps-step-line"></div>
+                            <div class="ps-step-text">
+                                <div class="ps-step-num">03</div>
+                                <div class="ps-step-name">정밀컷팅</div>
+                            </div>
+                        </div>
+                        <div class="ps-step" data-step="3" onclick="activateStep(3)">
+                            <div class="ps-step-line"></div>
+                            <div class="ps-step-text">
+                                <div class="ps-step-num">04</div>
+                                <div class="ps-step-name">포장정리</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /process-card -->
+        </div><!-- /process-sticky -->
+    </section>
+
+    <!-- 고객지원 -->
+    <section class="support-section">
+        <div class="support-banner">
+
+            <div class="support-icon"></div>
+
+            <div class="support-content-box">
+
+                <div class="support-info">
+                    <h3>동국산업에 대해 더 알고 싶으신가요?</h3>
+                    <p>제품, 기술, 협력, 채용 등 다양한 문의를 남겨주시면 담당자가 확인 후 안내드립니다.</p>
+                </div>
+
+                <a class="btn-arrow-right">→</a>
+
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-logo">
+                <img src="../../assets/common/footer-logo.svg" alt="DK Steel Logo">
+            </div>
+
+            <div class="footer-btn-group">
+                <a href="#" class="footer-btn">방문예약</a>
+                <a href="#" class="footer-btn">
+                    YOUTUBE
+                    <img src="../../assets/common/ic-youtube.svg" alt="Youtube" width="20" height="20">
+                </a>
+                <a href="#" class="footer-btn">
+                    패밀리 사이트
+                    <svg width="13.5" height="13.5" viewBox="0 0 13.5 13.5" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.75 0V13.5M0 6.75H13.5" stroke="white" stroke-width="1.5" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-divider"></div>
+            <div class="footer-bottom-info">
+                <div class="footer-links">
+                    <a href="#">개인정보처리방침</a>
+                    <div class="bar"></div>
+                    <a href="#">내부정보관리규정</a>
+                    <div class="bar"></div>
+                    <a href="#">사이트맵</a>
+                    <div class="bar"></div>
+                    <a href="#">02-316-7500</a>
+                    <div class="bar"></div>
+                    <a href="#">서울특별시 중구 다동길 46</a>
+                </div>
+                <p class="footer-copy">Copyright(C) 2015 DONGKUK INDUSTRIES All rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" id="btn-top" class="btn-top">
+        <img src="../../assets/common/btn-top.svg" alt="맨 위로 가기">
+    </a>
+
+    <script>
+        (function () {
+            const nav = document.querySelector('.gnb');
+            if (!nav) return;
+
+            let lastY = window.scrollY;
+            let ticking = false;
+            const threshold = 8;
+            const revealOffset = 80;
+
+            function updateNav() {
+                const currentY = window.scrollY;
+                const delta = currentY - lastY;
+
+                if (currentY <= revealOffset) {
+                    nav.classList.remove('nav-hidden');
+                } else if (Math.abs(delta) >= threshold) {
+                    nav.classList.toggle('nav-hidden', delta > 0);
+                }
+
+                lastY = currentY;
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', () => {
+                if (ticking) return;
+                ticking = true;
+                window.requestAnimationFrame(updateNav);
+            }, { passive: true });
+
+            updateNav();
+        })();
+
+        /* ── Tab / Accordion / Usage (unchanged) ── */
+        function setTab(el) {
+            document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+            el.classList.add('active');
+        }
+        function toggleAcc(header) {
+            const item = header.closest('.acc-item');
+            const wasOpen = item.classList.contains('open');
+            document.querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
+            if (!wasOpen) item.classList.add('open');
+        }
+        /* ── 활용분야 탭 전환 스크립트 ── */
+        function setUsageTab(index) {
+            // 1. 왼쪽 메뉴 아이템 활성화/비활성화
+            const menuItems = document.querySelectorAll('.usage-menu-item');
+            menuItems.forEach((el, i) => {
+                if (i === index) el.classList.add('active');
+                else el.classList.remove('active');
+            });
+
+            // 2. 오른쪽 이미지+부품 컨텐츠 활성화/비활성화 (Fade In/Out)
+            const tabContents = document.querySelectorAll('.usage-tab-content');
+            tabContents.forEach((el, i) => {
+                if (i === index) el.classList.add('active');
+                else el.classList.remove('active');
+            });
+        }
+
+        /* ── Process Auto-Play (열처리강판 전용, 3초마다 자동 전환) ── */
+        const TOTAL_STEPS = 4;
+        let currentStep = 0;
+        let autoTimer = null;
+
+        function activateStep(idx) {
+            if (idx < 0) idx = 0;
+            if (idx >= TOTAL_STEPS) idx = 0; // 순환을 위해 마지막 단계 초과 시 0으로 세팅
+            currentStep = idx;
+
+            /* Progress bar 업데이트 */
+            document.querySelectorAll('#ps-steps-bar .ps-step').forEach((el, i) => {
+                el.classList.remove('active', 'done');
+                if (i < idx) el.classList.add('done');
+                if (i === idx) el.classList.add('active');
+            });
+
+            /* SVG overlay images 업데이트 */
+            document.querySelectorAll('#diagram-열처리 .ps-step-img').forEach((el, i) => {
+                el.classList.toggle('visible', i === idx);
+            });
+
+            /* Tooltips 업데이트 */
+            document.querySelectorAll('#diagram-열처리 .ps-bubble').forEach((el, i) => {
+                el.classList.toggle('visible', i === idx);
+            });
+        }
+
+        /* 자동 재생: 3초마다 다음 스텝으로, 마지막에서 처음으로 순환 */
+        function startAutoPlay() {
+            if (autoTimer) clearInterval(autoTimer); // 중복 실행 방지
+            autoTimer = setInterval(() => {
+                const next = (currentStep + 1) % TOTAL_STEPS;
+                activateStep(next);
+            }, 3000);
+        }
+
+        /* 💡 초기 실행 및 클릭 이벤트 연결 (안전하게 DOMContentLoaded 안에 묶음) */
+        document.addEventListener('DOMContentLoaded', () => {
+            activateStep(0);
+            startAutoPlay();
+
+            /* 1. 하단 진행 바 클릭 시 타이머 리셋 후 이동 */
+            document.querySelectorAll('#ps-steps-bar .ps-step').forEach((el, i) => {
+                el.addEventListener('click', () => {
+                    clearInterval(autoTimer);
+                    activateStep(i);
+                    startAutoPlay();
+                });
+            });
+
+            /* 💡 2. [추가된 부분] 다이어그램 이미지 클릭 시 이동 */
+            document.querySelectorAll('#diagram-열처리 .ps-step-img').forEach((el, i) => {
+                el.style.pointerEvents = 'auto'; // 숨겨져 있어도 클릭 반응하도록 활성화
+                el.style.cursor = 'pointer';     // 마우스를 올리면 손가락 커서로 변경
+
+                el.addEventListener('click', () => {
+                    clearInterval(autoTimer);
+                    activateStep(i);
+                    startAutoPlay();
+                });
+            });
+        });
+
+        /* 초기 실행 */
+        activateStep(0);
+        startAutoPlay();
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const btnTop = document.getElementById('btn-top');
+
+            // 💡 HTML에 있는 푸터의 클래스 이름과 똑같이 맞춰주세요! (현재 .footer로 가정)
+            const footer = document.querySelector('.footer');
+
+            if (!btnTop) return;
+
+            // 1. 버튼 클릭 시 맨 위로 부드럽게 스크롤
+            btnTop.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // 2. 스크롤할 때 버튼 위치 계산
+            window.addEventListener('scroll', function () {
+                const scrollY = window.scrollY; // 현재 스크롤한 위치
+                const windowHeight = window.innerHeight; // 현재 화면 높이
+                const scrollBottom = scrollY + windowHeight; // 현재 화면 맨 아랫부분의 절대 위치
+
+                // 스크롤을 300px 이상 내리면 버튼 나타나게 하기
+                if (scrollY > 300) {
+                    btnTop.classList.add('show');
+                } else {
+                    btnTop.classList.remove('show');
+                }
+
+                // 푸터와 부딪히는지 계산하기
+                if (footer) {
+                    const footerTop = footer.offsetTop; // 문서 전체에서 푸터가 시작되는 높이 위치
+                    const overlap = scrollBottom - footerTop; // 화면 밑바닥이 푸터를 얼마나 침범했는지 계산
+
+                    if (overlap > 0) {
+                        // 푸터가 화면에 보이기 시작하면: 기본 80px + 화면에 보이는 푸터 높이만큼 더 위로 올림!
+                        btnTop.style.bottom = `${80 + overlap}px`;
+                    } else {
+                        // 푸터가 화면에 없으면: 기본 80px 유지
+                        btnTop.style.bottom = '80px';
+                    }
+                }
+            });
+        });
+
+        /* ── Hero Text 스크롤 애니메이션 ── */
+        document.addEventListener('DOMContentLoaded', () => {
+            const h2 = document.querySelector('.hero-text-section h2');
+            if (!h2) return;
+
+            function wrapCharacters(node) {
+                if (node.nodeType === 3) {
+                    const text = node.nodeValue;
+                    const fragment = document.createDocumentFragment();
+                    for (let i = 0; i < text.length; i++) {
+                        const char = text[i];
+                        if (char === ' ' || char === '\n') {
+                            fragment.appendChild(document.createTextNode(char));
+                        } else {
+                            const span = document.createElement('span');
+                            span.className = 'char';
+                            span.textContent = char;
+                            fragment.appendChild(span);
+                        }
+                    }
+                    node.parentNode.replaceChild(fragment, node);
+                } else if (node.nodeType === 1 && node.nodeName !== 'BR') {
+                    Array.from(node.childNodes).forEach(wrapCharacters);
+                }
+            }
+
+            wrapCharacters(h2);
+
+            const chars = h2.querySelectorAll('.char');
+            const section = document.querySelector('.hero-text-section');
+
+            function onScroll() {
+                const sectionTop = section.offsetTop;
+                const startScroll = Math.max(0, sectionTop - window.innerHeight * 0.6);
+                const endScroll = startScroll + 400;
+
+                let progress = (window.scrollY - startScroll) / (endScroll - startScroll);
+                progress = Math.max(0, Math.min(1, progress));
+
+                const activeCount = Math.floor(progress * chars.length);
+                chars.forEach((char, index) => {
+                    if (index < activeCount) {
+                        char.classList.add('active');
+                    } else {
+                        char.classList.remove('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        });
+    </script>
+  <script src="../../js/gnb.js"></script>
+</body>
+
+</html>

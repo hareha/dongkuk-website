@@ -1,0 +1,465 @@
+/* ============================================================
+   common.css — 동국산업 공통 스타일
+   기준 파일: dikel가치.html
+   사용법: <link rel="stylesheet" href="common.css">
+   ============================================================ */
+
+
+/* ===== RESET / BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pretendard', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+html {
+    font-size: clamp(12px, 0.833vw, 16px);
+}
+
+body {
+    background: #fff;
+    color: #111;
+    min-width: 1280px;
+    overflow-x: hidden;
+}
+
+
+/* ===== LAYOUT ===== */
+.inner {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 120px;
+}
+
+
+/* ===== GNB ===== */
+.gnb {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 80px;
+    width: 100%;
+    height: 100px;
+    background: #FFFFFF;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.gnb-logo {
+    width: 163px;
+    height: 34px;
+    display: block;
+    position: relative;
+    z-index: 101;
+}
+
+.gnb-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.gnb-utils {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    gap: 24px;
+    height: 44px;
+}
+
+.gnb-utils-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    gap: 16px;
+}
+
+.gnb-utils a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+    height: 44px;
+    border-radius: 50px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #4E4E4E;
+    line-height: 1.5;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.gnb-divider {
+    width: 1px;
+    height: 22px;
+    background: #D3D3D3;
+    flex-shrink: 0;
+}
+
+.gnb-menu-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    gap: 8.86px;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 100px;
+}
+
+.gnb-menu-btn span {
+    width: 28px;
+    height: 2px;
+    background: #4E4E4E;
+    display: block;
+    flex-shrink: 0;
+}
+
+/* 메뉴 열렸을 때: 투명 → 흰 배경 + 다크 텍스트 */
+.gnb.gnb-menu-active,
+.header.gnb-menu-active {
+    background: #fff !important;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06) !important;
+}
+.gnb.gnb-menu-active .gnb-utils a,
+.header.gnb-menu-active .utils-text a { color: #4E4E4E !important; }
+.gnb.gnb-menu-active .gnb-divider,
+.header.gnb-menu-active .divider { background: #D3D3D3 !important; }
+.gnb.gnb-menu-active .gnb-menu-btn span,
+.header.gnb-menu-active .btn-menu span { background: #4E4E4E !important; }
+.gnb.gnb-menu-active .gnb-logo img,
+.header.gnb-menu-active .logo-box img { filter: brightness(0) !important; }
+
+
+/* ===== PAGE HEADER ===== */
+.page-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0 30px;
+    gap: 4.375rem;
+    width: 100%;
+    max-width: 1920px;
+    background: #FFFFFF;
+    margin: 0 auto;
+}
+
+.page-header h1 {
+    width: 100%;
+    height: 6.625rem;
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 5rem;
+    line-height: 1.4;
+    text-align: center;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+
+/* ===== TAB NAVIGATION ===== */
+.tab-nav {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0;
+    width: 1920px;
+    height: 70px;
+    margin-top: 30px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #E9E9E9;
+}
+
+.tab-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px 20px;
+    gap: 10px;
+    width: 316px;
+    height: 60px;
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 150%;
+    color: #A7A7A7;
+    border-bottom: 2px solid #E9E9E9;
+    cursor: pointer;
+    transition: color .2s, border-color .2s;
+}
+
+.tab-item.active {
+    color: #1B1B1B;
+    border-bottom-color: #A7A7A7;
+}
+
+
+/* ===== BTN TOP ===== */
+.btn-top {
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    right: 40px;
+    bottom: 40px;
+    background: #1B1B1B;
+    border-radius: 800px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    z-index: 80;
+}
+
+.btn-top svg {
+    width: 36px;
+    height: 36px;
+}
+
+.btn-top:hover {
+    background: #333333;
+}
+
+
+/* ===== SUPPORT SECTION ===== */
+.support-section {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.support-banner {
+    width: 100%;
+    max-width: 1680px;
+    height: 210px;
+    margin: 0 auto;
+    background: #F8F9FB;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 50px 40px 30px;
+    gap: 20px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* 고객지원 아이콘: 130×130 컨테이너 */
+.support-icon {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    flex: none;
+}
+
+/* 배경 원 (SVG 뒤에 표시) */
+.support-icon::before {
+    content: '';
+    position: absolute;
+    width: 94px;
+    height: 94px;
+    left: 18px;
+    top: 18px;
+    background: linear-gradient(180deg, #F3782B 50%, #FF9933 100%);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+/* 텍스트 영역 */
+.support-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    gap: 16px;
+    flex: 1;
+    height: 99px;
+}
+
+.support-info h3 {
+    font-family: 'Pretendard', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 150%;
+    color: #1B1B1B;
+    margin: 0;
+}
+
+.support-info p {
+    font-family: 'Pretendard', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 160%;
+    color: #4E4E4E;
+    margin: 0;
+}
+
+/* 화살표 버튼 – ic_Chevron Right */
+.btn-arrow-right {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    color: #111111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    align-self: flex-start;
+    text-decoration: none;
+    flex: none;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.btn-arrow-right svg {
+    width: 26px;
+    height: 26px;
+}
+
+
+/* ===== FOOTER ===== */
+.footer {
+    position: relative;
+    width: 100%;
+    height: 490px;
+    background: url('../assets/common/footer-bg.svg') no-repeat center/cover;
+    background-color: transparent;
+    color: #FFFFFF;
+    overflow: hidden;
+}
+
+.footer-logo {
+    position: absolute;
+    width: 230px;
+    height: 46px;
+    left: 80px;
+    top: 80px;
+    z-index: 2;
+}
+
+.footer-logo img {
+    width: 100%;
+    height: auto;
+}
+
+.footer-btn-group {
+    position: absolute;
+    display: flex;
+    gap: 12px;
+    left: 1318px;
+    top: 80px;
+    z-index: 2;
+}
+
+.footer-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 24px;
+    gap: 6px;
+    width: 166px;
+    height: 60px;
+    background: #7A7A7A;
+    border-radius: 14px;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.footer-btn img {
+    width: 20px;
+    height: 20px;
+}
+
+.footer-btn:hover {
+    background: #555;
+}
+
+.footer-divider {
+    position: absolute;
+    width: calc(100% - 160px);
+    max-width: 1760px;
+    height: 0px;
+    left: 50%;
+    top: 379px;
+    transform: translateX(-50%);
+    border-top: 1px solid rgba(225, 225, 225, 0.5);
+    z-index: 2;
+}
+
+.footer-bottom-info {
+    position: absolute;
+    width: calc(100% - 160px);
+    max-width: 1760px;
+    height: 37px;
+    left: 50%;
+    top: 403px;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-links a {
+    color: #FFFFFF;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.footer-links .bar {
+    width: 1px;
+    height: 12px;
+    background: #D3D3D3;
+}
+
+.footer-copy {
+    color: #FFFFFF;
+    font-size: 16px;
+    text-align: right;
+}
+
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1760px) {
+    .inner { padding: 0 5vw; }
+}
+
+@media (max-width: 1440px) {
+    html { font-size: 14px; }
+}
+
+@media (max-width: 1280px) {
+    html { font-size: 13px; }
+}

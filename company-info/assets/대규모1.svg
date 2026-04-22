@@ -1,0 +1,14 @@
+<svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M37.2082 18.8156C43.8689 17.0309 50.9657 17.9652 56.9375 21.413C62.9093 24.8608 67.2669 30.5397 69.0516 37.2004C70.8363 43.8611 69.902 50.9579 66.4542 56.9297C63.0063 62.9015 57.3275 67.259 50.6668 69.0438C44.0061 70.8285 36.9093 69.8942 30.9375 66.4463C24.9657 62.9985 20.6081 57.3196 18.8234 50.659C17.0387 43.9983 17.973 36.9015 21.4208 30.9297C24.8687 24.9579 30.5475 20.6003 37.2082 18.8156L37.2082 18.8156Z" stroke="white" stroke-width="16"/>
+<g opacity="0.4">
+<path d="M44.0469 84.0469L44.0469 73.2608" stroke="white" stroke-width="12"/>
+<path d="M44.0469 13.7266L44.0469 2.94046" stroke="white" stroke-width="12"/>
+<path d="M23 22.4453L15.3731 14.8184" stroke="white" stroke-width="12"/>
+<path d="M64.7031 23.3984L72.3301 15.7715" stroke="white" stroke-width="12"/>
+<path d="M15.7734 72.3438L23.4004 64.7168" stroke="white" stroke-width="12"/>
+<path d="M4.05469 44.0547L14.8408 44.0547" stroke="white" stroke-width="12"/>
+<path d="M84.0547 44.0547L73.2686 44.0547" stroke="white" stroke-width="12"/>
+<path d="M72.3359 72.3438L64.709 64.7168" stroke="white" stroke-width="12"/>
+</g>
+<circle opacity="0.4" cx="44" cy="44" r="8" fill="white"/>
+</svg>
