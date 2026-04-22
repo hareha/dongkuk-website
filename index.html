@@ -2965,7 +2965,7 @@
         try {
           new THREE.RGBELoader()
             .setDataType(THREE.UnsignedByteType)
-            .load('assets/workshop.hdr', function (hdrTex) {
+            .load('assets/main/workshop.hdr', function (hdrTex) {
               var pmrem2 = new THREE.PMREMGenerator(renderer);
               pmrem2.compileEquirectangularShader();
               var hdrRT = pmrem2.fromEquirectangular(hdrTex);
