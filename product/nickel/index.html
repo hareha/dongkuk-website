@@ -5725,6 +5725,8 @@
                 this.classList.add('active');
                 var panel = document.getElementById(targetId);
                 if (panel) panel.classList.add('active');
+                // Update URL hash
+                history.replaceState(null, '', '#' + targetId);
                 // Scroll to top of tabs
                 var pageHeader = document.querySelector('.page-header');
                 if (pageHeader) {
@@ -5733,6 +5735,18 @@
                 }
             });
         });
+
+        // URL 해시로 탭 자동 활성화 (#tab-brand, #tab-dikel)
+        (function() {
+            var hash = window.location.hash.replace('#', '');
+            if (hash && document.getElementById(hash)) {
+                document.querySelectorAll('.tab-item[data-tab]').forEach(function(t) { t.classList.remove('active'); });
+                document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+                var target = document.querySelector('.tab-item[data-tab="' + hash + '"]');
+                if (target) target.classList.add('active');
+                document.getElementById(hash).classList.add('active');
+            }
+        })();
 
         (function () {
             const nav = document.querySelector('.gnb');
