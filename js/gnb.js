@@ -25,7 +25,7 @@
     {
       title: '회사정보',
       items: [
-        { text: '회사소개', href: B + 'company-info/index.html', key: 'company-info' },
+        { text: '회사소개', href: B + 'company/index.html', key: 'company' },
         { text: '연혁', href: '#', key: '' },
         { text: '네트워크', href: '#', key: '' },
         { text: '뉴스', href: '#', key: '' },
@@ -39,7 +39,7 @@
         { text: '니켈도금강판: DiKel', href: B + 'product/nickel/index.html', key: 'nickel' },
         { text: '냉연강판', href: B + 'product/cold-rolled/index.html', key: 'cold-rolled' },
         { text: 'Q/T 열처리 강판', href: B + 'product/heat-treated/index.html', key: 'heat-treated' },
-        { text: '연구개발', href: B + 'rnd/index.html', key: 'rnd' }
+        { text: '연구개발', href: B + 'product/rnd/index.html', key: 'rnd' }
       ]
     },
     {
