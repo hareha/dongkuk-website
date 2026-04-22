@@ -12,3 +12,4 @@ Thumbs.db
 
 # Node (if any)
 node_modules/
+.gemini/
