@@ -15,6 +15,7 @@
   var B = src.replace(/js\/gnb\.js.*$/, '');
   if (!B) B = './';
 
+  var M = B || './';
   var LOGO = B + 'assets/common/logo.svg';
   var THUMB = B + 'assets/common/gnb-thumb.png';
   var PAGE = document.body.getAttribute('data-page') || '';
