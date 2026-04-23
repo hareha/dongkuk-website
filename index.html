@@ -1351,6 +1351,17 @@
       white-space: nowrap;
     }
 
+    .ir-header-arrow {
+      display: inline-flex;
+      align-items: center;
+      margin-left: 4px;
+    }
+
+    .ir-header-arrow svg {
+      width: 30px;
+      height: 30px;
+    }
+
     .ir-header-right-icon {
       width: 106px;
       height: 106px;
@@ -1415,10 +1426,10 @@
 
     .ir-doc-type {
       font-family: 'Pretendard', sans-serif;
-      font-size: 39px;
+      font-size: 44px;
       font-weight: 700;
       color: #fff;
-      line-height: 1.2;
+      line-height: 1.5;
     }
 
     .ir-doc-desc-wrap {
@@ -1433,9 +1444,9 @@
 
     .ir-doc-desc {
       font-family: 'Pretendard', sans-serif;
-      font-size: 19px;
+      font-size: 22px;
       font-weight: 400;
-      color: rgba(255, 255, 255, 0.9);
+      color: #fff;
       line-height: 1.6;
       width: 100%;
     }
@@ -1452,9 +1463,10 @@
 
     .ir-doc-date {
       font-family: 'Pretendard', sans-serif;
-      font-size: 16px;
+      font-size: 20px;
       font-weight: 400;
-      color: rgba(255, 255, 255, 0.7);
+      color: #fff;
+      line-height: 1.6;
     }
 
     .ir-doc-dl {
@@ -2252,7 +2264,11 @@
           <p class="invest-title-text">지속 가능한 성장을 위한 투자</p>
           <div class="invest-btn-row">
             <a href="#" class="invest-btn-fill">투자정보 센터</a>
-            <a href="#" class="invest-btn-outline">→</a>
+            <a href="#" class="invest-btn-outline">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.5 3L12.5 10L4.5 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
           </div>
         </div>
 
@@ -2326,6 +2342,11 @@
             <div class="ir-card-header">
               <div class="ir-header-left">
                 <span class="ir-header-title">IR 자료실</span>
+                <span class="ir-header-arrow">
+                  <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 7L20 15L11 23" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
               </div>
               <div class="ir-header-right-icon">
                 <img src="assets/main/ic_IR.svg" alt="IR 아이콘">
@@ -2343,7 +2364,7 @@
                       <span class="ir-doc-type">IR 레터</span>
                     </div>
                     <div class="ir-doc-desc-wrap">
-                      <p class="ir-doc-desc">주주 가치 제고를 위한<br>지속 가능한 성장 전략 및<br>주주 환원 정책 안내</p>
+                      <p class="ir-doc-desc">주주 가치 제고를 위한 지속 가능한 성장 전략 및 주주 환원 정책 안내</p>
                       <div class="ir-doc-footer">
                         <span class="ir-doc-date">2026.04.13</span>
                         <a href="#" class="ir-doc-dl">
