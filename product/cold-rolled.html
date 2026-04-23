@@ -117,13 +117,11 @@
         /* ===== Hero Text ===== */
         .hero-text-outer {
             position: relative;
-            /* 원본 섹션 높이 + 스크롤 여유 */
-            padding-bottom: 150vh;
         }
 
         .hero-text-section {
             position: sticky;
-            top: 100px;
+            top: 200px; /* 화면 상단 200px 고정 */
             padding: 100px 80px 0;
             text-align: center;
             z-index: 1;
@@ -1467,11 +1465,13 @@
         <h1>냉연강판</h1>
     </section>
 
-    <!-- Hero Text -->
+    <!-- Hero Text + Feature Cards (하나의 sticky wrapper) -->
     <div class="hero-text-outer">
       <section class="hero-text-section">
           <h2>글로벌 산업 기준에 맞춰<br>고정밀 산업의 안정성을 뒷받침합니다.</h2>
       </section>
+      <!-- 스크롤 여유 공간: 색칠 완료까지 텍스트 고정 -->
+      <div style="height: 150vh;"></div>
     </div>
 
     <!-- 냉연_제품 한줄 소개 -->
