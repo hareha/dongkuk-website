@@ -35,11 +35,11 @@
     {
       title: '제품소개',
       items: [
-        { text: '제품정보 센터', href: B + 'company/index.html', key: 'company' },
-        { text: '니켈도금강판: DiKel', href: B + 'product/nickel/index.html', key: 'nickel' },
-        { text: '냉연강판', href: B + 'product/cold-rolled/index.html', key: 'cold-rolled' },
-        { text: 'Q/T 열처리 강판', href: B + 'product/heat-treated/index.html', key: 'heat-treated' },
-        { text: '연구개발', href: B + 'product/rnd/index.html', key: 'rnd' }
+        { text: '제품정보 센터', href: B + 'product/product-center.html', key: 'product-center' },
+        { text: '니켈도금강판: DiKel', href: B + 'product/dikel.html', key: 'dikel' },
+        { text: '냉연강판', href: B + 'product/cold-rolled.html', key: 'cold-rolled' },
+        { text: 'Q/T 열처리 강판', href: B + 'product/heat-treated.html', key: 'heat-treated' },
+        { text: '연구개발', href: B + 'product/rnd.html', key: 'rnd' }
       ]
     },
     {
