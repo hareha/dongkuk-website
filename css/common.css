@@ -24,6 +24,7 @@ body {
     color: #111;
     min-width: 1280px;
     overflow-x: hidden;
+    padding-top: 100px; /* GNB fixed 높이 보정 */
 }
 
 
@@ -162,7 +163,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 70px 0 30px;
+    padding: 40px 0 30px;
     gap: 4.375rem;
     width: 100%;
     max-width: 1920px;
