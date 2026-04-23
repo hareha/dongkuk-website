@@ -889,22 +889,22 @@
       overflow: hidden;
     }
 
-    /* 메인 투자 컨테이너: 1860x1044 bg #F1EDEA */
+    /* ══ 투자 섹션 (피그마 리빌드) ══ */
     .invest-card-wrap {
       width: 1860px;
-      height: 1044px;
+      max-width: calc(100vw - 60px);
+      min-height: 1044px;
       background: #F1EDEA;
       border-radius: 30px;
-      position: relative;
       overflow: hidden;
       flex-shrink: 0;
+      padding: 100px 90px;
+      display: flex;
+      flex-direction: column;
+      gap: 44px;
     }
 
-    /* 제목 + 버튼 그룹 — 좌측 상단 */
     .invest-title-block {
-      position: absolute;
-      left: 90px;
-      top: 100px;
       display: flex;
       flex-direction: column;
       gap: 40px;
@@ -912,42 +912,36 @@
 
     .invest-title-text {
       font-family: 'Pretendard', sans-serif;
-      font-size: 53px;
+      font-size: 60px;
       font-weight: 700;
+      line-height: 1.4;
       color: #000;
-      letter-spacing: -0.02em;
-      line-height: 1.35;
     }
 
     .invest-btn-row {
       display: flex;
-      flex-direction: row;
       gap: 4px;
       align-items: center;
     }
 
     .invest-btn-fill {
-      /* 기존 코드 유지 */
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0 24px;
-      height: 64px;
+      padding: 16px 24px;
       background: #000;
       border-radius: 14px;
       font-family: 'Pretendard', sans-serif;
       font-size: 20px;
       font-weight: 500;
+      line-height: 1.6;
       color: #fff;
       text-decoration: none;
       white-space: nowrap;
-      box-sizing: border-box;
       transition: all 0.3s ease;
-      /* 📍 추가 (선택 사항): 버튼도 부드럽게 */
     }
 
     .invest-btn-outline {
-      /* 기존 코드 유지 */
       width: 64px;
       height: 64px;
       display: inline-flex;
@@ -955,85 +949,57 @@
       justify-content: center;
       border: 1px solid #000;
       border-radius: 14px;
-      font-size: 20px;
       color: #000;
       text-decoration: none;
-
-      /* 📍 추가: 색상이 부드럽게 변하도록 애니메이션 설정 */
       transition: all 0.3s ease;
     }
 
-    /* =========================================
-       🖱️ 마우스를 올렸을 때 (Hover) 효과 추가
-       ========================================= */
-
-    /* 1. 화살표 버튼 자체에 마우스를 올렸을 때 */
-    .invest-btn-outline:hover {
-      background: #F27100;
-      /* 피그마 스펙: 주황색 배경 */
-      border-color: #F27100;
-      /* 까만 테두리도 주황색으로 덮기 */
-      color: #FFFFFF;
-      /* 화살표 글씨/아이콘을 흰색으로 */
-    }
-
-    /* 2. (선택 사항) '투자정보 센터' 버튼을 포함해 그룹 전체에 마우스를 올려도 반응하게 하려면 */
+    .invest-btn-outline:hover,
     .invest-btn-row:hover .invest-btn-outline {
       background: #F27100;
       border-color: #F27100;
-      color: #FFFFFF;
+      color: #fff;
     }
 
-    /* 카드 그룹 — bottom 영역 (left:90, top:388, w:1679, h:556) */
+    /* 카드 행 */
     .invest-cards-row {
-      position: absolute;
-      left: 90px;
-      top: 388px;
-      width: 1679px;
-      height: 556px;
       display: flex;
-      flex-direction: row;
-      align-items: center;
       gap: 20px;
+      align-items: stretch;
+      width: 100%;
     }
 
-    /* 주가 카드 — w:396, h:556 */
+    /* 주가 카드 */
     .inv-card-stock {
       width: 396px;
-      height: 556px;
-      background: #FFFFFF;
+      min-height: 556px;
+      background: #fff;
       border-radius: 30px;
       padding: 32px 40px;
       display: flex;
       flex-direction: column;
       gap: 28px;
       flex-shrink: 0;
-      box-sizing: border-box;
     }
 
     .inv-stock-header {
       display: flex;
-      flex-direction: row;
       align-items: center;
-      padding: 0px;
-      gap: 16px;
-      width: 316px;
-      height: 54.53px;
+      padding: 14px 0;
     }
 
     .inv-stock-name {
       display: flex;
-      flex-direction: row;
       align-items: center;
       gap: 10px;
     }
 
     .inv-company-label {
       font-family: 'Pretendard', sans-serif;
-      font-size: 21px;
-      font-weight: 500;
+      font-size: 24px;
+      font-weight: 700;
       color: #4E4E4E;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     .invest-ticker-badge {
@@ -1044,99 +1010,79 @@
       border: 1px solid #F48D33;
       border-radius: 6px;
       font-family: 'Pretendard', sans-serif;
-      font-size: 14px;
+      font-size: 20px;
       font-weight: 500;
       color: #F27100;
-      white-space: nowrap;
+      line-height: normal;
     }
 
     .inv-stock-body {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      padding: 0px;
-      gap: 165px;
-      width: 316px;
-      height: 324.37px;
-      flex: none;
-      order: 1;
-      align-self: stretch;
-      flex-grow: 0;
+      justify-content: space-between;
+      flex: 1;
     }
 
     .inv-price-num {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-end;
-      padding: 0px;
-      gap: 14px;
-      width: 293px;
-      height: 55.37px;
       font-family: 'Pretendard', sans-serif;
-      font-size: 56px;
+      font-size: 60px;
       font-weight: 700;
       color: #111;
-      line-height: 1;
-      letter-spacing: -0.02em;
+      line-height: 1.4;
+      display: flex;
+      align-items: flex-end;
+      gap: 14px;
     }
 
     .inv-price-unit {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 500;
-      color: #111;
-      margin-left: 4px;
+      line-height: 1.6;
+      padding-bottom: 8px;
     }
 
     .inv-change-box {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 16px 20px;
-      gap: 14px;
-      width: 316px;
-      height: 104px;
       background: #F8F9FB;
       border-radius: 16px;
-      box-sizing: border-box;
+      padding: 20px;
+    }
+
+    .inv-change-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 4px 0;
     }
 
     .inv-change-row {
       display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      padding: 0px;
+      align-items: center;
       gap: 30px;
-      width: 276px;
-      height: 17.54px;
-    }
-
-    .inv-change-row:last-child {
-      gap: 61px;
-      width: 201.38px;
-      height: 17.46px;
     }
 
     .inv-change-label {
       font-family: 'Pretendard', sans-serif;
-      font-size: 17px;
-      font-weight: 400;
+      font-size: 20px;
+      font-weight: 500;
       color: #4E4E4E;
+      line-height: 1.6;
+      width: 84px;
+      flex-shrink: 0;
     }
 
     .inv-change-val {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: #363636;
+      line-height: 1.5;
       display: flex;
-      flex-direction: row;
       align-items: center;
       gap: 4px;
-      font-family: 'Pretendard', sans-serif;
-      font-size: 17px;
-      font-weight: 500;
-      color: #F64301;
     }
 
     .inv-change-val .tri {
-      font-size: 10px;
+      color: #F64301;
     }
 
     .inv-divider-thin {
@@ -1145,71 +1091,63 @@
       background: #E9E9E9;
     }
 
-    /* 국내시장+누적판매량 스택 — w:450 */
+    /* 중간 컬럼 (국내시장 + 글로벌) */
     .inv-card-col {
+      width: 450px;
       display: flex;
       flex-direction: column;
       gap: 14px;
       flex-shrink: 0;
     }
 
-    /* 국내시장 사진 카드 — w:450, h:272 */
     .inv-card-market {
-      width: 450px;
-      height: 272px;
+      flex: 1;
       border-radius: 20px;
-      background: url('main/card_국내시장\ 점유율.png') center/cover no-repeat;
       padding: 32px;
+      position: relative;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-sizing: border-box;
-      position: relative;
-      overflow: hidden;
+      background-size: cover;
+      background-position: center;
     }
 
     .inv-card-market::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.25) 100%);
+      background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.2));
       border-radius: 20px;
       pointer-events: none;
     }
 
-    .inv-card-market .ic-top,
-    .inv-card-market .ic-bottom {
-      position: relative;
-      z-index: 1;
-    }
+    .inv-card-market > * { position: relative; z-index: 1; }
 
-    /* 누적판매량 흰 카드 — w:450, h:270 */
     .inv-card-accum {
-      width: 450px;
-      height: 270px;
-      border-radius: 20px;
+      flex: 1;
       background: #fff;
+      border-radius: 20px;
       padding: 32px;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-sizing: border-box;
     }
 
-    /* IR 자료실 오렌지 카드 — w:793, h:556 */
-    .inv-card-ir {
-      width: 793px;
-      height: 556px;
-      background: #F27100;
-      border-radius: 30px;
-      padding: 0;
-      position: relative;
-      box-sizing: border-box;
-      flex-shrink: 0;
-      overflow: hidden;
+    .inv-card-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 60px;
     }
 
-    .inv-card-ir .ic-label-white {
+    .inv-card-top-row .inv-lbl {
+      flex: 1;
+      padding: 14px 0;
+    }
+
+    .inv-card-label {
       font-family: 'Pretendard', sans-serif;
       font-size: 24px;
       font-weight: 700;
@@ -1217,68 +1155,12 @@
       line-height: 1.5;
     }
 
-    /* 공통 카드 내부 텍스트 */
-    .inv-card-label {
-      font-family: 'Pretendard', sans-serif;
-      font-size: 21px;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.5;
-    }
-
     .inv-card-label-dark {
       font-family: 'Pretendard', sans-serif;
-      font-size: 21px;
+      font-size: 24px;
       font-weight: 700;
       color: #4E4E4E;
       line-height: 1.5;
-    }
-
-    .inv-card-num {
-      font-family: 'Pretendard', sans-serif;
-      font-size: 44px;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -0.01em;
-      line-height: 1.4;
-    }
-
-    .inv-card-num-dark {
-      font-family: 'Pretendard', sans-serif;
-      font-size: 44px;
-      font-weight: 700;
-      color: #111;
-      letter-spacing: -0.01em;
-      line-height: 1.4;
-    }
-
-    .inv-card-unit {
-      font-size: 18px;
-      font-weight: 500;
-      margin-left: 4px;
-    }
-
-    .inv-card-sub {
-      font-family: 'Pretendard', sans-serif;
-      font-size: 18px;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.8);
-      margin-top: 4px;
-    }
-
-    .inv-card-sub-dark {
-      font-family: 'Pretendard', sans-serif;
-      font-size: 18px;
-      font-weight: 400;
-      color: #4E4E4E;
-      margin-top: 4px;
-    }
-
-    .inv-card-top-row {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: space-between;
     }
 
     .inv-card-icon {
@@ -1293,53 +1175,69 @@
       object-fit: contain;
     }
 
-    .inv-card-icon-lg {
-      width: 106px;
-      height: 106px;
-      flex-shrink: 0;
+    .inv-card-num {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 60px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.4;
     }
 
-    .inv-card-icon-lg img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    /* IR 자료실 카드 헤더 */
-    .ir-card-header {
-      position: absolute;
-      top: 32px;
-      left: 40px;
-      right: 40px;
-      height: 106px;
+    .inv-card-num-dark {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 60px;
+      font-weight: 700;
+      color: #111;
+      line-height: 1.4;
       display: flex;
-      flex-direction: row;
+      align-items: flex-end;
+      gap: 14px;
+    }
+
+    .inv-card-unit {
+      font-size: 20px;
+      font-weight: 500;
+      padding-bottom: 8px;
+    }
+
+    .inv-card-sub {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .inv-card-sub-dark {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: #4E4E4E;
+      line-height: 1.6;
+    }
+
+    /* IR 자료실 카드 */
+    .inv-card-ir {
+      flex: 1;
+      background: #F27100;
+      border-radius: 30px;
+      padding: 32px 40px;
+      display: flex;
+      flex-direction: column;
+      min-height: 556px;
+    }
+
+    .ir-card-header {
+      display: flex;
+      justify-content: space-between;
       align-items: flex-start;
-      gap: 60px;
     }
 
     .ir-header-left {
       display: flex;
-      flex-direction: row;
       align-items: center;
-      gap: 10px;
-      height: 58px;
-      flex: 1;
-    }
-
-    .ir-header-icon {
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .ir-header-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+      gap: 4px;
+      padding: 14px 0;
     }
 
     .ir-header-title {
@@ -1354,7 +1252,6 @@
     .ir-header-arrow {
       display: inline-flex;
       align-items: center;
-      margin-left: 4px;
     }
 
     .ir-header-arrow svg {
@@ -1365,9 +1262,6 @@
     .ir-header-right-icon {
       width: 106px;
       height: 106px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       flex-shrink: 0;
     }
 
@@ -1377,51 +1271,25 @@
       object-fit: contain;
     }
 
-    /* IR 자료실 내부 문서 콘텐츠 영역 */
     .ir-doc-area {
-      position: absolute;
-      bottom: 32px;
-      left: 40px;
-      right: 40px;
+      margin-top: auto;
     }
 
     .ir-doc-row {
       display: flex;
-      flex-direction: row;
-      align-items: flex-start;
+      align-items: stretch;
       gap: 40px;
-      width: 713px;
-      height: 280px;
     }
 
     .ir-doc-item {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      padding: 0;
-      width: 316px;
-      height: 237px;
+      flex: 1;
     }
 
     .ir-doc-inner {
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: flex-start;
-      align-content: flex-start;
-      row-gap: 20px;
-      width: 316px;
-      height: 100%;
-    }
-
-    .ir-doc-type-wrap {
-      display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      width: 273px;
-      height: auto;
+      gap: 20px;
+      height: 100%;
     }
 
     .ir-doc-type {
@@ -1436,9 +1304,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      align-items: flex-end;
       gap: 64px;
-      width: 316px;
       flex: 1;
     }
 
@@ -1448,17 +1314,12 @@
       font-weight: 400;
       color: #fff;
       line-height: 1.6;
-      width: 100%;
     }
 
     .ir-doc-footer {
       display: flex;
-      flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      width: 316px;
-      height: 60px;
-      flex-shrink: 0;
     }
 
     .ir-doc-date {
@@ -1486,13 +1347,11 @@
       height: 24px;
     }
 
-    /* 세로 구분선 */
     .ir-divider-v {
       width: 1px;
-      height: 280px;
       background: rgba(255, 255, 255, 0.4);
       flex-shrink: 0;
-      align-self: center;
+      align-self: stretch;
     }
 
     /* ══ 고객지원 ══ */
@@ -2286,18 +2145,20 @@
             <div class="inv-stock-body">
               <div class="inv-price-num">2,600<span class="inv-price-unit">원</span></div>
               <div class="inv-change-box">
-                <div class="inv-change-row">
-                  <span class="inv-change-label">전일대비</span>
-                  <span class="inv-change-val">
-                    <span class="tri">▲</span> +110
-                  </span>
-                </div>
-                <div class="inv-divider-thin"></div>
-                <div class="inv-change-row">
-                  <span class="inv-change-label">등락률</span>
-                  <span class="inv-change-val">
-                    <span class="tri">+</span> 4.02%
-                  </span>
+                <div class="inv-change-inner">
+                  <div class="inv-change-row">
+                    <span class="inv-change-label">전일대비</span>
+                    <span class="inv-change-val">
+                      <span class="tri">▲</span> 110
+                    </span>
+                  </div>
+                  <div class="inv-divider-thin"></div>
+                  <div class="inv-change-row">
+                    <span class="inv-change-label">등락률</span>
+                    <span class="inv-change-val">
+                      <span class="tri">+</span> 4.02%
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2336,7 +2197,7 @@
           </div>
 
           <!-- IR 자료실 (오렌지 카드) -->
-          <div class="inv-card-ir" style="position:relative;">
+          <div class="inv-card-ir">
 
             <!-- 헤더 -->
             <div class="ir-card-header">
