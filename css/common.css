@@ -132,6 +132,11 @@ body {
 .header.gnb-menu-active {
     background: #fff !important;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06) !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 100 !important;
 }
 .gnb.gnb-menu-active .gnb-utils a,
 .header.gnb-menu-active .utils-text a { color: #4E4E4E !important; }
@@ -243,46 +248,54 @@ body {
 
 /* ===== SUPPORT SECTION ===== */
 .support-section {
-    padding: 80px 0;
+    padding: clamp(40px, 4.16vw, 80px) 0;
     background: #fff;
 }
 
 .support-banner {
-    width: 100%;
+    width: calc(100% - clamp(40px, 5vw, 120px) * 2);
     max-width: 1680px;
-    height: 210px;
     margin: 0 auto;
     background: #F8F9FB;
-    border-radius: 20px;
+    border-radius: clamp(12px, 1.04vw, 20px);
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
-    padding: 40px 50px 40px 30px;
-    gap: 20px;
-    position: relative;
+    padding: clamp(24px, 2.08vw, 40px) clamp(20px, 2.6vw, 50px) clamp(24px, 2.08vw, 40px) clamp(16px, 1.56vw, 30px);
+    gap: clamp(16px, 1.25vw, 24px);
     box-sizing: border-box;
 }
 
 /* 고객지원 아이콘: 130×130 컨테이너 */
 .support-icon {
     position: relative;
-    width: 130px;
-    height: 130px;
+    width: clamp(80px, 6.77vw, 130px);
+    height: clamp(80px, 6.77vw, 130px);
     flex: none;
+    background: url('../assets/common/ic-support.svg') no-repeat center/contain;
 }
 
 /* 배경 원 (SVG 뒤에 표시) */
 .support-icon::before {
     content: '';
     position: absolute;
-    width: 94px;
-    height: 94px;
-    left: 18px;
-    top: 18px;
+    width: 72.3%;   /* 94/130 */
+    height: 72.3%;
+    left: 13.85%;    /* 18/130 */
+    top: 13.85%;
     background: linear-gradient(180deg, #F3782B 50%, #FF9933 100%);
     border-radius: 50%;
     z-index: -1;
+}
+
+/* 콘텐츠 박스 (텍스트 + 화살표) */
+.support-content-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
 }
 
 /* 텍스트 영역 */
@@ -290,30 +303,33 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
     padding: 0;
-    gap: 16px;
+    gap: clamp(6px, 0.52vw, 10px);
     flex: 1;
-    height: 99px;
+    min-width: 0;
 }
 
 .support-info h3 {
     font-family: 'Pretendard', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 32px;
+    font-size: clamp(22px, 1.66vw, 32px);
     line-height: 150%;
     color: #1B1B1B;
     margin: 0;
+    word-break: keep-all;
 }
 
 .support-info p {
     font-family: 'Pretendard', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 22px;
+    font-size: clamp(16px, 1.14vw, 22px);
     line-height: 160%;
     color: #4E4E4E;
     margin: 0;
+    word-break: keep-all;
 }
 
 /* 화살표 버튼 – ic_Chevron Right */
@@ -325,13 +341,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 64px;
-    height: 64px;
+    width: clamp(40px, 3.33vw, 64px);
+    height: clamp(40px, 3.33vw, 64px);
     align-self: flex-start;
     text-decoration: none;
     flex: none;
     cursor: pointer;
-    font-size: 30px;
+    font-size: clamp(20px, 1.56vw, 30px);
+    transition: transform 0.2s ease;
+}
+
+.btn-arrow-right:hover {
+    transform: translateX(4px);
 }
 
 .btn-arrow-right svg {
