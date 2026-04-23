@@ -216,15 +216,21 @@
             width: 498px;
             height: 402px;
             border-radius: 30px;
-            background-color: #555;
+            background-color: transparent;
             background-size: cover;
             background-position: center;
-            opacity: 0.6;
+            opacity: 1;
             cursor: pointer;
             overflow: hidden;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 5;
             /* 궤도보다 위에 오도록 설정 */
+        }
+
+        /* 💡 눈속임 순간이동 시 모든 애니메이션을 강제로 끄는 클래스 */
+        .no-transition,
+        .no-transition * {
+            transition: none !important;
         }
 
         /* ===== 궤도 원 ===== */
@@ -402,14 +408,16 @@
 
         /* ================= 글로벌 비즈니스 ================= */
         .global-section {
-            padding: 8% 4%;
-            background: #F1EDEA;
+            width: 100%;
+            max-width: 1920px;
+            height: 940px;
+            margin: 0 auto;
+            background: url('assets/product-center/글로벌 비즈니스.png') no-repeat center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 40px;
             position: relative;
-            min-height: 800px;
+            overflow: hidden;
         }
 
         .global-header {
@@ -547,23 +555,27 @@
         /* 닫혀있을 때 하단 타이틀 */
         .pc-title-small {
             position: absolute;
-            bottom: 40px;
-            left: 40px;
-            font-size: 36px;
+            bottom: 40px;      /* 📍 기본 위치: 박스 바닥에서 40px 위 */
+            left: 40px;        /* 📍 기본 위치: 박스 왼쪽에서 40px */
+            font-size: 36px;   /* 📍 기본 크기: 36px */
             font-weight: 700;
-            line-height: 150%;
+            line-height: 140%;
             color: #FFFFFF;
             margin: 0;
-            opacity: 1;
-            transition: opacity 0.2s ease;
             white-space: nowrap;
+            z-index: 10;
+            
+            /* 💡 핵심: 아래 3개 속성(바닥거리, 왼쪽거리, 글자크기)이 변할 때 0.5초 동안 부드럽게 움직여라! */
+            transition: bottom 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                        left 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                        font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         /* 열렸을 때 상단 왼쪽 텍스트 그룹 */
         .pc-expanded-content {
             position: absolute;
-            top: 40px;
-            left: 40px;
+            top: 144px; /* 타이틀(60px)이 top:40px 위치에 오던 이전 디자인의 설명 위치(40+84+20)로 복구 */
+            left: 50px;
             right: 40px;
             display: flex;
             flex-direction: column;
@@ -581,11 +593,7 @@
         }
 
         .pc-text-group h3 {
-            font-size: 60px;
-            font-weight: 700;
-            line-height: 140%;
-            color: #FFFFFF;
-            margin: 0;
+            display: none; /* pc-title-small이 움직여서 올라오므로 중복 방지를 위해 숨김 */
         }
 
         .pc-text-group p {
@@ -634,11 +642,12 @@
             cursor: pointer;
         }
 
-        /* 호버 시 시각적 제어 */
+        /* 카드가 확장되면 -> 작은 타이틀이 674px 위로 쭈욱 올라가며 60px로 커짐! */
         .product-card:hover .pc-title-small,
         .product-card.expanded .pc-title-small {
-            opacity: 0;
-            pointer-events: none;
+            bottom: 674px;   /* 📍 바뀐 위치: 박스 바닥에서 무려 674px 위로 솟구침! (여기가 위로 올라가는 핵심입니다) */
+            left: 50px;      /* 📍 바뀐 위치: 왼쪽으로 살짝(10px) 더 이동 */
+            font-size: 60px; /* 📍 바뀐 크기: 글씨도 60px로 커짐 */
         }
 
         .product-card:hover .pc-expanded-content,
@@ -840,8 +849,8 @@
             font-weight: 700;
         }
     </style>
-  <link rel="stylesheet" href="../css/common.css">
-  <link rel="stylesheet" href="../css/gnb.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/gnb.css">
 </head>
 
 <body data-page="product-center">
@@ -900,7 +909,7 @@
                 <div class="slider-track" id="sliderTrack">
 
                     <div class="standard-card slide-item"
-                        style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('assets/product-center/대규모.png'); --active-icon: url('assets/product-center/대규모1.svg');">
+                        style="background-image: url('assets/product-center/대규모.png'); --active-icon: url('assets/product-center/대규모1.svg');">
                         <div class="card-icon"></div>
                         <div class="card-text-area">
                             <h3 class="card-title">대규모 투자를 통한<br>생산 인프라</h3>
@@ -910,7 +919,7 @@
                     </div>
 
                     <div class="standard-card slide-item"
-                        style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('assets/product-center/세계시장.png'); --active-icon: url('assets/product-center/세계시장1.svg');">
+                        style="background-image: url('assets/product-center/세계시장.png'); --active-icon: url('assets/product-center/세계시장1.svg');">
                         <div class="card-icon"></div>
                         <div class="card-text-area">
                             <h3 class="card-title">세계 시장이 인정한<br>품질과 대응력</h3>
@@ -919,7 +928,7 @@
                     </div>
 
                     <div class="standard-card slide-item active"
-                        style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('assets/product-center/품질의.png'); --active-icon: url('assets/product-center/품질의1.svg');">
+                        style="background-image: url('assets/product-center/품질의.png'); --active-icon: url('assets/product-center/품질의1.svg');">
                         <div class="card-icon"></div>
                         <div class="card-text-area">
                             <h3 class="card-title">품질의 기본이 되는<br>원료 선택의 기준</h3>
@@ -929,7 +938,7 @@
                     </div>
 
                     <div class="standard-card slide-item"
-                        style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('assets/product-center/산업별.png'); --active-icon: url('assets/product-center/산업별1.svg');">
+                        style="background-image: url('assets/product-center/산업별.png'); --active-icon: url('assets/product-center/산업별1.svg');">
                         <div class="card-icon"></div>
                         <div class="card-text-area">
                             <h3 class="card-title">산업별 최적화된<br>맞춤 소재 솔루션</h3>
@@ -939,7 +948,7 @@
                     </div>
 
                     <div class="standard-card slide-item"
-                        style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('assets/product-center/경험이.png'); --active-icon: url('assets/product-center/경험이1.svg');">
+                        style="background-image: url('assets/product-center/경험이.png'); --active-icon: url('assets/product-center/경험이1.svg');">
                         <div class="card-icon"></div>
                         <div class="card-text-area">
                             <h3 class="card-title">경험이 축적된<br>정밀 제어 기술</h3>
@@ -960,23 +969,7 @@
         </section>
 
         <section class="global-section">
-            <div class="map-container">
-                <div class="map-marker marker-china">CHINA</div>
-                <div class="map-marker marker-japan">JAPAN</div>
-                <div class="map-marker marker-america">AMERICA</div>
-            </div>
-            <div class="global-header">
-                <h4>글로벌 비즈니스</h4>
-                <h2>기술과 파트너십으로<br>미래 가치를 이어갑니다.</h2>
-            </div>
-            <div class="global-stats">
-                <div class="stat-box">
-                    <p>글로벌 파트너</p><strong>00</strong>
-                </div>
-                <div class="stat-box">
-                    <p>수출국</p><strong>00</strong>
-                </div>
-            </div>
+            <!-- 배경 이미지 '글로벌 비즈니스.png'가 전체 디자인을 대체합니다 (중복 방지) -->
         </section>
 
         <section class="products-section">
@@ -992,7 +985,7 @@
                                 <p>차세대 에너지 산업을 위한 고기능 소재</p>
                             </div>
                         </div>
-                        <div class="pc-btn-group" onclick="location.href='product니켈.html'" style="cursor: pointer;">
+                        <div class="pc-btn-group" onclick="location.href='dikel.html'" style="cursor: pointer;">
                             <button class="pc-btn-text">더 알아보기</button>
                             <button class="pc-btn-icon">
                                 <svg width="15" height="11" viewBox="0 0 15 11" fill="none"
@@ -1015,7 +1008,7 @@
                                 <p>정밀 공정에 최적화된 고품질 강판</p>
                             </div>
                         </div>
-                        <div class="pc-btn-group" onclick="location.href='product냉연강판.html'" style="cursor: pointer;">
+                        <div class="pc-btn-group" onclick="location.href='cold-rolled.html'" style="cursor: pointer;">
                             <button class="pc-btn-text">더 알아보기</button>
                             <button class="pc-btn-icon">
                                 <svg width="15" height="11" viewBox="0 0 15 11" fill="none"
@@ -1038,7 +1031,7 @@
                                 <p>강도와 내구성을 고루 갖춘 산업용 소재</p>
                             </div>
                         </div>
-                        <div class="pc-btn-group" onclick="location.href='productQT열처리강판.html'"
+                        <div class="pc-btn-group" onclick="location.href='heat-treated.html'"
                             style="cursor: pointer;">
                             <button class="pc-btn-text">더 알아보기</button>
                             <button class="pc-btn-icon">
@@ -1169,7 +1162,7 @@
 
         const allCards = document.querySelectorAll('.slide-item');
         let currentIndex = 7;
-        let isScrolling = false;
+        let isMoving = false;
 
         function getTranslateX(index) {
             const wrapperWidth = wrapper.clientWidth;
@@ -1178,8 +1171,10 @@
 
         function updateCarousel(index, animate = true) {
             if (animate) {
+                track.classList.remove('no-transition');
                 track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
             } else {
+                track.classList.add('no-transition');
                 track.style.transition = 'none';
             }
 
@@ -1198,7 +1193,6 @@
             // 💡 궤도 회전 연동 (슬라이드 1칸당 72도 회전)
             const orbOrbit = document.getElementById('orbOrbit');
             if (orbOrbit) {
-                // 카드가 눈속임(순간이동)을 할 때는 궤도도 애니메이션을 끕니다!
                 if (animate) {
                     orbOrbit.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
                 } else {
@@ -1207,6 +1201,12 @@
 
                 const rotationAngle = (index - 7) * -72;
                 orbOrbit.style.transform = `rotate(${rotationAngle}deg)`;
+            }
+
+            // 애니메이션이 없는 경우 즉시 클래스 제거 (Reflow 강제 후)
+            if (!animate) {
+                void track.offsetWidth;
+                track.classList.remove('no-transition');
             }
         }
 
@@ -1219,45 +1219,92 @@
         // 💡 눈속임 순간이동 시, 카드 크기가 변하는 애니메이션을 강제로 차단하는 함수
         function checkAndReset() {
             if (currentIndex >= 10 || currentIndex <= 4) {
-                // 1. 트랙 전체의 애니메이션 강제 종료 (.no-transition 적용)
-                track.classList.add('no-transition');
-
-                // 2. 인덱스 순간이동
+                // 인덱스 순간이동
                 if (currentIndex >= 10) currentIndex -= 5;
                 else if (currentIndex <= 4) currentIndex += 5;
 
-                // 3. 궤도와 카드의 위치를 애니메이션 없이(false) 즉시 변경
+                // 궤도와 카드의 위치를 애니메이션 없이(false) 즉시 변경
                 updateCarousel(currentIndex, false);
-
-                // 4. 브라우저에게 변경사항 즉시 렌더링 강제 (Reflow)
-                void track.offsetWidth;
-
-                // 5. 다시 애니메이션 켜기
-                track.classList.remove('no-transition');
             }
-            isScrolling = false;
+            isMoving = false;
         }
 
-        wrapper.addEventListener('wheel', (e) => {
-            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+        // ── 실시간 드래그 슬라이더 처리 ─────────────────────────────────
+        let dragStartX = 0;
+        let dragBaseX = 0;   // 드래그 시작 시점의 현재 translateX 값
+        let isDragging = false;
+        const SWIPE_THRESHOLD = 30; // px — 이 이상 움직여야 슬라이드 이동
 
-            e.preventDefault();
-            if (isScrolling) return;
+        // 현재 track의 translateX 값을 숫자로 읽어오는 헬퍼
+        function getCurrentTranslateX() {
+            const style = window.getComputedStyle(track);
+            const matrix = new DOMMatrix(style.transform);
+            return matrix.m41;
+        }
 
-            isScrolling = true;
-            let direction = e.deltaY > 0 ? 1 : -1;
-            currentIndex += direction;
+        function onDragStart(clientX) {
+            if (isMoving) return;
+            dragStartX = clientX;
+            dragBaseX = getCurrentTranslateX();
+            isDragging = true;
+            track.classList.add('no-transition');
+            track.style.transition = 'none';
+        }
 
+        function onDragMove(clientX) {
+            if (!isDragging) return;
+            const delta = clientX - dragStartX;
+            track.style.transform = `translate3d(${dragBaseX + delta}px, 0, 0)`;
+        }
+
+        function onDragEnd(clientX) {
+            if (!isDragging) return;
+            isDragging = false;
+            track.classList.remove('no-transition');
+
+            const diff = dragStartX - clientX;
+
+            if (Math.abs(diff) < SWIPE_THRESHOLD) {
+                updateCarousel(currentIndex, true);
+                // 스냅백 후 상태 해제
+                setTimeout(() => { isMoving = false; }, 500);
+                return;
+            }
+
+            isMoving = true;
+            currentIndex += diff > 0 ? 1 : -1;
             updateCarousel(currentIndex, true);
-
-            // 💡 0.5초 뒤에 눈속임 함수 실행
             setTimeout(checkAndReset, 500);
+        }
+
+        // 마우스 드래그 (wrapper에서 시작, window에서 move/up 수신)
+        wrapper.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            onDragStart(e.clientX);
+        });
+        window.addEventListener('mousemove', (e) => { onDragMove(e.clientX); });
+        window.addEventListener('mouseup', (e) => { onDragEnd(e.clientX); });
+
+        // 터치 스와이프 (스크롤 간섭 방지를 위해 passive: false 설정)
+        wrapper.addEventListener('touchstart', (e) => { 
+            onDragStart(e.touches[0].clientX); 
+        }, { passive: true });
+        
+        wrapper.addEventListener('touchmove', (e) => { 
+            if (isDragging) {
+                e.preventDefault(); // 슬라이드 중 페이지 스크롤 차단
+                onDragMove(e.touches[0].clientX); 
+            }
         }, { passive: false });
+        
+        wrapper.addEventListener('touchend', (e) => { 
+            onDragEnd(e.changedTouches[0].clientX); 
+        }, { passive: true });
 
         dots.forEach((dot, idx) => {
             dot.addEventListener('click', () => {
-                if (isScrolling) return;
-                isScrolling = true;
+                if (isMoving) return;
+                isMoving = true;
                 currentIndex = idx + 5;
                 updateCarousel(currentIndex, true);
 
@@ -1268,8 +1315,8 @@
 
         allCards.forEach((card, idx) => {
             card.addEventListener('click', () => {
-                if (isScrolling || idx === currentIndex) return;
-                isScrolling = true;
+                if (isMoving || idx === currentIndex) return;
+                isMoving = true;
                 currentIndex = idx;
                 updateCarousel(currentIndex, true);
 
@@ -1333,7 +1380,7 @@
             });
         });
     </script>
-  <script src="../js/gnb.js"></script>
+    <script src="../js/gnb.js"></script>
 </body>
 
 </html>

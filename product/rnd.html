@@ -99,13 +99,22 @@
             line-height: 140%;
             letter-spacing: 0;
 
-            color: #363636;
+            color: #E9E9E9;
             text-align: center;
 
             /* 박스 내 텍스트 정중앙 배치 */
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .subtitle-section p .char {
+            transition: color 0.15s ease;
+        }
+
+        .subtitle-section p .char.active {
+            color: #363636;
         }
 
         /* ===== 연구개발 스토리 ===== */
@@ -170,25 +179,34 @@
         .story-img::before {
             content: '';
             position: absolute;
-            width: 1365px;
-            height: 1361px;
-            left: -391px;
-            top: -390px;
+
+            /* 📍 1. 억지로 키웠던 고정 픽셀을 부모 박스와 똑같게 100%로 맞춥니다. */
+            width: 100%;
+            height: 100%;
+
+            /* 📍 2. 왼쪽 위로 잡아당겼던 위치를 원상복구 합니다. */
+            left: 0;
+            top: 0;
+
             filter: blur(2.5px);
             z-index: 1;
+
+            /* 💡 팁: 블러(blur)를 주면 테두리가 하얗게 흐려지는 현상이 생길 수 있습니다. 
+       이를 가리기 위해 약간만 (5% 정도) 크기를 키워주는 테크닉을 씁니다. */
+            transform: scale(1.05);
         }
 
         /* 각 박스별 로컬 이미지 및 그라데이션 적용 */
         .story-img.lab1::before {
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('assets/rnd/img_w_변화의 흐름을 읽는 기술 기획.png') no-repeat center/cover;
+            background: url('assets/rnd/img_w_변화의 흐름을 읽는 기술 기획.png') no-repeat center/cover;
         }
 
         .story-img.lab2::before {
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('assets/rnd/img_w_실제적 가치로 이어진 연구.png') no-repeat center/cover;
+            background: url('assets/rnd/img_w_실제적 가치로 이어진 연구.png') no-repeat center/cover;
         }
 
         .story-img.lab3::before {
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('assets/rnd/img_w_미래 혁신의 기회 탐색.png') no-repeat center/cover;
+            background: url('assets/rnd/img_w_미래 혁신의 기회 탐색.png') no-repeat center/cover;
         }
 
         /* 아이콘 */
@@ -503,8 +521,8 @@
             text-align: right;
         }
     </style>
-  <link rel="stylesheet" href="../css/common.css">
-  <link rel="stylesheet" href="../css/gnb.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/gnb.css">
 </head>
 
 <body data-page="rnd">
@@ -745,8 +763,62 @@
                 }
             });
         });
+
+        // 💡 Subtitle Scroll Highlight
+        document.addEventListener('DOMContentLoaded', () => {
+            const p = document.querySelector('.subtitle-section p');
+            if (!p) return;
+
+            function wrapCharacters(node) {
+                if (node.nodeType === 3) {
+                    const text = node.nodeValue;
+                    const fragment = document.createDocumentFragment();
+                    for (let i = 0; i < text.length; i++) {
+                        const char = text[i];
+                        if (char === ' ' || char === '\n') {
+                            fragment.appendChild(document.createTextNode(char));
+                        } else {
+                            const span = document.createElement('span');
+                            span.className = 'char';
+                            span.textContent = char;
+                            fragment.appendChild(span);
+                        }
+                    }
+                    node.parentNode.replaceChild(fragment, node);
+                } else if (node.nodeType === 1 && node.nodeName !== 'BR') {
+                    Array.from(node.childNodes).forEach(wrapCharacters);
+                }
+            }
+            wrapCharacters(p);
+
+            const chars = p.querySelectorAll('.char');
+            const section = document.querySelector('.subtitle-section');
+
+            function onScroll() {
+                const sectionTop = section.offsetTop;
+                const startScroll = Math.max(0, sectionTop - window.innerHeight * 0.8);
+                const endScroll = startScroll + 300;
+
+                let progress = (window.scrollY - startScroll) / (endScroll - startScroll);
+                progress = Math.max(0, Math.min(1, progress));
+
+                const total = chars.length;
+                const activeCount = Math.floor(progress * total);
+
+                chars.forEach((char, index) => {
+                    if (index < activeCount) {
+                        char.classList.add('active');
+                    } else {
+                        char.classList.remove('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', onScroll);
+            onScroll();
+        });
     </script>
-  <script src="../js/gnb.js"></script>
+    <script src="../js/gnb.js"></script>
 </body>
 
 </html>

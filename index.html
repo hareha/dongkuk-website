@@ -56,10 +56,22 @@
       background: #fff !important;
       box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06) !important;
     }
-    #nav.gnb-menu-active .nav-links a { color: #4E4E4E !important; }
-    #nav.gnb-menu-active .nav-divider { background: #D3D3D3 !important; }
-    #nav.gnb-menu-active .nav-hamburger span { background: #4E4E4E !important; }
-    #nav.gnb-menu-active .nav-logo img { filter: brightness(0) !important; }
+
+    #nav.gnb-menu-active .nav-links a {
+      color: #4E4E4E !important;
+    }
+
+    #nav.gnb-menu-active .nav-divider {
+      background: #D3D3D3 !important;
+    }
+
+    #nav.gnb-menu-active .nav-hamburger span {
+      background: #4E4E4E !important;
+    }
+
+    #nav.gnb-menu-active .nav-logo img {
+      filter: brightness(0) !important;
+    }
 
     #nav.nav-hide {
       transform: translateY(-100%);
@@ -468,6 +480,9 @@
       height: clamp(8px, 0.573vw, 11px);
     }
 
+
+
+
     /* ══ 제품소개 ══ */
     #product-wrapper {
       position: relative;
@@ -603,8 +618,12 @@
       position: absolute;
       left: clamp(15px, 1.5625vw, 30px);
       top: clamp(15px, 1.5625vw, 30px);
-      width: clamp(127px, 13.28vw, 255px);
+
+      /* 📍 핵심 수정: 아래 p 태그와 너비(width)를 완벽하게 똑같이 맞췄습니다! */
+      width: clamp(180px, 19vw, 365px);
+
       height: clamp(45px, 4.6875vw, 90px);
+      /* (이 높이는 피그마 디자인에 맞게 그대로 두셔도 됩니다) */
       font-size: clamp(18px, 1.56vw, 30px);
       font-weight: 600;
       color: #070707;
@@ -619,7 +638,10 @@
       position: absolute;
       left: clamp(15px, 1.5625vw, 30px);
       bottom: clamp(15px, 1.5625vw, 30px);
+
+      /* 📍 기준이 되는 너비 */
       width: clamp(180px, 19vw, 365px);
+
       font-size: clamp(14px, 1.15vw, 22px);
       font-weight: 400;
       color: #4e4e4e;
@@ -852,381 +874,613 @@
     /* ══ 투자 (지속 가능한 성장) ══ */
     #invest-wrapper {
       position: relative;
-      height: 250vh;
+      height: 350vh;
       z-index: 2;
-      /* 👇 스크롤바와 상관없이 양옆 30px의 무조건적인 빈 공간 생성 */
-      padding: 0 30px !important;
-      box-sizing: border-box !important;
-      width: 100%;
     }
 
     #invest {
       position: sticky;
       top: 0;
-
-      /* 👇 요청하신 1860x1080 사이즈 강제 고정! */
-      width: 1860px !important;
-      height: 1080px !important;
-
-      /* 👇 화면 크기가 1860px보다 작을 때 화면 밖으로 튀어나가지 않게 막아줍니다. */
-      max-width: 100% !important;
-
-      /* 👇 지정된 1860px 카드를 화면 정중앙에 예쁘게 배치합니다. */
-      margin: 0 auto !important;
-
-      background: #F1EDEA;
-      border-radius: 30px;
+      height: 100vh;
+      background: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-
-      /* F1EDEA 안쪽 콘텐츠와의 기본 여백 60px 유지 */
-      padding: 0 60px !important;
       overflow: hidden;
+    }
+
+    /* 메인 투자 컨테이너: 1860x1044 bg #F1EDEA */
+    .invest-card-wrap {
+      width: 1860px;
+      height: 1044px;
+      background: #F1EDEA;
+      border-radius: 30px;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    /* 제목 + 버튼 그룹 — 좌측 상단 */
+    .invest-title-block {
+      position: absolute;
+      left: 90px;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .invest-title-text {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 53px;
+      font-weight: 700;
+      color: #000;
+      letter-spacing: -0.02em;
+      line-height: 1.35;
+    }
+
+    .invest-btn-row {
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .invest-btn-fill {
+      /* 기존 코드 유지 */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 24px;
+      height: 64px;
+      background: #000;
+      border-radius: 14px;
+      font-family: 'Pretendard', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: #fff;
+      text-decoration: none;
+      white-space: nowrap;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+      /* 📍 추가 (선택 사항): 버튼도 부드럽게 */
+    }
+
+    .invest-btn-outline {
+      /* 기존 코드 유지 */
+      width: 64px;
+      height: 64px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #000;
+      border-radius: 14px;
+      font-size: 20px;
+      color: #000;
+      text-decoration: none;
+
+      /* 📍 추가: 색상이 부드럽게 변하도록 애니메이션 설정 */
+      transition: all 0.3s ease;
+    }
+
+    /* =========================================
+       🖱️ 마우스를 올렸을 때 (Hover) 효과 추가
+       ========================================= */
+
+    /* 1. 화살표 버튼 자체에 마우스를 올렸을 때 */
+    .invest-btn-outline:hover {
+      background: #F27100;
+      /* 피그마 스펙: 주황색 배경 */
+      border-color: #F27100;
+      /* 까만 테두리도 주황색으로 덮기 */
+      color: #FFFFFF;
+      /* 화살표 글씨/아이콘을 흰색으로 */
+    }
+
+    /* 2. (선택 사항) '투자정보 센터' 버튼을 포함해 그룹 전체에 마우스를 올려도 반응하게 하려면 */
+    .invest-btn-row:hover .invest-btn-outline {
+      background: #F27100;
+      border-color: #F27100;
+      color: #FFFFFF;
+    }
+
+    /* 카드 그룹 — bottom 영역 (left:90, top:388, w:1679, h:556) */
+    .invest-cards-row {
+      position: absolute;
+      left: 90px;
+      top: 388px;
+      width: 1679px;
+      height: 556px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* 주가 카드 — w:396, h:556 */
+    .inv-card-stock {
+      width: 396px;
+      height: 556px;
+      background: #FFFFFF;
+      border-radius: 30px;
+      padding: 32px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      flex-shrink: 0;
       box-sizing: border-box;
     }
 
-    .invest-inner {
-      background: url('assets/main/bg-invest.png') center center / cover no-repeat;
-      border-radius: clamp(16px, 1.667vw, 32px);
-      width: 100%;
-      height: clamp(540px, 56.25vw, 1080px);
-      max-height: calc(100vh - 80px);
+    .inv-stock-header {
       display: flex;
-      align-items: stretch;
-      padding: 0 clamp(15px, 1.563vw, 30px) 0 clamp(15px, 1.563vw, 30px) !important;
-      gap: clamp(30px, 3.125vw, 60px);
-      position: relative;
-      z-index: 1;
+      flex-direction: row;
+      align-items: center;
+      padding: 0px;
+      gap: 16px;
+      width: 316px;
+      height: 54.53px;
     }
 
-    .invest-left {
-      flex: 0 0 clamp(260px, 26.042vw, 500px);
+    .inv-stock-name {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: clamp(50px, 5.208vw, 100px) 0 clamp(30px, 3.125vw, 60px);
-    }
-
-    .invest-title {
-      font-size: clamp(32px, 3.125vw, 60px);
-      font-weight: 700;
-      line-height: 1.4;
-      color: #070707;
-    }
-
-    .invest-company {
-      font-size: clamp(14px, 1.25vw, 24px);
-      font-weight: 700;
-      color: #F27100;
-      margin-bottom: 8px;
-      line-height: 1.5;
-    }
-
-    .invest-price {
-      font-size: clamp(36px, 4.167vw, 80px);
-      font-weight: 600;
-      color: #070707;
-      line-height: 1.4;
-      margin-bottom: 8px;
-    }
-
-    .invest-change {
-      font-size: clamp(14px, 1.25vw, 24px);
-      font-weight: 400;
-      color: #070707;
-      line-height: 1.5;
-      margin-bottom: clamp(30px, 3.125vw, 60px);
-    }
-
-    .invest-btn-group {
-      display: flex;
+      flex-direction: row;
       align-items: center;
       gap: 10px;
     }
 
-    .invest-btn-pill {
+    .inv-company-label {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 21px;
+      font-weight: 500;
+      color: #4E4E4E;
+      line-height: 1.6;
+    }
+
+    .invest-ticker-badge {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: clamp(14px, 0.938vw, 18px);
-      font-weight: 700;
-      color: #fff;
-      background: #0a0a0a;
-      border: none;
-      padding: clamp(12px, 0.938vw, 18px) clamp(18px, 1.458vw, 28px);
-      border-radius: 16px;
-      text-decoration: none;
+      padding: 6px 12px;
+      border: 1px solid #F48D33;
+      border-radius: 6px;
+      font-family: 'Pretendard', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #F27100;
       white-space: nowrap;
-      transition: opacity 0.2s;
     }
 
-    .invest-btn-pill:hover {
-      opacity: 0.85;
-    }
-
-    .invest-btn-arrow {
-      width: clamp(40px, 3.125vw, 60px);
-      height: clamp(40px, 3.125vw, 60px);
-      border-radius: 16px;
-      background: transparent;
-      border: 1.5px solid #0a0a0a;
-      color: #0a0a0a;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: clamp(16px, 1.146vw, 22px);
-      text-decoration: none;
-      flex-shrink: 0;
-      transition: opacity 0.2s;
-    }
-
-    .invest-btn-arrow:hover {
-      background: #F27100;
-      border-color: #F27100;
-      color: #fff;
-    }
-
-    .invest-cards-wrap {
-      flex: 1;
-      align-self: stretch;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .invest-cards-track {
-      position: relative;
-      width: 100%;
-      height: auto;
+    .inv-stock-body {
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
-      /* 우측 30px 정렬 유지 */
-
-      /* 👇 카드 사이의 간격은 무조건 40px로 고정됩니다! */
-      gap: 16px;
-      padding: 30vh 0;
-    }
-
-    .ic {
-      border-radius: 20px;
-      padding: clamp(20px, 3.5vw, 32px);
-
-      position: relative !important;
-      right: 0 !important;
-      left: auto !important;
-
-      /* 👇 대기 중일 때의 크기 (기존) */
-      width: clamp(400px, 41.406vw, 795px) !important;
-      height: clamp(300px, 20.156vw, 387px) !important;
-
-      transform: none !important;
-      /* scale 사용 안함 (간격 벌어짐 방지) */
-      opacity: 1 !important;
-      box-sizing: border-box;
-
-      transition: width 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        height 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        opacity 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-
-      word-break: keep-all;
-      overflow-wrap: break-word;
-    }
-
-    .ic.ic-active {
-      width: clamp(450px, 43.489vw, 835px) !important;
-      height: clamp(337px, 23vw, 406px) !important;
-      z-index: 2;
-    }
-
-    .ic.ic-past,
-    .ic.ic-next {
-      z-index: 1;
-      width: clamp(400px, 41.406vw, 795px) !important;
-      height: clamp(300px, 20.156vw, 387px) !important;
-    }
-
-    .ic.ic-past {
-      transform: translateY(calc(-50% - var(--ic-slide)));
-    }
-
-    .ic.ic-next {
-      transform: translateY(calc(-50% + var(--ic-slide)));
-    }
-
-    .ic .ic-top {
-      display: flex;
       align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 20px;
+      padding: 0px;
+      gap: 165px;
+      width: 316px;
+      height: 324.37px;
+      flex: none;
+      order: 1;
+      align-self: stretch;
+      flex-grow: 0;
     }
 
-    .ic .ic-label {
-      font-size: clamp(18px, 1.25vw, 24px);
+    .inv-price-num {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      padding: 0px;
+      gap: 14px;
+      width: 293px;
+      height: 55.37px;
+      font-family: 'Pretendard', sans-serif;
+      font-size: 56px;
       font-weight: 700;
-      line-height: 1.5;
+      color: #111;
+      line-height: 1;
+      letter-spacing: -0.02em;
     }
 
-    .ic .ic-num {
-      font-size: clamp(36px, 3.125vw, 60px);
-      font-weight: 700;
-      line-height: 1.4;
-    }
-
-    .ic .ic-num em {
-      font-size: clamp(14px, 1.04vw, 20px);
+    .inv-price-unit {
+      font-size: 22px;
       font-weight: 500;
-      font-style: normal;
+      color: #111;
       margin-left: 4px;
     }
 
-    .ic .ic-sub {
-      font-size: clamp(14px, 1.04vw, 20px);
-      font-weight: 500;
-      line-height: 1.6;
-      margin-top: 4px;
-    }
-
-    .ic-orange {
-      background: #F27100;
-      height: auto;
-      min-height: clamp(280px, 35vw, 387px);
+    .inv-change-box {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: 32px;
-      padding: clamp(24px, 2.39vw, 46px) clamp(20px, 1.66vw, 32px) clamp(20px, 1.66vw, 32px);
+      justify-content: center;
+      align-items: flex-start;
+      padding: 16px 20px;
+      gap: 14px;
+      width: 316px;
+      height: 104px;
+      background: #F8F9FB;
+      border-radius: 16px;
+      box-sizing: border-box;
     }
 
-    .ic-orange .ic-label,
-    .ic-orange .ic-num {
-      color: #FFFFFF;
+    .inv-change-row {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 0px;
+      gap: 30px;
+      width: 276px;
+      height: 17.54px;
     }
 
-    .ic-orange .ic-sub {
-      color: rgba(255, 255, 255, 0.8);
+    .inv-change-row:last-child {
+      gap: 61px;
+      width: 201.38px;
+      height: 17.46px;
     }
 
-    .ic-icon-img {
-      width: 106px;
-      height: 106px;
-      object-fit: contain;
+    .inv-change-label {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: #4E4E4E;
+    }
+
+    .inv-change-val {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 4px;
+      font-family: 'Pretendard', sans-serif;
+      font-size: 17px;
+      font-weight: 500;
+      color: #F64301;
+    }
+
+    .inv-change-val .tri {
+      font-size: 10px;
+    }
+
+    .inv-divider-thin {
+      width: 100%;
+      height: 1px;
+      background: #E9E9E9;
+    }
+
+    /* 국내시장+누적판매량 스택 — w:450 */
+    .inv-card-col {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
       flex-shrink: 0;
     }
 
-    .ic-photo {
-      height: auto;
-      min-height: clamp(280px, 35vw, 387px);
+    /* 국내시장 사진 카드 — w:450, h:272 */
+    .inv-card-market {
+      width: 450px;
+      height: 272px;
+      border-radius: 20px;
+      background: url('main/card_국내시장\ 점유율.png') center/cover no-repeat;
+      padding: 32px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 32px;
-      background: url('assets/main/bg-card-market.png') center center / cover no-repeat;
-      padding: clamp(24px, 2.39vw, 46px) clamp(20px, 1.66vw, 32px) clamp(20px, 1.66vw, 32px);
-    }
-
-    .ic-photo .ic-label {
-      color: rgba(255, 255, 255, 0.85);
-    }
-
-    .ic-photo .ic-num {
-      color: #fff;
-    }
-
-    .ic-photo .ic-sub {
-      color: rgba(255, 255, 255, 0.75);
-    }
-
-    .ic-white {
-      background: #fff;
-      height: auto;
-      min-height: clamp(280px, 35vw, 387px);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 32px;
-      padding: clamp(24px, 2.39vw, 46px) clamp(20px, 1.66vw, 32px) clamp(20px, 1.66vw, 32px);
-    }
-
-    .ic-white .ic-label,
-    .ic-white .ic-num,
-    .ic-white .ic-num em,
-    .ic-white .ic-sub {
-      color: #070707;
-    }
-
-    .ic-calendar {
-      --ic-slide: clamp(260px, 27.083vw, 520px);
-      height: auto;
-      min-height: clamp(300px, 20.156vw, 387px);
-      width: clamp(400px, 41.406vw, 795px);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: 20px;
-      background: url('assets/main/bg-card-sales.png') center center / cover no-repeat;
-      position: relative !important;
-      right: 0 !important;
-      left: auto !important;
+      box-sizing: border-box;
+      position: relative;
       overflow: hidden;
-      padding: clamp(24px, 2.39vw, 46px) clamp(20px, 1.66vw, 32px) clamp(20px, 1.66vw, 32px);
-      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), width 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    .ic-calendar.ic-active {
-      width: clamp(450px, 43.489vw, 835px);
-    }
-
-    .ic-calendar::before {
+    .inv-card-market::after {
       content: '';
       position: absolute;
-      right: -60px;
-      top: -60px;
-      width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      border: 40px solid rgba(255, 255, 255, 0.04);
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.25) 100%);
+      border-radius: 20px;
       pointer-events: none;
     }
 
-    .ic-calendar .ic-label {
-      color: rgba(255, 255, 255, 0.9);
+    .inv-card-market .ic-top,
+    .inv-card-market .ic-bottom {
+      position: relative;
+      z-index: 1;
     }
 
-    .ic-cal-list {
+    /* 누적판매량 흰 카드 — w:450, h:270 */
+    .inv-card-accum {
+      width: 450px;
+      height: 270px;
+      border-radius: 20px;
+      background: #fff;
+      padding: 32px;
       display: flex;
       flex-direction: column;
-      gap: 0;
+      justify-content: space-between;
+      box-sizing: border-box;
     }
 
-    .ic-cal-item {
+    /* IR 자료실 오렌지 카드 — w:793, h:556 */
+    .inv-card-ir {
+      width: 793px;
+      height: 556px;
+      background: #F27100;
+      border-radius: 30px;
+      padding: 0;
+      position: relative;
+      box-sizing: border-box;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .inv-card-ir .ic-label-white {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.5;
+    }
+
+    /* 공통 카드 내부 텍스트 */
+    .inv-card-label {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 21px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.5;
+    }
+
+    .inv-card-label-dark {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 21px;
+      font-weight: 700;
+      color: #4E4E4E;
+      line-height: 1.5;
+    }
+
+    .inv-card-num {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 44px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.01em;
+      line-height: 1.4;
+    }
+
+    .inv-card-num-dark {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 44px;
+      font-weight: 700;
+      color: #111;
+      letter-spacing: -0.01em;
+      line-height: 1.4;
+    }
+
+    .inv-card-unit {
+      font-size: 18px;
+      font-weight: 500;
+      margin-left: 4px;
+    }
+
+    .inv-card-sub {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: 4px;
+    }
+
+    .inv-card-sub-dark {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: #4E4E4E;
+      margin-top: 4px;
+    }
+
+    .inv-card-top-row {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .inv-card-icon {
+      width: 62px;
+      height: 62px;
+      flex-shrink: 0;
+    }
+
+    .inv-card-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .inv-card-icon-lg {
+      width: 106px;
+      height: 106px;
+      flex-shrink: 0;
+    }
+
+    .inv-card-icon-lg img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* IR 자료실 카드 헤더 */
+    .ir-card-header {
+      position: absolute;
+      top: 32px;
+      left: 40px;
+      right: 40px;
+      height: 106px;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 60px;
+    }
+
+    .ir-header-left {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      height: 58px;
+      flex: 1;
+    }
+
+    .ir-header-icon {
+      width: 30px;
+      height: 30px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 10px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .ic-cal-item:last-child {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .ic-cal-item .ev-name {
-      font-size: clamp(16px, 1.25vw, 24px);
-      font-weight: 400;
-      line-height: 1.5;
-      color: #FFFFFF;
-      word-break: keep-all;
-    }
-
-    .ic-cal-item .ev-date {
-      font-size: clamp(13px, 0.937vw, 18px);
-      font-weight: 700;
-      line-height: 1.6;
-      color: #FFFFFF;
+      justify-content: center;
       flex-shrink: 0;
-      margin-left: 16px;
+    }
+
+    .ir-header-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .ir-header-title {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.5;
+      white-space: nowrap;
+    }
+
+    .ir-header-right-icon {
+      width: 106px;
+      height: 106px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .ir-header-right-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* IR 자료실 내부 문서 콘텐츠 영역 */
+    .ir-doc-area {
+      position: absolute;
+      bottom: 32px;
+      left: 40px;
+      right: 40px;
+    }
+
+    .ir-doc-row {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 40px;
+      width: 713px;
+      height: 280px;
+    }
+
+    .ir-doc-item {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 0;
+      width: 316px;
+      height: 237px;
+    }
+
+    .ir-doc-inner {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      align-content: flex-start;
+      row-gap: 20px;
+      width: 316px;
+      height: 100%;
+    }
+
+    .ir-doc-type-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      width: 273px;
+      height: auto;
+    }
+
+    .ir-doc-type {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 39px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .ir-doc-desc-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      gap: 64px;
+      width: 316px;
+      flex: 1;
+    }
+
+    .ir-doc-desc {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 19px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+      width: 100%;
+    }
+
+    .ir-doc-footer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 316px;
+      height: 60px;
+      flex-shrink: 0;
+    }
+
+    .ir-doc-date {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .ir-doc-dl {
+      width: 60px;
+      height: 60px;
+      background: rgba(241, 237, 234, 0.2);
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .ir-doc-dl svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* 세로 구분선 */
+    .ir-divider-v {
+      width: 1px;
+      height: 280px;
+      background: rgba(255, 255, 255, 0.4);
+      flex-shrink: 0;
+      align-self: center;
     }
 
     /* ══ 고객지원 ══ */
@@ -1855,7 +2109,7 @@
     <div class="orb-line-clip"><span class="orb-line" id="p2l1">동국산업의 혁신은</span></div>
     <div class="orb-line-clip"><span class="orb-line" id="p2l2">더 단단한 내일을 향합니다.</span></div>
     <div class="orb-cta-group" id="orb-cta">
-      <a href="#" class="orb-btn-main">동국산업 이야기</a>
+      <a href="#" class="orb-btn-main">동국산업 소개</a>
       <a href="#" class="orb-btn-circle">
         <span class="orb-inner-box">
           <svg class="orb-arrow-svg" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1895,33 +2149,39 @@
               <h2 class="product-title">니켈도금강판</h2>
               <div class="product-info-card">
                 <div class="product-info-text">
-                  <h3>미래 모빌리티를 위한 핵심 소재</h3>
-                  <p>전기차·모빌리티용 원통형 배터리 케이스에 적용되어 친환경·미래 산업 확장을 대표하는 신사업 제품입니다.</p>
+                  <h3> 차세대 에너지 산업을 위한 고기능 소재</h3>
+                  <p>전기차·모빌리티용 원통형 배터리<br>
+                    케이스에 적용되어 친환경·미래 산업<br>
+                    확장을 대표하는 신사업 제품입니다.</p>
                 </div>
-                <div class="product-info-img"><video src="assets/main/video/product_1.mp4" autoplay muted loop playsinline
-                    style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video></div>
+                <div class="product-info-img"><video src="assets/main/video/product_1.mp4" autoplay muted loop
+                    playsinline style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video></div>
               </div>
             </div>
             <div class="prod-step" id="prod-step-2">
               <h2 class="product-title">냉연강판</h2>
               <div class="product-info-card">
                 <div class="product-info-text">
-                  <h3>정밀한 두께와 <br>표면 품질의 완성</h3>
-                  <p>우수한 표면 품질과 치수 정밀도를 가진 고탄소강· 특수강 소재로 안전과 신뢰가 중요한 정밀 부품에 적용됩니다.</p>
+                  <h3>정밀 공정에 최적화된 <br>고품질 강판</h3>
+                  <p>우수한 표면 품질과 치수 정밀도를<br>
+                    가진 고탄소강· 특수강 소재로 안전과<br>
+                    신뢰가 중요한 정밀 부품에 적용됩니다.</p>
                 </div>
-                <div class="product-info-img"><video src="assets/main/video/product_2.mp4" autoplay muted loop playsinline
-                    style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video></div>
+                <div class="product-info-img"><video src="assets/main/video/product_2.mp4" autoplay muted loop
+                    playsinline style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video></div>
               </div>
             </div>
             <div class="prod-step" id="prod-step-3">
               <h2 class="product-title">Q/T 열처리 강판</h2>
               <div class="product-info-card">
                 <div class="product-info-text">
-                  <h3>고강도와<br>내구성의 균형</h3>
-                  <p>높은 강도와 우수한 인성을 동시에 구현해 고성능이 요구되는 산업에 최적화된 성능을 제공합니다.</p>
+                  <h3>강도와 내구성을 고루 갖춘<br>산업용 소재</h3>
+                  <p>높은 강도와 우수한 인성을 동시에<br>
+                    구현해 고성능이 요구되는<br>
+                    산업에 최적화된 성능을 제공합니다.</p>
                 </div>
-                <div class="product-info-img"><video src="assets/main/video/product_3.mp4" autoplay muted loop playsinline
-                    style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video></div>
+                <div class="product-info-img"><video src="assets/main/video/product_3.mp4" autoplay muted loop
+                    playsinline style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video></div>
               </div>
             </div>
           </div>
@@ -1955,7 +2215,7 @@
             </div>
           </div>
           <div class="product-detail-btn">
-            <a href="#">제품상세 더보기</a>
+            <a href="#">제품정보 더보기</a>
             <a href="#" class="circle-arrow">
               <span class="orb-inner-box">
                 <svg class="orb-arrow-svg" width="14" height="11" viewBox="0 0 14 11" fill="none"
@@ -1984,61 +2244,150 @@
 
   <div id="invest-wrapper">
     <section id="invest">
-      <div class="invest-inner">
-        <div class="invest-left">
-          <h2 class="invest-title">지속 가능한<br>성장을 위한 투자</h2>
-          <div class="invest-bottom">
-            <p class="invest-company">동국산업</p>
-            <p class="invest-price">KRW 2,600</p>
-            <p class="invest-change">1월 6일보다 + 50원 (1.9%)</p>
-            <div class="invest-btn-group">
-              <a href="#" class="invest-btn-pill">동국산업 투자정보</a>
-              <a href="#" class="invest-btn-arrow">→</a>
-            </div>
+      <!-- 새 피그마 스펙 레이아웃 -->
+      <div class="invest-card-wrap">
+
+        <!-- 제목 + 버튼 -->
+        <div class="invest-title-block">
+          <p class="invest-title-text">지속 가능한 성장을 위한 투자</p>
+          <div class="invest-btn-row">
+            <a href="#" class="invest-btn-fill">투자정보 센터</a>
+            <a href="#" class="invest-btn-outline">→</a>
           </div>
         </div>
-        <div class="invest-cards-wrap">
-          <div class="invest-cards-track" id="invest-track">
-            <div class="ic ic-orange">
-              <div class="ic-top"><span class="ic-label">글로벌 진출 국가</span><img src="assets/main/ic-global.png"
-                  class="ic-icon-img" alt=""></div>
-              <div>
-                <div class="ic-num">12 <em>개국</em></div>
-                <div class="ic-sub">일본, 중국, 유럽 등</div>
+
+        <!-- 카드 열 -->
+        <div class="invest-cards-row">
+
+          <!-- 주가 카드 -->
+          <div class="inv-card-stock">
+            <div class="inv-stock-header">
+              <div class="inv-stock-name">
+                <span class="inv-company-label">동국산업</span>
+                <span class="invest-ticker-badge">005160</span>
               </div>
             </div>
-            <div class="ic ic-photo">
-              <div class="ic-top"><span class="ic-label">국내시장 점유율</span><img src="assets/main/ic-market.png"
-                  class="ic-icon-img" alt=""></div>
-              <div>
-                <div class="ic-num">62%</div>
-                <div class="ic-sub">냉연 강판 국내 점유율</div>
-              </div>
-            </div>
-            <div class="ic ic-white">
-              <div class="ic-top"><span class="ic-label">누적 판매량</span><img src="assets/main/ic-sales.png" class="ic-icon-img"
-                  alt=""></div>
-              <div>
-                <div class="ic-num">991,428 <em>M/T ton</em></div>
-                <div class="ic-sub">70년간 이어온 철강 경쟁력</div>
-              </div>
-            </div>
-            <div class="ic ic-calendar">
-              <div class="ic-top"><span class="ic-label">캘린더</span><img src="assets/main/ic-calendar.png" class="ic-icon-img"
-                  alt="">
-              </div>
-              <div class="ic-cal-list">
-                <div class="ic-cal-item"><span class="ev-name">정기주주총회</span><span class="ev-date">2025. 09. 17</span>
+            <div class="inv-stock-body">
+              <div class="inv-price-num">2,600<span class="inv-price-unit">원</span></div>
+              <div class="inv-change-box">
+                <div class="inv-change-row">
+                  <span class="inv-change-label">전일대비</span>
+                  <span class="inv-change-val">
+                    <span class="tri">▲</span> +110
+                  </span>
                 </div>
-                <div class="ic-cal-item"><span class="ev-name">주주명부폐쇄기간또는기준일설정일</span><span class="ev-date">2025. 09.
-                    11</span></div>
-                <div class="ic-cal-item"><span class="ev-name">기업설명회(IR)개최</span><span class="ev-date">2025. 09.
-                    08</span></div>
+                <div class="inv-divider-thin"></div>
+                <div class="inv-change-row">
+                  <span class="inv-change-label">등락률</span>
+                  <span class="inv-change-val">
+                    <span class="tri">+</span> 4.02%
+                  </span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+
+          <!-- 국내시장 점유율 + 글로벌 진출 국가 스택 -->
+          <div class="inv-card-col">
+            <!-- 국내시장 점유율 (사진 배경) -->
+            <div class="inv-card-market"
+              style="background: url('assets/main/bg-card-market.png') no-repeat center/cover;">
+              <div class="inv-card-top-row ic-top">
+                <span class="inv-card-label">국내시장 점유율</span>
+                <div class="inv-card-icon">
+                  <img src="assets/main/ic_market.svg" alt="투자 아이콘">
+                </div>
+              </div>
+              <div class="ic-bottom">
+                <div class="inv-card-num">62%</div>
+                <div class="inv-card-sub">냉연 강판 국내 점유율</div>
+              </div>
+            </div>
+
+            <!-- 글로벌 진출 국가 (흰 배경) -->
+            <div class="inv-card-accum">
+              <div class="inv-card-top-row">
+                <span class="inv-card-label-dark">글로벌 진출 국가</span>
+                <div class="inv-card-icon">
+                  <img src="assets/main/ic_global.svg" alt="글로벌 아이콘">
+                </div>
+              </div>
+              <div>
+                <div class="inv-card-num-dark">00<span class="inv-card-unit inv-card-sub-dark">개국</span></div>
+                <div class="inv-card-sub-dark">일본, 중국, 유럽 등</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- IR 자료실 (오렌지 카드) -->
+          <div class="inv-card-ir" style="position:relative;">
+
+            <!-- 헤더 -->
+            <div class="ir-card-header">
+              <div class="ir-header-left">
+                <span class="ir-header-title">IR 자료실</span>
+              </div>
+              <div class="ir-header-right-icon">
+                <img src="assets/main/ic_IR.svg" alt="IR 아이콘">
+              </div>
+            </div>
+
+            <!-- 문서 콘텐츠 영역 -->
+            <div class="ir-doc-area">
+              <div class="ir-doc-row">
+
+                <!-- IR 레터 -->
+                <div class="ir-doc-item">
+                  <div class="ir-doc-inner">
+                    <div class="ir-doc-type-wrap">
+                      <span class="ir-doc-type">IR 레터</span>
+                    </div>
+                    <div class="ir-doc-desc-wrap">
+                      <p class="ir-doc-desc">주주 가치 제고를 위한<br>지속 가능한 성장 전략 및<br>주주 환원 정책 안내</p>
+                      <div class="ir-doc-footer">
+                        <span class="ir-doc-date">2026.04.13</span>
+                        <a href="#" class="ir-doc-dl">
+                          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 3v13M7 12l5 5 5-5M4 20h16" stroke="#fff" stroke-width="1.8"
+                              stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 세로 구분선 -->
+                <div class="ir-divider-v"></div>
+
+                <!-- IR 북 -->
+                <div class="ir-doc-item">
+                  <div class="ir-doc-inner">
+                    <div class="ir-doc-type-wrap">
+                      <span class="ir-doc-type">IR 북</span>
+                    </div>
+                    <div class="ir-doc-desc-wrap">
+                      <p class="ir-doc-desc">2026 IR Book</p>
+                      <div class="ir-doc-footer">
+                        <span class="ir-doc-date">2026.04.13</span>
+                        <a href="#" class="ir-doc-dl">
+                          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 3v13M7 12l5 5 5-5M4 20h16" stroke="#fff" stroke-width="1.8"
+                              stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div><!-- /ir-doc-row -->
+            </div><!-- /ir-doc-area -->
+          </div>
+
+        </div><!-- /invest-cards-row -->
+      </div><!-- /invest-card-wrap -->
+
     </section>
   </div>
 

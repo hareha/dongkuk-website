@@ -511,7 +511,6 @@
             height: 720px;
             border-radius: 1rem;
             overflow: hidden;
-            background: #D0D8E0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1027,7 +1026,7 @@
             height: auto;
             /* 💡 8 * 100vh 제거 */
             background: #FFFFFF;
-            padding: 100px 0;
+            padding: 0 0;
             /* 상하 여백 추가 */
         }
 
@@ -1472,8 +1471,13 @@
         }
 
         /* ===== TAB PANELS ===== */
-        .tab-panel { display: none; }
-        .tab-panel.active { display: block; }
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
 
         /* ===== BRAND RESOURCE CSS ===== */
         /* ===== Reset ===== */
@@ -3881,8 +3885,8 @@
             text-align: right;
         }
     </style>
-  <link rel="stylesheet" href="../css/common.css">
-  <link rel="stylesheet" href="../css/gnb.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/gnb.css">
 </head>
 
 <body data-page="dikel">
@@ -3914,976 +3918,932 @@
     </section>
 
     <div id="tab-product" class="tab-panel active">
-    <!-- Hero Text -->
-    <section class="hero-text-section">
-        <h2>차세대 에너지 <em>혁신에 발맞춰</em><br>미래 산업의 성장을 견인합니다.</h2>
-    </section>
+        <!-- Hero Text -->
+        <section class="hero-text-section">
+            <h2>차세대 에너지 <em>혁신에 발맞춰</em><br>미래 산업의 성장을 견인합니다.</h2>
+        </section>
 
-    <!-- Feature Cards Section -->
-    <section class="feature-cards">
-        <div class="fcards-row">
-            <!-- Premium -->
-            <div class="fcard fcard-premium">
-                <div class="label-text">고도화된 검사 시스템,<br>1등급 원료 사용</div>
-                <div class="title-text">Premium</div>
-                <div class="bg-main"></div>
-                <div class="bg-circle"></div>
-                <div class="product-img"></div>
-            </div>
+        <!-- Feature Cards Section -->
+        <section class="feature-cards">
+            <div class="fcards-row">
+                <!-- Premium -->
+                <div class="fcard fcard-premium">
+                    <div class="label-text">고도화된 검사 시스템,<br>1등급 원료 사용</div>
+                    <div class="title-text">Premium</div>
+                    <div class="bg-main"></div>
+                    <div class="bg-circle"></div>
+                    <div class="product-img"></div>
+                </div>
 
-            <!-- Stable -->
-            <div class="fcard fcard-stable">
-                <div class="label-text">자동화 시스템과 자체 설비로<br>흔들림 없는 생산과 공급</div>
-                <div class="title-text">Stable</div>
-            </div>
+                <!-- Stable -->
+                <div class="fcard fcard-stable">
+                    <div class="label-text">자동화 시스템과 자체 설비로<br>흔들림 없는 생산과 공급</div>
+                    <div class="title-text">Stable</div>
+                </div>
 
-            <!-- Next-Gen -->
-            <div class="fcard fcard-nextgen">
-                <div class="label-text">검증된 기술력과<br>글로벌 노하우로 만든 신소재</div>
-                <div class="title-text">Next-Gen</div>
+                <!-- Next-Gen -->
+                <div class="fcard fcard-nextgen">
+                    <div class="label-text">검증된 기술력과<br>글로벌 노하우로 만든 신소재</div>
+                    <div class="title-text">Next-Gen</div>
+                </div>
             </div>
+        </section>
+
+        <!-- Product Tabs -->
+        <div class="product-tabs">
+            <div class="ptab active">니켈도금강판</div>
+
+            <div class="ptab" onclick="location.href='cold-rolled.html'">냉연강판</div>
+            <div class="ptab" onclick="location.href='heat-treated.html'">Q/T열처리강판</div>
         </div>
-    </section>
 
-    <!-- Product Tabs -->
-    <div class="product-tabs">
-        <div class="ptab active">니켈도금강판</div>
-
-        <div class="ptab" onclick="location.href='product냉연강판.html'">냉연강판</div>
-
-        <div class="ptab" onclick="location.href='productQT열처리강판.html'">Q/T열처리강판</div>
-    </div>
-
-    <!-- 제품소개 -->
-    <section class="product-intro">
-        <div class="inner">
-            <div class="pi-left">
-                <div class="pi-top-content">
-                    <div class="pi-main-texts">
-                        <h1 class="pi-title">니켈도금강판</h1>
-                        <div class="pi-subtitle-group">
-                            <h2 class="pi-subtitle">차세대 에너지 산업을 위한 고기능 소재</h2>
-                            <div class="pi-description-stack">
-                                <p class="pi-desc">냉연코일에 전기도금과 확산 열처리를 적용한 디켈(DiKel)은 <br>우수한 내식성과 가공성으로 원통형 배터리 케이스 제작에
-                                    최적화되어 있습니다.</p>
-                                <p class="pi-desc">이 케이스는 내부 재료를 견고히 보호하는 동시에 효율적인 전기적 연결을 지원하며, <br>특히 뛰어난 박리 안정성으로 2차
-                                    전지의
-                                    안전성을 보장합니다.</p>
-                                <p class="pi-desc">대량 생산 체계를 구축한 동국산업은 이러한 기술력을 바탕으로<br> 차세대 배터리 산업의 수요에 안정적이고 능동적으로
-                                    대응하고
-                                    있습니다.</p>
+        <!-- 제품소개 -->
+        <section class="product-intro">
+            <div class="inner">
+                <div class="pi-left">
+                    <div class="pi-top-content">
+                        <div class="pi-main-texts">
+                            <h1 class="pi-title">니켈도금강판</h1>
+                            <div class="pi-subtitle-group">
+                                <h2 class="pi-subtitle">차세대 에너지 산업을 위한 고기능 소재</h2>
+                                <div class="pi-description-stack">
+                                    <p class="pi-desc">냉연코일에 전기도금과 확산 열처리를 적용한 디켈(DiKel)은 <br>우수한 내식성과 가공성으로 원통형 배터리 케이스
+                                        제작에
+                                        최적화되어 있습니다.</p>
+                                    <p class="pi-desc">이 케이스는 내부 재료를 견고히 보호하는 동시에 효율적인 전기적 연결을 지원하며, <br>특히 뛰어난 박리 안정성으로
+                                        2차
+                                        전지의
+                                        안전성을 보장합니다.</p>
+                                    <p class="pi-desc">대량 생산 체계를 구축한 동국산업은 이러한 기술력을 바탕으로<br> 차세대 배터리 산업의 수요에 안정적이고 능동적으로
+                                        대응하고
+                                        있습니다.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="pi-brochure-section">
-                    <p class="pi-brochure-label">브로슈어 다운로드</p>
-                    <div class="pi-brochure-btns">
-                        <button class="btn-round">
-                            <span class="btn-label">KR</span>
-                            <div class="ic-download">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M12 3V15M12 15L8 11M12 15L16 11M5 19H19" stroke="white" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                        </button>
-                        <button class="btn-round">
-                            <span class="btn-label">EN</span>
-                            <div class="ic-download">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M12 3V15M12 15L8 11M12 15L16 11M5 19H19" stroke="white" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                        </button>
-                        <button class="btn-round">
-                            <span class="btn-label">JP</span>
-                            <div class="ic-download">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M12 3V15M12 15L8 11M12 15L16 11M5 19H19" stroke="white" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                        </button>
-                        <button class="btn-round">
-                            <span class="btn-label">CN</span>
-                            <div class="ic-download">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M12 3V15M12 15L8 11M12 15L16 11M5 19H19" stroke="white" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                        </button>
+                    <div class="pi-brochure-section">
+                        <p class="pi-brochure-label">브로슈어 다운로드</p>
+                        <div class="pi-brochure-btns">
+                            <button class="btn-round">
+                                <span class="btn-label">KR</span>
+                                <div class="ic-download">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M12 3V15M12 15L8 11M12 15L16 11M5 19H19" stroke="white"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                            </button>
+                            <button class="btn-round">
+                                <span class="btn-label">EN</span>
+                                <div class="ic-download">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M12 3V15M12 15L8 11M12 15L16 11M5 19H19" stroke="white"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                            </button>
+                            <button class="btn-round">
+                                <span class="btn-label">JP</span>
+                                <div class="ic-download">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M12 3V15M12 15L8 11M12 15L16 11M5 19H19" stroke="white"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                            </button>
+                            <button class="btn-round">
+                                <span class="btn-label">CN</span>
+                                <div class="ic-download">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M12 3V15M12 15L8 11M12 15L16 11M5 19H19" stroke="white"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
                     </div>
+                </div>
+                <div class="pi-right">
+                    <img src="assets/dikel/니켈강판.png" alt="니켈도금강판">
                 </div>
             </div>
-            <div class="pi-right">
-                <img src="assets/dikel/니켈강판.png" alt="니켈도금강판">
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Accordion Section (Product Specs & Range) -->
-    <div class="accordion">
-        <div class="inner">
-            <!-- 1. 제품사양 -->
-            <div class="acc-item">
-                <div class="acc-header" onclick="toggleAcc(this)">
-                    <div class="acc-header-left">
-                        <div class="acc-dot"></div>
-                        <span class="acc-title">제품사양</span>
-                    </div>
-                    <div class="acc-dropdown-icon">
-                        <img src="../assets/common/ic-dropdown.svg" class="plus" alt="열기">
-                        <img src="../assets/common/ic-dropdown-m.svg" class="minus" alt="닫기">
-                    </div>
-                </div>
-                <div class="acc-body">
-                    <div class="acc-content-box">
-                        <!-- 화학 성분 -->
-                        <div class="spec-grid-group">
-                            <h3 class="spec-grid-label">화학 성분</h3>
-                            <div class="spec-grid-row">
-                                <div class="spec-grid-col">
-                                    <div class="spec-head">C</div>
-                                    <div class="spec-value">Max. 0.08</div>
-                                </div>
-                                <div class="spec-grid-col">
-                                    <div class="spec-head">Si (규소)</div>
-                                    <div class="spec-value">Max. 0.03</div>
-                                </div>
-                                <div class="spec-grid-col">
-                                    <div class="spec-head">Mn (망간)</div>
-                                    <div class="spec-value">Max. 0.40</div>
-                                </div>
-                                <div class="spec-grid-col">
-                                    <div class="spec-head">P (인)</div>
-                                    <div class="spec-value">Max. 0.02</div>
-                                </div>
-                                <div class="spec-grid-col">
-                                    <div class="spec-head">S (황)</div>
-                                    <div class="spec-value">Max. 0.03</div>
-                                </div>
-                            </div>
+        <!-- Accordion Section (Product Specs & Range) -->
+        <div class="accordion">
+            <div class="inner">
+                <!-- 1. 제품사양 -->
+                <div class="acc-item">
+                    <div class="acc-header" onclick="toggleAcc(this)">
+                        <div class="acc-header-left">
+                            <div class="acc-dot"></div>
+                            <span class="acc-title">제품사양</span>
                         </div>
-                        <!-- 기계적 물성 -->
-                        <div class="spec-grid-group">
-                            <h3 class="spec-grid-label">기계적 물성</h3>
-                            <div class="spec-grid-row">
-                                <div class="spec-grid-col">
-                                    <div class="spec-head">T.S</div>
-                                    <div class="spec-value">Max. 430Mpa</div>
-                                </div>
-                                <div class="spec-grid-col">
-                                    <div class="spec-head">Y.P</div>
-                                    <div class="spec-value">Max. 370Mpa</div>
-                                </div>
-                                <div class="spec-grid-col">
-                                    <div class="spec-head">Elongation</div>
-                                    <div class="spec-value">Max. 25%</div>
-                                </div>
-                            </div>
-                            <div class="spec-legend">
-                                <div class="legend-item">
-                                    <span class="legend-tag">*T.S</span>
-                                    <span class="legend-desc">인장강도</span>
-                                </div>
-                                <div class="legend-item">
-                                    <span class="legend-tag">*Y.P</span>
-                                    <span class="legend-desc">항복강도</span>
-                                </div>
-                                <div class="legend-item">
-                                    <span class="legend-tag">*Elongation</span>
-                                    <span class="legend-desc">연신율</span>
-                                </div>
-                            </div>
+                        <div class="acc-dropdown-icon">
+                            <img src="../assets/common/ic-dropdown.svg" class="plus" alt="열기">
+                            <img src="../assets/common/ic-dropdown-m.svg" class="minus" alt="닫기">
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- 2. 생산범위 -->
-            <div class="acc-item">
-                <div class="acc-header" onclick="toggleAcc(this)">
-                    <div class="acc-header-left">
-                        <div class="acc-dot"></div>
-                        <span class="acc-title">생산범위</span>
-                    </div>
-                    <div class="acc-dropdown-icon">
-                        <img src="../assets/common/ic-dropdown.svg" class="plus" alt="열기">
-                        <img src="../assets/common/ic-dropdown-m.svg" class="minus" alt="닫기">
-                    </div>
-                </div>
-                <div class="acc-body">
-                    <div class="acc-content-box">
-                        <!-- 제품 규격 -->
-                        <div class="spec-grid-group">
-                            <h3 class="spec-grid-label">제품 규격</h3>
-                            <div class="spec-grid-row">
-                                <div class="spec-grid-col">
-                                    <div class="spec-head">투입 두께</div>
-                                    <div class="spec-value">0.2~1.0mm</div>
-                                </div>
-                                <div class="spec-grid-col">
-                                    <div class="spec-head">투입 폭</div>
-                                    <div class="spec-value">750~1,219mm</div>
-                                </div>
-                                <div class="spec-grid-col">
-                                    <div class="spec-head">Capa.</div>
-                                    <div class="spec-value">80,000 (130,000까지 확충 예정)</div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Nickel Plating Line -->
-                        <div class="spec-grid-group">
-                            <h3 class="spec-grid-label">니켈도금 Nickel Plating Line</h3>
-                            <div class="spec-grid-row">
-                                <div class="spec-grid-col">
-                                    <div class="spec-head">투입 두께</div>
-                                    <div class="spec-value">0.2~1.0mm</div>
-                                </div>
-                                <div class="spec-grid-col">
-                                    <div class="spec-head">투입 폭</div>
-                                    <div class="spec-value">750~1,219mm</div>
-                                </div>
-                                <div class="spec-grid-col">
-                                    <div class="spec-head">Capa.</div>
-                                    <div class="spec-value">80,000 (130,000까지 확충 예정)</div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Slitting Line -->
-                        <div class="spec-grid-group">
-                            <h3 class="spec-grid-label">슬리팅(전단) Slitting Line</h3>
-                            <div class="spec-grid-row">
-                                <div class="spec-grid-col">
-                                    <div class="spec-head">투입 두께</div>
-                                    <div class="spec-value">0.2~1.0mm</div>
-                                </div>
-                                <div class="spec-grid-col">
-                                    <div class="spec-head">투입 폭</div>
-                                    <div class="spec-value">750~1,219mm</div>
-                                </div>
-                                <div class="spec-grid-col">
-                                    <div class="spec-head">출축 폭</div>
-                                    <div class="spec-value">Min. 25mm</div>
-                                </div>
-                                <div class="spec-grid-col">
-                                    <div class="spec-head">Capa.</div>
-                                    <div class="spec-value">130,000</div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Annealing Line (Simplified Grid Example) -->
-                        <div class="spec-grid-group">
-                            <h3 class="spec-grid-label">소둔(열처리) Annealing Line</h3>
-                            <div class="spec-ann-grid-row">
-                                <!-- Col 1: 소둔 유형 -->
-                                <div class="spec-ann-col">
-                                    <div class="spec-head">소둔 유형</div>
-                                    <div class="spec-value">Batch</div>
-                                    <div class="spec-value">Continuous</div>
-                                </div>
-                                <!-- Col 2: 투입 폭 -->
-                                <div class="spec-ann-col">
-                                    <div class="spec-head">투입 폭</div>
-                                    <div class="spec-value">H 100%</div>
-                                    <div class="spec-value">H, N Mix</div>
-                                </div>
-                                <!-- Col 3: 출축 폭 -->
-                                <div class="spec-ann-col">
-                                    <div class="spec-head">출축 폭</div>
-                                    <div class="spec-value">150~1,320mm</div>
-                                    <div class="spec-value">750~1,219mm</div>
-                                </div>
-                                <!-- Col 4: Capa. -->
-                                <div class="spec-ann-col">
-                                    <div class="spec-head">Capa.</div>
-                                    <div class="spec-value">-</div>
-                                    <div class="spec-value">80,000 (130,000까지 <br> 확충 예정)</div>
-                                </div>
-                                <!-- Col 5: 추가 설비 (Wide) -->
-                                <div class="spec-ann-col wide">
-                                    <div class="spec-head" style="height: 50px;">추가 설비</div>
-                                    <div class="spec-ann-sub-header-row">
-                                        <div class="spec-ann-sub-head">투입 두께</div>
-                                        <div class="spec-ann-sub-head">투입 폭</div>
-                                        <div class="spec-ann-sub-head">Capa.</div>
+                    <div class="acc-body">
+                        <div class="acc-content-box">
+                            <!-- 화학 성분 -->
+                            <div class="spec-grid-group">
+                                <h3 class="spec-grid-label">화학 성분</h3>
+                                <div class="spec-grid-row">
+                                    <div class="spec-grid-col">
+                                        <div class="spec-head">C</div>
+                                        <div class="spec-value">Max. 0.08</div>
                                     </div>
-                                    <div class="spec-value" style="height: 100px; border-top: 1px solid #D6D6D6;">-
+                                    <div class="spec-grid-col">
+                                        <div class="spec-head">Si (규소)</div>
+                                        <div class="spec-value">Max. 0.03</div>
                                     </div>
-                                    <div class="spec-ann-value-row">
-                                        <div class="spec-ann-sub-value">0.2~1.0mm</div>
-                                        <div class="spec-ann-sub-value">750~1,219mm</div>
-                                        <div class="spec-ann-sub-value">130,000</div>
+                                    <div class="spec-grid-col">
+                                        <div class="spec-head">Mn (망간)</div>
+                                        <div class="spec-value">Max. 0.40</div>
+                                    </div>
+                                    <div class="spec-grid-col">
+                                        <div class="spec-head">P (인)</div>
+                                        <div class="spec-value">Max. 0.02</div>
+                                    </div>
+                                    <div class="spec-grid-col">
+                                        <div class="spec-head">S (황)</div>
+                                        <div class="spec-value">Max. 0.03</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 기계적 물성 -->
+                            <div class="spec-grid-group">
+                                <h3 class="spec-grid-label">기계적 물성</h3>
+                                <div class="spec-grid-row">
+                                    <div class="spec-grid-col">
+                                        <div class="spec-head">T.S</div>
+                                        <div class="spec-value">Max. 430Mpa</div>
+                                    </div>
+                                    <div class="spec-grid-col">
+                                        <div class="spec-head">Y.P</div>
+                                        <div class="spec-value">Max. 370Mpa</div>
+                                    </div>
+                                    <div class="spec-grid-col">
+                                        <div class="spec-head">Elongation</div>
+                                        <div class="spec-value">Max. 25%</div>
+                                    </div>
+                                </div>
+                                <div class="spec-legend">
+                                    <div class="legend-item">
+                                        <span class="legend-tag">*T.S</span>
+                                        <span class="legend-desc">인장강도</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-tag">*Y.P</span>
+                                        <span class="legend-desc">항복강도</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-tag">*Elongation</span>
+                                        <span class="legend-desc">연신율</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- 2. 생산범위 -->
+                <div class="acc-item">
+                    <div class="acc-header" onclick="toggleAcc(this)">
+                        <div class="acc-header-left">
+                            <div class="acc-dot"></div>
+                            <span class="acc-title">생산범위</span>
+                        </div>
+                        <div class="acc-dropdown-icon">
+                            <img src="../assets/common/ic-dropdown.svg" class="plus" alt="열기">
+                            <img src="../assets/common/ic-dropdown-m.svg" class="minus" alt="닫기">
+                        </div>
+                    </div>
+                    <div class="acc-body">
+                        <div class="acc-content-box">
+                            <!-- 제품 규격 -->
+                            <div class="spec-grid-group">
+                                <h3 class="spec-grid-label">제품 규격</h3>
+                                <div class="spec-grid-row">
+                                    <div class="spec-grid-col">
+                                        <div class="spec-head">투입 두께</div>
+                                        <div class="spec-value">0.2~1.0mm</div>
+                                    </div>
+                                    <div class="spec-grid-col">
+                                        <div class="spec-head">투입 폭</div>
+                                        <div class="spec-value">750~1,219mm</div>
+                                    </div>
+                                    <div class="spec-grid-col">
+                                        <div class="spec-head">Capa.</div>
+                                        <div class="spec-value">80,000 (130,000까지 확충 예정)</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Nickel Plating Line -->
+                            <div class="spec-grid-group">
+                                <h3 class="spec-grid-label">니켈도금 Nickel Plating Line</h3>
+                                <div class="spec-grid-row">
+                                    <div class="spec-grid-col">
+                                        <div class="spec-head">투입 두께</div>
+                                        <div class="spec-value">0.2~1.0mm</div>
+                                    </div>
+                                    <div class="spec-grid-col">
+                                        <div class="spec-head">투입 폭</div>
+                                        <div class="spec-value">750~1,219mm</div>
+                                    </div>
+                                    <div class="spec-grid-col">
+                                        <div class="spec-head">Capa.</div>
+                                        <div class="spec-value">80,000 (130,000까지 확충 예정)</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Slitting Line -->
+                            <div class="spec-grid-group">
+                                <h3 class="spec-grid-label">슬리팅(전단) Slitting Line</h3>
+                                <div class="spec-grid-row">
+                                    <div class="spec-grid-col">
+                                        <div class="spec-head">투입 두께</div>
+                                        <div class="spec-value">0.2~1.0mm</div>
+                                    </div>
+                                    <div class="spec-grid-col">
+                                        <div class="spec-head">투입 폭</div>
+                                        <div class="spec-value">750~1,219mm</div>
+                                    </div>
+                                    <div class="spec-grid-col">
+                                        <div class="spec-head">출축 폭</div>
+                                        <div class="spec-value">Min. 25mm</div>
+                                    </div>
+                                    <div class="spec-grid-col">
+                                        <div class="spec-head">Capa.</div>
+                                        <div class="spec-value">130,000</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Annealing Line (Simplified Grid Example) -->
+                            <div class="spec-grid-group">
+                                <h3 class="spec-grid-label">소둔(열처리) Annealing Line</h3>
+                                <div class="spec-ann-grid-row">
+                                    <!-- Col 1: 소둔 유형 -->
+                                    <div class="spec-ann-col">
+                                        <div class="spec-head">소둔 유형</div>
+                                        <div class="spec-value">Batch</div>
+                                        <div class="spec-value">Continuous</div>
+                                    </div>
+                                    <!-- Col 2: 투입 폭 -->
+                                    <div class="spec-ann-col">
+                                        <div class="spec-head">투입 폭</div>
+                                        <div class="spec-value">H 100%</div>
+                                        <div class="spec-value">H, N Mix</div>
+                                    </div>
+                                    <!-- Col 3: 출축 폭 -->
+                                    <div class="spec-ann-col">
+                                        <div class="spec-head">출축 폭</div>
+                                        <div class="spec-value">150~1,320mm</div>
+                                        <div class="spec-value">750~1,219mm</div>
+                                    </div>
+                                    <!-- Col 4: Capa. -->
+                                    <div class="spec-ann-col">
+                                        <div class="spec-head">Capa.</div>
+                                        <div class="spec-value">-</div>
+                                        <div class="spec-value">80,000 (130,000까지 <br> 확충 예정)</div>
+                                    </div>
+                                    <!-- Col 5: 추가 설비 (Wide) -->
+                                    <div class="spec-ann-col wide">
+                                        <div class="spec-head" style="height: 50px;">추가 설비</div>
+                                        <div class="spec-ann-sub-header-row">
+                                            <div class="spec-ann-sub-head">투입 두께</div>
+                                            <div class="spec-ann-sub-head">투입 폭</div>
+                                            <div class="spec-ann-sub-head">Capa.</div>
+                                        </div>
+                                        <div class="spec-value" style="height: 100px; border-top: 1px solid #D6D6D6;">-
+                                        </div>
+                                        <div class="spec-ann-value-row">
+                                            <div class="spec-ann-sub-value">0.2~1.0mm</div>
+                                            <div class="spec-ann-sub-value">750~1,219mm</div>
+                                            <div class="spec-ann-sub-value">130,000</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    </section>
+        </section>
 
-    <!-- 활용분야 -->
-    <section class="usage-section">
-        <div class="inner">
-            <h2 class="usage-title">주요 적용분야</h2>
+        <!-- 활용분야 -->
+        <section class="usage-section">
+            <div class="inner">
+                <h2 class="usage-title">주요 적용분야</h2>
 
-            <div class="usage-content">
-                <div class="usage-left">
-                    <div class="usage-menu-item active" onclick="setUsageTab(0)">
-                        <div class="umi-header">
-                            <div class="umi-icon"></div>
-                            <span class="umi-title">모빌리티 산업</span>
-                        </div>
-                        <p class="umi-desc" style="height: 105px;">
-                            높은 내식성과 가공성을 갖춘 동국산업의 니켈도금강판은 전기차 및 이동장치 배터리에 적용되어 안정성을<br>확보합니다.
-                        </p>
-                    </div>
-
-                    <div class="usage-menu-item" onclick="setUsageTab(1)">
-                        <div class="umi-header">
-                            <div class="umi-icon"></div>
-                            <span class="umi-title">산업용 부품</span>
-                        </div>
-                        <p class="umi-desc" style="height: 70px;">
-                            도금 품질이 뛰어난 동국산업의 니켈도금강판은<br>차세대 산업에서 정밀함과 안정성을 구현합니다.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="usage-right">
-
-                    <div class="usage-tab-content active" id="usage-tab-0">
-                        <div class="utc-video" style="background-image: url('assets/dikel/video.png');"></div>
-                        <div class="utc-parts">
-                            <div class="utc-part-box">
-                                <img src="assets/dikel/전기차.svg" alt="전기차 부품">
+                <div class="usage-content">
+                    <div class="usage-left">
+                        <div class="usage-menu-item active" onclick="setUsageTab(0)">
+                            <div class="umi-header">
+                                <div class="umi-icon"></div>
+                                <span class="umi-title">모빌리티 산업</span>
                             </div>
-                            <div class="utc-part-box">
-                                <img src="assets/dikel/전동이륜.svg" alt="전동이륜 부품">
-                            </div>
+                            <p class="umi-desc" style="height: 105px;">
+                                높은 내식성과 가공성을 갖춘 동국산업의 니켈도금강판은 전기차 및 이동장치 배터리에 적용되어 안정성을<br>확보합니다.
+                            </p>
                         </div>
-                        <div class="utc-footer-info">
-                            <img src="../assets/common/dk-industry.svg" class="utc-footer-icon" alt="icon">
-                            <span class="utc-footer-text">동국산업의 정밀 소재가 다양한 분야의 핵심 부품으로 탄생합니다.</span>
+
+                        <div class="usage-menu-item" onclick="setUsageTab(1)">
+                            <div class="umi-header">
+                                <div class="umi-icon"></div>
+                                <span class="umi-title">산업용 부품</span>
+                            </div>
+                            <p class="umi-desc" style="height: 70px;">
+                                도금 품질이 뛰어난 동국산업의 니켈도금강판은<br>차세대 산업에서 정밀함과 안정성을 구현합니다.
+                            </p>
                         </div>
                     </div>
 
-                    <div class="usage-tab-content" id="usage-tab-1">
-                        <div class="utc-video"
-                            style="background-image: url('assets/dikel/video1.png');">
-                        </div>
+                    <div class="usage-right">
 
-                        <div class="utc-parts">
-                            <div class="utc-part-box">
-                                <img src="assets/dikel/전동드라이버.svg" alt="전동드라이버">
+                        <div class="usage-tab-content active" id="usage-tab-0">
+                            <div class="utc-video" style="background-image: url('assets/dikel/video.png');"></div>
+                            <div class="utc-parts">
+                                <div class="utc-part-box">
+                                    <img src="assets/dikel/전기차.svg" alt="전기차 부품">
+                                </div>
+                                <div class="utc-part-box">
+                                    <img src="assets/dikel/전동이륜.svg" alt="전동이륜 부품">
+                                </div>
+                            </div>
+                            <div class="utc-footer-info">
+                                <img src="../assets/common/dk-industry.svg" class="utc-footer-icon" alt="icon">
+                                <span class="utc-footer-text">동국산업의 정밀 소재가 다양한 분야의 핵심 부품으로 탄생합니다.</span>
                             </div>
                         </div>
 
-                        <div class="utc-footer-info">
-                            <img src="../assets/common/dk-industry.svg" class="utc-footer-icon" alt="icon">
-                            <span class="utc-footer-text">동국산업의 정밀 소재가 다양한 분야의 핵심 부품으로 탄생합니다.</span>
-                        </div>
-                    </div>
+                        <div class="usage-tab-content" id="usage-tab-1">
+                            <div class="utc-video" style="background-image: url('assets/dikel/video1.png');">
+                            </div>
 
+                            <div class="utc-parts">
+                                <div class="utc-part-box">
+                                    <img src="assets/dikel/전동드라이버.svg" alt="전동드라이버">
+                                </div>
+                            </div>
+
+                            <div class="utc-footer-info">
+                                <img src="../assets/common/dk-industry.svg" class="utc-footer-icon" alt="icon">
+                                <span class="utc-footer-text">동국산업의 정밀 소재가 다양한 분야의 핵심 부품으로 탄생합니다.</span>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 공정과정 (Scroll-Driven) -->
-    <section class="process-scroll-outer" id="process-section">
-        <div class="process-sticky">
-            <div class="process-card" id="process-card">
+        <!-- 공정과정 (Scroll-Driven) -->
+        <section class="process-scroll-outer" id="process-section">
+            <div class="process-sticky">
+                <div class="process-card" id="process-card">
 
-                <!-- ── Header ── -->
-                <div class="ps-header">
-                    <div class="ps-title-box">
-                        <h2 class="ps-title">니켈도금강판의 공정과정</h2>
-                    </div>
-                    <div class="ps-toggle">
-                        <div class="ps-toggle-btn active">대량생산 대응</div>
-                        <div class="ps-toggle-btn">특수스펙 대응</div>
-                    </div>
-                </div>
-
-                <!-- ── Diagram area ── -->
-                <div class="ps-diagram-area" id="diagram-bulk">
-
-                    <!-- Default background -->
-                    <img class="ps-diagram-default" src="assets/dikel/니켈도금강판_대량_Default.svg" alt="">
-
-                    <!-- Step SVG overlays (Figma pixel positions) -->
-                    <!-- 01 냉연코일 세팅: 72×93 @ left:146 top:84 -->
-                    <img class="ps-step-img" id="img-step-0" src="assets/dikel/1.냉연코일 세팅.svg" alt=""
-                        style="width:72px;height:93px;left:146px;top:84px;">
-
-                    <!-- 02 탈지라인: 446×134 @ left:224 top:90 -->
-                    <img class="ps-step-img" id="img-step-1" src="assets/dikel/2.탈지라인.svg" alt=""
-                        style="width:446px;height:134px;left:224px;top:90px;">
-
-                    <!-- 03 전해니켈도금: 288×147 @ left:667 top:116 -->
-                    <img class="ps-step-img" id="img-step-2" src="assets/dikel/3.전해니켈도금.svg" alt=""
-                        style="width:288px;height:147px;left:667px;top:116px;">
-
-                    <!-- 04 연속소둔: 394×139 @ left:972 top:154 -->
-                    <img class="ps-step-img" id="img-step-3" src="assets/dikel/4.연속소둔.svg" alt=""
-                        style="width:394px;height:139px;left:972px;top:154px;">
-
-                    <!-- 05 표면마감: 103×117 @ left:1366 top:185 -->
-                    <img class="ps-step-img" id="img-step-4" src="assets/dikel/5.표면마감.svg" alt=""
-                        style="width:103px;height:117px;left:1366px;top:185px;">
-
-                    <!-- 06 장력 형상 조정: 258×135 @ left:1450 top:196 -->
-                    <img class="ps-step-img" id="img-step-5" src="assets/dikel/6.장력 형상 조정.svg" alt=""
-                        style="width:258px;height:135px;left:1450px;top:196px;">
-
-                    <!-- 07 정밀컷팅: 251×116 @ left:609 top:287 -->
-                    <img class="ps-step-img" id="img-step-6" src="assets/dikel/7.정밀컷팅.svg" alt=""
-                        style="width:251px;height:116px;left:609px;top:287px;">
-
-                    <!-- 08 포장정리: 260×154 @ left:872 top:327 -->
-                    <img class="ps-step-img" id="img-step-7" src="assets/dikel/8.포장정리.svg" alt=""
-                        style="width:260px;height:154px;left:872px;top:327px;">
-
-                    <!-- ── Tooltips (positioned relative to diagram area) ── -->
-
-                    <!-- 01 냉연코일 세팅: 381×128 @ left:127 top:210, arrow UP at left:44 top:-19 -->
-                    <div class="ps-bubble" id="bubble-0" style="width:381px;min-height:128px;left:127px;top:210px;">
-                        <span class="bubble-arrow arrow-up" style="top:-19px;"></span>
-                        <h3>냉연코일 세팅</h3>
-                        <p>니켈도금강판 공정의 원재료를 준비합니다.</p>
-                    </div>
-
-                    <!-- 02 탈지라인: 381×157 @ left:384 top:257, arrow UP -->
-                    <div class="ps-bubble" id="bubble-1" style="width:381px;min-height:157px;left:384px;top:257px;">
-                        <span class="bubble-arrow arrow-up" style="top:-19px;"></span>
-                        <h3>탈지라인</h3>
-                        <p>불순물을 제거하고 표면을 깨끗하게 만들어, 도금층의 품질을 확보하는 전처리 공정입니다.</p>
-                    </div>
-
-                    <!-- 03 전해 니켈 도금: 381×186 @ left:756 top:296, arrow UP at left:44 top:16(above box = flip) -->
-                    <div class="ps-bubble" id="bubble-2" style="width:381px;min-height:186px;left:700px;top:270px;">
-                        <span class="bubble-arrow arrow-up" style="top:-19px;"></span>
-                        <h3>전해 니켈 도금</h3>
-                        <p>강판을 니켈 이온 용액에 담그고 전기를 가하여, 표면의 내식성과 전기 안정성을 향상시킵니다.</p>
-                    </div>
-
-                    <!-- 04 연속소둔: 381×157 @ left:1114 top:-36, arrow DOWN at bottom -->
-                    <div class="ps-bubble" id="bubble-3" style="width:381px;min-height:157px;left:1114px;top:-36px;">
-                        <h3>연속소둔</h3>
-                        <p>코일을 펼친 상태로 가열과 냉각을 반복하여, 니켈과 강판을 균일하게 합금합니다.</p>
-                        <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
-                    </div>
-
-                    <!-- 05 표면마감: 381×157 @ left:1362 top:-5, arrow DOWN -->
-                    <div class="ps-bubble" id="bubble-4" style="width:381px;min-height:157px;left:1362px;top:-5px;">
-                        <h3>표면마감</h3>
-                        <p>소둔 후 표면 상태를 정리하는 과정으로, 균일하고 매끄러운 품질을 완성합니다.</p>
-                        <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
-                    </div>
-
-                    <!-- 06 장력 형상 조정: 381×157 @ left:1253 top:6, arrow DOWN at left:314 -->
-                    <div class="ps-bubble" id="bubble-5" style="width:381px;min-height:157px;left:1253px;top:6px;">
-                        <h3>장력 형상 조정</h3>
-                        <p>강판을 롤 사이로 통과시켜 당기는 과정으로, 표면을 평탄하게 교정합니다.</p>
-                        <span class="bubble-arrow arrow-down-right" style="bottom:-19px;"></span>
-                    </div>
-
-                    <!-- 07 정밀컷팅: 381×157 @ left:679 top:97, arrow DOWN -->
-                    <div class="ps-bubble" id="bubble-6" style="width:381px;min-height:157px;left:679px;top:97px;">
-                        <h3>정밀컷팅</h3>
-                        <p>고객이 요구한 규격에 맞게 소재를 절단합니다.</p>
-                        <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
-                    </div>
-
-                    <!-- 08 포장정리: 381×128 @ left:947 top:137, arrow DOWN -->
-                    <div class="ps-bubble" id="bubble-7" style="width:381px;min-height:128px;left:947px;top:170px;">
-                        <h3>포장정리</h3>
-                        <p>완성된 제품을 보호 포장합니다.</p>
-                        <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
-                    </div>
-
-                </div><!-- /diagram-bulk -->
-
-                <!-- ── 특수주문대응 Diagram area ── -->
-                <div class="ps-diagram-area" id="diagram-special" style="display:none;">
-
-                    <!-- Default background -->
-                    <img class="ps-diagram-default" src="assets/dikel/니켈도금강판_특수.png" alt="">
-
-                    <!-- Step SVG overlays (Figma 특수주문대응 pixel positions) -->
-                    <!-- 01 냉연코일 세팅: 72×94 @ left:258 top:86 -->
-                    <img class="ps-step-img" id="s-img-step-0" src="assets/dikel/1.냉연코일 세팅.svg" alt=""
-                        style="width:72px;height:94px;left:258px;top:86px;">
-
-                    <!-- 02 탈지라인: 449×132 @ left:336 top:94 -->
-                    <img class="ps-step-img" id="s-img-step-1" src="assets/dikel/2.탈지라인.svg" alt=""
-                        style="width:449px;height:132px;left:336px;top:94px;">
-
-                    <!-- 03 전해 니켈 도금: 288×148 @ left:785 top:120 -->
-                    <img class="ps-step-img" id="s-img-step-2" src="assets/dikel/3.전해니켈도금.svg" alt=""
-                        style="width:288px;height:148px;left:785px;top:120px;">
-
-                    <!-- 04 배치형 소둔: 161×162 @ left:1091 top:141 -->
-                    <img class="ps-step-img" id="s-img-step-3" src="assets/dikel/4.배치형 소둔.svg" alt=""
-                        style="width:161px;height:162px;left:1091px;top:141px;">
-
-                    <!-- 05 표면마감: 227×146 @ left:1294 top:180 -->
-                    <img class="ps-step-img" id="s-img-step-4" src="assets/dikel/5.표면마감1.svg" alt=""
-                        style="width:227px;height:146px;left:1294px;top:180px;">
-
-                    <!-- 06 정밀컷팅: 249×115 @ left:521 top:287 -->
-                    <img class="ps-step-img" id="s-img-step-5" src="assets/dikel/7.정밀컷팅.svg" alt=""
-                        style="width:249px;height:115px;left:521px;top:287px;">
-
-                    <!-- 07 포장정리: 260×154 @ left:782 top:327 -->
-                    <img class="ps-step-img" id="s-img-step-6" src="assets/dikel/8.포장정리.svg" alt=""
-                        style="width:260px;height:154px;left:782px;top:327px;">
-
-                    <!-- ── Tooltips ── -->
-
-                    <!-- 01 냉연코일 세팅: 381×128 @ left:236 top:214, arrow UP -->
-                    <div class="ps-bubble" id="s-bubble-0" style="width:381px;min-height:128px;left:236px;top:214px;">
-                        <span class="bubble-arrow arrow-up" style="top:-19px;"></span>
-                        <h3>냉연코일 세팅</h3>
-                        <p>니켈도금강판 공정의 원재료를 준비합니다.</p>
-                    </div>
-
-                    <!-- 02 탈지라인: 381×157 @ left:421 top:243, arrow UP -->
-                    <div class="ps-bubble" id="s-bubble-1" style="width:381px;min-height:157px;left:421px;top:243px;">
-                        <span class="bubble-arrow arrow-up" style="top:-19px;"></span>
-                        <h3>탈지라인</h3>
-                        <p>불순물을 제거하고 표면을 깨끗하게 만들어, 도금층의 품질을 확보하는 전처리 공정입니다.</p>
-                    </div>
-
-                    <!-- 03 전해 니켈 도금: 387×157 @ left:794 top:-74, arrow DOWN -->
-                    <div class="ps-bubble" id="s-bubble-2" style="width:387px;min-height:157px;left:794px;top:-90px;">
-                        <h3>전해 니켈 도금</h3>
-                        <p>강판을 니켈 이온 용액에 담그고 전기를 가하여, 표면의 내식성과 전기 안정성을 향상시킵니다.</p>
-                        <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
-                    </div>
-
-                    <!-- 04 배치형 소둔: 381×157 @ left:1016 top:-70, arrow DOWN -->
-                    <div class="ps-bubble" id="s-bubble-3" style="width:381px;min-height:157px;left:1076px;top:-70px;">
-                        <h3>배치형 소둔</h3>
-                        <p>코일이 말린 상태로 상온 압연하는 과정으로, 특수한 스펙이나 강종에 대응이 가능합니다.</p>
-                        <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
-                    </div>
-
-                    <!-- 05 표면마감: 381×157 @ left:1286 top:-20, arrow DOWN -->
-                    <div class="ps-bubble" id="s-bubble-4" style="width:381px;min-height:157px;left:1356px;top:-20px;">
-                        <h3>표면마감</h3>
-                        <p>소둔 후 표면 상태를 정리하는 과정으로, 균일하고 매끄러운 품질을 완성합니다.</p>
-                        <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
-                    </div>
-
-                    <!-- 06 정밀컷팅: 378×128 @ left:816 top:173, arrow DOWN -->
-                    <div class="ps-bubble" id="s-bubble-5" style="width:378px;min-height:128px;left:586px;top:90px;">
-                        <h3>정밀컷팅</h3>
-                        <p>고객이 요구한 규격에 맞게 소재를 절단합니다.</p>
-                        <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
-                    </div>
-
-                    <!-- 07 포장정리: 381×128 @ left:870 top:137, arrow DOWN -->
-                    <div class="ps-bubble" id="s-bubble-6" style="width:381px;min-height:128px;left:870px;top:157px;">
-                        <h3>포장정리</h3>
-                        <p>완성된 제품을 보호 포장합니다.</p>
-                        <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
-                    </div>
-
-                </div><!-- /diagram-special -->
-
-                <!-- ── Progress Bar ── -->
-                <div class="ps-progress">
-                    <div class="ps-steps" id="ps-steps-bar">
-                        <div class="ps-step" data-step="0" onclick="activateStep(0)">
-                            <div class="ps-step-line"></div>
-                            <div class="ps-step-text">
-                                <div class="ps-step-num">01</div>
-                                <div class="ps-step-name">냉연코일 세팅</div>
-                            </div>
+                    <!-- ── Header ── -->
+                    <div class="ps-header">
+                        <div class="ps-title-box">
+                            <h2 class="ps-title">니켈도금강판의 공정과정</h2>
                         </div>
-                        <div class="ps-step" data-step="1" onclick="activateStep(1)">
-                            <div class="ps-step-line"></div>
-                            <div class="ps-step-text">
-                                <div class="ps-step-num">02</div>
-                                <div class="ps-step-name">탈지라인</div>
-                            </div>
-                        </div>
-                        <div class="ps-step" data-step="2" onclick="activateStep(2)">
-                            <div class="ps-step-line"></div>
-                            <div class="ps-step-text">
-                                <div class="ps-step-num">03</div>
-                                <div class="ps-step-name">전해 니켈 도금</div>
-                            </div>
-                        </div>
-                        <div class="ps-step" data-step="3" onclick="activateStep(3)">
-                            <div class="ps-step-line"></div>
-                            <div class="ps-step-text">
-                                <div class="ps-step-num">04</div>
-                                <div class="ps-step-name">연속소둔</div>
-                            </div>
-                        </div>
-                        <div class="ps-step" data-step="4" onclick="activateStep(4)">
-                            <div class="ps-step-line"></div>
-                            <div class="ps-step-text">
-                                <div class="ps-step-num">05</div>
-                                <div class="ps-step-name">표면마감</div>
-                            </div>
-                        </div>
-                        <div class="ps-step" data-step="5" onclick="activateStep(5)">
-                            <div class="ps-step-line"></div>
-                            <div class="ps-step-text">
-                                <div class="ps-step-num">06</div>
-                                <div class="ps-step-name">장력 형상 조정</div>
-                            </div>
-                        </div>
-                        <div class="ps-step" data-step="6" onclick="activateStep(6)">
-                            <div class="ps-step-line"></div>
-                            <div class="ps-step-text">
-                                <div class="ps-step-num">07</div>
-                                <div class="ps-step-name">정밀컷팅</div>
-                            </div>
-                        </div>
-                        <div class="ps-step" data-step="7" onclick="activateStep(7)">
-                            <div class="ps-step-line"></div>
-                            <div class="ps-step-text">
-                                <div class="ps-step-num">08</div>
-                                <div class="ps-step-name">포장정리</div>
-                            </div>
+                        <div class="ps-toggle">
+                            <div class="ps-toggle-btn active">대량생산 대응</div>
+                            <div class="ps-toggle-btn">특수스펙 대응</div>
                         </div>
                     </div>
-                </div>
 
-                <!-- ── 특수주문대응 Progress Bar ── -->
-                <div class="ps-progress" id="ps-progress-special" style="display:none;">
-                    <div class="ps-steps" id="ps-steps-bar-special">
-                        <div class="ps-step" data-step="0" onclick="activateStep(0)">
-                            <div class="ps-step-line"></div>
-                            <div class="ps-step-text">
-                                <div class="ps-step-num">01</div>
-                                <div class="ps-step-name">냉연코일 세팅</div>
-                            </div>
+                    <!-- ── Diagram area ── -->
+                    <div class="ps-diagram-area" id="diagram-bulk">
+
+                        <!-- Default background -->
+                        <img class="ps-diagram-default" src="assets/dikel/니켈도금강판_대량_Default.svg" alt="">
+
+                        <!-- Step SVG overlays (Figma pixel positions) -->
+                        <!-- 01 냉연코일 세팅: 72×93 @ left:146 top:84 -->
+                        <img class="ps-step-img" id="img-step-0" src="assets/dikel/1.냉연코일 세팅.svg" alt=""
+                            style="width:72px;height:93px;left:146px;top:84px;">
+
+                        <!-- 02 탈지라인: 446×134 @ left:224 top:90 -->
+                        <img class="ps-step-img" id="img-step-1" src="assets/dikel/2.탈지라인.svg" alt=""
+                            style="width:446px;height:134px;left:224px;top:90px;">
+
+                        <!-- 03 전해니켈도금: 288×147 @ left:667 top:116 -->
+                        <img class="ps-step-img" id="img-step-2" src="assets/dikel/3.전해니켈도금.svg" alt=""
+                            style="width:288px;height:147px;left:667px;top:116px;">
+
+                        <!-- 04 연속소둔: 394×139 @ left:972 top:154 -->
+                        <img class="ps-step-img" id="img-step-3" src="assets/dikel/4.연속소둔.svg" alt=""
+                            style="width:394px;height:139px;left:972px;top:154px;">
+
+                        <!-- 05 표면마감: 103×117 @ left:1366 top:185 -->
+                        <img class="ps-step-img" id="img-step-4" src="assets/dikel/5.표면마감.svg" alt=""
+                            style="width:103px;height:117px;left:1366px;top:185px;">
+
+                        <!-- 06 장력 형상 조정: 258×135 @ left:1450 top:196 -->
+                        <img class="ps-step-img" id="img-step-5" src="assets/dikel/6.장력 형상 조정.svg" alt=""
+                            style="width:258px;height:135px;left:1450px;top:196px;">
+
+                        <!-- 07 정밀컷팅: 251×116 @ left:609 top:287 -->
+                        <img class="ps-step-img" id="img-step-6" src="assets/dikel/7.정밀컷팅.svg" alt=""
+                            style="width:251px;height:116px;left:609px;top:287px;">
+
+                        <!-- 08 포장정리: 260×154 @ left:872 top:327 -->
+                        <img class="ps-step-img" id="img-step-7" src="assets/dikel/8.포장정리.svg" alt=""
+                            style="width:260px;height:154px;left:872px;top:327px;">
+
+                        <!-- ── Tooltips (positioned relative to diagram area) ── -->
+
+                        <!-- 01 냉연코일 세팅: 381×128 @ left:127 top:210, arrow UP at left:44 top:-19 -->
+                        <div class="ps-bubble" id="bubble-0" style="width:381px;min-height:128px;left:127px;top:210px;">
+                            <span class="bubble-arrow arrow-up" style="top:-19px;"></span>
+                            <h3>냉연코일 세팅</h3>
+                            <p>니켈도금강판 공정의 원재료를 준비합니다.</p>
                         </div>
-                        <div class="ps-step" data-step="1" onclick="activateStep(1)">
-                            <div class="ps-step-line"></div>
-                            <div class="ps-step-text">
-                                <div class="ps-step-num">02</div>
-                                <div class="ps-step-name">탈지라인</div>
-                            </div>
+
+                        <!-- 02 탈지라인: 381×157 @ left:384 top:257, arrow UP -->
+                        <div class="ps-bubble" id="bubble-1" style="width:381px;min-height:157px;left:384px;top:257px;">
+                            <span class="bubble-arrow arrow-up" style="top:-19px;"></span>
+                            <h3>탈지라인</h3>
+                            <p>불순물을 제거하고 표면을 깨끗하게 만들어, 도금층의 품질을 확보하는 전처리 공정입니다.</p>
                         </div>
-                        <div class="ps-step" data-step="2" onclick="activateStep(2)">
-                            <div class="ps-step-line"></div>
-                            <div class="ps-step-text">
-                                <div class="ps-step-num">03</div>
-                                <div class="ps-step-name">전해 니켈 도금</div>
-                            </div>
+
+                        <!-- 03 전해 니켈 도금: 381×186 @ left:756 top:296, arrow UP at left:44 top:16(above box = flip) -->
+                        <div class="ps-bubble" id="bubble-2" style="width:381px;min-height:186px;left:700px;top:270px;">
+                            <span class="bubble-arrow arrow-up" style="top:-19px;"></span>
+                            <h3>전해 니켈 도금</h3>
+                            <p>강판을 니켈 이온 용액에 담그고 전기를 가하여, 표면의 내식성과 전기 안정성을 향상시킵니다.</p>
                         </div>
-                        <div class="ps-step" data-step="3" onclick="activateStep(3)">
-                            <div class="ps-step-line"></div>
-                            <div class="ps-step-text">
-                                <div class="ps-step-num">04</div>
-                                <div class="ps-step-name">배치형 소둔</div>
-                            </div>
+
+                        <!-- 04 연속소둔: 381×157 @ left:1114 top:-36, arrow DOWN at bottom -->
+                        <div class="ps-bubble" id="bubble-3"
+                            style="width:381px;min-height:157px;left:1114px;top:-36px;">
+                            <h3>연속소둔</h3>
+                            <p>코일을 펼친 상태로 가열과 냉각을 반복하여, 니켈과 강판을 균일하게 합금합니다.</p>
+                            <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
                         </div>
-                        <div class="ps-step" data-step="4" onclick="activateStep(4)">
-                            <div class="ps-step-line"></div>
-                            <div class="ps-step-text">
-                                <div class="ps-step-num">05</div>
-                                <div class="ps-step-name">표면마감</div>
-                            </div>
+
+                        <!-- 05 표면마감: 381×157 @ left:1362 top:-5, arrow DOWN -->
+                        <div class="ps-bubble" id="bubble-4" style="width:381px;min-height:157px;left:1362px;top:-5px;">
+                            <h3>표면마감</h3>
+                            <p>소둔 후 표면 상태를 정리하는 과정으로, 균일하고 매끄러운 품질을 완성합니다.</p>
+                            <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
                         </div>
-                        <div class="ps-step" data-step="5" onclick="activateStep(5)">
-                            <div class="ps-step-line"></div>
-                            <div class="ps-step-text">
-                                <div class="ps-step-num">06</div>
-                                <div class="ps-step-name">정밀컷팅</div>
-                            </div>
+
+                        <!-- 06 장력 형상 조정: 381×157 @ left:1253 top:6, arrow DOWN at left:314 -->
+                        <div class="ps-bubble" id="bubble-5" style="width:381px;min-height:157px;left:1253px;top:6px;">
+                            <h3>장력 형상 조정</h3>
+                            <p>강판을 롤 사이로 통과시켜 당기는 과정으로, 표면을 평탄하게 교정합니다.</p>
+                            <span class="bubble-arrow arrow-down-right" style="bottom:-19px;"></span>
                         </div>
-                        <div class="ps-step" data-step="6" onclick="activateStep(6)">
-                            <div class="ps-step-line"></div>
-                            <div class="ps-step-text">
-                                <div class="ps-step-num">07</div>
-                                <div class="ps-step-name">포장정리</div>
+
+                        <!-- 07 정밀컷팅: 381×157 @ left:679 top:97, arrow DOWN -->
+                        <div class="ps-bubble" id="bubble-6" style="width:381px;min-height:157px;left:679px;top:97px;">
+                            <h3>정밀컷팅</h3>
+                            <p>고객이 요구한 규격에 맞게 소재를 절단합니다.</p>
+                            <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
+                        </div>
+
+                        <!-- 08 포장정리: 381×128 @ left:947 top:137, arrow DOWN -->
+                        <div class="ps-bubble" id="bubble-7" style="width:381px;min-height:128px;left:947px;top:170px;">
+                            <h3>포장정리</h3>
+                            <p>완성된 제품을 보호 포장합니다.</p>
+                            <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
+                        </div>
+
+                    </div><!-- /diagram-bulk -->
+
+                    <!-- ── 특수주문대응 Diagram area ── -->
+                    <div class="ps-diagram-area" id="diagram-special" style="display:none;">
+
+                        <!-- Default background -->
+                        <img class="ps-diagram-default" src="assets/dikel/니켈도금강판_특수.png" alt="">
+
+                        <!-- Step SVG overlays (Figma 특수주문대응 pixel positions) -->
+                        <!-- 01 냉연코일 세팅: 72×94 @ left:258 top:86 -->
+                        <img class="ps-step-img" id="s-img-step-0" src="assets/dikel/1.냉연코일 세팅.svg" alt=""
+                            style="width:72px;height:94px;left:258px;top:86px;">
+
+                        <!-- 02 탈지라인: 449×132 @ left:336 top:94 -->
+                        <img class="ps-step-img" id="s-img-step-1" src="assets/dikel/2.탈지라인.svg" alt=""
+                            style="width:449px;height:132px;left:336px;top:94px;">
+
+                        <!-- 03 전해 니켈 도금: 288×148 @ left:785 top:120 -->
+                        <img class="ps-step-img" id="s-img-step-2" src="assets/dikel/3.전해니켈도금.svg" alt=""
+                            style="width:288px;height:148px;left:785px;top:120px;">
+
+                        <!-- 04 배치형 소둔: 161×162 @ left:1091 top:141 -->
+                        <img class="ps-step-img" id="s-img-step-3" src="assets/dikel/4.배치형 소둔.svg" alt=""
+                            style="width:161px;height:162px;left:1091px;top:141px;">
+
+                        <!-- 05 표면마감: 227×146 @ left:1294 top:180 -->
+                        <img class="ps-step-img" id="s-img-step-4" src="assets/dikel/5.표면마감1.svg" alt=""
+                            style="width:227px;height:146px;left:1294px;top:180px;">
+
+                        <!-- 06 정밀컷팅: 249×115 @ left:521 top:287 -->
+                        <img class="ps-step-img" id="s-img-step-5" src="assets/dikel/7.정밀컷팅.svg" alt=""
+                            style="width:249px;height:115px;left:521px;top:287px;">
+
+                        <!-- 07 포장정리: 260×154 @ left:782 top:327 -->
+                        <img class="ps-step-img" id="s-img-step-6" src="assets/dikel/8.포장정리.svg" alt=""
+                            style="width:260px;height:154px;left:782px;top:327px;">
+
+                        <!-- ── Tooltips ── -->
+
+                        <!-- 01 냉연코일 세팅: 381×128 @ left:236 top:214, arrow UP -->
+                        <div class="ps-bubble" id="s-bubble-0"
+                            style="width:381px;min-height:128px;left:236px;top:214px;">
+                            <span class="bubble-arrow arrow-up" style="top:-19px;"></span>
+                            <h3>냉연코일 세팅</h3>
+                            <p>니켈도금강판 공정의 원재료를 준비합니다.</p>
+                        </div>
+
+                        <!-- 02 탈지라인: 381×157 @ left:421 top:243, arrow UP -->
+                        <div class="ps-bubble" id="s-bubble-1"
+                            style="width:381px;min-height:157px;left:421px;top:243px;">
+                            <span class="bubble-arrow arrow-up" style="top:-19px;"></span>
+                            <h3>탈지라인</h3>
+                            <p>불순물을 제거하고 표면을 깨끗하게 만들어, 도금층의 품질을 확보하는 전처리 공정입니다.</p>
+                        </div>
+
+                        <!-- 03 전해 니켈 도금: 387×157 @ left:794 top:-74, arrow DOWN -->
+                        <div class="ps-bubble" id="s-bubble-2"
+                            style="width:387px;min-height:157px;left:794px;top:-90px;">
+                            <h3>전해 니켈 도금</h3>
+                            <p>강판을 니켈 이온 용액에 담그고 전기를 가하여, 표면의 내식성과 전기 안정성을 향상시킵니다.</p>
+                            <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
+                        </div>
+
+                        <!-- 04 배치형 소둔: 381×157 @ left:1016 top:-70, arrow DOWN -->
+                        <div class="ps-bubble" id="s-bubble-3"
+                            style="width:381px;min-height:157px;left:1076px;top:-70px;">
+                            <h3>배치형 소둔</h3>
+                            <p>코일이 말린 상태로 상온 압연하는 과정으로, 특수한 스펙이나 강종에 대응이 가능합니다.</p>
+                            <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
+                        </div>
+
+                        <!-- 05 표면마감: 381×157 @ left:1286 top:-20, arrow DOWN -->
+                        <div class="ps-bubble" id="s-bubble-4"
+                            style="width:381px;min-height:157px;left:1356px;top:-20px;">
+                            <h3>표면마감</h3>
+                            <p>소둔 후 표면 상태를 정리하는 과정으로, 균일하고 매끄러운 품질을 완성합니다.</p>
+                            <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
+                        </div>
+
+                        <!-- 06 정밀컷팅: 378×128 @ left:816 top:173, arrow DOWN -->
+                        <div class="ps-bubble" id="s-bubble-5"
+                            style="width:378px;min-height:128px;left:586px;top:90px;">
+                            <h3>정밀컷팅</h3>
+                            <p>고객이 요구한 규격에 맞게 소재를 절단합니다.</p>
+                            <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
+                        </div>
+
+                        <!-- 07 포장정리: 381×128 @ left:870 top:137, arrow DOWN -->
+                        <div class="ps-bubble" id="s-bubble-6"
+                            style="width:381px;min-height:128px;left:870px;top:157px;">
+                            <h3>포장정리</h3>
+                            <p>완성된 제품을 보호 포장합니다.</p>
+                            <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
+                        </div>
+
+                    </div><!-- /diagram-special -->
+
+                    <!-- ── Progress Bar ── -->
+                    <div class="ps-progress">
+                        <div class="ps-steps" id="ps-steps-bar">
+                            <div class="ps-step" data-step="0" onclick="activateStep(0)">
+                                <div class="ps-step-line"></div>
+                                <div class="ps-step-text">
+                                    <div class="ps-step-num">01</div>
+                                    <div class="ps-step-name">냉연코일 세팅</div>
+                                </div>
+                            </div>
+                            <div class="ps-step" data-step="1" onclick="activateStep(1)">
+                                <div class="ps-step-line"></div>
+                                <div class="ps-step-text">
+                                    <div class="ps-step-num">02</div>
+                                    <div class="ps-step-name">탈지라인</div>
+                                </div>
+                            </div>
+                            <div class="ps-step" data-step="2" onclick="activateStep(2)">
+                                <div class="ps-step-line"></div>
+                                <div class="ps-step-text">
+                                    <div class="ps-step-num">03</div>
+                                    <div class="ps-step-name">전해 니켈 도금</div>
+                                </div>
+                            </div>
+                            <div class="ps-step" data-step="3" onclick="activateStep(3)">
+                                <div class="ps-step-line"></div>
+                                <div class="ps-step-text">
+                                    <div class="ps-step-num">04</div>
+                                    <div class="ps-step-name">연속소둔</div>
+                                </div>
+                            </div>
+                            <div class="ps-step" data-step="4" onclick="activateStep(4)">
+                                <div class="ps-step-line"></div>
+                                <div class="ps-step-text">
+                                    <div class="ps-step-num">05</div>
+                                    <div class="ps-step-name">표면마감</div>
+                                </div>
+                            </div>
+                            <div class="ps-step" data-step="5" onclick="activateStep(5)">
+                                <div class="ps-step-line"></div>
+                                <div class="ps-step-text">
+                                    <div class="ps-step-num">06</div>
+                                    <div class="ps-step-name">장력 형상 조정</div>
+                                </div>
+                            </div>
+                            <div class="ps-step" data-step="6" onclick="activateStep(6)">
+                                <div class="ps-step-line"></div>
+                                <div class="ps-step-text">
+                                    <div class="ps-step-num">07</div>
+                                    <div class="ps-step-name">정밀컷팅</div>
+                                </div>
+                            </div>
+                            <div class="ps-step" data-step="7" onclick="activateStep(7)">
+                                <div class="ps-step-line"></div>
+                                <div class="ps-step-text">
+                                    <div class="ps-step-num">08</div>
+                                    <div class="ps-step-name">포장정리</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-            </div><!-- /process-card -->
-        </div><!-- /process-sticky -->
-    </section>
+                    <!-- ── 특수주문대응 Progress Bar ── -->
+                    <div class="ps-progress" id="ps-progress-special" style="display:none;">
+                        <div class="ps-steps" id="ps-steps-bar-special">
+                            <div class="ps-step" data-step="0" onclick="activateStep(0)">
+                                <div class="ps-step-line"></div>
+                                <div class="ps-step-text">
+                                    <div class="ps-step-num">01</div>
+                                    <div class="ps-step-name">냉연코일 세팅</div>
+                                </div>
+                            </div>
+                            <div class="ps-step" data-step="1" onclick="activateStep(1)">
+                                <div class="ps-step-line"></div>
+                                <div class="ps-step-text">
+                                    <div class="ps-step-num">02</div>
+                                    <div class="ps-step-name">탈지라인</div>
+                                </div>
+                            </div>
+                            <div class="ps-step" data-step="2" onclick="activateStep(2)">
+                                <div class="ps-step-line"></div>
+                                <div class="ps-step-text">
+                                    <div class="ps-step-num">03</div>
+                                    <div class="ps-step-name">전해 니켈 도금</div>
+                                </div>
+                            </div>
+                            <div class="ps-step" data-step="3" onclick="activateStep(3)">
+                                <div class="ps-step-line"></div>
+                                <div class="ps-step-text">
+                                    <div class="ps-step-num">04</div>
+                                    <div class="ps-step-name">배치형 소둔</div>
+                                </div>
+                            </div>
+                            <div class="ps-step" data-step="4" onclick="activateStep(4)">
+                                <div class="ps-step-line"></div>
+                                <div class="ps-step-text">
+                                    <div class="ps-step-num">05</div>
+                                    <div class="ps-step-name">표면마감</div>
+                                </div>
+                            </div>
+                            <div class="ps-step" data-step="5" onclick="activateStep(5)">
+                                <div class="ps-step-line"></div>
+                                <div class="ps-step-text">
+                                    <div class="ps-step-num">06</div>
+                                    <div class="ps-step-name">정밀컷팅</div>
+                                </div>
+                            </div>
+                            <div class="ps-step" data-step="6" onclick="activateStep(6)">
+                                <div class="ps-step-line"></div>
+                                <div class="ps-step-text">
+                                    <div class="ps-step-num">07</div>
+                                    <div class="ps-step-name">포장정리</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    <!-- 고객지원 -->
+                </div><!-- /process-card -->
+            </div><!-- /process-sticky -->
+        </section>
+
     </div>
 
     <!-- TAB: 브랜드 리소스 -->
     <div id="tab-brand" class="tab-panel">
-    <section class="story-section">
-        <div class="inner">
-            <div class="story-txt">
-                <h2 class="story-title">DiKel이 무엇인가요?</h2>
-                <p class="story-desc">DiKel은 <b>Dongkuk과 Nickel의 결합</b>에서 탄생한 동국산업의 니켈도금강판 브랜드입니다. <br> 또한 <b>‘D’</b>에는
-                    <b>탈탄소화(Decarbonize)</b>를 향한 <br> 지향이 담겨 있으며, “The Nickel” – ‘디(The)’에는 <br> 수많은 니켈 중 동국산업이 완성한 단
-                    하나의 니켈,<br> ‘그
-                    니켈’이라는 기술적 차별성과 브랜드 자신감이 <br> 담겨 있습니다.
-                </p>
-            </div>
-            <div class="story-cards">
-                <div class="scard-dk">
-                    <div class="scard-dk-inner">
-                        <span class="scard-text-d">D</span>
-                        <span class="scard-text-ongkuk">ONGKUK</span>
+        <section class="story-section">
+            <div class="inner">
+                <div class="story-txt">
+                    <h2 class="story-title">DiKel이 무엇인가요?</h2>
+                    <p class="story-desc">DiKel은 <b>Dongkuk과 Nickel의 결합</b>에서 탄생한 동국산업의 니켈도금강판 브랜드입니다. <br> 또한
+                        <b>‘D’</b>에는
+                        <b>탈탄소화(Decarbonize)</b>를 향한 <br> 지향이 담겨 있으며, “The Nickel” – ‘디(The)’에는 <br> 수많은 니켈 중 동국산업이 완성한
+                        단
+                        하나의 니켈,<br> ‘그
+                        니켈’이라는 기술적 차별성과 브랜드 자신감이 <br> 담겨 있습니다.
+                    </p>
+                </div>
+                <div class="story-cards">
+                    <div class="scard-dk">
+                        <div class="scard-dk-inner">
+                            <span class="scard-text-d">D</span>
+                            <span class="scard-text-ongkuk">ONGKUK</span>
+                        </div>
                     </div>
-                </div>
-                <div class="scard-db">
-                    <div class="scard-db-inner">
-                        <span class="scard-text-db-d">D</span>
-                        <span class="scard-text-ecarbonize">ecarbonize</span>
+                    <div class="scard-db">
+                        <div class="scard-db-inner">
+                            <span class="scard-text-db-d">D</span>
+                            <span class="scard-text-ecarbonize">ecarbonize</span>
+                        </div>
                     </div>
-                </div>
-                <div class="scard-nickel">
-                    <div class="scard-nickel-inner">
-                        <span class="snt-n">N</span>
-                        <span class="snt-i">i</span>
-                        <span class="snt-c">c</span>
-                        <span class="snt-kel">kel</span>
-                    </div>
-                </div>
-
-                <div class="scard-plus-1">
-                    <div class="plus-bars">
-                        <div class="plus-bar-h"></div>
-                        <div class="plus-bar-v"></div>
-                    </div>
-                </div>
-                <div class="scard-plus-2">
-                    <div class="plus-bars">
-                        <div class="plus-bar-h"></div>
-                        <div class="plus-bar-v"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="bi-section">
-        <div class="inner">
-
-            <div class="bi-header">
-                <h2 class="bi-title">DiKel BI</h2>
-
-                <div class="bi-header-row">
-                    <p class="bi-desc">로고 활용 규정은 가독성과 독립적인 시각 정체성을 유지하기 위한 기준입니다. 임의의 변경이나 변형은 허용되지 않으며 규정된 형태와 색상을 사용해야
-                        합니다.</p>
-
-                    <button class="btn-brochure">
-                        <span>전체 다운로드</span>
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M12 16L7 11H9.5V5H14.5V11H17L12 16Z" fill="white" />
-                            <path d="M5 18H19V20H5V18Z" fill="white" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <div class="logo-usage-block">
-                <p class="logo-usage-label">로고활용</p>
-                <div class="logo-usage-card">
-                    <img src="assets/dikel/brand/layer_1.svg" alt="DiKel 로고 (_레이어_1)">
-                </div>
-            </div>
-
-            <div class="logo-margin-block">
-                <div class="logo-margin-cards">
-                    <!-- English Col -->
-                    <div class="lmg-col">
-                        <p class="lmg-col-label">영문</p>
-                        <div class="logo-margin-card">
-                            <div class="lmg-line" style="top:109px;left:0;width:828px;"></div>
-                            <div class="lmg-line" style="top:146px;left:0;width:828px;"></div>
-                            <div class="lmg-line" style="top:170px;left:0;width:187px;"></div>
-                            <div class="lmg-line" style="top:170px;left:640px;width:188px;"></div>
-                            <div class="lmg-line" style="top:194px;left:0;width:187px;"></div>
-                            <div class="lmg-line" style="top:194px;left:640px;width:188px;"></div>
-                            <div class="lmg-line" style="top:218px;left:0;width:187px;"></div>
-                            <div class="lmg-line" style="top:218px;left:640px;width:188px;"></div>
-                            <div class="lmg-line" style="top:243px;left:0;width:828px;"></div>
-                            <div class="lmg-line" style="top:279px;left:0;width:828px;"></div>
-                            <div class="lmg-vline" style="left:150px;top:2px;height:385px;"></div>
-                            <div class="lmg-vline" style="left:163px;top:2px;height:385px;"></div>
-                            <div class="lmg-vline" style="left:187px;top:2px;height:385px;"></div>
-                            <div class="lmg-vline" style="left:640px;top:1px;height:386px;"></div>
-                            <div class="lmg-vline" style="left:664px;top:2px;height:385px;"></div>
-                            <div class="lmg-vline" style="left:678px;top:2px;height:385px;"></div>
-                            <div class="lmg-rect-orange" style="left:151px;top:109px;"></div>
-                            <div class="lmg-rect-orange" style="left:641px;top:109px;"></div>
-                            <div class="lmg-rect-orange" style="left:151px;top:243px;"></div>
-                            <div class="lmg-rect-orange" style="left:641px;top:243px;"></div>
-                            <div class="lmg-dot" style="left:164px;top:146px;"></div>
-                            <span class="lmg-label" style="left:107px;top:112px;">1.5X</span>
-                            <span class="lmg-label" style="left:641px;top:287px;">1.5X</span>
-                            <span class="lmg-label" style="left:151px;top:72px;">1.5X</span>
-                            <span class="lmg-label" style="left:685px;top:244px;">1.5X</span>
-                            <span class="lmg-label" style="left:135px;top:144px;">1X</span>
-                            <img class="lmg-logo" src="assets/dikel/brand/layer_2.svg" alt="DiKel 영문 로고 여백"
-                                style="width:452px;height:96px;left:calc(50% - 226px);top:calc(50% - 48px - 1px);">
+                    <div class="scard-nickel">
+                        <div class="scard-nickel-inner">
+                            <span class="snt-n">N</span>
+                            <span class="snt-i">i</span>
+                            <span class="snt-c">c</span>
+                            <span class="snt-kel">kel</span>
                         </div>
                     </div>
 
-                    <!-- Korean Col -->
-                    <div class="lmg-col">
-                        <p class="lmg-col-label">국문</p>
-                        <div class="logo-margin-card">
-                            <div class="lmg-line" style="top:109px;left:0;width:828px;"></div>
-                            <div class="lmg-line" style="top:146px;left:0;width:828px;"></div>
-                            <div class="lmg-line" style="top:170px;left:0;width:254px;"></div>
-                            <div class="lmg-line" style="top:170px;left:611px;width:217px;"></div>
-                            <div class="lmg-line" style="top:194px;left:0;width:254px;"></div>
-                            <div class="lmg-line" style="top:194px;left:611px;width:217px;"></div>
-                            <div class="lmg-line" style="top:218px;left:0;width:254px;"></div>
-                            <div class="lmg-line" style="top:218px;left:611px;width:217px;"></div>
-                            <div class="lmg-line" style="top:243px;left:0;width:828px;"></div>
-                            <div class="lmg-line" style="top:279px;left:0;width:828px;"></div>
-                            <div class="lmg-vline" style="left:216px;top:2px;height:385px;"></div>
-                            <div class="lmg-vline" style="left:229px;top:2px;height:385px;"></div>
-                            <div class="lmg-vline" style="left:253px;top:2px;height:385px;"></div>
-                            <div class="lmg-vline" style="left:574px;top:1px;height:386px;"></div>
-                            <div class="lmg-vline" style="left:598px;top:2px;height:385px;"></div>
-                            <div class="lmg-vline" style="left:612px;top:2px;height:385px;"></div>
-                            <div class="lmg-rect-orange" style="left:217px;top:109px;"></div>
-                            <div class="lmg-rect-orange" style="left:575px;top:109px;"></div>
-                            <div class="lmg-rect-orange" style="left:217px;top:243px;"></div>
-                            <div class="lmg-rect-orange" style="left:575px;top:243px;"></div>
-                            <div class="lmg-dot" style="left:230px;top:146px;"></div>
-                            <span class="lmg-label" style="left:173px;top:112px;">1.5X</span>
-                            <span class="lmg-label" style="left:575px;top:287px;">1.5X</span>
-                            <span class="lmg-label" style="left:217px;top:72px;">1.5X</span>
-                            <span class="lmg-label" style="left:619px;top:244px;">1.5X</span>
-                            <span class="lmg-label" style="left:201px;top:144px;">1X</span>
-                            <img class="lmg-logo" src="assets/dikel/brand/layer_3.svg" alt="DiKel 국문 로고 여백"
-                                style="width:320px;height:96px;left:calc(50% - 160px);top:calc(50% - 48px - 1px);">
+                    <div class="scard-plus-1">
+                        <div class="plus-bars">
+                            <div class="plus-bar-h"></div>
+                            <div class="plus-bar-v"></div>
+                        </div>
+                    </div>
+                    <div class="scard-plus-2">
+                        <div class="plus-bars">
+                            <div class="plus-bar-h"></div>
+                            <div class="plus-bar-v"></div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="mono-logo-block">
-                <h3 class="mono-logo-subtitle">BI 색상활용</h3>
+        <section class="bi-section">
+            <div class="inner">
 
-                <div class="mono-grid">
-                    <!-- Row 1 (White Background) -->
-                    <div class="mono-row">
-                        <div class="mono-card-half mc-white">
-                            <div class="dikel-mark">
-                                <img src="assets/dikel/brand/DiKel_black.svg" alt="DiKel Black"
-                                    style="width: 318px; height: 68px;">
-                            </div>
-                        </div>
-                        <div class="mono-card-half mc-white">
-                            <div class="dikel-mark">
-                                <img src="assets/dikel/brand/DiKel_blackorange.svg" alt="DiKel Black-Orange"
-                                    style="width: 318px; height: 68px;">
-                            </div>
-                        </div>
+                <div class="bi-header">
+                    <h2 class="bi-title">DiKel BI</h2>
+
+                    <div class="bi-header-row">
+                        <p class="bi-desc">로고 활용 규정은 가독성과 독립적인 시각 정체성을 유지하기 위한 기준입니다. 임의의 변경이나 변형은 허용되지 않으며 규정된 형태와 색상을
+                            사용해야
+                            합니다.</p>
+
+                        <button class="btn-brochure">
+                            <span>전체 다운로드</span>
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M12 16L7 11H9.5V5H14.5V11H17L12 16Z" fill="white" />
+                                <path d="M5 18H19V20H5V18Z" fill="white" />
+                            </svg>
+                        </button>
                     </div>
+                </div>
 
-                    <!-- Row 2 (Black Background) -->
-                    <div class="mono-row">
-                        <div class="mono-card-half mc-black">
-                            <div class="dikel-mark">
-                                <img src="assets/dikel/brand/DiKel_white.svg" alt="DiKel White"
-                                    style="width: 318px; height: 68px;">
-                            </div>
-                        </div>
-                        <div class="mono-card-half mc-black">
-                            <div class="dikel-mark">
-                                <img src="assets/dikel/brand/DiKel_whiteorange.svg" alt="DiKel White-Orange"
-                                    style="width: 318px; height: 68px;">
-                            </div>
-                        </div>
+                <div class="logo-usage-block">
+                    <p class="logo-usage-label">로고활용</p>
+                    <div class="logo-usage-card">
+                        <img src="assets/dikel/brand/layer_1.svg" alt="DiKel 로고 (_레이어_1)">
                     </div>
+                </div>
 
-                    <!-- Row 3 (Blue Background) -->
-                    <div class="mono-row">
-                        <div class="mono-card-half mc-blue">
-                            <div class="dikel-mark">
-                                <img src="assets/dikel/brand/DiKel_white.svg" alt="DiKel White"
-                                    style="width: 318px; height: 68px;">
+                <div class="logo-margin-block">
+                    <div class="logo-margin-cards">
+                        <!-- English Col -->
+                        <div class="lmg-col">
+                            <p class="lmg-col-label">영문</p>
+                            <div class="logo-margin-card">
+                                <img src="assets/dikel/brand/영문.png" alt="DiKel 영문 로고 여백 가이드" style="width: 100%; height: 100%; object-fit: contain;">
                             </div>
                         </div>
-                        <div class="mono-card-half mc-blue">
-                            <div class="dikel-mark">
-                                <img src="assets/dikel/brand/DiKel_whiteorange.svg" alt="DiKel White-Orange"
-                                    style="width: 318px; height: 68px;">
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Row 4 (Orange Background) -->
-                    <div class="mono-row">
-                        <div class="mono-card-full mc-orange">
-                            <div class="dikel-mark">
-                                <img src="assets/dikel/brand/DiKel_white.svg" alt="DiKel White"
-                                    style="width: 318px; height: 68px;">
+                        <!-- Korean Col -->
+                        <div class="lmg-col">
+                            <p class="lmg-col-label">국문</p>
+                            <div class="logo-margin-card">
+                                <img src="assets/dikel/brand/국문.png" alt="DiKel 국문 로고 여백 가이드" style="width: 100%; height: 100%; object-fit: contain;">
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- ── BI 컬러 (Figma 추가) ── -->
-            <div class="bi-color-block">
-                <p class="bi-color-label">BI 컬러</p>
-                <div class="bi-color-grid">
-                    <!-- DK Blue -->
-                    <div class="bi-color-card">
-                        <div class="color-circle dk-blue"></div>
-                        <div class="color-info-group">
-                            <h4 class="color-name">DK Blue</h4>
-                            <div class="color-values">
-                                <div class="color-val-row"><span class="color-val-text">#003592</span></div>
-                                <div class="color-val-row"><span class="color-val-text">R0 G53 B146</span></div>
-                                <div class="color-val-row"><span class="color-val-text">C100 M87 Y0 K0</span></div>
+                <div class="mono-logo-block">
+                    <h3 class="mono-logo-subtitle">BI 색상활용</h3>
+
+                    <div class="mono-grid">
+                        <!-- Row 1 (White Background) -->
+                        <div class="mono-row">
+                            <div class="mono-card-half mc-white">
+                                <div class="dikel-mark">
+                                    <img src="assets/dikel/brand/DiKel_black.svg" alt="DiKel Black"
+                                        style="width: 318px; height: 68px;">
+                                </div>
+                            </div>
+                            <div class="mono-card-half mc-white">
+                                <div class="dikel-mark">
+                                    <img src="assets/dikel/brand/DiKel_blackorange.svg" alt="DiKel Black-Orange"
+                                        style="width: 318px; height: 68px;">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- DK Orange -->
-                    <div class="bi-color-card">
-                        <div class="color-circle dk-orange"></div>
-                        <div class="color-info-group">
-                            <h4 class="color-name">DK Orange</h4>
-                            <div class="color-values">
-                                <div class="color-val-row"><span class="color-val-text">#EE7826</span></div>
-                                <div class="color-val-row"><span class="color-val-text">R238 G120 B38</span></div>
-                                <div class="color-val-row"><span class="color-val-text">C0 M65 Y87 K0</span></div>
+
+                        <!-- Row 2 (Black Background) -->
+                        <div class="mono-row">
+                            <div class="mono-card-half mc-black">
+                                <div class="dikel-mark">
+                                    <img src="assets/dikel/brand/DiKel_white.svg" alt="DiKel White"
+                                        style="width: 318px; height: 68px;">
+                                </div>
+                            </div>
+                            <div class="mono-card-half mc-black">
+                                <div class="dikel-mark">
+                                    <img src="assets/dikel/brand/DiKel_whiteorange.svg" alt="DiKel White-Orange"
+                                        style="width: 318px; height: 68px;">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- DK Grey -->
-                    <div class="bi-color-card">
-                        <div class="color-circle dk-grey"></div>
-                        <div class="color-info-group">
-                            <h4 class="color-name">DK Grey</h4>
-                            <div class="color-values">
-                                <div class="color-val-row"><span class="color-val-text">#9DA6A8</span></div>
-                                <div class="color-val-row"><span class="color-val-text">R157 G166 B168</span></div>
-                                <div class="color-val-row"><span class="color-val-text">C7 M1 Y0 K34</span></div>
+
+                        <!-- Row 3 (Blue Background) -->
+                        <div class="mono-row">
+                            <div class="mono-card-half mc-blue">
+                                <div class="dikel-mark">
+                                    <img src="assets/dikel/brand/DiKel_white.svg" alt="DiKel White"
+                                        style="width: 318px; height: 68px;">
+                                </div>
+                            </div>
+                            <div class="mono-card-half mc-blue">
+                                <div class="dikel-mark">
+                                    <img src="assets/dikel/brand/DiKel_whiteorange.svg" alt="DiKel White-Orange"
+                                        style="width: 318px; height: 68px;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 4 (Orange Background) -->
+                        <div class="mono-row">
+                            <div class="mono-card-full mc-orange">
+                                <div class="dikel-mark">
+                                    <img src="assets/dikel/brand/DiKel_white.svg" alt="DiKel White"
+                                        style="width: 318px; height: 68px;">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
-    </section>
+                <!-- ── BI 컬러 (Figma 추가) ── -->
+                <div class="bi-color-block">
+                    <p class="bi-color-label">BI 컬러</p>
+                    <div class="bi-color-grid">
+                        <!-- DK Blue -->
+                        <div class="bi-color-card">
+                            <div class="color-circle dk-blue"></div>
+                            <div class="color-info-group">
+                                <h4 class="color-name">DK Blue</h4>
+                                <div class="color-values">
+                                    <div class="color-val-row"><span class="color-val-text">#003592</span></div>
+                                    <div class="color-val-row"><span class="color-val-text">R0 G53 B146</span></div>
+                                    <div class="color-val-row"><span class="color-val-text">C100 M87 Y0 K0</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DK Orange -->
+                        <div class="bi-color-card">
+                            <div class="color-circle dk-orange"></div>
+                            <div class="color-info-group">
+                                <h4 class="color-name">DK Orange</h4>
+                                <div class="color-values">
+                                    <div class="color-val-row"><span class="color-val-text">#EE7826</span></div>
+                                    <div class="color-val-row"><span class="color-val-text">R238 G120 B38</span></div>
+                                    <div class="color-val-row"><span class="color-val-text">C0 M65 Y87 K0</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DK Grey -->
+                        <div class="bi-color-card">
+                            <div class="color-circle dk-grey"></div>
+                            <div class="color-info-group">
+                                <h4 class="color-name">DK Grey</h4>
+                                <div class="color-values">
+                                    <div class="color-val-row"><span class="color-val-text">#9DA6A8</span></div>
+                                    <div class="color-val-row"><span class="color-val-text">R157 G166 B168</span></div>
+                                    <div class="color-val-row"><span class="color-val-text">C7 M1 Y0 K34</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
 
     </div>
 
@@ -4905,188 +4865,190 @@
                 <p class="hero-sub">환경과 기술의 공존, 동국산업의 DiKel이 약속하는 내일입니다.</p>
             </div>
         </section>
-    </div>
 
-    <section class="material-section">
-        <div class="inner">
-            <div class="material-content">
-                <h2 class="material-title">시대가 요구하는 새로운 소재</h2>
-                <div class="material-cards">
-                    <div class="mcard mcard-1">
-                        <div class="mcard-illus">
-                            <img src="assets/dikel/dikel/net-zero.svg" alt="net-zero">
+        <section class="material-section">
+            <div class="inner">
+                <div class="material-content">
+                    <h2 class="material-title">시대가 요구하는 새로운 소재</h2>
+                    <div class="material-cards">
+                        <div class="mcard mcard-1">
+                            <div class="mcard-illus">
+                                <img src="assets/dikel/dikel/net-zero.svg" alt="net-zero">
+                            </div>
+                            <div class="mcard-txt">
+                                <h3 class="mcard-title">UN의 탄소중립 선언</h3>
+                                <p class="mcard-desc">UN의 2050 넷제로 목표에 따라,<br>한국도 완전한 탈탄소화를 선언했습니다.</p>
+                            </div>
                         </div>
-                        <div class="mcard-txt">
-                            <h3 class="mcard-title">UN의 탄소중립 선언</h3>
-                            <p class="mcard-desc">UN의 2050 넷제로 목표에 따라,<br>한국도 완전한 탈탄소화를 선언했습니다.</p>
+                        <div class="mcard mcard-2">
+                            <div class="mcard-illus">
+                                <img src="assets/dikel/dikel/charge.svg" alt="전기차 수요">
+                            </div>
+                            <div class="mcard-txt">
+                                <h3 class="mcard-title">전기차 수요의 증가</h3>
+                                <p class="mcard-desc">IEA 전망 2030년 비중 60%,<br>전기차 시장은 매년 기록적으로 성장합니다.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mcard mcard-2">
-                        <div class="mcard-illus">
-                            <img src="assets/dikel/dikel/charge.svg" alt="전기차 수요">
-                        </div>
-                        <div class="mcard-txt">
-                            <h3 class="mcard-title">전기차 수요의 증가</h3>
-                            <p class="mcard-desc">IEA 전망 2030년 비중 60%,<br>전기차 시장은 매년 기록적으로 성장합니다.</p>
-                        </div>
-                    </div>
-                    <div class="mcard mcard-3">
-                        <div class="mcard-illus">
-                            <img src="assets/dikel/dikel/government.svg" alt="정부 녹색성장 정책">
-                        </div>
-                        <div class="mcard-txt">
-                            <h3 class="mcard-title">정부의 녹색성장 정책</h3>
-                            <p class="mcard-desc">정부의 적극적인 지원으로 부담 없이<br>친환경 모빌리티를 선택할 수 있게 됩니다.</p>
+                        <div class="mcard mcard-3">
+                            <div class="mcard-illus">
+                                <img src="assets/dikel/dikel/government.svg" alt="정부 녹색성장 정책">
+                            </div>
+                            <div class="mcard-txt">
+                                <h3 class="mcard-title">정부의 녹색성장 정책</h3>
+                                <p class="mcard-desc">정부의 적극적인 지원으로 부담 없이<br>친환경 모빌리티를 선택할 수 있게 됩니다.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="why-section">
-        <div class="inner">
-            <p class="why-label">Why DiKel?</p>
-            <p class="why-desc">동국산업은 50년 특수강 제조 노하우를 바탕으로,<br>배터리 케이스에 가장 적합한 고정밀 니켈도금 기술을 완성했습니다.</p>
-        </div>
-    </section>
+        <section class="why-section">
+            <div class="inner">
+                <p class="why-label">Why DiKel?</p>
+                <p class="why-desc">동국산업은 50년 특수강 제조 노하우를 바탕으로,<br>배터리 케이스에 가장 적합한 고정밀 니켈도금 기술을 완성했습니다.</p>
+            </div>
+        </section>
 
-    <section class="value-section" id="value-section">
-        <div class="value-sticky-wrap">
-            <div class="value-inner-box">
-                <div class="value-img" id="value-img-1" style="opacity: 1;">
-                    <img src="assets/dikel/dikel/chager1.png" alt="DiKel 환경 가치">
-                </div>
-                <div class="value-img" id="value-img-2" style="opacity: 0;">
-                    <img src="assets/dikel/dikel/charge2.png" alt="DiKel 미래 가치">
-                </div>
-
-                <p class="value-section-label" id="value-label">DiKel이 만드는 지속가능한 가치</p>
-
-                <div class="value-text-mask">
-                    <div class="value-item" id="vitem-0">
-                        <div class="value-item-top">
-                            <div class="value-item-tag-wrap">
-                                <span class="value-item-tag">Environmental Value</span>
-                            </div>
-                            <h3 class="value-item-title">오래 쓰이는 것이<br>가장 친환경적인 기준</h3>
-                        </div>
-                        <div class="value-item-divider"></div>
-                        <p class="value-item-desc">부품의 수명을 늘리는 우수한 내구성은 자원을 절약할 뿐만 아니라 배터리의 안전까지 보장합니다. 견고한 소재가 주는 안심은
-                            <br>전기차 대중화를 이끌며 일상을 더욱 친환경적으로 변화시킵니다.
-                        </p>
+        <section class="value-section" id="value-section">
+            <div class="value-sticky-wrap">
+                <div class="value-inner-box">
+                    <div class="value-img" id="value-img-1" style="opacity: 1;">
+                        <img src="assets/dikel/dikel/chager1.png" alt="DiKel 환경 가치">
+                    </div>
+                    <div class="value-img" id="value-img-2" style="opacity: 0;">
+                        <img src="assets/dikel/dikel/charge2.png" alt="DiKel 미래 가치">
                     </div>
 
-                    <div class="value-item" id="vitem-1">
-                        <div class="value-item-top">
-                            <div class="value-item-tag-wrap">
-                                <span class="value-item-tag">Future Expansion</span>
-                            </div>
-                            <h3 class="value-item-title">기술의 경계를<br>넘어서는 소재의 진화</h3>
-                        </div>
-                        <div class="value-item-divider"></div>
-                        <p class="value-item-desc">배터리 시스템의 안정성과 신뢰도를 완성하는 소재의 가치는 이제 로봇 및 차세대 산업으로 영역을 넓히고 있습니다. 고도화된
-                            정밀함과 성능을 바탕으로 기술의 한계를 넘어서는 미래를 앞장서 준비합니다.</p>
-                    </div>
-                </div>
+                    <p class="value-section-label" id="value-label">DiKel이 만드는 지속가능한 가치</p>
 
-                <div class="value-indicator">
-                    <div class="value-indicator-fill" id="value-fill"></div>
+                    <div class="value-text-mask">
+                        <div class="value-item" id="vitem-0">
+                            <div class="value-item-top">
+                                <div class="value-item-tag-wrap">
+                                    <span class="value-item-tag">Environmental Value</span>
+                                </div>
+                                <h3 class="value-item-title">오래 쓰이는 것이<br>가장 친환경적인 기준</h3>
+                            </div>
+                            <div class="value-item-divider"></div>
+                            <p class="value-item-desc">부품의 수명을 늘리는 우수한 내구성은 자원을 절약할 뿐만 아니라 배터리의 안전까지 보장합니다. 견고한 소재가 주는
+                                안심은
+                                <br>전기차 대중화를 이끌며 일상을 더욱 친환경적으로 변화시킵니다.
+                            </p>
+                        </div>
+
+                        <div class="value-item" id="vitem-1">
+                            <div class="value-item-top">
+                                <div class="value-item-tag-wrap">
+                                    <span class="value-item-tag">Future Expansion</span>
+                                </div>
+                                <h3 class="value-item-title">기술의 경계를<br>넘어서는 소재의 진화</h3>
+                            </div>
+                            <div class="value-item-divider"></div>
+                            <p class="value-item-desc">배터리 시스템의 안정성과 신뢰도를 완성하는 소재의 가치는 이제 로봇 및 차세대 산업으로 영역을 넓히고 있습니다.
+                                고도화된
+                                정밀함과 성능을 바탕으로 기술의 한계를 넘어서는 미래를 앞장서 준비합니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="value-indicator">
+                        <div class="value-indicator-fill" id="value-fill"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="battery-section">
-        <div class="inner">
-            <h2 class="battery-main-title">비교할 수 없는 안정성과 효율,<br>왜 원통형 배터리인가?</h2>
+        <section class="battery-section">
+            <div class="inner">
+                <h2 class="battery-main-title">비교할 수 없는 안정성과 효율,<br>왜 원통형 배터리인가?</h2>
 
-            <div class="battery-compare">
-                <div class="compare-row">
-                    <div class="compare-images">
-                        <div class="img-box-side pouch">
-                            <img src="assets/dikel/dikel/pouch.png" alt="파우치형 배터리">
-                        </div>
+                <div class="battery-compare">
+                    <div class="compare-row">
+                        <div class="compare-images">
+                            <div class="img-box-side pouch">
+                                <img src="assets/dikel/dikel/pouch.png" alt="파우치형 배터리">
+                            </div>
 
-                        <div class="img-box-center">
-                            <img src="assets/dikel/dikel/cylindrical.png" alt="원통형 배터리">
-                        </div>
+                            <div class="img-box-center">
+                                <img src="assets/dikel/dikel/cylindrical.png" alt="원통형 배터리">
+                            </div>
 
-                        <div class="img-box-side prism">
-                            <img src="assets/dikel/dikel/prismatic.png" alt="각형 배터리">
-                        </div>
-                    </div>
-
-                    <div class="compare-labels">
-                        <div class="clbl side">파우치형 배터리 / 필름</div>
-                        <div class="clbl center">원통형 배터리 / 니켈도금강판</div>
-                        <div class="clbl side">각형 배터리 / 알루미늄</div>
-                    </div>
-
-                    <div class="bat-float-tag bat-tag1">저렴한 가격</div>
-                    <div class="bat-float-tag bat-tag2">높은 화재 안정성</div>
-                    <div class="bat-float-tag bat-tag3">대량 생산 용이</div>
-                    <div class="bat-float-tag bat-tag4">내구성 우수</div>
-                </div>
-
-                <div class="battery-head">
-                    <h3 class="battery-sub-title">파우치형/각형 대비 공정 효율 및 안정성 우위</h3>
-                    <p class="battery-sub-desc">화재 안정성과 대량 생산에 최적화된 원통형 배터리 글로벌 파트너들이 신뢰하는 차세대 모빌리티의 핵심 솔루션입니다.</p>
-                </div>
-            </div>
-
-            <div class="battery-system">
-                <div class="bsys-card">
-                    <div class="bsys-items">
-                        <div class="bsys-item">
-                            <img src="assets/dikel/dikel/Cell1.png" alt="Cell" class="bsys-img-cell">
-                            <div class="bsys-arrow">
-                                <img src="assets/dikel/dikel/화살표1.svg" alt="arrow">
+                            <div class="img-box-side prism">
+                                <img src="assets/dikel/dikel/prismatic.png" alt="각형 배터리">
                             </div>
                         </div>
 
-                        <div class="bsys-item">
-                            <img src="assets/dikel/dikel/Module.svg" alt="Module" class="bsys-img-module">
-                            <div class="bsys-arrow">
-                                <img src="assets/dikel/dikel/화살표.svg" alt="arrow">
+                        <div class="compare-labels">
+                            <div class="clbl side">파우치형 배터리 / 필름</div>
+                            <div class="clbl center">원통형 배터리 / 니켈도금강판</div>
+                            <div class="clbl side">각형 배터리 / 알루미늄</div>
+                        </div>
+
+                        <div class="bat-float-tag bat-tag1">저렴한 가격</div>
+                        <div class="bat-float-tag bat-tag2">높은 화재 안정성</div>
+                        <div class="bat-float-tag bat-tag3">대량 생산 용이</div>
+                        <div class="bat-float-tag bat-tag4">내구성 우수</div>
+                    </div>
+
+                    <div class="battery-head">
+                        <h3 class="battery-sub-title">파우치형/각형 대비 공정 효율 및 안정성 우위</h3>
+                        <p class="battery-sub-desc">화재 안정성과 대량 생산에 최적화된 원통형 배터리 글로벌 파트너들이 신뢰하는 차세대 모빌리티의 핵심 솔루션입니다.</p>
+                    </div>
+                </div>
+
+                <div class="battery-system">
+                    <div class="bsys-card">
+                        <div class="bsys-items">
+                            <div class="bsys-item">
+                                <img src="assets/dikel/dikel/Cell1.png" alt="Cell" class="bsys-img-cell">
+                                <div class="bsys-arrow">
+                                    <img src="assets/dikel/dikel/화살표1.svg" alt="arrow">
+                                </div>
+                            </div>
+
+                            <div class="bsys-item">
+                                <img src="assets/dikel/dikel/Module.svg" alt="Module" class="bsys-img-module">
+                                <div class="bsys-arrow">
+                                    <img src="assets/dikel/dikel/화살표.svg" alt="arrow">
+                                </div>
+                            </div>
+
+                            <div class="bsys-item">
+                                <img src="assets/dikel/dikel/Bettery Pack.svg" alt="Battery Pack" class="bsys-img-pack">
                             </div>
                         </div>
 
-                        <div class="bsys-item">
-                            <img src="assets/dikel/dikel/Bettery Pack.svg" alt="Battery Pack" class="bsys-img-pack">
+                        <div class="bsys-labels">
+                            <div class="bsys-label">Cell</div>
+                            <div class="bsys-label">Module</div>
+                            <div class="bsys-label">Battery Pack</div>
                         </div>
                     </div>
 
-                    <div class="bsys-labels">
-                        <div class="bsys-label">Cell</div>
-                        <div class="bsys-label">Module</div>
-                        <div class="bsys-label">Battery Pack</div>
+                    <div class="bsys-head">
+                        <h3 class="battery-sub-title">효율적 에너지의 시작, 원통형 배터리 시스템</h3>
+                        <p class="battery-sub-desc">니켈도금강판이 감싼 Cell은 Module을 거쳐, 최종적인 Battery Pack으로 완성됩니다. (차량별 최적의 수량
+                            설계
+                            적용)</p>
                     </div>
                 </div>
-
-                <div class="bsys-head">
-                    <h3 class="battery-sub-title">효율적 에너지의 시작, 원통형 배터리 시스템</h3>
-                    <p class="battery-sub-desc">니켈도금강판이 감싼 Cell은 Module을 거쳐, 최종적인 Battery Pack으로 완성됩니다. (차량별 최적의 수량 설계
-                        적용)</p>
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="gallery-section">
-        <h2 class="gallery-title">오늘의 환경 가치를 지키고 내일의 한계를 넘는 소재,<br>차세대 배터리의 신뢰를 완성하는 DiKel의 진화</h2>
+        <section class="gallery-section">
+            <h2 class="gallery-title">오늘의 환경 가치를 지키고 내일의 한계를 넘는 소재,<br>차세대 배터리의 신뢰를 완성하는 DiKel의 진화</h2>
 
-        <div class="gallery-scroll">
-            <div class="gallery-img"><img src="assets/dikel/dikel/7.svg" alt="Gallery Image 1"></div>
-            <div class="gallery-img"><img src="assets/dikel/dikel/Ellipse.svg" alt="Gallery Image 2"></div>
-            <div class="gallery-img"><img src="assets/dikel/dikel/6.svg" alt="Gallery Image 3"></div>
-            <div class="gallery-img"><img src="assets/dikel/dikel/img_강판.svg" alt="Gallery Image 4"></div>
-            <div class="gallery-img"><img src="assets/dikel/dikel/8.svg" alt="Gallery Image 5"></div>
-            <div class="gallery-img"><img src="assets/dikel/dikel/5.svg" alt="Gallery Image 6"></div>
-        </div>
-    </section>
+            <div class="gallery-scroll">
+                <div class="gallery-img"><img src="assets/dikel/dikel/7.svg" alt="Gallery Image 1"></div>
+                <div class="gallery-img"><img src="assets/dikel/dikel/Ellipse.svg" alt="Gallery Image 2"></div>
+                <div class="gallery-img"><img src="assets/dikel/dikel/6.svg" alt="Gallery Image 3"></div>
+                <div class="gallery-img"><img src="assets/dikel/dikel/img_강판.svg" alt="Gallery Image 4"></div>
+                <div class="gallery-img"><img src="assets/dikel/dikel/8.svg" alt="Gallery Image 5"></div>
+                <div class="gallery-img"><img src="assets/dikel/dikel/5.svg" alt="Gallery Image 6"></div>
+            </div>
+        </section>
 
-    <!-- 고객지원 -->
+        <!-- 고객지원 -->
     </div>
 
     <section class="support-section">
@@ -5426,12 +5388,12 @@
 
 
         // ===== TAB SWITCHING =====
-        document.querySelectorAll('.tab-item[data-tab]').forEach(function(tab) {
-            tab.addEventListener('click', function() {
+        document.querySelectorAll('.tab-item[data-tab]').forEach(function (tab) {
+            tab.addEventListener('click', function () {
                 var targetId = this.getAttribute('data-tab');
                 // Deactivate all
-                document.querySelectorAll('.tab-item[data-tab]').forEach(function(t) { t.classList.remove('active'); });
-                document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+                document.querySelectorAll('.tab-item[data-tab]').forEach(function (t) { t.classList.remove('active'); });
+                document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
                 // Activate target
                 this.classList.add('active');
                 var panel = document.getElementById(targetId);
@@ -5448,11 +5410,11 @@
         });
 
         // URL 해시로 탭 자동 활성화 (#tab-brand, #tab-dikel)
-        (function() {
+        (function () {
             var hash = window.location.hash.replace('#', '');
             if (hash && document.getElementById(hash)) {
-                document.querySelectorAll('.tab-item[data-tab]').forEach(function(t) { t.classList.remove('active'); });
-                document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+                document.querySelectorAll('.tab-item[data-tab]').forEach(function (t) { t.classList.remove('active'); });
+                document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
                 var target = document.querySelector('.tab-item[data-tab="' + hash + '"]');
                 if (target) target.classList.add('active');
                 document.getElementById(hash).classList.add('active');
@@ -5606,7 +5568,7 @@
         });
     </script>
     -->
-  <script src="../js/gnb.js"></script>
+    <script src="../js/gnb.js"></script>
 </body>
 
 </html>
