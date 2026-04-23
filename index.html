@@ -30,146 +30,22 @@
     }
 
     /* ══ NAV — Figma: h100 px80 ══ */
-    #nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 300;
-      height: 100px;
+    /* ══ 메인 페이지 GNB 오버라이드 (투명 히어로 전환용) ══ */
+    .gnb {
+      position: fixed !important;
+      background: transparent;
       transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), background 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 80px;
     }
 
-    #nav.nav--solid {
+    .gnb.gnb-solid {
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
     }
 
-    /* 메뉴 열렸을 때: 투명 → 흰 배경 + 그림자 + 다크 텍스트 */
-    #nav.gnb-menu-active {
-      background: #fff !important;
-      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06) !important;
-    }
-
-    #nav.gnb-menu-active .nav-links a {
-      color: #4E4E4E !important;
-    }
-
-    #nav.gnb-menu-active .nav-divider {
-      background: #D3D3D3 !important;
-    }
-
-    #nav.gnb-menu-active .nav-hamburger span {
-      background: #4E4E4E !important;
-    }
-
-    #nav.gnb-menu-active .nav-logo img {
-      filter: none !important;
-    }
-
-    #nav.nav-hide {
+    .gnb.gnb-hidden {
       transform: translateY(-100%);
-    }
-
-    /* Logo: 163×34 */
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-    }
-
-    .nav-logo img {
-      height: 34px;
-      width: 163px;
-      object-fit: contain;
-      transition: filter 0.4s ease;
-      /* 기본 투명 배경: 흰 로고 */
-      filter: brightness(0) invert(1);
-    }
-
-    #nav.nav--solid .nav-logo img,
-    #nav.nav--dark .nav-logo img {
-      /* 흰/어두운 배경: 컬러 로고 */
-      filter: none;
-    }
-
-    /* 오른쪽 그룹: gap 24 */
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-
-    /* 문의/KR 링크 그룹: gap 16 */
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    /* 문의/KR 개별: h44 px8 py4 r50 20px bold */
-    .nav-links a {
-      display: flex;
-      align-items: center;
-      height: 44px;
-      padding: 4px 8px;
-      border-radius: 50px;
-      font-size: 20px;
-      font-weight: 700;
-      color: #fff;
-      text-decoration: none;
-      white-space: nowrap;
-      line-height: 1.5;
-      transition: color 0.4s ease;
-    }
-
-    #nav.nav--dark .nav-links a {
-      color: #4E4E4E;
-    }
-
-    /* 구분선: h22 w1 */
-    .nav-divider {
-      width: 1px;
-      height: 22px;
-      background: #fff;
-      flex-shrink: 0;
-      transition: background 0.4s ease;
-    }
-
-    #nav.nav--dark .nav-divider {
-      background: #D3D3D3;
-    }
-
-    /* 햄버거: 44×44 r100, 줄 w28 h2 gap8.86 */
-    .nav-hamburger {
-      width: 44px;
-      height: 44px;
-      border-radius: 100px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 8.86px;
-      cursor: pointer;
-    }
-
-    .nav-hamburger span {
-      display: block;
-      width: 28px;
-      height: 2px;
-      background: #fff;
-      flex-shrink: 0;
-      transition: background 0.4s ease;
-    }
-
-    #nav.nav--dark .nav-hamburger span {
-      background: #4E4E4E;
     }
 
     /* ══ HERO ══ */
@@ -1880,27 +1756,24 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="css/common.css">
   <link rel="stylesheet" href="css/gnb.css">
 </head>
 
 <body data-page="main">
-  <nav id="nav">
-    <a href="#" class="nav-logo" aria-label="DK Dongkuk Industries">
-      <img src="assets/common/logo.svg" alt="Logo">
-    </a>
-    <div class="nav-right">
-      <div class="nav-links">
+  <header class="gnb gnb-transparent" data-gnb-transparent>
+    <div class="gnb-logo">
+      <a href="index.html"><img src="assets/common/logo.svg" alt="동국산업 로고"></a>
+    </div>
+    <div class="gnb-utils">
+      <div class="gnb-utils-links">
         <a href="#">문의</a>
         <a href="#">KR</a>
       </div>
-      <div class="nav-divider"></div>
-      <div class="nav-hamburger" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+      <span class="gnb-divider"></span>
+      <button class="gnb-menu-btn"><span></span><span></span><span></span></button>
     </div>
-  </nav>
+  </header>
 
   <section id="hero">
     <div class="hero-bg"></div>
@@ -2677,42 +2550,42 @@
     }, { threshold: 0.12 });
     fadeEls.forEach(el => fadeIO.observe(el));
 
-    /* ══ NAV 컬러 전환 및 스크롤 숨김 처리 ══ */
+    /* ══ GNB 컬러 전환 및 스크롤 숨김 처리 ══ */
     (function () {
-      const nav = document.getElementById('nav');
+      const gnb = document.querySelector('.gnb');
       const hero = document.getElementById('hero');
       let lastY = window.scrollY;
 
-      function updateNav() {
+      function updateGnb() {
         const currentY = window.scrollY;
         const delta = currentY - lastY;
         const scrollingUp = delta < 0;
 
-        // 1. 다크 모드 전환 (히어로 섹션을 벗어났을 때)
+        // 1. 투명↔solid 전환 (히어로 섹션을 벗어났을 때)
         if (hero) {
           const heroBottom = hero.getBoundingClientRect().bottom;
           const pastHero = heroBottom <= 0;
-          nav.classList.toggle('nav--dark', pastHero);
-          nav.classList.toggle('nav--solid', pastHero);
+          gnb.classList.toggle('gnb-solid', pastHero);
+          gnb.classList.toggle('gnb-transparent', !pastHero);
         }
 
-        // 2. orbital 섹션 감지 - orbital 구간에서는 네비 항상 보이기
+        // 2. orbital 섹션 감지
         const orbital = document.querySelector('.orbital-sticky');
         const inOrbital = orbital && orbital.getBoundingClientRect().top < 100 && orbital.getBoundingClientRect().bottom > 0;
 
         if (inOrbital) {
-          nav.classList.remove('nav-hide');
+          gnb.classList.remove('gnb-hidden');
         } else if (delta > 0 && currentY > 50) {
-          nav.classList.add('nav-hide'); // 숨기기
+          gnb.classList.add('gnb-hidden');
         } else if (scrollingUp) {
-          nav.classList.remove('nav-hide'); // 나타내기
+          gnb.classList.remove('gnb-hidden');
         }
 
         lastY = currentY;
       }
 
-      window.addEventListener('scroll', updateNav, { passive: true });
-      updateNav();
+      window.addEventListener('scroll', updateGnb, { passive: true });
+      updateGnb();
     })();
 
     (function () {
