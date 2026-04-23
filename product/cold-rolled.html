@@ -114,15 +114,18 @@
             border-bottom: 2px solid #1B1B1B;
         }
 
-        /* ===== Hero Text ===== */
+        /* ===== Hero Text (sticky wrapper) ===== */
         .hero-text-outer {
             position: relative;
-            min-height: 100vh;
+            min-height: 200vh;
+        }
+
+        .hero-text-inner {
+            position: sticky;
+            top: 100px;
         }
 
         .hero-text-section {
-            position: sticky;
-            top: 200px;
             padding: 100px 80px 0;
             text-align: center;
         }
@@ -1465,41 +1468,42 @@
         <h1>냉연강판</h1>
     </section>
 
-    <!-- Hero Text -->
+    <!-- Hero Text + Feature Cards -->
     <div class="hero-text-outer">
-      <section class="hero-text-section">
-          <h2>글로벌 산업 기준에 맞춰<br>고정밀 산업의 안정성을 뒷받침합니다.</h2>
-      </section>
+      <div class="hero-text-inner">
+        <section class="hero-text-section">
+            <h2>글로벌 산업 기준에 맞춰<br>고정밀 산업의 안정성을 뒷받침합니다.</h2>
+        </section>
+
+        <section class="feature-cards">
+            <div class="fcards-row">
+                <!-- Card 1 -->
+                <div class="fcard fcard-premium">
+                    <div class="bg-main"></div>
+                    <div class="bg-circle"></div>
+                    <img src="assets/cold-rolled/냉연강판.png" alt="냉연강판" class="product-img">
+                    <p class="label-text">압도적 국내 시장 점유</p>
+                    <p class="title-text">62%</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="fcard fcard-stable">
+                    <div class="bg-main"></div>
+                    <p class="label-text">일본·미국·유럽 등<br>
+                        국제 대응이 가능한 생산라인</p>
+                    <p class="title-text">Multi-<br>Production</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="fcard fcard-nextgen">
+                    <div class="bg-main"></div>
+                    <p class="label-text">글로벌 비즈니스 노하우 &amp; 탄탄한 수출 인프라</p>
+                    <p class="title-text">Global<br>Business</p>
+                </div>
+            </div>
+        </section>
+      </div>
     </div>
-
-    <!-- 냉연_제품 한줄 소개 -->
-    <section class="feature-cards">
-        <div class="fcards-row">
-            <!-- Card 1 -->
-            <div class="fcard fcard-premium">
-                <div class="bg-main"></div>
-                <div class="bg-circle"></div>
-                <img src="assets/cold-rolled/냉연강판.png" alt="냉연강판" class="product-img">
-                <p class="label-text">압도적 국내 시장 점유</p>
-                <p class="title-text">62%</p>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="fcard fcard-stable">
-                <div class="bg-main"></div>
-                <p class="label-text">일본·미국·유럽 등<br>
-                    국제 대응이 가능한 생산라인</p>
-                <p class="title-text">Multi-<br>Production</p>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="fcard fcard-nextgen">
-                <div class="bg-main"></div>
-                <p class="label-text">글로벌 비즈니스 노하우 & 탄탄한 수출 인프라</p>
-                <p class="title-text">Global<br>Business</p>
-            </div>
-        </div>
-    </section>
 
     <!-- Product Tabs -->
     <div class="product-tabs">

@@ -114,15 +114,18 @@
             border-bottom: 2px solid #1B1B1B;
         }
 
-        /* ===== Hero Text ===== */
+        /* ===== Hero Text (sticky wrapper) ===== */
         .hero-text-outer {
             position: relative;
-            min-height: 100vh;
+            min-height: 200vh;
+        }
+
+        .hero-text-inner {
+            position: sticky;
+            top: 100px;
         }
 
         .hero-text-section {
-            position: sticky;
-            top: 200px;
             padding: 100px 80px 0;
             text-align: center;
         }
@@ -1690,38 +1693,39 @@
         <h1>Q/T 열처리강판</h1>
     </section>
 
-    <!-- Hero Text -->
+    <!-- Hero Text + Feature Cards -->
     <div class="hero-text-outer">
-      <section class="hero-text-section">
-          <h2>빈틈없는 내구성으로,<br>시장과 품질의 기준을 만듭니다.</h2>
-      </section>
+      <div class="hero-text-inner">
+        <section class="hero-text-section">
+            <h2>빈틈없는 내구성으로,<br>시장과 품질의 기준을 만듭니다.</h2>
+        </section>
+
+        <section class="feature-cards">
+            <div class="fcards-row">
+                <!-- Premium -->
+                <div class="fcard fcard-premium">
+                    <div class="label-text">국내 3사 중<br>압도적인 생산 규모</div>
+                    <div class="title-text">No.1</div>
+                    <div class="bg-main"></div>
+                    <div class="bg-circle"></div>
+                    <div class="product-img"></div>
+                </div>
+
+                <!-- Stable -->
+                <div class="fcard fcard-stable">
+                    <div class="label-text">탄소감축 및 환경을 고려한<br>친환경 생산 설비</div>
+                    <div class="title-text">ECO</div>
+                </div>
+
+                <!-- Next-Gen -->
+                <div class="fcard fcard-nextgen">
+                    <div class="label-text">미세 조직 제어 기술로<br>최상위 품질 완성</div>
+                    <div class="title-text">Quality</div>
+                </div>
+            </div>
+        </section>
+      </div>
     </div>
-
-    <!-- Feature Cards Section -->
-    <section class="feature-cards">
-        <div class="fcards-row">
-            <!-- Premium -->
-            <div class="fcard fcard-premium">
-                <div class="label-text">국내 3사 중<br>압도적인 생산 규모</div>
-                <div class="title-text">No.1</div>
-                <div class="bg-main"></div>
-                <div class="bg-circle"></div>
-                <div class="product-img"></div>
-            </div>
-
-            <!-- Stable -->
-            <div class="fcard fcard-stable">
-                <div class="label-text">탄소감축 및 환경을 고려한<br>친환경 생산 설비</div>
-                <div class="title-text">ECO</div>
-            </div>
-
-            <!-- Next-Gen -->
-            <div class="fcard fcard-nextgen">
-                <div class="label-text">미세 조직 제어 기술로<br>최상위 품질 완성</div>
-                <div class="title-text">Quality</div>
-            </div>
-        </div>
-    </section>
 
     <!-- Product Tabs -->
     <div class="product-tabs">

@@ -114,15 +114,18 @@
             border-bottom: 2px solid #1B1B1B;
         }
 
-        /* ===== Hero Text ===== */
+        /* ===== Hero Text (sticky wrapper) ===== */
         .hero-text-outer {
             position: relative;
-            min-height: 100vh;
+            min-height: 200vh;
+        }
+
+        .hero-text-inner {
+            position: sticky;
+            top: 100px;
         }
 
         .hero-text-section {
-            position: sticky;
-            top: 200px;
             padding: 100px 80px 0;
             text-align: center;
         }
@@ -3925,38 +3928,39 @@
     </section>
 
     <div id="tab-product" class="tab-panel active">
-        <!-- Hero Text -->
+        <!-- Hero Text + Feature Cards -->
         <div class="hero-text-outer">
-          <section class="hero-text-section">
-              <h2>차세대 에너지 <em>혁신에 발맞춰</em><br>미래 산업의 성장을 견인합니다.</h2>
-          </section>
+          <div class="hero-text-inner">
+            <section class="hero-text-section">
+                <h2>차세대 에너지 <em>혁신에 발맞춰</em><br>미래 산업의 성장을 견인합니다.</h2>
+            </section>
+
+            <section class="feature-cards">
+                <div class="fcards-row">
+                    <!-- Premium -->
+                    <div class="fcard fcard-premium">
+                        <div class="label-text">고도화된 검사 시스템,<br>1등급 원료 사용</div>
+                        <div class="title-text">Premium</div>
+                        <div class="bg-main"></div>
+                        <div class="bg-circle"></div>
+                        <div class="product-img"></div>
+                    </div>
+
+                    <!-- Stable -->
+                    <div class="fcard fcard-stable">
+                        <div class="label-text">자동화 시스템과 자체 설비로<br>흔들림 없는 생산과 공급</div>
+                        <div class="title-text">Stable</div>
+                    </div>
+
+                    <!-- Next-Gen -->
+                    <div class="fcard fcard-nextgen">
+                        <div class="label-text">검증된 기술력과<br>글로벌 노하우로 만든 신소재</div>
+                        <div class="title-text">Next-Gen</div>
+                    </div>
+                </div>
+            </section>
+          </div>
         </div>
-
-        <!-- Feature Cards Section -->
-        <section class="feature-cards">
-            <div class="fcards-row">
-                <!-- Premium -->
-                <div class="fcard fcard-premium">
-                    <div class="label-text">고도화된 검사 시스템,<br>1등급 원료 사용</div>
-                    <div class="title-text">Premium</div>
-                    <div class="bg-main"></div>
-                    <div class="bg-circle"></div>
-                    <div class="product-img"></div>
-                </div>
-
-                <!-- Stable -->
-                <div class="fcard fcard-stable">
-                    <div class="label-text">자동화 시스템과 자체 설비로<br>흔들림 없는 생산과 공급</div>
-                    <div class="title-text">Stable</div>
-                </div>
-
-                <!-- Next-Gen -->
-                <div class="fcard fcard-nextgen">
-                    <div class="label-text">검증된 기술력과<br>글로벌 노하우로 만든 신소재</div>
-                    <div class="title-text">Next-Gen</div>
-                </div>
-            </div>
-        </section>
 
         <!-- Product Tabs -->
         <div class="product-tabs">
