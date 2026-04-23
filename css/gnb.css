@@ -243,3 +243,19 @@
     font-weight: 700;
   }
 }
+
+/* ── GNB 스크롤 숨김 애니메이션 ── */
+/* GNB를 화면 위에 고정하고 애니메이션 효과 주기 */
+.gnb {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* 스크롤을 내렸을 때 GNB를 위로 숨기는 역할 */
+.gnb.gnb-hidden {
+    transform: translateY(-100%);
+}

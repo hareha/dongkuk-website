@@ -343,7 +343,7 @@ body {
     justify-content: center;
     width: clamp(40px, 3.33vw, 64px);
     height: clamp(40px, 3.33vw, 64px);
-    align-self: flex-start;
+    align-self: center;
     text-decoration: none;
     flex: none;
     cursor: pointer;

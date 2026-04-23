@@ -225,3 +225,28 @@
   }
 
 })();
+
+/* ── GNB 스크롤 숨김 애니메이션 로직 ── */
+document.addEventListener('DOMContentLoaded', () => {
+    let lastScrollY = window.scrollY;
+    // HTML에 있는 <header class="gnb">를 찾아옵니다
+    const gnb = document.querySelector('.gnb');
+
+    if (gnb) {
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            // 스크롤을 아래로 내릴 때 (50px 이상 내려갔을 때만 작동)
+            if (currentScrollY > lastScrollY && currentScrollY > 50) {
+                gnb.classList.add('gnb-hidden'); // 숨기는 클래스 붙이기
+            } 
+            // 스크롤을 위로 올릴 때
+            else {
+                gnb.classList.remove('gnb-hidden'); // 숨기는 클래스 떼기
+            }
+
+            // 다음 계산을 위해 현재 위치를 저장
+            lastScrollY = currentScrollY;
+        });
+    }
+});
