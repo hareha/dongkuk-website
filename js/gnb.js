@@ -132,7 +132,7 @@
   html += '<div class="gnb-menu" id="gnb-menu">';
   // 모바일 전용 헤더 (데스크톱에서는 CSS로 숨김)
   html += '<div class="gnb-menu-header">';
-  html += '<a href="' + M + '"><img class="gnb-menu-logo" src="' + LOGO + '" alt="DK 동국산업"></a>';
+  html += '<a href="' + B + 'index.html"><img class="gnb-menu-logo" src="' + LOGO + '" alt="DK 동국산업"></a>';
   html += '<button class="gnb-menu-close" id="gnb-close" aria-label="닫기">';
   html += '<svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="#1b1b1b" stroke-width="2" stroke-linecap="round"/></svg>';
   html += '</button></div>';
