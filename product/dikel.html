@@ -115,18 +115,16 @@
         }
 
         /* ===== Hero Text ===== */
-        .hero-text-section {
-            padding: 100px 80px 0;
-            text-align: center;
+        .hero-text-outer {
+            position: relative;
+            min-height: 100vh;
         }
 
-        .hero-text-section.is-fixed {
-            position: fixed;
+        .hero-text-section {
+            position: sticky;
             top: 200px;
-            left: 0;
-            right: 0;
-            z-index: 10;
-            background: #fff;
+            padding: 100px 80px 0;
+            text-align: center;
         }
 
         .hero-text-section h2 {
@@ -3928,9 +3926,11 @@
 
     <div id="tab-product" class="tab-panel active">
         <!-- Hero Text -->
-        <section class="hero-text-section">
-            <h2>차세대 에너지 <em>혁신에 발맞춰</em><br>미래 산업의 성장을 견인합니다.</h2>
-        </section>
+        <div class="hero-text-outer">
+          <section class="hero-text-section">
+              <h2>차세대 에너지 <em>혁신에 발맞춰</em><br>미래 산업의 성장을 견인합니다.</h2>
+          </section>
+        </div>
 
         <!-- Feature Cards Section -->
         <section class="feature-cards">
@@ -5363,44 +5363,18 @@
             wrapCharacters(h2);
 
             const chars = h2.querySelectorAll('.char');
-            const section = document.querySelector('.hero-text-section');
-            const SCROLL_DISTANCE = 600;
-            let placeholder = null;
-            let fixStartY = 0;
-            let isFixed = false;
-            let isDone = false;
+            const outer = document.querySelector('.hero-text-outer');
+            if (!outer) return;
 
             function onScroll() {
-                const rect = section.getBoundingClientRect();
+                const rect = outer.getBoundingClientRect();
+                const scrollRoom = outer.offsetHeight - outer.querySelector('.hero-text-section').offsetHeight;
+                const scrolled = -rect.top;
 
-                if (!isFixed && !isDone && rect.top <= 200) {
-                    isFixed = true;
-                    fixStartY = window.scrollY;
-                    placeholder = document.createElement('div');
-                    placeholder.style.height = section.offsetHeight + 'px';
-                    section.parentNode.insertBefore(placeholder, section.nextSibling);
-                    section.classList.add('is-fixed');
-                }
+                let progress = Math.max(0, Math.min(1, scrolled / Math.max(scrollRoom, 1)));
 
-                if (isFixed && !isDone) {
-                    const scrolled = window.scrollY - fixStartY;
-                    let progress = scrolled / SCROLL_DISTANCE;
-                    progress = Math.max(0, Math.min(1, progress));
-
-                    const activeCount = Math.floor(progress * chars.length);
-                    chars.forEach((c, i) => c.classList.toggle('active', i < activeCount));
-
-                    if (progress >= 1) {
-                        isDone = true;
-                        section.classList.remove('is-fixed');
-                        if (placeholder) { placeholder.remove(); placeholder = null; }
-                        chars.forEach(c => c.classList.add('active'));
-                    }
-                }
-
-                if (isDone && window.scrollY < fixStartY) {
-                    isDone = false;
-                }
+                const activeCount = Math.floor(progress * chars.length);
+                chars.forEach((c, i) => c.classList.toggle('active', i < activeCount));
             }
 
             window.addEventListener('scroll', onScroll, { passive: true });

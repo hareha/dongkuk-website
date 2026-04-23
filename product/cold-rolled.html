@@ -115,18 +115,16 @@
         }
 
         /* ===== Hero Text ===== */
-        .hero-text-section {
-            padding: 100px 80px 0;
-            text-align: center;
+        .hero-text-outer {
+            position: relative;
+            min-height: 100vh;
         }
 
-        .hero-text-section.is-fixed {
-            position: fixed;
+        .hero-text-section {
+            position: sticky;
             top: 200px;
-            left: 0;
-            right: 0;
-            z-index: 10;
-            background: #fff;
+            padding: 100px 80px 0;
+            text-align: center;
         }
 
         .hero-text-section h2 {
@@ -1468,9 +1466,11 @@
     </section>
 
     <!-- Hero Text -->
-    <section class="hero-text-section">
-        <h2>글로벌 산업 기준에 맞춰<br>고정밀 산업의 안정성을 뒷받침합니다.</h2>
-    </section>
+    <div class="hero-text-outer">
+      <section class="hero-text-section">
+          <h2>글로벌 산업 기준에 맞춰<br>고정밀 산업의 안정성을 뒷받침합니다.</h2>
+      </section>
+    </div>
 
     <!-- 냉연_제품 한줄 소개 -->
     <section class="feature-cards">
@@ -2855,54 +2855,18 @@
             wrapCharacters(h2);
 
             const chars = h2.querySelectorAll('.char');
-            const section = document.querySelector('.hero-text-section');
-            const SCROLL_DISTANCE = 600; // 색칠에 필요한 스크롤 거리(px)
-            let placeholder = null;
-            let fixStartY = 0;
-            let isFixed = false;
-            let isDone = false;
+            const outer = document.querySelector('.hero-text-outer');
+            if (!outer) return;
 
             function onScroll() {
-                const rect = section.getBoundingClientRect();
-                const sectionTop = section.offsetTop;
+                const rect = outer.getBoundingClientRect();
+                const scrollRoom = outer.offsetHeight - outer.querySelector('.hero-text-section').offsetHeight;
+                const scrolled = -rect.top;
 
-                // 아직 고정 안 된 상태: 섹션 상단이 200px 위치에 도달하면 고정 시작
-                if (!isFixed && !isDone && rect.top <= 200) {
-                    isFixed = true;
-                    fixStartY = window.scrollY;
-                    // placeholder로 레이아웃 유지
-                    placeholder = document.createElement('div');
-                    placeholder.style.height = section.offsetHeight + 'px';
-                    section.parentNode.insertBefore(placeholder, section.nextSibling);
-                    section.classList.add('is-fixed');
-                }
+                let progress = Math.max(0, Math.min(1, scrolled / Math.max(scrollRoom, 1)));
 
-                // 고정 중: 스크롤 거리 기반으로 색칠
-                if (isFixed && !isDone) {
-                    const scrolled = window.scrollY - fixStartY;
-                    let progress = scrolled / SCROLL_DISTANCE;
-                    progress = Math.max(0, Math.min(1, progress));
-
-                    const activeCount = Math.floor(progress * chars.length);
-                    chars.forEach((c, i) => c.classList.toggle('active', i < activeCount));
-
-                    // 색칠 완료 → 고정 해제
-                    if (progress >= 1) {
-                        isDone = true;
-                        section.classList.remove('is-fixed');
-                        if (placeholder) {
-                            placeholder.remove();
-                            placeholder = null;
-                        }
-                        // 모든 글자 active 유지
-                        chars.forEach(c => c.classList.add('active'));
-                    }
-                }
-
-                // 위로 스크롤해서 원래 위치로 돌아오면 리셋
-                if (isDone && window.scrollY < fixStartY) {
-                    isDone = false;
-                }
+                const activeCount = Math.floor(progress * chars.length);
+                chars.forEach((c, i) => c.classList.toggle('active', i < activeCount));
             }
 
             window.addEventListener('scroll', onScroll, { passive: true });
