@@ -115,16 +115,18 @@
         }
 
         /* ===== Hero Text ===== */
-        .hero-text-outer {
-            position: relative;
-        }
-
         .hero-text-section {
-            position: sticky;
-            top: 200px;
             padding: 100px 80px 0;
             text-align: center;
-            z-index: 1;
+        }
+
+        .hero-text-section.is-fixed {
+            position: fixed;
+            top: 200px;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            background: #fff;
         }
 
         .hero-text-section h2 {
@@ -3926,12 +3928,9 @@
 
     <div id="tab-product" class="tab-panel active">
         <!-- Hero Text -->
-        <div class="hero-text-outer">
-          <section class="hero-text-section">
-              <h2>차세대 에너지 <em>혁신에 발맞춰</em><br>미래 산업의 성장을 견인합니다.</h2>
-          </section>
-          <div style="height: 150vh;"></div>
-        </div>
+        <section class="hero-text-section">
+            <h2>차세대 에너지 <em>혁신에 발맞춰</em><br>미래 산업의 성장을 견인합니다.</h2>
+        </section>
 
         <!-- Feature Cards Section -->
         <section class="feature-cards">
@@ -5363,34 +5362,49 @@
             // 함수 실행! (이제 모든 글자가 <span class="char">로 감싸짐)
             wrapCharacters(h2);
 
-            // 2. 스크롤에 맞춰 순차적으로 .active 추가하기
             const chars = h2.querySelectorAll('.char');
-            const outer = document.querySelector('.hero-text-outer');
-            if (!outer) return;
+            const section = document.querySelector('.hero-text-section');
+            const SCROLL_DISTANCE = 600;
+            let placeholder = null;
+            let fixStartY = 0;
+            let isFixed = false;
+            let isDone = false;
 
             function onScroll() {
-                const rect = outer.getBoundingClientRect();
-                const outerH = outer.offsetHeight - window.innerHeight;
-                const scrolled = -rect.top;
+                const rect = section.getBoundingClientRect();
 
-                let progress = scrolled / outerH;
-                progress = Math.max(0, Math.min(1, progress));
+                if (!isFixed && !isDone && rect.top <= 200) {
+                    isFixed = true;
+                    fixStartY = window.scrollY;
+                    placeholder = document.createElement('div');
+                    placeholder.style.height = section.offsetHeight + 'px';
+                    section.parentNode.insertBefore(placeholder, section.nextSibling);
+                    section.classList.add('is-fixed');
+                }
 
-                // 진행도 비율에 맞춰 색칠할 글자의 개수 계산
-                const activeCount = Math.floor(progress * chars.length);
+                if (isFixed && !isDone) {
+                    const scrolled = window.scrollY - fixStartY;
+                    let progress = scrolled / SCROLL_DISTANCE;
+                    progress = Math.max(0, Math.min(1, progress));
 
-                // 글자에 클래스 추가/제거
-                chars.forEach((char, index) => {
-                    if (index < activeCount) {
-                        char.classList.add('active');
-                    } else {
-                        char.classList.remove('active');
+                    const activeCount = Math.floor(progress * chars.length);
+                    chars.forEach((c, i) => c.classList.toggle('active', i < activeCount));
+
+                    if (progress >= 1) {
+                        isDone = true;
+                        section.classList.remove('is-fixed');
+                        if (placeholder) { placeholder.remove(); placeholder = null; }
+                        chars.forEach(c => c.classList.add('active'));
                     }
-                });
+                }
+
+                if (isDone && window.scrollY < fixStartY) {
+                    isDone = false;
+                }
             }
 
             window.addEventListener('scroll', onScroll, { passive: true });
-            onScroll(); // 페이지가 처음 로드되었을 때 위치에 맞게 1회 실행
+            onScroll();
         });
 
 
