@@ -113,8 +113,19 @@
         }
 
         /* ===== Hero Text ===== */
+        .hero-text-outer {
+            position: relative;
+            height: 250vh;
+        }
+
         .hero-text-section {
-            padding: 100px 80px 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 80px;
             text-align: center;
         }
 
@@ -1685,9 +1696,11 @@
     </section>
 
     <!-- Hero Text -->
-    <section class="hero-text-section">
-        <h2>빈틈없는 내구성으로,<br>시장과 품질의 기준을 만듭니다.</h2>
-    </section>
+    <div class="hero-text-outer">
+      <section class="hero-text-section">
+          <h2>빈틈없는 내구성으로,<br>시장과 품질의 기준을 만듭니다.</h2>
+      </section>
+    </div>
 
     <!-- Feature Cards Section -->
     <section class="feature-cards">
@@ -2370,14 +2383,15 @@
             wrapCharacters(h2);
 
             const chars = h2.querySelectorAll('.char');
-            const section = document.querySelector('.hero-text-section');
+            const outer = document.querySelector('.hero-text-outer');
+            if (!outer) return;
 
             function onScroll() {
-                const sectionTop = section.offsetTop;
-                const startScroll = Math.max(0, sectionTop - window.innerHeight * 0.6);
-                const endScroll = startScroll + 400;
+                const rect = outer.getBoundingClientRect();
+                const outerH = outer.offsetHeight - window.innerHeight;
+                const scrolled = -rect.top;
 
-                let progress = (window.scrollY - startScroll) / (endScroll - startScroll);
+                let progress = scrolled / outerH;
                 progress = Math.max(0, Math.min(1, progress));
 
                 const activeCount = Math.floor(progress * chars.length);
