@@ -229,24 +229,35 @@
 /* ── GNB 스크롤 숨김 애니메이션 로직 ── */
 document.addEventListener('DOMContentLoaded', () => {
     let lastScrollY = window.scrollY;
-    // HTML에 있는 <header class="gnb">를 찾아옵니다
     const gnb = document.querySelector('.gnb');
 
     if (gnb) {
-        window.addEventListener('scroll', () => {
+        // 투명 배경 모드가 필요한 페이지인지 확인 (data-gnb-transparent 속성)
+        const useTransparent = gnb.hasAttribute('data-gnb-transparent');
+
+        function updateGnb() {
             const currentScrollY = window.scrollY;
 
-            // 스크롤을 아래로 내릴 때 (50px 이상 내려갔을 때만 작동)
+            // 스크롤 숨기기
             if (currentScrollY > lastScrollY && currentScrollY > 50) {
-                gnb.classList.add('gnb-hidden'); // 숨기는 클래스 붙이기
-            } 
-            // 스크롤을 위로 올릴 때
-            else {
-                gnb.classList.remove('gnb-hidden'); // 숨기는 클래스 떼기
+                gnb.classList.add('gnb-hidden');
+            } else {
+                gnb.classList.remove('gnb-hidden');
             }
 
-            // 다음 계산을 위해 현재 위치를 저장
+            // 투명 배경 전환 (최상단에서만 투명)
+            if (useTransparent) {
+                if (currentScrollY <= 10) {
+                    gnb.classList.add('gnb-transparent');
+                } else {
+                    gnb.classList.remove('gnb-transparent');
+                }
+            }
+
             lastScrollY = currentScrollY;
-        });
+        }
+
+        window.addEventListener('scroll', updateGnb);
+        updateGnb(); // 초기 실행
     }
 });

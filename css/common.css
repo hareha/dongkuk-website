@@ -63,7 +63,16 @@ body {
     height: 100%;
     object-fit: contain;
     display: block;
+    transition: filter 0.3s ease;
 }
+
+/* 투명 배경(스크롤 전)일 때 흰 로고 */
+.gnb.gnb-transparent .gnb-logo img {
+    filter: brightness(0) invert(1);
+}
+.gnb.gnb-transparent .gnb-utils a { color: #fff; }
+.gnb.gnb-transparent .gnb-divider { background: rgba(255,255,255,0.5); }
+.gnb.gnb-transparent .gnb-menu-btn span { background: #fff; }
 
 .gnb-utils {
     display: flex;
@@ -145,7 +154,7 @@ body {
 .gnb.gnb-menu-active .gnb-menu-btn span,
 .header.gnb-menu-active .btn-menu span { background: #4E4E4E !important; }
 .gnb.gnb-menu-active .gnb-logo img,
-.header.gnb-menu-active .logo-box img { filter: brightness(0) !important; }
+.header.gnb-menu-active .logo-box img { filter: none !important; }
 
 
 /* ===== PAGE HEADER ===== */
@@ -153,7 +162,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 0 30px;
+    padding: 70px 0 30px;
     gap: 4.375rem;
     width: 100%;
     max-width: 1920px;

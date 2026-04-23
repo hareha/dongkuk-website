@@ -70,7 +70,7 @@
     }
 
     #nav.gnb-menu-active .nav-logo img {
-      filter: brightness(0) !important;
+      filter: none !important;
     }
 
     #nav.nav-hide {
@@ -89,10 +89,14 @@
       width: 163px;
       object-fit: contain;
       transition: filter 0.4s ease;
+      /* 기본 투명 배경: 흰 로고 */
+      filter: brightness(0) invert(1);
     }
 
+    #nav.nav--solid .nav-logo img,
     #nav.nav--dark .nav-logo img {
-      filter: brightness(0);
+      /* 흰/어두운 배경: 컬러 로고 */
+      filter: none;
     }
 
     /* 오른쪽 그룹: gap 24 */
