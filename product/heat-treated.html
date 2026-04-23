@@ -117,7 +117,7 @@
         /* ===== Hero Text (sticky wrapper) ===== */
         .hero-text-outer {
             position: relative;
-            min-height: 200vh;
+            min-height: 300vh;
         }
 
         .hero-text-inner {
@@ -2387,7 +2387,7 @@
 
             function onScroll() {
                 const rect = outer.getBoundingClientRect();
-                const scrollRoom = outer.offsetHeight - outer.querySelector('.hero-text-section').offsetHeight;
+                const scrollRoom = outer.offsetHeight - outer.querySelector('.hero-text-inner').offsetHeight;
                 const scrolled = -rect.top;
 
                 let progress = Math.max(0, Math.min(1, scrolled / Math.max(scrollRoom, 1)));
