@@ -1687,17 +1687,23 @@
 
       /* ── Orbital ── */
       #orbital-wrapper {
-        height: 250vh;
+        height: 350vh;
+      }
+      .orbital-sticky {
+        width: 100vw;
+        overflow: hidden;
       }
       .orb-heading {
         font-size: clamp(20px, 5vw, 28px);
+        text-align: center;
       }
       .orb-line {
         font-size: clamp(20px, 5vw, 28px);
+        text-align: center;
       }
       .orb-coil {
-        width: 70vw !important;
-        height: 70vw !important;
+        width: 80vw !important;
+        height: 80vw !important;
       }
       #orb-card-1,
       #orb-card-2,
@@ -1722,35 +1728,40 @@
       }
       #orb-phase-1 {
         white-space: normal;
-        left: 50%;
+        left: 50% !important;
         width: 90vw;
         margin-left: -45vw;
         transform: translateX(0) translateY(60px);
+        text-align: center;
       }
       #orb-phase-2 {
-        left: 5%;
+        left: 16px !important;
+        right: 16px !important;
+        width: auto !important;
+        text-align: center;
       }
 
-      /* ── Product Section ── */
+      /* ── Product Section (sticky 유지!) ── */
       #product-wrapper {
-        height: auto !important;
+        height: 300vh;
         padding: 0 16px !important;
       }
       .product-sticky {
-        position: relative !important;
-        top: auto !important;
-        height: auto !important;
+        position: sticky;
+        top: 0;
+        height: 100vh;
         width: 100%;
         padding: 20px 0;
+        background: #fff;
+        overflow: hidden;
         display: flex;
-        flex-direction: column;
-        gap: 24px;
+        align-items: center;
+        justify-content: center;
       }
       .product-card {
         width: 100% !important;
         max-width: 100% !important;
-        height: auto !important;
-        min-height: 70vh;
+        height: calc(100vh - 40px) !important;
         padding: 24px !important;
         border-radius: 16px !important;
         margin: 0 !important;
@@ -1763,6 +1774,7 @@
       .product-left {
         flex: 0 0 auto;
         width: 100%;
+        z-index: 3;
       }
       .product-title {
         font-size: clamp(24px, 6vw, 32px) !important;
@@ -1774,17 +1786,21 @@
         font-size: 14px;
         width: 100% !important;
       }
-      .product-coil,
+      /* 코일: absolute 유지, 카드 상단 우측에 안착 */
+      .product-coil {
+        position: absolute !important;
+        right: -10% !important;
+        top: -15% !important;
+        transform: none !important;
+        width: 65vw !important;
+        height: 65vw !important;
+        max-width: 300px !important;
+        max-height: 300px !important;
+        z-index: 1;
+      }
       .prod-coil-img {
         width: 100% !important;
-        max-width: 300px !important;
-        height: auto !important;
-        max-height: 200px;
-        position: relative !important;
-        right: auto !important;
-        top: auto !important;
-        transform: none !important;
-        margin: 20px auto !important;
+        height: 100% !important;
         object-fit: contain;
       }
       .product-info-card {
