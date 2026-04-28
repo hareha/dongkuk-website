@@ -520,92 +520,37 @@
            (공통: common.css가 GNB/헤더/서포트/푸터 처리)
            ════════════════════════════════════ */
         @media (max-width: 1023px) {
-            body { min-width: 0; }
+            body { min-width: 0 !important; width: 100%; overflow-x: hidden; }
 
-            /* Page Header */
-            .page-header {
-                padding: 20px 0 30px;
-                text-align: center;
-            }
-            .page-header h1 {
-                font-size: 30px;
-            }
+            .page-header { padding: 20px 0 30px; text-align: center; }
+            .page-header h1 { font-size: clamp(24px, 6vw, 30px); }
 
-            /* Subtitle */
-            .subtitle-section {
-                padding: 40px 16px;
-            }
-            .subtitle-section p {
-                font-size: 24px;
-                max-width: 100%;
-            }
+            .subtitle-section { padding: 40px 16px; }
+            .subtitle-section p { font-size: clamp(18px, 5vw, 24px); max-width: 100%; }
 
-            /* Story Section */
-            .story-section .inner {
-                padding: 40px 16px;
-            }
-            .section-label {
-                font-size: 18px;
-                margin-bottom: 20px;
-            }
+            .story-section .inner { padding: 40px 16px; }
+            .section-label { font-size: 18px; margin-bottom: 20px; }
             .story-rows { gap: 40px; }
-            .story-row,
-            .story-row.row-text-left {
-                flex-direction: column;
-                width: 100%;
-                height: auto;
-                gap: 20px;
+            .story-row, .story-row.row-text-left {
+                flex-direction: column; width: 100% !important; height: auto; gap: 20px;
             }
-            .story-img {
-                width: 100%;
-                height: 250px;
-                border-radius: 16px;
-            }
-            .story-text {
-                width: 100%;
-                height: auto;
-                gap: 20px;
-            }
-            .story-text h2 {
-                width: 100%;
-                font-size: 24px;
-            }
-            .story-bullets {
-                width: 100%;
-            }
-            .story-bullets li {
-                height: auto;
-                gap: 8px;
-            }
-            .story-bullets li span {
-                font-size: 16px;
-                height: auto;
-            }
+            .story-img { width: 100% !important; height: 200px; border-radius: 16px; }
+            .story-text { width: 100% !important; height: auto; gap: 20px; }
+            .story-text h2 { width: 100%; font-size: 24px; }
+            .story-bullets { width: 100%; }
+            .story-bullets li { height: auto; gap: 8px; }
+            .story-bullets li span { font-size: 16px; height: auto; }
 
-            /* Scene Section */
-            .scene-section {
-                padding: 40px 0;
-                width: 100%;
-            }
-            .scene-section .inner {
-                padding: 0 16px;
-            }
-            .scene-track {
-                gap: 10px;
-                height: 200px;
-            }
-            .scene-img.s1 { width: 300px; height: 180px; border-radius: 20px 20px 0 20px; }
-            .scene-img.s2 { width: 140px; height: 150px; border-radius: 0 20px 20px 20px; }
-            .scene-img.s3 { width: 360px; height: 200px; border-radius: 20px 0; }
-            .scene-img.s4 { width: 140px; height: 190px; border-radius: 0 20px 20px 20px; }
+            .scene-section { padding: 40px 0; width: 100%; overflow-x: hidden; }
+            .scene-section .inner { padding: 0 16px; }
+            .scene-track { gap: 8px; height: auto; flex-wrap: wrap; }
+            .scene-img { flex-shrink: 0; }
+            .scene-img.s1 { width: calc(60% - 4px); height: 140px; border-radius: 16px; }
+            .scene-img.s2 { width: calc(40% - 4px); height: 140px; border-radius: 16px; }
+            .scene-img.s3 { width: calc(60% - 4px); height: 140px; border-radius: 16px; }
+            .scene-img.s4 { width: calc(40% - 4px); height: 140px; border-radius: 16px; }
 
-            /* BTN TOP */
-            .btn-top {
-                right: 24px;
-                bottom: 24px;
-                width: 48px;
-                height: 48px;
-            }
+            .btn-top { right: 16px; bottom: 16px; width: 48px; height: 48px; }
         }
     </style>
 </head>
