@@ -1497,6 +1497,7 @@
     .footer-bottom {
       position: relative !important;
       display: flex;
+      flex-direction: row !important;
       flex-wrap: wrap;
       align-items: center;
       width: clamp(600px, 91.6vw, 1760px);
@@ -1525,17 +1526,26 @@
       font-size: 16px !important;
       font-weight: 400 !important;
       line-height: 1.6 !important;
-      height: 26px !important;
+      height: auto !important;
       display: inline-flex !important;
       align-items: center !important;
       color: #FFFFFF !important;
       text-decoration: none !important;
+      white-space: nowrap !important;
+    }
+
+    .footer-bottom span.footer-copy {
+      white-space: normal !important;
     }
 
     .footer-bottom .sep {
-      height: 26px !important;
+      height: 12px !important;
+      display: inline-flex !important;
+      align-items: center !important;
       color: rgba(255, 255, 255, 0.3) !important;
       margin: 0 11px !important;
+      font-size: 10px !important;
+      line-height: 1 !important;
     }
 
     .footer-copy {
@@ -1728,16 +1738,22 @@
       }
       #orb-phase-1 {
         white-space: normal;
-        left: 50% !important;
-        width: 90vw;
-        margin-left: -45vw;
-        transform: translateX(0) translateY(60px);
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        margin-left: 0;
+        padding: 0 16px;
+        box-sizing: border-box;
         text-align: center;
+        transform: translateY(60px);
       }
       #orb-phase-2 {
-        left: 16px !important;
-        right: 16px !important;
-        width: auto !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        margin-left: 0;
+        padding: 0 16px;
+        box-sizing: border-box;
         text-align: center;
       }
 
@@ -1749,9 +1765,9 @@
       .product-sticky {
         position: sticky;
         top: 0;
-        height: 100vh;
+        height: 740px;
         width: 100%;
-        padding: 20px 0;
+        padding: 0;
         background: #fff;
         overflow: hidden;
         display: flex;
@@ -1761,59 +1777,91 @@
       .product-card {
         width: 100% !important;
         max-width: 100% !important;
-        height: calc(100vh - 40px) !important;
-        padding: 24px !important;
+        height: 614px !important;
+        padding: 150px 16px 20px !important;
         border-radius: 16px !important;
         margin: 0 !important;
+        position: relative;
+        overflow: hidden !important;
+        background-size: cover !important;
         display: flex !important;
         flex-direction: column !important;
         align-items: flex-start !important;
-        overflow: hidden !important;
-        background-size: cover !important;
+        justify-content: flex-end !important;
+        box-sizing: border-box !important;
       }
+
+      /* ── 좌측 컨텐츠 ── */
       .product-left {
-        flex: 0 0 auto;
         width: 100%;
         z-index: 3;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .product-dikel {
+        margin-bottom: 0 !important;
+        gap: 8px !important;
+      }
+      .product-dikel-icon {
+        width: 28px !important;
+        height: 28px !important;
+      }
+      .product-dikel-icon svg {
+        width: 28px !important;
+        height: 28px !important;
+      }
+      .product-dikel-name {
+        font-size: 18px !important;
+      }
+      #prod-steps {
+        flex: 0 0 auto;
+        position: relative;
+        min-height: 0 !important;
+        margin-top: 0 !important;
+      }
+      .prod-step {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .prod-step.prod-active {
+        position: relative;
       }
       .product-title {
-        font-size: clamp(24px, 6vw, 32px) !important;
+        font-size: 30px !important;
+        font-weight: 700 !important;
         white-space: normal !important;
         width: 100% !important;
         height: auto !important;
+        margin-bottom: 0 !important;
+        line-height: 1.4 !important;
       }
-      .product-desc {
-        font-size: 14px;
-        width: 100% !important;
-      }
-      /* 코일: absolute 유지, 카드 상단 우측에 안착 */
-      .product-coil {
-        position: absolute !important;
-        right: -10% !important;
-        top: -15% !important;
-        transform: none !important;
-        width: 65vw !important;
-        height: 65vw !important;
-        max-width: 300px !important;
-        max-height: 300px !important;
-        z-index: 1;
-      }
-      .prod-coil-img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: contain;
-      }
+
+      /* ── Info Card: Figma에서는 흰색 카드 없음 → 텍스트 직접 표시 ── */
       .product-info-card {
-        width: 100% !important;
-        height: auto !important;
-        min-height: 120px;
         position: relative !important;
         bottom: auto !important;
-        left: auto !important;
-        right: auto !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0;
+        background: transparent !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
       }
       .product-info-text {
         position: relative !important;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
       }
       .product-info-text h3 {
         position: relative !important;
@@ -1821,20 +1869,47 @@
         top: auto !important;
         width: 100% !important;
         height: auto !important;
-        font-size: 16px !important;
-        padding: 16px 16px 0 !important;
+        font-size: 18px !important;
+        font-weight: 700 !important;
+        color: #fff !important;
+        opacity: 0.8;
+        padding: 0 !important;
+        margin: 0 !important;
+        line-height: 1.6 !important;
       }
       .product-info-text p {
         position: relative !important;
         left: auto !important;
         bottom: auto !important;
         width: 100% !important;
-        font-size: 14px !important;
-        padding: 8px 16px 16px !important;
+        font-size: 16px !important;
+        font-weight: 400 !important;
+        color: #fff !important;
+        opacity: 0.8;
+        line-height: 1.6 !important;
+        padding: 0 !important;
+        margin: 0 !important;
       }
+      /* 비디오: Figma에서는 카드 내부에 표시 */
       .product-info-img {
+        display: block !important;
+        position: relative !important;
+        right: auto !important;
+        top: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        height: 126px !important;
+        border-radius: 8px !important;
+        overflow: hidden;
+        background: transparent !important;
+      }
+
+      /* ── 3D 코일: div 숨김, 3D 캔버스가 직접 표시 ── */
+      .product-coil {
         display: none !important;
       }
+
+      /* ── Bottom: flex 하단 ── */
       .product-bottom {
         position: relative !important;
         left: auto !important;
@@ -1842,23 +1917,42 @@
         bottom: auto !important;
         margin-top: 16px;
         width: 100%;
+        z-index: 3;
+      }
+      .product-bottom-group-wrap {
+        display: none !important;
+      }
+      .product-loading-container {
+        display: none !important;
+      }
+      .product-status-row {
+        display: none !important;
       }
       .product-detail-btn {
         width: 100%;
       }
       .product-detail-btn a:not(.circle-arrow) {
         width: auto;
-        padding: 8px 16px;
-        height: 36px;
+        padding: 10px 16px;
+        height: auto;
         font-size: 14px;
+        font-weight: 400;
         border-radius: 10px;
+        background: #fff !important;
+        color: #000 !important;
       }
       .product-detail-btn .circle-arrow {
-        width: 36px;
-        height: 36px;
+        width: 42px;
+        height: 42px;
+        padding: 11px;
         border-radius: 10px;
+        border-color: #fff !important;
       }
       .mouse-icon-box {
+        display: none !important;
+        margin-left: 0 !important;
+      }
+      .keep-scrolling {
         display: none !important;
       }
 
@@ -1950,27 +2044,56 @@
       }
       .inv-card-ir {
         min-height: auto !important;
-        padding: 24px !important;
-        border-radius: 20px !important;
+        padding: 16px !important;
+        border-radius: 16px !important;
+      }
+      .ir-card-header {
+        margin-bottom: 30px;
+      }
+      .ir-header-left {
+        padding: 0 !important;
+      }
+      .ir-header-title {
+        font-size: 18px !important;
       }
       .ir-header-right-icon {
-        width: 60px;
-        height: 60px;
+        width: 62px !important;
+        height: 62px !important;
+      }
+      .ir-doc-area {
+        margin-top: 0 !important;
       }
       .ir-doc-row {
         flex-direction: column;
-        gap: 24px;
+        gap: 0;
+      }
+      .ir-doc-item {
+        padding: 0;
       }
       .ir-doc-type {
-        font-size: clamp(24px, 6vw, 32px);
+        font-size: 30px !important;
+        line-height: 1.5;
+      }
+      .ir-doc-desc-wrap {
+        gap: 16px !important;
       }
       .ir-doc-desc {
-        font-size: 14px;
+        font-size: 16px !important;
+      }
+      .ir-doc-date {
+        font-size: 16px !important;
       }
       .ir-doc-dl {
-        width: 40px;
-        height: 40px;
-        border-radius: 20px;
+        width: 42px !important;
+        height: 42px !important;
+        border-radius: 30px;
+      }
+      .ir-divider-v {
+        width: 100% !important;
+        height: 1px !important;
+        align-self: auto !important;
+        margin: 20px 0;
+        background: rgba(255, 255, 255, 0.2) !important;
       }
 
       /* ── Support Section ── */
@@ -1995,9 +2118,27 @@
         margin-left: 8px;
       }
 
-      /* ── Footer ── */
+      /* ── Footer (Figma MOB 기준) ── */
       footer {
         height: auto !important;
+      }
+      .footer-coil {
+        display: block !important;
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
+      .footer-coil img {
+        width: 107% !important;
+        height: 100% !important;
+        object-fit: cover;
+        position: absolute;
+        left: -61% !important;
+        top: 2% !important;
+      }
+      .footer-coil-fade {
+        background: linear-gradient(to right, #1a1a1a 0%, rgba(26,26,26,0.7) 40%, rgba(26,26,26,0.3) 70%, transparent 100%) !important;
       }
       .footer-content-wrap {
         position: relative !important;
@@ -2005,15 +2146,16 @@
         height: auto !important;
         display: flex !important;
         flex-direction: column !important;
-        gap: 24px !important;
-        padding: 40px 16px 0 !important;
+        gap: 0 !important;
+        padding: 40px 20px 0 !important;
       }
       .footer-logo {
         position: relative !important;
         left: auto !important;
         top: auto !important;
-        width: 140px !important;
-        height: 30px !important;
+        width: 136px !important;
+        height: 28px !important;
+        margin-bottom: 40px !important;
       }
       .footer-btns {
         position: relative !important;
@@ -2021,47 +2163,77 @@
         right: auto !important;
         flex-direction: column;
         width: 100%;
+        gap: 16px !important;
+        margin-bottom: 0 !important;
       }
       .footer-btn {
         width: 100% !important;
-        font-size: 14px !important;
-        padding: 12px 16px !important;
-        border-radius: 8px !important;
+        font-size: 16px !important;
+        font-weight: 400 !important;
+        padding: 10px 18px 9px !important;
+        border-radius: 6px !important;
+        justify-content: center !important;
       }
       .footer-info-box {
-        position: relative !important;
-        left: auto !important;
-        top: auto !important;
-      }
-      .footer-heading {
-        font-size: 18px;
-      }
-      footer .footer-nav-list a {
-        font-size: 14px !important;
+        display: none !important;
       }
       .footer-bottom {
-        width: 100% !important;
-        margin: 20px 0 !important;
-        padding: 16px !important;
-        flex-direction: column !important;
+        width: calc(100% - 40px) !important;
+        margin: 0 auto !important;
+        padding: 40px 0 40px !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
         align-items: flex-start !important;
-        gap: 8px !important;
+        gap: 0 !important;
+        row-gap: 10px !important;
+        column-gap: 0 !important;
+        overflow: visible !important;
       }
       .footer-bottom::before {
-        top: 0 !important;
+        display: none !important;
       }
-      .footer-bottom a,
-      .footer-bottom span {
-        font-size: 12px !important;
+      .footer-bottom a {
+        font-size: 14px !important;
+        font-weight: 400 !important;
         height: auto !important;
+        line-height: 1.5 !important;
+        color: #fff !important;
+        white-space: nowrap !important;
       }
-      .footer-copy {
+      .footer-bottom > span:not(.sep):not(.footer-copy) {
+        font-size: 14px !important;
+        font-weight: 400 !important;
+        height: auto !important;
+        line-height: 1.5 !important;
+        color: #fff !important;
+        white-space: nowrap !important;
+        flex-basis: 100% !important;
+      }
+      .footer-bottom .sep {
+        height: 11px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        color: #d3d3d3 !important;
+        margin: 0 6px !important;
+        font-size: 10px !important;
+      }
+      /* 사이트맵 뒤 sep(6번째), 전화 뒤 sep(8번째) 숨김 */
+      .footer-bottom .sep:nth-child(6),
+      .footer-bottom .sep:nth-child(8) {
+        display: none !important;
+      }
+      .footer-bottom span.footer-copy {
         position: relative !important;
         right: auto !important;
-        font-size: 12px !important;
-      }
-      .footer-coil {
-        display: none !important;
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        white-space: normal !important;
+        word-break: keep-all !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        flex-basis: 100% !important;
+        height: auto !important;
+        display: block !important;
       }
     }
   </style>
@@ -2623,15 +2795,18 @@
       const norm = (v, lo, hi) => clamp((v - lo) / (hi - lo), 0, 1);
 
       let W, H, cx, cy, rx_in, ry_in, rx_out, ry_out, len1 = 0, len2 = 0, ready = false;
+      var isMobile = window.innerWidth <= 1023;
 
       function setup() {
         W = section.offsetWidth;
         H = section.offsetHeight;
+        isMobile = window.innerWidth <= 1023;
         cx = W * 0.50;
         cy = H * 0.50;
-        const COIL_R = 420;
+        /* 모바일: 코일 궤도 반경 축소 */
+        const COIL_R = isMobile ? Math.min(W * 0.35, 180) : 420;
         rx_in = COIL_R; ry_in = COIL_R;
-        const R_OUT = Math.min(W * 0.7, H * 0.7);
+        const R_OUT = isMobile ? Math.min(W * 0.45, 240) : Math.min(W * 0.7, H * 0.7);
         rx_out = R_OUT; ry_out = R_OUT;
 
         svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
@@ -2642,6 +2817,10 @@
 
         coil.style.left = cx + 'px';
         coil.style.top = cy + 'px';
+        /* 모바일: orb-coil 크기 동적 조절 (인라인 style 오버라이드) */
+        var coilSize = isMobile ? Math.min(W * 0.7, 300) : Math.max(560, W * 0.4);
+        coil.style.width = coilSize + 'px';
+        coil.style.height = coilSize + 'px';
 
         len1 = e1.getTotalLength() || 1900;
         len2 = e2.getTotalLength() || 2600;
@@ -2732,7 +2911,12 @@
         const ph1Out = easeInCubic(norm(p, 0.50, 0.62));
         const ph1Y = (1 - ph1In) * 320 - ph1Out * 240;
         phase1.style.opacity = ph1In * (1 - ph1Out);
-        phase1.style.transform = `translateX(-50%) translateY(calc(-50% + ${ph1Y}px))`;
+        /* 모바일: translateX(-50%) 제거 → CSS에서 left:50% + margin-left:-45vw로 중앙 정렬 */
+        if (isMobile) {
+          phase1.style.transform = `translateY(calc(-50% + ${ph1Y}px))`;
+        } else {
+          phase1.style.transform = `translateX(-50%) translateY(calc(-50% + ${ph1Y}px))`;
+        }
         p1l1.style.transform = 'translateY(0)'; p1l2.style.transform = 'translateY(0)';
 
         const ph2In = easeOutCubic(norm(p, 0.62, 0.78));
@@ -2740,7 +2924,12 @@
         const ph2Out = easeInCubic(norm(p, 0.82, 0.96));
         const ph2Y = (1 - ph2In) * 320 - ph2Out * 500;
         phase2.style.opacity = ph2In * (1 - ph2Out);
-        phase2.style.transform = `translateX(-50%) translateY(calc(-50% + ${ph2Y}px))`;
+        /* 모바일: translateX(-50%) 제거 */
+        if (isMobile) {
+          phase2.style.transform = `translateY(calc(-50% + ${ph2Y}px))`;
+        } else {
+          phase2.style.transform = `translateX(-50%) translateY(calc(-50% + ${ph2Y}px))`;
+        }
         p2l1.style.transform = 'translateY(0)'; p2l2.style.transform = 'translateY(0)';
         ctaEl.style.opacity = clamp(1 - ph2Out * 2, 0, 1);
 
@@ -2919,8 +3108,15 @@
         if (r > 0) targetP = Math.max(0, Math.min(1, -t / r));
       }
 
+      var _cachedMaxScroll = null;
+      function cacheMaxScroll() {
+        _cachedMaxScroll = track.scrollHeight - track.parentElement.offsetHeight;
+      }
+      cacheMaxScroll();
+      window.addEventListener('resize', cacheMaxScroll);
+
       function render() {
-        currentP += (targetP - currentP) * 0.055;
+        currentP += (targetP - currentP) * 0.15;
         let idx = 0;
         if (currentP < 0.26) idx = 0;
         else if (currentP < 0.52) idx = 1;
@@ -2928,12 +3124,9 @@
         else idx = 3;
         applyIdx(idx);
 
-        /* 👇 이 부분을 추가하세요! (겹치지 않고 트랙 전체가 위로 올라가게 함) 👇 */
-        const maxScroll = track.scrollHeight - track.parentElement.offsetHeight;
-        if (maxScroll > 0) {
-          track.style.transform = `translateY(${-currentP * maxScroll}px)`;
+        if (_cachedMaxScroll > 0) {
+          track.style.transform = `translateY(${-currentP * _cachedMaxScroll}px)`;
         }
-        /* 👆 여기까지 👆 */
         requestAnimationFrame(render);
       }
       window.addEventListener('scroll', onScroll, { passive: true });
@@ -4153,6 +4346,13 @@
         var vh = window.innerHeight;
         renderer.setSize(vw, vh, false);
         camera.aspect = vw / vh;
+        /* 모바일: 화면이 좁을수록 FOV를 키워서 코일이 안 잘리게 */
+        if (vw <= 1023) {
+          /* 390px → FOV ~68°, 768px → FOV ~48° */
+          camera.fov = Math.min(75, 42 + (1023 - vw) * 0.04);
+        } else {
+          camera.fov = 42;
+        }
         camera.updateProjectionMatrix();
       }
 
@@ -4180,9 +4380,10 @@
       var deg3 = -39 * (Math.PI / 180);
 
       var ROLL_END = Math.PI * 5.50;
-      var X_END = 0.5;
-      var CAM_Y_START = 0.3, CAM_Y_END = 0.53;
-      var CAM_Z_START = 2.8, CAM_Z_END = 2.7;
+      var _isMob = window.innerWidth <= 1023;
+      var X_END = _isMob ? 0.6 : 0.5;
+      var CAM_Y_START = 0.3, CAM_Y_END = _isMob ? 1.8 : 0.53;
+      var CAM_Z_START = 2.8, CAM_Z_END = _isMob ? 2.4 : 2.7;
 
       /* ════════════════════════════════════════════════════
          window._coil3d 노출 + 렌더 루프
@@ -4288,8 +4489,10 @@
           updatePosition(moveRatio);
 
           /* 모델 X/Y: et 비율에 따라 이동 (양수=오른쪽/위) */
-          var modelXEnd = ov.modelX !== undefined ? ov.modelX : 0.75;
-          var modelYEnd = ov.modelY !== undefined ? ov.modelY : 0.3;
+          /* 모바일: 카드 우상단에 안착 → X 더 크게, Y 더 크게 */
+          var _mobNow = window.innerWidth <= 1023;
+          var modelXEnd = ov.modelX !== undefined ? ov.modelX : (_mobNow ? 0.55 : 0.75);
+          var modelYEnd = ov.modelY !== undefined ? ov.modelY : (_mobNow ? 1.8 : 0.3);
           var curScale = yawGroup.scale.x;
           yawGroup.position.set(
             -OUTER_R * curScale + lerp3d(0, modelXEnd, et),
