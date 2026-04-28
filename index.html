@@ -1646,6 +1646,176 @@
       }
     }
 
+    /* ════════════════════════════════════
+       MOBILE — 1023px 이하 (메인 페이지)
+       (공통: common.css가 GNB/서포트/푸터 처리)
+       ════════════════════════════════════ */
+    @media (max-width: 1023px) {
+      /* GNB 오버라이드 */
+      .gnb {
+        height: 72px !important;
+        padding: 0 16px !important;
+      }
+
+      /* Hero */
+      #hero {
+        min-height: 400px;
+        margin-bottom: 30px;
+      }
+      .hero-title {
+        font-size: 40px;
+        top: 80px;
+        left: 16px;
+      }
+      .hero-sub-text {
+        right: 16px;
+        bottom: 40px;
+      }
+      .hero-sub-text p {
+        font-size: 20px;
+      }
+      .hero-blob {
+        width: 300px;
+        height: 300px;
+        left: -80px;
+      }
+
+      /* Orbital */
+      #orbital-wrapper {
+        height: 300vh;
+      }
+      .orb-line {
+        font-size: 28px;
+      }
+      .orb-coil {
+        width: 80vw !important;
+        height: 80vw !important;
+      }
+      #orb-card-1,
+      #orb-card-2,
+      #orb-card-3,
+      #orb-card-4 {
+        display: none;
+      }
+      .orb-btn-main {
+        width: 100px;
+        height: 36px;
+        font-size: 14px;
+        border-radius: 10px;
+      }
+      .orb-btn-circle {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+      }
+      .orb-cta-group {
+        margin-top: 16px;
+      }
+
+      /* Product */
+      #product-wrapper {
+        height: 250vh;
+        padding: 0 16px;
+      }
+      .product-sticky {
+        padding: 20px 0;
+      }
+      .product-card {
+        height: calc(100vh - 40px) !important;
+        padding: 24px !important;
+        border-radius: 16px !important;
+      }
+      .product-left {
+        flex: 0 0 auto;
+      }
+      .product-title {
+        font-size: 28px !important;
+        white-space: normal !important;
+      }
+      .product-coil {
+        width: 200px !important;
+        height: 200px !important;
+        position: static;
+        transform: none;
+        margin: 0 auto;
+      }
+      .product-info-card {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 140px;
+        position: relative;
+        bottom: auto;
+      }
+      .product-info-text h3 {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: 100%;
+        height: auto;
+        font-size: 16px;
+        padding: 16px 16px 0;
+      }
+      .product-info-text p {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        width: 100%;
+        font-size: 14px;
+        padding: 8px 16px 16px;
+      }
+      .product-info-img {
+        display: none;
+      }
+      .product-bottom {
+        position: relative;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        margin-top: 16px;
+      }
+      .product-detail-btn a:not(.circle-arrow) {
+        width: 100px;
+        height: 36px;
+        font-size: 14px;
+        border-radius: 10px;
+      }
+      .product-detail-btn .circle-arrow {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+      }
+      .mouse-icon-box {
+        display: none;
+      }
+
+      /* Slogan */
+      #slogan {
+        height: auto;
+        padding: 60px 0;
+      }
+      .slogan-text {
+        font-size: 40px;
+      }
+      .slogan-circle {
+        width: 60px;
+        height: 60px;
+      }
+
+      /* Invest */
+      .invest-card-wrap {
+        width: 100%;
+        padding: 40px 20px;
+        min-height: auto;
+        border-radius: 16px;
+      }
+      .invest-title-text {
+        font-size: 28px;
+      }
+      #invest {
+        padding: 40px 16px;
+      }
+    }
+
     @media (max-width: 768px) {
       #nav {
         padding: 0 24px;

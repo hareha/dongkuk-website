@@ -1482,6 +1482,158 @@
             }
         }
 
+        /* ════════════════════════════════════
+           MOBILE — 1023px 이하 (DiKel Tab1)
+           (공통: common.css가 GNB/헤더/탭/서포트/푸터 처리)
+           ════════════════════════════════════ */
+        @media (max-width: 1023px) {
+            body { min-width: 0; }
+
+            /* Hero Text */
+            .hero-text-outer { min-height: 200vh; }
+            .hero-text-inner { top: 72px; }
+            .hero-text-section {
+                padding: 40px 16px 0;
+                text-align: center;
+            }
+            .hero-text-section h2 {
+                font-size: 24px;
+                line-height: 150%;
+            }
+
+            /* Feature Cards */
+            .feature-cards { padding: 0 16px; }
+            .fcards-row {
+                flex-direction: column;
+                width: 100%;
+                height: auto;
+                gap: 12px;
+                padding: 24px 0;
+            }
+            .fcard-premium,
+            .fcard-stable,
+            .fcard-nextgen {
+                width: 100%;
+                height: 156px;
+                border-radius: 16px;
+            }
+
+            /* Product Tabs */
+            .product-tabs {
+                margin: 40px auto;
+                width: calc(100% - 32px);
+                height: auto;
+                padding: 6px;
+                gap: 2px;
+            }
+            .ptab {
+                padding: 0 12px;
+                height: 44px;
+                font-size: 14px;
+            }
+
+            /* Product Intro */
+            .product-intro .inner {
+                flex-direction: column;
+                gap: 30px;
+                padding: 0 16px;
+            }
+            .pi-left,
+            .pi-top-content,
+            .pi-main-texts,
+            .pi-subtitle-group,
+            .pi-description-stack,
+            .pi-label,
+            .pi-desc { width: 100%; }
+            .pi-left { height: auto; }
+            .pi-title { font-size: 28px; height: auto; }
+            .pi-subtitle { font-size: 20px; width: 100%; }
+            .pi-desc { font-size: 16px; width: 100%; }
+            .pi-right { width: 100%; height: 300px; }
+            .pi-brochure-section,
+            .pi-brochure-btns { width: 100%; }
+
+            /* Accordion */
+            .accordion { padding: 20px 0 40px; }
+            .accordion .inner { max-width: 100%; padding: 0 16px; }
+            .acc-item { width: 100%; }
+            .acc-header { height: 80px; padding-right: 8px; }
+            .acc-title { font-size: 18px; }
+            .acc-dropdown-icon { width: 40px; height: 40px; }
+            .acc-body { width: 100%; }
+            .acc-content-box { width: 100%; padding: 20px 0; gap: 30px; }
+
+            /* Tables */
+            .spec-grid-group {
+                width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .spec-grid-row { min-width: 600px; }
+
+            /* Usage Section */
+            .usage-section { padding: 40px 0; }
+            .usage-section .inner { padding: 0 16px; gap: 30px; }
+            .usage-title { font-size: 28px; }
+            .usage-content { flex-direction: column; gap: 24px; }
+            .usage-left { width: 100%; }
+            .usage-right { width: 100%; height: 300px; }
+
+            /* Process Section */
+            .ps-card {
+                height: auto;
+                min-height: 600px;
+            }
+            .ps-header { position: relative; padding: 40px 16px; gap: 16px; }
+            .ps-label { font-size: 18px; }
+            .ps-title { font-size: 28px; }
+            .ps-toggle { width: 100%; height: auto; }
+            .ps-toggle-btn { width: auto; flex: 1; height: 44px; font-size: 14px; }
+            .ps-diagram-area {
+                position: relative;
+                width: 100%;
+                height: auto;
+                top: 0;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .ps-progress {
+                position: relative;
+                width: 100%;
+                left: 0;
+                top: 0;
+                padding: 20px 16px;
+                overflow-x: auto;
+            }
+            .ps-steps {
+                width: max-content;
+                min-width: 100%;
+            }
+
+            /* DiKel Story */
+            .story-section { height: auto; }
+            .story-section .inner {
+                flex-direction: column;
+                width: 100%;
+                height: auto;
+                padding: 40px 16px;
+                gap: 30px;
+            }
+            .story-txt { width: 100%; gap: 20px; }
+            .story-title { width: 100%; font-size: 28px; }
+            .story-desc { width: 100%; font-size: 16px; min-height: auto; }
+            .story-cards {
+                flex-direction: column;
+                width: 100%;
+                height: auto;
+                gap: 12px;
+            }
+            .scard-dk, .scard-db, .scard-nickel {
+                width: 100%;
+                height: 120px;
+            }
+        }
+
         /* ===== TAB PANELS ===== */
         .tab-panel {
             display: none;

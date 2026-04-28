@@ -514,6 +514,99 @@
             font-size: clamp(11px, 0.83vw, 16px);
             text-align: right;
         }
+
+        /* ════════════════════════════════════
+           MOBILE — 1023px 이하
+           (공통: common.css가 GNB/헤더/서포트/푸터 처리)
+           ════════════════════════════════════ */
+        @media (max-width: 1023px) {
+            body { min-width: 0; }
+
+            /* Page Header */
+            .page-header {
+                padding: 20px 0 30px;
+                text-align: center;
+            }
+            .page-header h1 {
+                font-size: 30px;
+            }
+
+            /* Subtitle */
+            .subtitle-section {
+                padding: 40px 16px;
+            }
+            .subtitle-section p {
+                font-size: 24px;
+                max-width: 100%;
+            }
+
+            /* Story Section */
+            .story-section .inner {
+                padding: 40px 16px;
+            }
+            .section-label {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+            .story-rows { gap: 40px; }
+            .story-row,
+            .story-row.row-text-left {
+                flex-direction: column;
+                width: 100%;
+                height: auto;
+                gap: 20px;
+            }
+            .story-img {
+                width: 100%;
+                height: 250px;
+                border-radius: 16px;
+            }
+            .story-text {
+                width: 100%;
+                height: auto;
+                gap: 20px;
+            }
+            .story-text h2 {
+                width: 100%;
+                font-size: 24px;
+            }
+            .story-bullets {
+                width: 100%;
+            }
+            .story-bullets li {
+                height: auto;
+                gap: 8px;
+            }
+            .story-bullets li span {
+                font-size: 16px;
+                height: auto;
+            }
+
+            /* Scene Section */
+            .scene-section {
+                padding: 40px 0;
+                width: 100%;
+            }
+            .scene-section .inner {
+                padding: 0 16px;
+            }
+            .scene-track {
+                gap: 10px;
+                height: 200px;
+            }
+            .scene-img.s1 { width: 300px; height: 180px; border-radius: 20px 20px 0 20px; }
+            .scene-img.s2 { width: 140px; height: 150px; border-radius: 0 20px 20px 20px; }
+            .scene-img.s3 { width: 360px; height: 200px; border-radius: 20px 0; }
+            .scene-img.s4 { width: 140px; height: 190px; border-radius: 0 20px 20px 20px; }
+
+            /* BTN TOP */
+            .btn-top {
+                right: 24px;
+                bottom: 24px;
+                width: 48px;
+                height: 48px;
+            }
+        }
     </style>
 </head>
 

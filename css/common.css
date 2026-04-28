@@ -194,7 +194,8 @@ body {
     justify-content: center;
     align-items: flex-end;
     padding: 0;
-    width: 1920px;
+    width: 100%;
+    max-width: 1920px;
     height: 70px;
     margin-top: 30px;
     background: #FFFFFF;
@@ -373,53 +374,59 @@ body {
 
 /* ===== FOOTER ===== */
 .footer {
-    position: relative;
     width: 100%;
-    height: 490px;
+    height: clamp(300px, 25.52vw, 490px);
+    padding: clamp(40px, 4.16vw, 80px) clamp(20px, 4.16vw, 80px) clamp(30px, 2.6vw, 50px);
+    box-sizing: border-box;
     background: url('../assets/common/footer-bg.svg') no-repeat center/cover;
-    background-color: transparent;
+    background-color: #111;
     color: #FFFFFF;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1760px;
+    margin: 0 auto;
 }
 
 .footer-logo {
-    position: absolute;
-    width: 230px;
-    height: 46px;
-    left: 80px;
-    top: 80px;
-    z-index: 2;
+    width: clamp(150px, 11.97vw, 230px);
+    height: clamp(30px, 2.39vw, 46px);
 }
 
 .footer-logo img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
 }
 
 .footer-btn-group {
-    position: absolute;
     display: flex;
-    gap: 12px;
-    left: 1318px;
-    top: 80px;
-    z-index: 2;
+    gap: clamp(6px, 0.625vw, 12px);
+    width: clamp(300px, 27.18vw, 522px);
+    height: clamp(40px, 3.125vw, 60px);
 }
 
 .footer-btn {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 16px 24px;
     gap: 6px;
-    width: 166px;
-    height: 60px;
     background: #7A7A7A;
-    border-radius: 14px;
+    border-radius: clamp(8px, 0.72vw, 14px);
     color: #FFFFFF;
-    font-size: 18px;
+    font-size: clamp(12px, 0.93vw, 18px);
     font-weight: 700;
     text-decoration: none;
     transition: background 0.3s;
+    box-sizing: border-box;
 }
 
 .footer-btn img {
@@ -431,53 +438,49 @@ body {
     background: #555;
 }
 
-.footer-divider {
-    position: absolute;
-    width: calc(100% - 160px);
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     max-width: 1760px;
-    height: 0px;
-    left: 50%;
-    top: 379px;
-    transform: translateX(-50%);
-    border-top: 1px solid rgba(225, 225, 225, 0.5);
-    z-index: 2;
+    margin: 0 auto;
+    gap: clamp(12px, 1.25vw, 24px);
+}
+
+.footer-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(225, 225, 225, 0.5);
 }
 
 .footer-bottom-info {
-    position: absolute;
-    width: calc(100% - 160px);
-    max-width: 1760px;
-    height: 37px;
-    left: 50%;
-    top: 403px;
-    transform: translateX(-50%);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 2;
+    width: 100%;
 }
 
 .footer-links {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: clamp(4px, 0.41vw, 8px);
 }
 
 .footer-links a {
     color: #FFFFFF;
-    font-size: 16px;
+    font-size: clamp(11px, 0.83vw, 16px);
     text-decoration: none;
 }
 
 .footer-links .bar {
     width: 1px;
-    height: 12px;
+    height: clamp(8px, 0.62vw, 12px);
     background: #D3D3D3;
 }
 
 .footer-copy {
     color: #FFFFFF;
-    font-size: 16px;
+    font-size: clamp(11px, 0.83vw, 16px);
     text-align: right;
 }
 
@@ -493,4 +496,212 @@ body {
 
 @media (max-width: 1280px) {
     html { font-size: 13px; }
+}
+
+
+/* ════════════════════════════════════════════════════════
+   MOBILE — max-width: 1023px
+   모든 페이지 공통 컴포넌트의 모바일 오버라이드
+   ════════════════════════════════════════════════════════ */
+@media (max-width: 1023px) {
+
+    /* ── Reset / Base ── */
+    html {
+        font-size: 16px;
+    }
+
+    body {
+        min-width: 0;
+        width: 100%;
+        overflow-x: hidden;
+        padding-top: 72px; /* 모바일 GNB 높이 보정 */
+    }
+
+    .inner {
+        padding: 0 16px;
+        max-width: 100%;
+    }
+
+    /* ── GNB ── */
+    .gnb {
+        height: 72px;
+        padding: 0 16px;
+    }
+
+    .gnb-logo {
+        width: 156px;
+        height: 30px;
+    }
+
+    .gnb-utils-links,
+    .gnb-divider {
+        display: none;
+    }
+
+    .gnb-menu-btn {
+        width: 32px;
+        height: 32px;
+        gap: 5.5px;
+    }
+
+    .gnb-menu-btn span {
+        width: 22px;
+        height: 1.5px;
+    }
+
+    /* ── Page Header ── */
+    .page-header {
+        padding: 20px 0 30px;
+        gap: 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .page-header h1 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin-top: 20px;
+        font-size: 30px;
+        line-height: 140%;
+        padding: 0 16px;
+        box-sizing: border-box;
+    }
+
+    /* ── Tab Navigation ── */
+    .tab-nav {
+        margin-top: 0;
+        height: auto;
+        width: 100%;
+        justify-content: center;
+        gap: 0;
+        border-bottom: 1px solid #E9E9E9;
+    }
+
+    .tab-item {
+        width: auto;
+        height: auto;
+        padding: 10px 12px;
+        font-size: 14px;
+        line-height: 150%;
+        flex: 1;
+        text-align: center;
+        justify-content: center;
+    }
+
+    /* ── Support Section ── */
+    .support-section {
+        padding: 40px 0;
+    }
+
+    .support-banner {
+        width: calc(100% - 32px);
+        max-width: 100%;
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        grid-template-rows: 80px auto;
+        column-gap: 12px;
+        row-gap: 20px;
+        padding: 24px 16px;
+        border-radius: 16px;
+    }
+
+    .support-icon {
+        grid-column: 1;
+        grid-row: 1;
+        width: 80px;
+        height: 80px;
+    }
+
+    .support-content-box {
+        display: contents;
+    }
+
+    .support-info {
+        display: contents;
+    }
+
+    .support-info h3 {
+        grid-column: 2;
+        grid-row: 1;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        margin: 0;
+    }
+
+    .support-info p {
+        grid-column: 1 / span 2;
+        grid-row: 2;
+        font-size: 14px;
+        margin: 0;
+    }
+
+    .btn-arrow-right {
+        display: none;
+    }
+
+    /* ── BTN TOP ── */
+    .btn-top {
+        width: 48px;
+        height: 48px;
+        right: 24px;
+        bottom: 24px;
+    }
+
+    /* ── Footer ── */
+    .footer {
+        height: auto;
+        padding: 40px 20px 30px;
+        gap: 30px;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .footer-logo {
+        width: 136px;
+        height: 28px;
+    }
+
+    .footer-btn-group {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .footer-btn {
+        width: 100%;
+        height: 45px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .footer-bottom {
+        gap: 16px;
+    }
+
+    .footer-bottom-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .footer-links a {
+        font-size: 12px;
+    }
+
+    .footer-copy {
+        font-size: 12px;
+        text-align: left;
+    }
 }
