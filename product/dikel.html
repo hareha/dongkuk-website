@@ -444,7 +444,7 @@
         .accordion .inner {
             max-width: 1680px;
             margin: 0 auto;
-            padding: 0;
+            padding: 0 clamp(16px, 6.25vw, 120px);
             display: flex;
             flex-direction: column;
         }
@@ -962,11 +962,9 @@
         .process-scroll-outer {
             position: relative;
             height: auto;
-            /* 💡 8 * 100vh 제거 */
             background: #FFFFFF;
-            padding: 0 0;
-            overflow-x: hidden;
-            /* 상하 여백 추가 */
+            padding: 100px 30px;
+            overflow: hidden;
         }
 
         .process-sticky {
@@ -983,22 +981,21 @@
         }
 
         .process-card {
-            max-width: 1860px;
-            width: calc(100% - 60px);
+            width: 1860px;
             height: 1080px;
             background: #F1EDEA;
             border-radius: 30px;
             position: relative;
             flex-shrink: 0;
             font-family: 'Pretendard', sans-serif;
-            overflow-x: auto;
-            overflow-y: hidden;
+            overflow: visible;
+            transform-origin: top center;
         }
 
         /* ── Header ── */
         .ps-header {
             position: absolute;
-            width: calc(100% - 240px);
+            width: 1620px;
             height: 126px;
             left: 120px;
             top: 100px;
