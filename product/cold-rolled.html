@@ -928,6 +928,7 @@
         .utc-footer-info {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 6px;
             width: 100%;
             height: 35px;
@@ -1240,88 +1241,393 @@
            모든 고정 너비/절대 위치를 유연한 레이아웃으로 전환
            ════════════════════════════════════ */
         @media (max-width: 1023px) {
-            body { min-width: 0; width: 100%; overflow-x: hidden; }
-
-            .hero-text-outer { min-height: 200vh; }
-            .hero-text-inner { top: 72px; }
-            .hero-text-section { padding: 40px 16px 0; text-align: center; }
-            .hero-text-section h2 { font-size: clamp(20px, 5vw, 28px); line-height: 150%; }
-
-            .feature-cards { padding: 20px 16px 0; }
-            .fcards-row { flex-direction: column; width: 100%; height: auto; gap: 12px; padding: 0; }
-            .fcard-premium, .fcard-stable, .fcard-nextgen {
-                width: 100% !important; height: 156px; border-radius: 16px; overflow: hidden;
+            body {
+                min-width: 0;
+                width: 100%;
+                overflow-x: hidden;
             }
-            .fcard-premium .bg-main, .fcard-stable .bg-main, .fcard-nextgen .bg-main { display: none; }
-            .fcard-premium { background: #003592; }
-            .fcard-stable { background: #F27100; }
-            .fcard-nextgen { background: #F1F3F7; }
-            .fcard-premium .bg-circle { width: 171px; height: 166px; left: auto; right: 0; top: 50px; }
-            .fcard-premium .product-img { width: 161px; height: 78px; left: auto; right: 10px; top: 78px; }
-            .fcard-premium .label-text, .fcard-stable .label-text, .fcard-nextgen .label-text {
-                left: 16px; top: 16px; font-size: 16px; width: auto;
+
+            .hero-text-outer {
+                min-height: 200vh;
             }
-            .fcard-premium .title-text, .fcard-stable .title-text, .fcard-nextgen .title-text {
-                left: 16px; top: auto; bottom: 16px; font-size: 24px;
+
+            .hero-text-inner {
+                top: 72px;
             }
-            .fcard-premium .title-text { top: 80px; bottom: auto; }
 
-            .product-tabs { margin: 30px auto; width: calc(100% - 32px); height: auto; padding: 6px; gap: 2px; }
-            .ptab { padding: 0 12px; height: 44px; font-size: 14px; }
+            .hero-text-section {
+                padding: 40px 16px 0;
+                text-align: center;
+            }
 
-            .product-intro { padding: 40px 0; }
-            .product-intro .inner { flex-direction: column; gap: 30px; padding: 0 16px; }
-            .pi-left { width: 100% !important; height: auto !important; flex-shrink: 1; }
-            .pi-top-content, .pi-main-texts, .pi-subtitle-group, .pi-description-stack, .pi-label, .pi-desc { width: 100% !important; }
-            .pi-title { font-size: clamp(24px, 6vw, 32px); height: auto; white-space: normal; }
-            .pi-subtitle { font-size: 20px; width: 100%; }
-            .pi-desc { font-size: 16px; width: 100%; }
-            .pi-right { width: 100% !important; height: 250px; flex-shrink: 1; }
-            .pi-brochure-section { width: 100% !important; }
-            .pi-brochure-btns { width: 100% !important; flex-wrap: wrap; }
-            .btn-round { padding: 8px 16px; font-size: 14px; height: auto; }
+            .hero-text-section h2 {
+                font-size: clamp(20px, 5vw, 28px);
+                line-height: 150%;
+            }
 
-            .accordion { padding: 20px 0 40px; }
-            .accordion .inner { max-width: 100%; padding: 0 16px; }
-            .acc-item { width: 100% !important; }
-            .acc-header { height: 70px; padding-right: 8px; }
-            .acc-title { font-size: 18px; }
-            .acc-dropdown-icon { width: 36px; height: 36px; }
-            .acc-body { width: 100% !important; }
-            .acc-content-box { width: 100% !important; padding: 16px 0; gap: 24px; border-radius: 16px; }
+            .feature-cards {
+                padding: 20px 16px 0;
+            }
 
-            .spec-grid-group { width: 100% !important; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-            .spec-grid-row { min-width: 500px; width: max-content; }
+            .fcards-row {
+                flex-direction: column;
+                width: 100%;
+                height: auto;
+                gap: 12px;
+                padding: 0;
+            }
 
-            .usage-section { padding: 40px 0; }
-            .usage-section .inner { padding: 0 16px; gap: 30px; }
-            .usage-title { font-size: clamp(24px, 6vw, 28px); }
-            .usage-content { flex-direction: column; gap: 24px; }
-            .usage-left { width: 100% !important; }
-            .umi-title { font-size: 24px; }
-            .umi-desc { width: 100% !important; margin-left: 0; font-size: 16px; }
-            .usage-right { width: 100% !important; height: auto !important; position: relative; }
-            .usage-tab-content { position: relative; }
-            .utc-video { height: 200px; border-radius: 16px; }
-            .utc-parts { height: auto; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; gap: 8px; padding-bottom: 8px; }
-            .utc-part-box { flex: 0 0 100px; height: 100px; min-width: 100px; scroll-snap-align: start; }
-            .utc-part-box img { width: 70px; height: 70px; }
+            .fcard-premium,
+            .fcard-stable,
+            .fcard-nextgen {
+                width: 100% !important;
+                height: 156px;
+                border-radius: 16px;
+                overflow: hidden;
+            }
 
-            .process-sticky { padding: 20px 16px; }
-            .process-card { width: 100% !important; height: auto !important; min-height: 400px; padding: 24px 16px !important; border-radius: 16px; }
-            .ps-header { position: relative; padding: 0 0 20px; width: 100%; gap: 12px; }
-            .ps-label { font-size: 16px; }
-            .ps-title { font-size: 24px; }
-            .ps-toggle { width: 100%; height: auto; }
-            .ps-toggle-btn { flex: 1; height: 40px; font-size: 14px; }
-            .ps-diagram-area { position: relative !important; width: 100% !important; height: auto !important; top: 0 !important; overflow-x: auto; }
-            .ps-progress { position: relative !important; width: 100% !important; height: auto !important; left: 0 !important; top: 0 !important; padding: 16px; overflow-x: auto; }
-            .ps-steps { width: max-content; min-width: 100%; }
-            .ps-bubble { position: relative !important; width: 100% !important; left: 0 !important; top: 0 !important; }
-            .ps-bubble p { width: 100% !important; }
+            .fcard-premium .bg-main,
+            .fcard-stable .bg-main,
+            .fcard-nextgen .bg-main {
+                display: none;
+            }
 
-            .grade-table { width: 100% !important; height: auto !important; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-            .grade-left, .grade-right { min-width: 300px; }
+            .fcard-premium {
+                background: #003592;
+            }
+
+            .fcard-stable {
+                background: #F27100;
+            }
+
+            .fcard-nextgen {
+                background: #F1F3F7;
+            }
+
+            .fcard-premium .bg-circle {
+                width: 171px;
+                height: 166px;
+                left: auto;
+                right: 0;
+                top: 50px;
+            }
+
+            .fcard-premium .product-img {
+                width: 161px;
+                height: 78px;
+                left: auto;
+                right: 10px;
+                top: 78px;
+            }
+
+            .fcard-premium .label-text,
+            .fcard-stable .label-text,
+            .fcard-nextgen .label-text {
+                left: 16px;
+                top: 16px;
+                font-size: 16px;
+                width: auto;
+            }
+
+            .fcard-premium .title-text,
+            .fcard-stable .title-text,
+            .fcard-nextgen .title-text {
+                left: 16px;
+                top: auto;
+                bottom: 16px;
+                font-size: 24px;
+            }
+
+            .fcard-premium .title-text {
+                top: 80px;
+                bottom: auto;
+            }
+
+            .product-tabs {
+                margin: 30px auto;
+                width: calc(100% - 32px);
+                height: auto;
+                padding: 6px;
+                gap: 2px;
+            }
+
+            .ptab {
+                padding: 0 12px;
+                height: 44px;
+                font-size: 14px;
+            }
+
+            .product-intro {
+                padding: 40px 0;
+            }
+
+            .product-intro .inner {
+                flex-direction: column;
+                gap: 30px;
+                padding: 0 16px;
+            }
+
+            .pi-left {
+                width: 100% !important;
+                height: auto !important;
+                flex-shrink: 1;
+            }
+
+            .pi-top-content,
+            .pi-main-texts,
+            .pi-subtitle-group,
+            .pi-description-stack,
+            .pi-label,
+            .pi-desc {
+                width: 100% !important;
+            }
+
+            .pi-title {
+                font-size: clamp(24px, 6vw, 32px);
+                height: auto;
+                white-space: normal;
+            }
+
+            .pi-subtitle {
+                font-size: 20px;
+                width: 100%;
+            }
+
+            .pi-desc {
+                font-size: 16px;
+                width: 100%;
+            }
+
+            .pi-right {
+                width: 100% !important;
+                height: 250px;
+                flex-shrink: 1;
+            }
+
+            .pi-brochure-section {
+                width: 100% !important;
+            }
+
+            .pi-brochure-btns {
+                width: 100% !important;
+                flex-wrap: wrap;
+            }
+
+            .btn-round {
+                padding: 8px 16px;
+                font-size: 14px;
+                height: auto;
+            }
+
+            .accordion {
+                padding: 20px 0 40px;
+            }
+
+            .accordion .inner {
+                max-width: 100%;
+                padding: 0 16px;
+            }
+
+            .acc-item {
+                width: 100% !important;
+            }
+
+            .acc-header {
+                height: 70px;
+                padding-right: 8px;
+            }
+
+            .acc-title {
+                font-size: 18px;
+            }
+
+            .acc-dropdown-icon {
+                width: 36px;
+                height: 36px;
+            }
+
+            .acc-body {
+                width: 100% !important;
+            }
+
+            .acc-content-box {
+                width: 100% !important;
+                padding: 16px 0;
+                gap: 24px;
+                border-radius: 16px;
+            }
+
+            .spec-grid-group {
+                width: 100% !important;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .spec-grid-row {
+                min-width: 500px;
+                width: max-content;
+            }
+
+            .usage-section {
+                padding: 40px 0;
+            }
+
+            .usage-section .inner {
+                padding: 0 16px;
+                gap: 30px;
+            }
+
+            .usage-title {
+                font-size: clamp(24px, 6vw, 28px);
+            }
+
+            .usage-content {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .usage-left {
+                width: 100% !important;
+            }
+
+            .umi-title {
+                font-size: 24px;
+            }
+
+            .umi-desc {
+                width: 100% !important;
+                margin-left: 0;
+                font-size: 16px;
+            }
+
+            .usage-right {
+                width: 100% !important;
+                height: auto !important;
+                position: relative;
+            }
+
+            .usage-tab-content {
+                position: relative;
+            }
+
+            .utc-video {
+                height: 200px;
+                border-radius: 16px;
+            }
+
+            .utc-parts {
+                height: auto;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scroll-snap-type: x mandatory;
+                gap: 8px;
+                padding-bottom: 8px;
+            }
+
+            .utc-part-box {
+                flex: 0 0 100px;
+                height: 100px;
+                min-width: 100px;
+                scroll-snap-align: start;
+            }
+
+            .utc-part-box img {
+                width: 70px;
+                height: 70px;
+            }
+
+            .utc-footer-info {
+                justify-content: flex-start;
+            }
+
+            .utc-footer-text {
+                font-size: 14px;
+            }
+
+            .process-sticky {
+                padding: 20px 16px;
+            }
+
+            .process-card {
+                width: 100% !important;
+                height: auto !important;
+                min-height: 400px;
+                padding: 24px 16px !important;
+                border-radius: 16px;
+            }
+
+            .ps-header {
+                position: relative;
+                padding: 0 0 20px;
+                width: 100%;
+                gap: 12px;
+            }
+
+            .ps-label {
+                font-size: 16px;
+            }
+
+            .ps-title {
+                font-size: 24px;
+            }
+
+            .ps-toggle {
+                width: 100%;
+                height: auto;
+            }
+
+            .ps-toggle-btn {
+                flex: 1;
+                height: 40px;
+                font-size: 14px;
+            }
+
+            .ps-diagram-area {
+                position: relative !important;
+                width: 100% !important;
+                height: auto !important;
+                top: 0 !important;
+                overflow-x: auto;
+            }
+
+            .ps-progress {
+                position: relative !important;
+                width: 100% !important;
+                height: auto !important;
+                left: 0 !important;
+                top: 0 !important;
+                padding: 16px;
+                overflow-x: auto;
+            }
+
+            .ps-steps {
+                width: max-content;
+                min-width: 100%;
+            }
+
+            .ps-bubble {
+                position: relative !important;
+                width: 100% !important;
+                left: 0 !important;
+                top: 0 !important;
+            }
+
+            .ps-bubble p {
+                width: 100% !important;
+            }
+
+            .grade-table {
+                width: 100% !important;
+                height: auto !important;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .grade-left,
+            .grade-right {
+                min-width: 300px;
+            }
 
         }
     </style>
@@ -1347,43 +1653,43 @@
 
     <!-- Hero Text + Feature Cards -->
     <div class="hero-text-outer">
-      <div class="hero-text-inner">
-        <!-- Page Header -->
-        <section class="page-header">
-            <h1>냉연강판</h1>
-        </section>
-        <section class="hero-text-section">
-            <h2>글로벌 산업 기준에 맞춰<br>고정밀 산업의 안정성을 뒷받침합니다.</h2>
-        </section>
+        <div class="hero-text-inner">
+            <!-- Page Header -->
+            <section class="page-header">
+                <h1>냉연강판</h1>
+            </section>
+            <section class="hero-text-section">
+                <h2>글로벌 산업 기준에 맞춰<br>고정밀 산업의 안정성을 뒷받침합니다.</h2>
+            </section>
 
-        <section class="feature-cards">
-            <div class="fcards-row">
-                <!-- Card 1 -->
-                <div class="fcard fcard-premium">
-                    <div class="bg-main"></div>
-                    <div class="bg-circle"></div>
-                    <img src="assets/cold-rolled/냉연강판.png" alt="냉연강판" class="product-img">
-                    <p class="label-text">압도적 국내 시장 점유</p>
-                    <p class="title-text">62%</p>
-                </div>
+            <section class="feature-cards">
+                <div class="fcards-row">
+                    <!-- Card 1 -->
+                    <div class="fcard fcard-premium">
+                        <div class="bg-main"></div>
+                        <div class="bg-circle"></div>
+                        <img src="assets/cold-rolled/냉연강판.png" alt="냉연강판" class="product-img">
+                        <p class="label-text">압도적 국내 시장 점유</p>
+                        <p class="title-text">62%</p>
+                    </div>
 
-                <!-- Card 2 -->
-                <div class="fcard fcard-stable">
-                    <div class="bg-main"></div>
-                    <p class="label-text">일본·미국·유럽 등<br>
-                        국제 대응이 가능한 생산라인</p>
-                    <p class="title-text">Multi-<br>Production</p>
-                </div>
+                    <!-- Card 2 -->
+                    <div class="fcard fcard-stable">
+                        <div class="bg-main"></div>
+                        <p class="label-text">일본·미국·유럽 등<br>
+                            국제 대응이 가능한 생산라인</p>
+                        <p class="title-text">Multi-<br>Production</p>
+                    </div>
 
-                <!-- Card 3 -->
-                <div class="fcard fcard-nextgen">
-                    <div class="bg-main"></div>
-                    <p class="label-text">글로벌 비즈니스 노하우 &amp; 탄탄한 수출 인프라</p>
-                    <p class="title-text">Global<br>Business</p>
+                    <!-- Card 3 -->
+                    <div class="fcard fcard-nextgen">
+                        <div class="bg-main"></div>
+                        <p class="label-text">글로벌 비즈니스 노하우 &amp; 탄탄한 수출 인프라</p>
+                        <p class="title-text">Global<br>Business</p>
+                    </div>
                 </div>
-            </div>
-        </section>
-      </div>
+            </section>
+        </div>
     </div>
 
     <!-- Product Tabs -->
@@ -1399,7 +1705,7 @@
             <div class="pi-left">
                 <div class="pi-top-content">
                     <div class="pi-main-texts">
-                        <h1 class="pi-title">냉연강판</h1>
+                        <h1 class="pi-title">냉연강판 소개</h1>
                         <div class="pi-subtitle-group">
                             <h2 class="pi-subtitle">정밀 공정에 최적화된 고품질 강판</h2>
                             <div class="pi-description-stack">
@@ -2234,9 +2540,9 @@
                             <span class="umi-title">모빌리티 산업</span>
                         </div>
                         <p class="umi-desc">
-                            높은 경도와 균일한 품질을 갖춘 동국산업의 냉연특수강은<br>
-                            자동차 핵심 구동 부품에 적용되어 안정적인 성능을 구현<br>
-                            합니다.
+                            높은 경도와 균일한 품질을 갖춘 동국산업의
+                            냉연특수강은 자동차 핵심 구동 부품에 적용되어
+                            완벽한 성능을 뒷받침합니다.
                         </p>
                     </div>
 
@@ -2246,9 +2552,9 @@
                             <span class="umi-title">산업용 부품</span>
                         </div>
                         <p class="umi-desc">
-                            동국산업의 냉연강판은 높은 내구성과 우수한 표면 품질을<br>
-                            바탕으로 산업용 절삭 도구부터 생활잡화까지 폭넓게<br>
-                            적용됩니다.
+                            우수한 내구성과 표면 품질을 갖춘 냉연강판은
+                            산업용 절삭 도구부터 생활 잡화까지 폭넓게
+                            활용됩니다.
                         </p>
                     </div>
                 </div>
@@ -2260,6 +2566,10 @@
                             <video autoplay loop muted playsinline>
                                 <source src="assets/heat-treated/냉연강판_모빌리티_1.mp4" type="video/mp4">
                             </video>
+                        </div>
+                        <div class="utc-footer-info">
+                            <img src="../assets/common/dk-industry.svg" class="utc-footer-icon" alt="icon">
+                            <span class="utc-footer-text">동국산업의 정밀 소재가 다양한 분야의 핵심 부품으로 탄생합니다.</span>
                         </div>
                         <div class="utc-parts">
                             <div class="utc-part-box">
@@ -2284,10 +2594,6 @@
                                 <img src="assets/cold-rolled/Rectangle07.svg" alt="파트 07">
                             </div>
                         </div>
-                        <div class="utc-footer-info">
-                            <img src="../assets/common/dk-industry.svg" class="utc-footer-icon" alt="icon">
-                            <span class="utc-footer-text">동국산업의 정밀 소재가 다양한 분야의 핵심 부품으로 탄생합니다.</span>
-                        </div>
                     </div>
 
                     <div class="usage-tab-content" id="usage-tab-1">
@@ -2296,7 +2602,10 @@
                                 <source src="assets/heat-treated/냉연강판_산업용부품.mp4" type="video/mp4">
                             </video>
                         </div>
-
+                        <div class="utc-footer-info">
+                            <img src="../assets/common/dk-industry.svg" class="utc-footer-icon" alt="icon">
+                            <span class="utc-footer-text">동국산업의 정밀 소재가 다양한 분야의 핵심 부품으로 탄생합니다.</span>
+                        </div>
                         <div class="utc-parts">
                             <div class="utc-part-box">
                                 <img src="assets/cold-rolled/Rectangle11.svg" alt="파트 11">
@@ -2319,11 +2628,6 @@
                             <div class="utc-part-box">
                                 <img src="assets/cold-rolled/Rectangle17.svg" alt="파트 16">
                             </div>
-                        </div>
-
-                        <div class="utc-footer-info">
-                            <img src="../assets/common/dk-industry.svg" class="utc-footer-icon" alt="icon">
-                            <span class="utc-footer-text">동국산업의 정밀 소재가 다양한 분야의 핵심 부품으로 탄생합니다.</span>
                         </div>
                     </div>
 
@@ -2747,7 +3051,7 @@
             onScroll();
         });
     </script>
-  <script src="../js/gnb.js"></script>
+    <script src="../js/gnb.js"></script>
 </body>
 
 </html>
