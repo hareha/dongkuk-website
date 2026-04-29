@@ -1445,7 +1445,6 @@
             .product-tabs {
                 position: fixed;
                 bottom: 0;
-                left: 0;
                 margin: 0;
                 width: 100%;
                 height: auto;
@@ -1453,11 +1452,11 @@
                 gap: 0;
                 border-radius: 0;
                 z-index: 100;
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                background: rgba(255, 255, 255, 0.3);
-                border: 1px solid rgba(255, 255, 255, 0.8);
-                box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.12);
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                background: #FFFFFF;
+                border: none;
+                box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
                 box-sizing: border-box;
             }
 
@@ -1842,16 +1841,19 @@
                 top: 16%;
                 width: 28%;
             }
+
             .ps-mob-icon[data-step="1"] {
                 left: 26%;
                 top: 16%;
                 width: 18%;
             }
+
             .ps-mob-icon[data-step="2"] {
                 left: 46%;
                 top: 16%;
                 width: 25%;
             }
+
             .ps-mob-icon[data-step="3"] {
                 left: 72%;
                 top: 6%;
@@ -1864,11 +1866,13 @@
                 top: 52%;
                 width: 24%;
             }
+
             .ps-mob-icon[data-step="5"] {
                 left: 31%;
                 top: 52%;
                 width: 20%;
             }
+
             .ps-mob-icon[data-step="6"] {
                 left: 54%;
                 top: 48%;
@@ -3115,7 +3119,8 @@
                 <div class="ps-mobile-diagram" style="display:none;">
                     <div class="ps-mobile-row">
                         <div class="ps-mob-group">
-                            <img class="ps-mob-icon" data-step="0" src="assets/cold-rolled/1.열연 코일 세팅.svg" alt="열연 코일 세팅">
+                            <img class="ps-mob-icon" data-step="0" src="assets/cold-rolled/1.열연 코일 세팅.svg"
+                                alt="열연 코일 세팅">
                             <img class="ps-mob-icon" data-step="1" src="assets/cold-rolled/2.산세라인.png" alt="산세라인">
                         </div>
                         <img class="ps-mob-icon" data-step="2" src="assets/cold-rolled/3.정밀컷팅.svg" alt="정밀컷팅">

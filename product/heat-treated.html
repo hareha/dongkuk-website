@@ -859,6 +859,7 @@
         .utc-footer-info {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 6px;
             width: 100%;
             height: 35px;
@@ -1284,7 +1285,6 @@
             .product-tabs {
                 position: fixed;
                 bottom: 0;
-                left: 0;
                 margin: 0;
                 width: 100%;
                 height: auto;
@@ -1292,11 +1292,11 @@
                 gap: 0;
                 border-radius: 0;
                 z-index: 100;
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                background: rgba(255, 255, 255, 0.3);
-                border: 1px solid rgba(255, 255, 255, 0.8);
-                box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.12);
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                background: #FFFFFF;
+                border: none;
+                box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
                 box-sizing: border-box;
             }
 
@@ -1492,6 +1492,19 @@
             .utc-part-box img {
                 width: 60px;
                 height: 60px;
+            }
+
+            .utc-footer-info {
+                justify-content: flex-start;
+            }
+
+            .utc-footer-icon {
+                width: 20px;
+                height: 20px;
+            }
+
+            .utc-footer-text {
+                font-size: 16px;
             }
 
             /* Process Section */
@@ -2166,6 +2179,10 @@
 
                     <div class="usage-tab-content active" id="usage-tab-0">
                         <div class="utc-video" style="background-image: url('assets/heat-treated/video.png');"></div>
+                        <div class="utc-footer-info">
+                            <img src="../assets/common/dk-industry.svg" class="utc-footer-icon" alt="icon">
+                            <span class="utc-footer-text">동국산업의 정밀 소재가 다양한 분야의 핵심 부품으로 탄생합니다.</span>
+                        </div>
                         <div class="utc-parts">
                             <div class="utc-part-box">
                                 <img src="assets/heat-treated/모빌리티1.svg" alt="모빌리티 01">
@@ -2183,15 +2200,14 @@
                                 <img src="assets/heat-treated/모빌리티5.svg" alt="모빌리티 05">
                             </div>
                         </div>
-                        <div class="utc-footer-info">
-                            <img src="../assets/common/dk-industry.svg" class="utc-footer-icon" alt="icon">
-                            <span class="utc-footer-text">동국산업의 정밀 소재가 다양한 분야의 핵심 부품으로 탄생합니다.</span>
-                        </div>
                     </div>
 
                     <div class="usage-tab-content" id="usage-tab-1">
                         <div class="utc-video" style="background-image: url('assets/heat-treated/video1.png');"></div>
-
+                        <div class="utc-footer-info">
+                            <img src="../assets/common/dk-industry.svg" class="utc-footer-icon" alt="icon">
+                            <span class="utc-footer-text">동국산업의 정밀 소재가 다양한 분야의 핵심 부품으로 탄생합니다.</span>
+                        </div>
                         <div class="utc-parts">
                             <div class="utc-part-box">
                                 <img src="assets/heat-treated/산업용부품1.svg" alt="산업용 부품 01">
@@ -2208,11 +2224,6 @@
                             <div class="utc-part-box">
                                 <img src="assets/heat-treated/산업용부품5.svg" alt="산업용 부품 05">
                             </div>
-                        </div>
-
-                        <div class="utc-footer-info">
-                            <img src="../assets/common/dk-industry.svg" class="utc-footer-icon" alt="icon">
-                            <span class="utc-footer-text">동국산업의 정밀 소재가 다양한 분야의 핵심 부품으로 탄생합니다.</span>
                         </div>
                     </div>
 
