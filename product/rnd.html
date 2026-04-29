@@ -5,68 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>연구개발 - 동국산업</title>
+    <meta name="description" content="동국산업 연구개발 - 끊임없는 기술 혁신으로 내일의 동력을 만듭니다.">
     <link rel="stylesheet" as="style" crossorigin
-        href="https://cdn.jsdelivr.n../orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/gnb.css">
     <style>
-        /* ===== Reset ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Pretendard', sans-serif;
-            list-style: none;
-            text-decoration: none;
-        }
-
-        html {
-            font-size: clamp(12px, 0.833vw, 16px);
-        }
-
-        body {
-            background: #fff;
-            color: #111;
-            min-width: 1280px;
-        }
-
-        /* ===== Layout ===== */
-        .inner {
-            max-width: 1760px;
-            margin: 0 auto;
-            padding: 0 7.5rem;
-            /* 120px */
-        }
-
-        /* ===== GNB ===== */
-
-        .gnb-utils-links a {
-            font-family: 'Pretendard', sans-serif;
-            font-weight: 400;
-            font-size: 20px;
-            line-height: 160%;
-            color: #7A7A7A;
-            text-decoration: none;
-            padding: 4px 8px;
-            border-radius: 50px;
-        }
-
         /* ===== Page Header ===== */
         .page-header {
             padding: 40px 0 100px;
-            /* GNB(100px fixed) + 여백 40px */
             text-align: center;
             background: #fff;
         }
 
         .page-header h1 {
             font-size: 80px;
-            /* 80px 적용 */
             font-weight: 700;
-            /* Bold */
             color: #000;
             line-height: 140%;
-            /* 140% 적용 */
         }
 
         /* ===== Subtitle ===== */
@@ -74,37 +30,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
-
-            /* 패딩도 화면 크기에 맞춰 유연하게 (104px 기준 -> 약 5.4vw) */
-            padding: 5.4vw 0;
+            padding: 104px 0;
             background: #fff;
         }
 
         .subtitle-section p {
-            /* 1. 박스 크기 소프트 코딩 */
-            /* 화면이 작아질 땐 100%로 유연하게 줄어들고, 최대 크기는 564px을 넘지 않음 */
             width: 100%;
             max-width: 564px;
-
-            /* 높이는 텍스트와 행간(140%)에 맞춰 자동으로 잡히는 것이 가장 안전합니다. 
-               (만약 높이마저 1920 기준 비율로 강제하고 싶다면 height: 8.75vw; 사용) */
-            height: auto;
             margin: 0;
-
-            /* 2. 폰트 크기 소프트 코딩 (가장 추천하는 clamp 함수 사용) */
-            /* clamp(최소크기, 권장비율, 최대크기) 
-               -> 모바일에서는 32px 보장, 1920px 화면에서는 60px, 그 사이는 비율에 맞춰 유연하게 조절 */
-            font-size: clamp(32px, 3.125vw, 60px);
-
-            /* 3. 나머지는 이미 비율 단위(%)이므로 그대로 사용 */
+            font-size: 60px;
             font-weight: 700;
             line-height: 140%;
-            letter-spacing: 0;
-
             color: #E9E9E9;
             text-align: center;
-
-            /* 박스 내 텍스트 정중앙 배치 */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -124,7 +62,6 @@
             background: #fff;
         }
 
-        /* 💡 1920px 화면 기준 좌우 120px 여백 강제 고정 */
         .story-section .inner {
             max-width: 1920px;
             margin: 0 auto;
@@ -133,40 +70,33 @@
         }
 
         .section-label {
-            font-size: 1.875rem;
+            font-size: 30px;
             font-weight: 700;
             color: #7A7A7A;
-            margin-bottom: 3rem;
+            line-height: 140%;
+            margin-bottom: 80px;
         }
 
-        /* 전체 행(Row) 컨테이너 */
         .story-rows {
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* 내부 1680px 박스를 중앙 정렬하여 우측 120px 완벽 확보 */
             gap: 80px;
         }
 
-        /* 개별 행: 1680 x 600 */
         .story-row {
             display: flex;
             flex-direction: row;
             align-items: center;
             width: 100%;
             max-width: 1680px;
-            /* 최대 크기 1680px 고정 */
-            height: 600px;
-            gap: 160px;
+            gap: 120px;
         }
 
-        /* 텍스트가 왼쪽인 행 */
         .story-row.row-text-left {
-            gap: 396px;
-            justify-content: flex-start;
+            justify-content: space-between;
         }
 
-        /* 이미지 박스: 820 x 600 */
         .story-img {
             flex-shrink: 0;
             width: 820px;
@@ -177,23 +107,16 @@
             overflow: hidden;
         }
 
-        /* 블러 및 배경 이미지 공통 속성 */
         .story-img::before {
             content: '';
             position: absolute;
-
-            /* 📍 1. 억지로 키웠던 고정 픽셀을 부모 박스와 똑같게 100%로 맞춥니다. */
             width: 100%;
             height: 100%;
-
-            /* 📍 2. 왼쪽 위로 잡아당겼던 위치를 원상복구 합니다. */
             left: 0;
             top: 0;
-
             z-index: 1;
         }
 
-        /* 각 박스별 로컬 이미지 및 그라데이션 적용 */
         .story-img.lab1::before {
             background: url('assets/rnd/img_w_변화의 흐름을 읽는 기술 기획.png') no-repeat center/cover;
         }
@@ -206,7 +129,6 @@
             background: url('assets/rnd/img_w_미래 혁신의 기회 탐색.png') no-repeat center/cover;
         }
 
-        /* 아이콘 */
         .story-ic {
             position: absolute;
             width: 86px;
@@ -222,29 +144,22 @@
             object-fit: contain;
         }
 
-        /* 텍스트 박스: 464 x 392 */
         .story-text {
-            width: 464px;
-            height: 392px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
             gap: 60px;
-            /* 타이틀과 디스크립션 간격 60px */
             flex-shrink: 0;
         }
 
         .story-text h2 {
             width: 464px;
-            font-family: 'Pretendard', sans-serif;
             font-size: 50px;
             font-weight: 700;
             line-height: 140%;
             color: #000000;
             margin: 0;
-            display: flex;
-            align-items: center;
         }
 
         .story-bullets {
@@ -252,8 +167,7 @@
             flex-direction: column;
             align-items: flex-start;
             gap: 4px;
-            /* 리스트 간격 4px */
-            width: 490px;
+            width: 464px;
         }
 
         .story-bullets li {
@@ -261,12 +175,9 @@
             flex-direction: row;
             align-items: flex-start;
             gap: 12px;
-            /* 점과 텍스트 간격 12px */
-            height: 45px;
-            /* 개별 박스 높이 45px */
+            min-height: 45px;
         }
 
-        /* 6x6 점 (Dot) */
         .story-bullets li::before {
             content: '';
             display: block;
@@ -276,19 +187,13 @@
             border-radius: 50%;
             flex-shrink: 0;
             margin-top: 18px;
-            /* 위에서 18px 간격 띄움 */
         }
 
-        /* 텍스트 본문 */
         .story-bullets li span {
-            font-family: 'Pretendard', sans-serif;
             font-size: 24px;
             font-weight: 400;
             line-height: 150%;
             color: #4E4E4E;
-            height: 36px;
-            display: flex;
-            align-items: center;
         }
 
         /* ===== 연구개발 현장 ===== */
@@ -296,7 +201,6 @@
             background: #CDEBFB;
             padding: 119px 0 135px;
             overflow: hidden;
-            /* 화면 밖으로 삐져나가는 부분 숨김 */
             width: 100%;
         }
 
@@ -306,49 +210,33 @@
             padding: 0 120px;
         }
 
-        /* 💡 무한 스크롤 전체 래퍼 */
         .scene-gallery-wrap {
             display: flex;
             margin-top: 56px;
             width: 100%;
             overflow: hidden;
-            /* 스크롤바 숨김 */
         }
 
-        /* 💡 스크롤되는 개별 트랙 (동일한 2개의 트랙이 나란히 붙어서 이동) */
         .scene-track {
             display: flex;
             align-items: flex-end;
-            /* 바닥 기준 정렬 */
             gap: 40px;
             padding-right: 40px;
-            /* 트랙과 트랙 사이의 간격도 40px로 유지 */
             animation: marquee 30s linear infinite;
-            /* 30초 동안 일정한 속도로 무한 반복 */
             flex-shrink: 0;
         }
 
-
-
-        /* 무한 이동 애니메이션 키프레임 */
         @keyframes marquee {
-            0% {
-                transform: translateX(0%);
-            }
-
-            100% {
-                transform: translateX(-100%);
-            }
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-100%); }
         }
 
         .scene-img {
             flex-shrink: 0;
-            background: #5a7a9a;
             position: relative;
             overflow: hidden;
         }
 
-        /* 개별 이미지 스펙 및 라운드 적용 */
         .scene-img.s1 {
             width: 732px;
             height: 473px;
@@ -377,180 +265,139 @@
             background: url('assets/rnd/img_연구개발 현장_4_w.png') no-repeat center/cover;
         }
 
-
-
-        /* ===== BTN TOP ===== */
-        .btn-top {
-            position: fixed;
-            right: 80px;
-            bottom: 80px;
-            width: 60px;
-            height: 60px;
-            z-index: 999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease;
-        }
-
-        .btn-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .btn-top img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        /* ===== Footer ===== */
-        .footer {
-            width: 100%;
-            height: clamp(300px, 25.52vw, 490px);
-            padding: clamp(40px, 4.16vw, 80px) clamp(20px, 4.16vw, 80px) clamp(30px, 2.6vw, 50px);
-            box-sizing: border-box;
-            background: url('../assets/common/footer-bg.svg') no-repeat center/cover;
-            background-color: #111;
-            color: #FFFFFF;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .footer-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            width: 100%;
-            max-width: 1760px;
-            margin: 0 auto;
-        }
-
-        .footer-logo {
-            width: clamp(150px, 11.97vw, 230px);
-            height: clamp(30px, 2.39vw, 46px);
-        }
-
-        .footer-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .footer-btn-group {
-            display: flex;
-            gap: clamp(6px, 0.625vw, 12px);
-            width: clamp(300px, 27.18vw, 522px);
-            height: clamp(40px, 3.125vw, 60px);
-        }
-
-        .footer-btn {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 6px;
-            background: #7A7A7A;
-            border-radius: clamp(8px, 0.72vw, 14px);
-            color: #FFFFFF;
-            font-size: clamp(12px, 0.93vw, 18px);
-            font-weight: 700;
-            text-decoration: none;
-            transition: background 0.3s;
-            box-sizing: border-box;
-        }
-
-        .footer-btn:hover {
-            background: #555;
-        }
-
-        .footer-bottom {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            max-width: 1760px;
-            margin: 0 auto;
-            gap: clamp(12px, 1.25vw, 24px);
-        }
-
-        .footer-divider {
-            width: 100%;
-            height: 1px;
-            background: rgba(225, 225, 225, 0.5);
-        }
-
-        .footer-bottom-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            height: clamp(20px, 1.56vw, 30px);
-        }
-
-        .footer-links {
-            display: flex;
-            align-items: center;
-            gap: clamp(4px, 0.41vw, 8px);
-        }
-
-        .footer-links a {
-            color: #FFFFFF;
-            font-size: clamp(11px, 0.83vw, 16px);
-            text-decoration: none;
-        }
-
-        .footer-links .bar {
-            width: 1px;
-            height: clamp(8px, 0.62vw, 12px);
-            background: #D3D3D3;
-        }
-
-        .footer-copy {
-            color: #FFFFFF;
-            font-size: clamp(11px, 0.83vw, 16px);
-            text-align: right;
-        }
-
         /* ════════════════════════════════════
            MOBILE — 1023px 이하
-           (공통: common.css가 GNB/헤더/서포트/푸터 처리)
            ════════════════════════════════════ */
         @media (max-width: 1023px) {
-            body { min-width: 0 !important; width: 100%; overflow-x: hidden; }
 
-            .page-header { padding: 20px 0 30px; text-align: center; }
-            .page-header h1 { font-size: clamp(24px, 6vw, 30px); }
-
-            .subtitle-section { padding: 40px 16px; }
-            .subtitle-section p { font-size: clamp(18px, 5vw, 24px); max-width: 100%; }
-
-            .story-section .inner { padding: 40px 16px; }
-            .section-label { font-size: 18px; margin-bottom: 20px; }
-            .story-rows { gap: 40px; }
-            .story-row, .story-row.row-text-left {
-                flex-direction: column; width: 100% !important; height: auto; gap: 20px;
+            /* Page Header */
+            .page-header {
+                padding: 20px 0 30px;
             }
-            .story-img { width: 100% !important; height: 200px; border-radius: 16px; }
-            .story-text { width: 100% !important; height: auto; gap: 20px; }
-            .story-text h2 { width: 100%; font-size: 24px; }
-            .story-bullets { width: 100%; }
-            .story-bullets li { height: auto; gap: 8px; }
-            .story-bullets li span { font-size: 16px; height: auto; }
 
-            .scene-section { padding: 40px 0; width: 100%; overflow-x: hidden; }
-            .scene-section .inner { padding: 0 16px; }
-            .scene-track { gap: 8px; height: auto; flex-wrap: wrap; }
-            .scene-img { flex-shrink: 0; }
-            .scene-img.s1 { width: calc(60% - 4px); height: 140px; border-radius: 16px; }
-            .scene-img.s2 { width: calc(40% - 4px); height: 140px; border-radius: 16px; }
-            .scene-img.s3 { width: calc(60% - 4px); height: 140px; border-radius: 16px; }
-            .scene-img.s4 { width: calc(40% - 4px); height: 140px; border-radius: 16px; }
+            .page-header h1 {
+                font-size: 30px;
+            }
 
-            .btn-top { right: 16px; bottom: 16px; width: 48px; height: 48px; }
+            /* Subtitle */
+            .subtitle-section {
+                padding: 40px 16px;
+            }
+
+            .subtitle-section p {
+                font-size: 24px;
+                max-width: 100%;
+            }
+
+            /* Story */
+            .story-section .inner {
+                padding: 40px 16px;
+            }
+
+            .section-label {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+
+            .story-rows {
+                gap: 40px;
+            }
+
+            .story-row,
+            .story-row.row-text-left {
+                flex-direction: column;
+                width: 100% !important;
+                height: auto;
+                gap: 20px;
+            }
+
+            /* 모바일에서 텍스트-왼쪽 행의 순서 반전 (이미지가 먼저 오도록) */
+            .story-row.row-text-left {
+                flex-direction: column-reverse;
+            }
+
+            .story-img {
+                width: 100% !important;
+                height: 200px;
+                border-radius: 16px;
+            }
+
+            .story-ic {
+                width: 52px;
+                height: 52px;
+                left: 16px;
+                top: 16px;
+            }
+
+            .story-text {
+                width: 100% !important;
+                height: auto;
+                gap: 20px;
+            }
+
+            .story-text h2 {
+                width: 100%;
+                font-size: 24px;
+            }
+
+            .story-bullets {
+                width: 100%;
+            }
+
+            .story-bullets li {
+                min-height: auto;
+                gap: 8px;
+            }
+
+            .story-bullets li::before {
+                margin-top: 12px;
+            }
+
+            .story-bullets li span {
+                font-size: 16px;
+            }
+
+            /* Scene */
+            .scene-section {
+                padding: 40px 0;
+            }
+
+            .scene-section .inner {
+                padding: 0 16px;
+            }
+
+            .scene-gallery-wrap {
+                margin-top: 24px;
+            }
+
+            .scene-track {
+                gap: 8px;
+                padding-right: 8px;
+            }
+
+            .scene-img.s1 {
+                width: 260px;
+                height: 168px;
+                border-radius: 16px;
+            }
+
+            .scene-img.s2 {
+                width: 140px;
+                height: 140px;
+                border-radius: 16px;
+            }
+
+            .scene-img.s3 {
+                width: 310px;
+                height: 200px;
+                border-radius: 16px;
+            }
+
+            .scene-img.s4 {
+                width: 140px;
+                height: 180px;
+                border-radius: 16px;
+            }
         }
     </style>
 </head>
@@ -565,11 +412,10 @@
         <div class="gnb-utils">
             <div class="gnb-utils-links">
                 <a href="#">문의</a>
-
                 <a href="#">KR</a>
             </div>
             <span class="gnb-divider"></span>
-            <button class="gnb-menu-btn"><span></span><span></span><span></span></button>
+            <button class="gnb-menu-btn" aria-label="메뉴"><span></span><span></span><span></span></button>
         </div>
     </header>
 
@@ -643,7 +489,6 @@
         </div>
     </section>
 
-
     <!-- 연구개발 현장 -->
     <section class="scene-section">
         <div class="inner">
@@ -674,19 +519,19 @@
             <div class="support-content-box">
                 <div class="support-info">
                     <h3>동국산업에 대해 더 알고 싶으신가요?</h3>
-                    <p>제품, 기술, 협력, 채용 등 다양한 문의를 남겨주시면 담당자가 확인 후 안내드립니다.</p>
+                    <p>제품, 기술, 협력 등 궁금한 사항을 남겨주시면 확인 후 안내드리겠습니다.</p>
                 </div>
                 <a href="#" class="btn-arrow-right">→</a>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-top">
             <div class="footer-logo">
                 <img src="../assets/common/footer-logo.svg" alt="DK Steel Logo">
             </div>
-
             <div class="footer-btn-group">
                 <a href="#" class="footer-btn">방문예약</a>
                 <a href="#" class="footer-btn">
@@ -722,11 +567,13 @@
         </div>
     </footer>
 
+    <!-- BTN TOP -->
     <a href="#" id="btn-top" class="btn-top">
         <img src="../assets/common/btn-top.svg" alt="맨 위로 가기">
     </a>
 
     <script>
+        /* ── GNB 스크롤 Hide/Show ── */
         (function () {
             const nav = document.querySelector('.gnb');
             if (!nav) return;
@@ -759,7 +606,7 @@
             updateNav();
         })();
 
-        // 💡 Subtitle Scroll Highlight
+        /* ── Subtitle Scroll Highlight ── */
         document.addEventListener('DOMContentLoaded', () => {
             const p = document.querySelector('.subtitle-section p');
             if (!p) return;
@@ -811,6 +658,25 @@
 
             window.addEventListener('scroll', onScroll);
             onScroll();
+        });
+
+        /* ── BTN TOP ── */
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnTop = document.getElementById('btn-top');
+            if (!btnTop) return;
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    btnTop.classList.add('show');
+                } else {
+                    btnTop.classList.remove('show');
+                }
+            });
+
+            btnTop.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
     <script src="../js/gnb.js"></script>
