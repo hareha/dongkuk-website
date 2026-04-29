@@ -23,6 +23,7 @@
         html {
             font-size: clamp(12px, 0.833vw, 16px);
             /* 16px @ 1920px */
+            overflow-x: hidden;
         }
 
         body {
@@ -1057,6 +1058,7 @@
             /* 💡 8 * 100vh 제거 */
             background: #FFFFFF;
             padding: 0 0;
+            overflow-x: hidden;
             /* 상하 여백 추가 */
         }
 
@@ -1082,8 +1084,9 @@
             position: relative;
             flex-shrink: 0;
             font-family: 'Pretendard', sans-serif;
-            /* 💡 툴팁이 카드 밖으로 나갈 수 있으므로 visible */
-            overflow: visible;
+            /* 💡 화면 밖으로 뚫고 나가는 것을 방지하고 내부에서만 가로 스크롤 허용 */
+            overflow-x: auto;
+            overflow-y: hidden;
         }
 
         /* ── Header ── */
@@ -1156,7 +1159,7 @@
         /* ── Diagram area: 1860×486, top:240 ── */
         .ps-diagram-area {
             position: absolute;
-            width: 100%;
+            width: 1860px; /* 원래 데스크탑 원본 크기로 복구 (오버레이 좌표 일치) */
             height: 486px;
             left: 0;
             top: 240px;
@@ -1334,141 +1337,9 @@
 
 
 
-        /* ===== BTN TOP ===== */
-        .btn-top {
-            position: fixed;
-            right: 80px;
-            bottom: 80px;
-            width: 60px;
-            height: 60px;
-            z-index: 999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease;
-        }
 
-        .btn-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
 
-        .btn-top img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
 
-        /* ===== Footer (1920 기준 반응형 소프트 코딩) ===== */
-        .footer {
-            width: 100%;
-            height: clamp(300px, 25.52vw, 490px);
-            padding: clamp(40px, 4.16vw, 80px) clamp(20px, 4.16vw, 80px) clamp(30px, 2.6vw, 50px);
-            box-sizing: border-box;
-            background: url('../assets/common/footer-bg.svg') no-repeat center/cover;
-            background-color: #111;
-            color: #FFFFFF;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .footer-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            width: 100%;
-            max-width: 1760px;
-            margin: 0 auto;
-        }
-
-        .footer-logo {
-            width: clamp(150px, 11.97vw, 230px);
-            height: clamp(30px, 2.39vw, 46px);
-        }
-
-        .footer-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .footer-btn-group {
-            display: flex;
-            gap: clamp(6px, 0.625vw, 12px);
-            width: clamp(300px, 27.18vw, 522px);
-            height: clamp(40px, 3.125vw, 60px);
-        }
-
-        .footer-btn {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 6px;
-            background: #7A7A7A;
-            border-radius: clamp(8px, 0.72vw, 14px);
-            color: #FFFFFF;
-            font-size: clamp(12px, 0.93vw, 18px);
-            font-weight: 700;
-            text-decoration: none;
-            transition: background 0.3s;
-            box-sizing: border-box;
-        }
-
-        .footer-btn:hover {
-            background: #555;
-        }
-
-        .footer-bottom {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            max-width: 1760px;
-            margin: 0 auto;
-            gap: clamp(12px, 1.25vw, 24px);
-        }
-
-        .footer-divider {
-            width: 100%;
-            height: 1px;
-            background: rgba(225, 225, 225, 0.5);
-        }
-
-        .footer-bottom-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            height: clamp(20px, 1.56vw, 30px);
-        }
-
-        .footer-links {
-            display: flex;
-            align-items: center;
-            gap: clamp(4px, 0.41vw, 8px);
-        }
-
-        .footer-links a {
-            color: #FFFFFF;
-            font-size: clamp(11px, 0.83vw, 16px);
-            text-decoration: none;
-        }
-
-        .footer-links .bar {
-            width: 1px;
-            height: clamp(8px, 0.62vw, 12px);
-            background: #D3D3D3;
-        }
-
-        .footer-copy {
-            color: #FFFFFF;
-            font-size: clamp(11px, 0.83vw, 16px);
-            text-align: right;
-        }
 
         /* ===== Responsive: 1280–1760 ===== */
         @media (max-width: 1760px) {
@@ -1559,6 +1430,9 @@
 
             .product-intro {
                 padding: 40px 0;
+                background: #fff;
+                position: relative;
+                z-index: 10;
             }
 
             .product-intro .inner {
@@ -1587,6 +1461,7 @@
             }
 
             .pi-title {
+                width: 100% !important;
                 font-size: clamp(24px, 6vw, 32px);
                 height: auto;
                 white-space: normal;
@@ -1727,6 +1602,15 @@
                 border-radius: 16px;
             }
 
+            .process-card {
+                width: 100% !important;
+                max-width: 100vw !important;
+                height: auto !important;
+                padding: 20px 16px !important;
+                border-radius: 16px !important;
+                overflow: hidden !important;
+            }
+
             .ps-header {
                 position: relative;
                 padding: 0 0 20px;
@@ -1850,12 +1734,7 @@
                 min-width: 300px;
             }
 
-            .btn-top {
-                right: 16px;
-                bottom: 16px;
-                width: 48px;
-                height: 48px;
-            }
+
         }
 
         /* ===== TAB PANELS ===== */
@@ -2962,143 +2841,7 @@
             height: 29px;
         }
 
-        /* ===== BTN TOP ===== */
-        .btn-top {
-            position: fixed;
-            right: 80px;
-            bottom: 80px;
-            width: 60px;
-            height: 60px;
-            z-index: 999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease;
-        }
 
-        .btn-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .btn-top img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-
-
-        /* ===== Footer ===== */
-        .footer {
-            width: 100%;
-            height: clamp(300px, 25.52vw, 490px);
-            padding: clamp(40px, 4.16vw, 80px) clamp(20px, 4.16vw, 80px) clamp(30px, 2.6vw, 50px);
-            box-sizing: border-box;
-            background: url('../assets/common/footer-bg.svg') no-repeat center/cover;
-            background-color: #111;
-            color: #FFFFFF;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .footer-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            width: 100%;
-            max-width: 1760px;
-            margin: 0 auto;
-        }
-
-        .footer-logo {
-            width: clamp(150px, 11.97vw, 230px);
-            height: clamp(30px, 2.39vw, 46px);
-        }
-
-        .footer-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .footer-btn-group {
-            display: flex;
-            gap: clamp(6px, 0.625vw, 12px);
-            width: clamp(300px, 27.18vw, 522px);
-            height: clamp(40px, 3.125vw, 60px);
-        }
-
-        .footer-btn {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 6px;
-            background: #7A7A7A;
-            border-radius: clamp(8px, 0.72vw, 14px);
-            color: #FFFFFF;
-            font-size: clamp(12px, 0.93vw, 18px);
-            font-weight: 700;
-            text-decoration: none;
-            transition: background 0.3s;
-            box-sizing: border-box;
-        }
-
-        .footer-btn:hover {
-            background: #555;
-        }
-
-        .footer-bottom {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            max-width: 1760px;
-            margin: 0 auto;
-            gap: clamp(12px, 1.25vw, 24px);
-        }
-
-        .footer-divider {
-            width: 100%;
-            height: 1px;
-            background: rgba(225, 225, 225, 0.5);
-        }
-
-        .footer-bottom-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            height: clamp(20px, 1.56vw, 30px);
-        }
-
-        .footer-links {
-            display: flex;
-            align-items: center;
-            gap: clamp(4px, 0.41vw, 8px);
-        }
-
-        .footer-links a {
-            color: #FFFFFF;
-            font-size: clamp(11px, 0.83vw, 16px);
-            text-decoration: none;
-        }
-
-        .footer-links .bar {
-            width: 1px;
-            height: clamp(8px, 0.62vw, 12px);
-            background: #D3D3D3;
-        }
-
-        .footer-copy {
-            color: #FFFFFF;
-            font-size: clamp(11px, 0.83vw, 16px);
-            text-align: right;
-        }
 
         @media (max-width: 1760px) {
             .inner {
@@ -4261,113 +4004,7 @@
 
 
 
-        /* ===== Footer (1920 기준 반응형 소프트 코딩) ===== */
-        .footer {
-            width: 100%;
-            height: clamp(300px, 25.52vw, 490px);
-            padding: clamp(40px, 4.16vw, 80px) clamp(20px, 4.16vw, 80px) clamp(30px, 2.6vw, 50px);
-            box-sizing: border-box;
-            background: url('../assets/common/footer-bg.svg') no-repeat center/cover;
-            background-color: #111;
-            color: #FFFFFF;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
 
-        .footer-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            width: 100%;
-            max-width: 1760px;
-            margin: 0 auto;
-        }
-
-        .footer-logo {
-            width: clamp(150px, 11.97vw, 230px);
-            height: clamp(30px, 2.39vw, 46px);
-        }
-
-        .footer-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .footer-btn-group {
-            display: flex;
-            gap: clamp(6px, 0.625vw, 12px);
-            width: clamp(300px, 27.18vw, 522px);
-            height: clamp(40px, 3.125vw, 60px);
-        }
-
-        .footer-btn {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 6px;
-            background: #7A7A7A;
-            border-radius: clamp(8px, 0.72vw, 14px);
-            color: #FFFFFF;
-            font-size: clamp(12px, 0.93vw, 18px);
-            font-weight: 700;
-            text-decoration: none;
-            transition: background 0.3s;
-            box-sizing: border-box;
-        }
-
-        .footer-btn:hover {
-            background: #555;
-        }
-
-        .footer-bottom {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            max-width: 1760px;
-            margin: 0 auto;
-            gap: clamp(12px, 1.25vw, 24px);
-        }
-
-        .footer-divider {
-            width: 100%;
-            height: 1px;
-            background: rgba(225, 225, 225, 0.5);
-        }
-
-        .footer-bottom-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            height: clamp(20px, 1.56vw, 30px);
-        }
-
-        .footer-links {
-            display: flex;
-            align-items: center;
-            gap: clamp(4px, 0.41vw, 8px);
-        }
-
-        .footer-links a {
-            color: #FFFFFF;
-            font-size: clamp(11px, 0.83vw, 16px);
-            text-decoration: none;
-        }
-
-        .footer-links .bar {
-            width: 1px;
-            height: clamp(8px, 0.62vw, 12px);
-            background: #D3D3D3;
-        }
-
-        .footer-copy {
-            color: #FFFFFF;
-            font-size: clamp(11px, 0.83vw, 16px);
-            text-align: right;
-        }
 
         /* ════════════════════════════════════
            MOBILE — 1023px 이하 (탭 패널 공통)
@@ -5225,20 +4862,13 @@
                 <div class="pi-left">
                     <div class="pi-top-content">
                         <div class="pi-main-texts">
-                            <h1 class="pi-title">니켈도금강판</h1>
+                            <h1 class="pi-title">니켈도금강판 소개</h1>
                             <div class="pi-subtitle-group">
                                 <h2 class="pi-subtitle">차세대 에너지 산업을 위한 고기능 소재</h2>
                                 <div class="pi-description-stack">
-                                    <p class="pi-desc">냉연코일에 전기도금과 확산 열처리를 적용한 디켈(DiKel)은 <br>우수한 내식성과 가공성으로 원통형 배터리 케이스
-                                        제작에
-                                        최적화되어 있습니다.</p>
-                                    <p class="pi-desc">이 케이스는 내부 재료를 견고히 보호하는 동시에 효율적인 전기적 연결을 지원하며, <br>특히 뛰어난 박리 안정성으로
-                                        2차
-                                        전지의
-                                        안전성을 보장합니다.</p>
-                                    <p class="pi-desc">대량 생산 체계를 구축한 동국산업은 이러한 기술력을 바탕으로<br> 차세대 배터리 산업의 수요에 안정적이고 능동적으로
-                                        대응하고
-                                        있습니다.</p>
+                                    <p class="pi-desc">냉연코일에 전기도금과 확산 열처리를 적용한 디켈(DiKel)은 <br>우수한 내식성과 가공성으로 원통형 배터리 케이스 제작에 최적화되어 있습니다.</p>
+                                    <p class="pi-desc">이 케이스는 내부 재료를 견고히 보호하는 동시에 효율적인 전기적 연결을 지원하며, <br>특히 뛰어난 박리 안정성으로 2차 전지의 안전성을 보장합니다.</p>
+                                    <p class="pi-desc">대량 생산 체계를 구축한 동국산업은 이러한 기술력을 바탕으로<br> 차세대 배터리 산업의 수요에 안정적이고 능동적으로 대응하고 있습니다.</p>
                                 </div>
                             </div>
                         </div>
@@ -5509,7 +5139,7 @@
                                 <span class="umi-title">모빌리티 산업</span>
                             </div>
                             <p class="umi-desc" style="height: 105px;">
-                                높은 내식성과 가공성을 갖춘 동국산업의 니켈도금강판은 전기차 및 이동장치 배터리에 적용되어 안정성을<br>확보합니다.
+                                높은 내식성과 가공성을 갖춘 동국산업의 니켈도금강판은<br>전기차 및 이동장치 배터리의 안정성과 성능 향상에 기여합니다.
                             </p>
                         </div>
 
