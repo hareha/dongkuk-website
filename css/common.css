@@ -22,7 +22,7 @@ html {
 body {
     background: #fff;
     color: #111;
-    min-width: 1280px;
+    min-width: 0;
     overflow-x: clip;
     /* hidden은 position:sticky를 무력화하므로 clip 사용 */
     padding-top: 100px;
@@ -34,7 +34,7 @@ body {
 .inner {
     max-width: 1920px;
     margin: 0 auto;
-    padding: 0 120px;
+    padding: 0 clamp(16px, 6.25vw, 120px);
 }
 
 
@@ -513,11 +513,6 @@ body {
 
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 1760px) {
-    .inner {
-        padding: 0 5vw;
-    }
-}
 
 @media (max-width: 1440px) {
     html {

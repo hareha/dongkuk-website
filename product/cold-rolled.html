@@ -4,95 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>니켈도금강판: DiKel - 동국산업</title>
+    <title>냉연강판 - 동국산업</title>
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.n../orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/gnb.css">
     <style>
-        /* ===== Reset ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Pretendard', sans-serif;
-            list-style: none;
-            text-decoration: none;
-        }
+        /* ===== 냉연강판 전용 스타일 (common.css 보완) ===== */
 
-        html {
-            font-size: clamp(12px, 0.833vw, 16px);
-            /* 16px @ 1920px */
-        }
-
-        body {
-            background: #fff;
-            color: #111;
-            min-width: 0;
-            overflow-x: hidden;
-        }
-
-        /* ===== Layout helpers ===== */
-        .inner {
-            max-width: 1920px;
-            margin: 0 auto;
-            padding: 0 clamp(16px, 6.25vw, 120px);
-        }
-
-        /* ===== GNB ===== */
-
-        .gnb-utils-links a {
-            font-family: 'Pretendard', sans-serif;
-            font-weight: 400;
-            font-size: 20px;
-            line-height: 160%;
-            color: #7A7A7A;
-            text-decoration: none;
-            padding: 4px 8px;
-            border-radius: 50px;
-        }
-
-        /* ===== Page Header ===== */
+        /* ===== Page Header (sticky hero 전용 오버라이드) ===== */
         .page-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             padding: 0;
             gap: 0;
-            width: 100%;
-            background: #FFFFFF;
         }
 
         .page-header h1 {
-            width: 100%;
-            max-width: 948px;
-            height: auto;
             margin: 70px auto 0;
-            font-family: 'Pretendard', sans-serif;
             font-size: clamp(40px, 4.16vw, 80px);
-            font-weight: 700;
-            color: #000000;
-            line-height: 140%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
         }
 
-        /* ===== 탭 내비게이션 ===== */
+        /* ===== 탭 내비게이션 (오버라이드) ===== */
         .tab-nav {
             margin-top: 100px;
-            width: 100%;
-            height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            border-bottom: 1px solid #ffffff;
+            border-bottom-color: #ffffff;
         }
 
         .tab-item {
-            width: auto;
-            min-width: 200px;
             max-width: 316px;
             height: 60px;
             padding: 0 20px 21px 20px;
@@ -965,18 +902,20 @@
         }
 
         .utc-part-box {
-            flex: 1;
+            flex: 1 1 0;
+            min-width: 0;
             height: 150px;
             background: #ECEDF0;
             border-radius: 16px;
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
         }
 
         .utc-part-box img {
-            width: 118px;
-            height: 118px;
+            width: 94px;
+            height: 94px;
             object-fit: contain;
         }
 
@@ -1290,176 +1229,8 @@
 
 
 
-        /* ===== TOP 버튼 ===== */
-        .btn-top {
-            position: fixed;
-            right: 80px;
-            bottom: 80px;
-            /* 기본적으로 화면 아래에서 80px 띄움 */
-            width: 60px;
-            /* 💡 피그마 스펙에 맞춰 버튼 크기 조절 필요 */
-            height: 60px;
-            z-index: 999;
-            /* 다른 요소들보다 항상 위에 오도록 */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
 
-            /* 처음에 숨겨두었다가 스크롤하면 나타나게 하기 위한 설정 */
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease;
-            /* 🚨 주의: bottom에는 transition을 주지 마세요! (스크롤 시 덜덜거림 방지) */
-        }
 
-        /* 스크롤 시 버튼이 나타나게 하는 클래스 */
-        .btn-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .btn-top img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        /* ===== Footer (1920 기준 반응형 소프트 코딩) ===== */
-        .footer {
-            width: 100%;
-            height: clamp(300px, 25.52vw, 490px);
-            padding: clamp(40px, 4.16vw, 80px) clamp(20px, 4.16vw, 80px) clamp(30px, 2.6vw, 50px);
-            box-sizing: border-box;
-            background: url('../assets/common/footer-bg.svg') no-repeat center/cover;
-            background-color: #111;
-            color: #FFFFFF;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .footer-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            width: 100%;
-            max-width: 1760px;
-            margin: 0 auto;
-        }
-
-        .footer-logo {
-            width: clamp(150px, 11.97vw, 230px);
-            height: clamp(30px, 2.39vw, 46px);
-        }
-
-        .footer-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .footer-btn-group {
-            display: flex;
-            gap: clamp(6px, 0.625vw, 12px);
-            width: clamp(300px, 27.18vw, 522px);
-            height: clamp(40px, 3.125vw, 60px);
-        }
-
-        .footer-btn {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 6px;
-            background: #7A7A7A;
-            border-radius: clamp(8px, 0.72vw, 14px);
-            color: #FFFFFF;
-            font-size: clamp(12px, 0.93vw, 18px);
-            font-weight: 700;
-            text-decoration: none;
-            transition: background 0.3s;
-            box-sizing: border-box;
-        }
-
-        .footer-btn:hover {
-            background: #555;
-        }
-
-        .footer-bottom {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            max-width: 1760px;
-            margin: 0 auto;
-            gap: clamp(12px, 1.25vw, 24px);
-        }
-
-        .footer-divider {
-            width: 100%;
-            height: 1px;
-            background: rgba(225, 225, 225, 0.5);
-        }
-
-        .footer-bottom-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            height: clamp(20px, 1.56vw, 30px);
-        }
-
-        .footer-links {
-            display: flex;
-            align-items: center;
-            gap: clamp(4px, 0.41vw, 8px);
-        }
-
-        .footer-links a {
-            color: #FFFFFF;
-            font-size: clamp(11px, 0.83vw, 16px);
-            text-decoration: none;
-        }
-
-        .footer-links .bar {
-            width: 1px;
-            height: clamp(8px, 0.62vw, 12px);
-            background: #D3D3D3;
-        }
-
-        .footer-copy {
-            color: #FFFFFF;
-            font-size: clamp(11px, 0.83vw, 16px);
-            text-align: right;
-        }
-
-        /* ===== Responsive: 1280–1760 ===== */
-        @media (max-width: 1760px) {
-            .inner {
-                padding: 0 5vw;
-            }
-
-            .feature-cards {
-                padding: 2.5rem 5vw 0;
-            }
-
-            .hero-text-section {
-                padding: 5rem 5vw 0;
-            }
-
-        }
-
-        @media (max-width: 1440px) {
-            html {
-                font-size: 14px;
-            }
-        }
-
-        @media (max-width: 1280px) {
-            html {
-                font-size: 13px;
-            }
-        }
 
         /* ════════════════════════════════════
            MOBILE — 1023px 이하
@@ -1529,9 +1300,9 @@
             .usage-right { width: 100% !important; height: auto !important; position: relative; }
             .usage-tab-content { position: relative; }
             .utc-video { height: 200px; border-radius: 16px; }
-            .utc-parts { height: auto; flex-wrap: wrap; }
-            .utc-part-box { height: 80px; min-width: 80px; }
-            .utc-part-box img { width: 60px; height: 60px; }
+            .utc-parts { height: auto; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; gap: 8px; padding-bottom: 8px; }
+            .utc-part-box { flex: 0 0 100px; height: 100px; min-width: 100px; scroll-snap-align: start; }
+            .utc-part-box img { width: 70px; height: 70px; }
 
             .process-sticky { padding: 20px 16px; }
             .process-card { width: 100% !important; height: auto !important; min-height: 400px; padding: 24px 16px !important; border-radius: 16px; }
@@ -1549,7 +1320,6 @@
             .grade-table { width: 100% !important; height: auto !important; overflow-x: auto; -webkit-overflow-scrolling: touch; }
             .grade-left, .grade-right { min-width: 300px; }
 
-            .btn-top { right: 16px; bottom: 16px; width: 48px; height: 48px; }
         }
     </style>
 </head>
