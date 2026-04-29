@@ -1277,11 +1277,10 @@
 
             .hero-text-outer {
                 min-height: 200vh;
-                padding-bottom: 60px;
             }
 
             .hero-text-inner {
-                top: 0;
+                top: 72px;
             }
 
             .hero-text-section {
@@ -1290,13 +1289,12 @@
             }
 
             .hero-text-section h2 {
-                font-size: clamp(20px, 6vw, 24px);
+                font-size: 24px;
                 line-height: 150%;
             }
 
             .feature-cards {
-                padding: 24px 16px 0;
-                box-sizing: border-box;
+                padding: 20px 16px 0;
             }
 
             .fcards-row {
@@ -1317,7 +1315,7 @@
                 flex: none;
             }
 
-            /* ── Premium 카드 모바일: 피그마 38:4423 ── */
+            /* 카드1: 피그마 디켈 기준 */
             .fcard-premium {
                 overflow: hidden !important;
             }
@@ -1332,21 +1330,19 @@
 
             .fcard-premium .bg-circle {
                 width: 170px;
+                height: 170px;
                 left: unset;
                 right: 0;
                 top: 50%;
-                /* transform: translateY(-50%) !important; */
                 border-radius: 50% !important;
-                height: 170px;
             }
-
 
             .fcard-premium .product-img {
                 width: 157px !important;
-                height: 80px;
+                height: 75px;
                 left: auto !important;
                 right: 6px !important;
-                top: 50%;
+                top: 52%;
                 background-size: contain !important;
                 background-position: center bottom !important;
                 border-radius: 0 0 2.7px 2.7px !important;
@@ -1358,17 +1354,20 @@
                 font-size: 16px !important;
                 line-height: 1.6 !important;
                 font-weight: 400 !important;
+                width: auto;
             }
 
             .fcard-premium .title-text {
                 left: 16px !important;
                 top: 98px !important;
+                bottom: auto;
                 font-size: 30px !important;
                 line-height: 1.4 !important;
             }
 
-            /* ── Stable 카드 모바일: 피그마 38:4430 ── */
-            .fcard-stable {
+            /* 카드2, 카드3: flex 전환 */
+            .fcard-stable,
+            .fcard-nextgen {
                 display: flex !important;
                 flex-direction: column !important;
                 justify-content: flex-start !important;
@@ -1377,32 +1376,7 @@
                 box-sizing: border-box !important;
             }
 
-            .fcard-stable .label-text {
-                position: relative !important;
-                left: auto !important;
-                top: auto !important;
-                font-size: 16px !important;
-                line-height: 1.6 !important;
-                font-weight: 400 !important;
-            }
-
-            .fcard-stable .title-text {
-                position: relative !important;
-                left: auto !important;
-                top: auto !important;
-                font-size: 30px !important;
-                line-height: 1.4 !important;
-            }
-
-            /* ── Next-Gen 카드 모바일: 피그마 38:4434 ── */
-            .fcard-nextgen {
-                display: flex !important;
-                flex-direction: column !important;
-                justify-content: space-between !important;
-                padding: 16px !important;
-                box-sizing: border-box !important;
-            }
-
+            .fcard-stable .label-text,
             .fcard-nextgen .label-text {
                 position: relative !important;
                 left: auto !important;
@@ -1410,16 +1384,24 @@
                 font-size: 16px !important;
                 line-height: 1.6 !important;
                 font-weight: 400 !important;
-                color: #4E4E4E !important;
+                width: auto;
+                max-width: 100%;
+                margin: 0;
             }
 
+            .fcard-stable .title-text,
             .fcard-nextgen .title-text {
                 position: relative !important;
                 left: auto !important;
                 top: auto !important;
                 font-size: 30px !important;
                 line-height: 1.4 !important;
-                color: #000000 !important;
+                margin: 0;
+            }
+
+            .fcard-stable .title-text br,
+            .fcard-nextgen .title-text br {
+                display: none;
             }
 
             .product-tabs {
@@ -1434,11 +1416,11 @@
                 gap: 0;
                 border-radius: 0;
                 z-index: 100;
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                background: rgba(255, 255, 255, 0.3);
-                border: 1px solid rgba(255, 255, 255, 0.8);
-                box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.12);
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                background: #FFFFFF;
+                border: none;
+                box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
                 box-sizing: border-box;
             }
 
