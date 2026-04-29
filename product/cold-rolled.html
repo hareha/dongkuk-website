@@ -28,14 +28,15 @@
         body {
             background: #fff;
             color: #111;
-            min-width: 1280px;
+            min-width: 0;
+            overflow-x: hidden;
         }
 
         /* ===== Layout helpers ===== */
         .inner {
             max-width: 1920px;
             margin: 0 auto;
-            padding: 0 120px;
+            padding: 0 clamp(16px, 6.25vw, 120px);
         }
 
         /* ===== GNB ===== */
@@ -65,10 +66,10 @@
         .page-header h1 {
             width: 100%;
             max-width: 948px;
-            height: 106px;
+            height: auto;
             margin: 70px auto 0;
             font-family: 'Pretendard', sans-serif;
-            font-size: 80px;
+            font-size: clamp(40px, 4.16vw, 80px);
             font-weight: 700;
             color: #000000;
             line-height: 140%;
@@ -90,7 +91,9 @@
         }
 
         .tab-item {
-            width: 316px;
+            width: auto;
+            min-width: 200px;
+            max-width: 316px;
             height: 60px;
             padding: 0 20px 21px 20px;
             display: flex;
@@ -169,7 +172,8 @@
             align-items: center;
             padding: 0px;
             gap: 24px;
-            width: 1436px;
+            width: 100%;
+            max-width: 1436px;
             height: 540px;
         }
 
@@ -177,15 +181,16 @@
         .fcard-premium {
             position: relative;
             width: 470px;
+            max-width: 33%;
             height: 540px;
-            flex: none;
+            flex: 1 1 auto;
             overflow: hidden;
             border-radius: 15px 0px 0 0px;
         }
 
         .fcard-premium .bg-main {
             position: absolute;
-            width: 470px;
+            width: 100%;
             height: 460px;
             left: 0px;
             top: 0px;
@@ -195,7 +200,7 @@
 
         .c1-bg-orange {
             position: absolute;
-            width: 470px;
+            width: 100%;
             height: 460px;
             left: 0px;
             top: 0px;
@@ -215,9 +220,9 @@
 
         .fcard-premium .product-img {
             position: absolute;
-            width: 470px;
+            width: 100%;
             height: 228px;
-            left: calc(50% - 470px/2);
+            left: 0;
             top: 312px;
             border-radius: 0px 0px 4px 4px;
             object-fit: cover;
@@ -253,14 +258,15 @@
         .fcard-stable {
             position: relative;
             width: 460px;
+            max-width: 33%;
             height: 540px;
-            flex: none;
+            flex: 1 1 auto;
         }
 
         .fcard-stable .bg-main {
             position: absolute;
-            width: 460px;
-            height: 540px;
+            width: 100%;
+            height: 100%;
             left: 0px;
             top: 0px;
             background: #F27100;
@@ -269,7 +275,8 @@
 
         .fcard-stable .label-text {
             position: absolute;
-            width: 288px;
+            width: auto;
+            max-width: calc(100% - 80px);
             left: 40px;
             top: 50px;
             font-family: 'Pretendard';
@@ -299,14 +306,15 @@
         .fcard-nextgen {
             position: relative;
             width: 460px;
+            max-width: 33%;
             height: 540px;
-            flex: none;
+            flex: 1 1 auto;
         }
 
         .fcard-nextgen .bg-main {
             position: absolute;
-            width: 460px;
-            height: 540px;
+            width: 100%;
+            height: 100%;
             left: 0px;
             top: 0px;
             background: #F1F3F7;
@@ -315,7 +323,8 @@
 
         .fcard-nextgen .label-text {
             position: absolute;
-            width: 237px;
+            width: auto;
+            max-width: calc(100% - 80px);
             left: 40px;
             top: 50px;
             font-family: 'Pretendard';
@@ -397,18 +406,19 @@
 
         .product-intro .inner {
             display: flex;
-            gap: 6.25rem;
+            gap: clamp(40px, 5.2vw, 100px);
             align-items: flex-start;
         }
 
         .pi-left {
             width: 743px;
-            height: 656px;
+            max-width: 45%;
+            height: auto;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             gap: 12px;
-            flex-shrink: 0;
+            flex: 1 1 auto;
         }
 
         .pi-top-content {
@@ -417,11 +427,11 @@
             align-items: flex-start;
             padding: 0px 0px 60px;
             gap: 20px;
-            width: 743px;
+            width: 100%;
         }
 
         .pi-label {
-            width: 743px;
+            width: 100%;
             font-size: 24px;
             font-weight: 700;
             line-height: 150%;
@@ -434,12 +444,12 @@
             flex-direction: column;
             align-items: flex-start;
             gap: 40px;
-            width: 743px;
+            width: 100%;
         }
 
         .pi-title {
-            width: 260px;
-            height: 70px;
+            width: auto;
+            height: auto;
             font-size: 50px;
             font-weight: 700;
             line-height: 140%;
@@ -454,11 +464,11 @@
             flex-direction: column;
             align-items: flex-start;
             gap: 30px;
-            width: 743px;
+            width: 100%;
         }
 
         .pi-subtitle {
-            width: 743px;
+            width: 100%;
             font-size: 26px;
             font-weight: 700;
             line-height: 150%;
@@ -471,11 +481,11 @@
             flex-direction: column;
             align-items: flex-start;
             gap: 20px;
-            width: 743px;
+            width: 100%;
         }
 
         .pi-desc {
-            width: 743px;
+            width: 100%;
             font-size: 22px;
             font-weight: 400;
             line-height: 160%;
@@ -489,7 +499,8 @@
             flex-direction: column;
             align-items: flex-start;
             gap: 16px;
-            width: 464px;
+            width: 100%;
+            max-width: 464px;
         }
 
         .pi-brochure-label {
@@ -504,7 +515,8 @@
             flex-direction: row;
             align-items: center;
             gap: 8px;
-            width: 464px;
+            width: 100%;
+            flex-wrap: wrap;
         }
 
         .btn-round {
@@ -571,15 +583,16 @@
 
         .pi-right {
             width: 828px;
+            max-width: 50%;
             height: 720px;
-            border-radius: 1rem;
+            border-radius: 30px;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #9E9E9E;
             font-size: 1rem;
-            flex-shrink: 0;
+            flex: 1 1 auto;
         }
 
         .pi-right img {
@@ -597,13 +610,13 @@
         .accordion .inner {
             max-width: 1680px;
             margin: 0 auto;
-            padding: 0;
+            padding: 0 clamp(16px, 6.25vw, 120px);
             display: flex;
             flex-direction: column;
         }
 
         .acc-item {
-            width: 1680px;
+            width: 100%;
         }
 
         .acc-header {
@@ -670,7 +683,7 @@
 
         .acc-body {
             display: none;
-            width: 1680px;
+            width: 100%;
         }
 
         .acc-item.open .acc-body {
@@ -679,12 +692,10 @@
 
         /* 💡 아코디언 펼침 내용 박스 */
         .acc-content-box {
-            width: 1680px;
+            width: 100%;
             background: transparent;
-            /* 👈 회색(#F1F3F7)이었던 배경을 투명색으로 변경 */
             border-radius: 30px;
-            padding: 48px 44px;
-            /* 👈 피그마 스펙의 패딩 값 적용 */
+            padding: 48px 0;
             display: flex;
             flex-direction: column;
             gap: 60px;
@@ -695,7 +706,7 @@
             display: flex;
             flex-direction: column;
             gap: 24px;
-            width: 1584px;
+            width: 100%;
         }
 
         .spec-grid-label {
@@ -706,7 +717,7 @@
 
         .spec-grid-row {
             display: flex;
-            width: 1584px;
+            width: 100%;
         }
 
         .spec-grid-col {
@@ -805,11 +816,10 @@
         .usage-section .inner {
             max-width: 1920px;
             margin: 0 auto;
-            padding: 0 120px;
+            padding: 0 clamp(16px, 6.25vw, 120px);
             display: flex;
             flex-direction: column;
             gap: 72px;
-            /* 타이틀과 컨텐츠 사이의 간격 */
         }
 
         .usage-title {
@@ -834,6 +844,8 @@
             display: flex;
             flex-direction: column;
             width: 572px;
+            max-width: 35%;
+            flex-shrink: 0;
             gap: 20px;
         }
 
@@ -888,7 +900,8 @@
 
         /* 텍스트 박스 공통 설정 (항상 노출, 색상만 변경) */
         .umi-desc {
-            width: 492px;
+            width: auto;
+            max-width: 492px;
             margin: 0 0 0 40px;
             /* 왼쪽 아이콘 너비만큼 여백 40px */
             font-size: 22px;
@@ -912,8 +925,9 @@
         /* ── 오른쪽 컨텐츠 영역 ── */
         .usage-right {
             width: 1004px;
+            max-width: 60%;
+            flex: 1 1 auto;
             position: relative;
-            /* 탭 전환을 위해 부모 높이를 고정(비디오494 + 갭30 + 부품150 + 갭30 + 푸터35) */
             height: 739px;
         }
 
@@ -1015,19 +1029,22 @@
 
         /* 3. 카드의 크기는 유지하되 화면 중앙에 오도록 함 */
         .process-card {
-            width: 1860px;
+            width: calc(100% - 60px);
+            max-width: 1860px;
             height: 1080px;
             background: #F1EDEA;
             border-radius: 30px;
             position: relative;
             flex-shrink: 0;
-            overflow: visible;
+            overflow: hidden;
+            margin: 0 auto;
         }
 
         /* ── Header ── */
         .ps-header {
             position: absolute;
-            width: 1620px;
+            width: calc(100% - 240px);
+            max-width: 1620px;
             height: 126px;
             left: 120px;
             top: 100px;
@@ -1094,11 +1111,11 @@
         /* ── Diagram area: 1860×486, top:240 ── */
         .ps-diagram-area {
             position: absolute;
-            width: 1860px;
+            width: 100%;
             height: 486px;
             left: 0;
             top: 240px;
-            overflow: visible;
+            overflow: hidden;
         }
 
         /* Default background SVG */
@@ -1194,7 +1211,8 @@
         /* ── Progress bar: absolute within card ── */
         .ps-progress {
             position: absolute;
-            width: 1680px;
+            width: calc(100% - 180px);
+            max-width: 1680px;
             height: 182px;
             left: 90px;
             top: 808px;
@@ -1209,7 +1227,7 @@
             flex-direction: row;
             align-items: center;
             gap: 16px;
-            width: 1600px;
+            width: 100%;
             height: 102px;
         }
 
