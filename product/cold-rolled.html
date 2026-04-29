@@ -1284,17 +1284,25 @@
                 max-width: 100% !important;
                 height: 156px;
                 border-radius: 16px;
-                overflow: hidden;
+                flex: none;
             }
 
-            .fcard-premium .bg-main,
+            /* 카드1: 피그마 디켈 기준 */
+            .fcard-premium {
+                overflow: hidden !important;
+            }
+
+            .fcard-premium .bg-main {
+                width: 100% !important;
+                height: 100% !important;
+                left: 0 !important;
+                top: 0 !important;
+                border-radius: 16px !important;
+            }
+
             .fcard-stable .bg-main,
             .fcard-nextgen .bg-main {
                 display: none;
-            }
-
-            .fcard-premium {
-                background: #003592;
             }
 
             .fcard-stable {
@@ -1306,63 +1314,75 @@
             }
 
             .fcard-premium .bg-circle {
-                width: 171px;
-                height: 166px;
-                left: auto;
+                width: 170px;
+                height: 170px;
+                left: unset;
                 right: 0;
-                top: 50px;
+                top: 50%;
+                border-radius: 50% !important;
             }
 
             .fcard-premium .product-img {
-                width: 161px;
-                height: 78px;
-                left: auto;
-                right: 10px;
-                top: 78px;
+                width: 157px !important;
+                height: 80px;
+                left: auto !important;
+                right: 6px !important;
+                top: 50%;
+                background-size: contain !important;
+                background-position: center bottom !important;
+                border-radius: 0 0 2.7px 2.7px !important;
             }
 
-            /* 카드1: 절대 위치 유지 (이미지 겹침 필요) */
+            /* 카드1 텍스트 */
             .fcard-premium .label-text {
-                left: 16px;
-                top: 16px;
-                font-size: 16px;
+                left: 16px !important;
+                top: 16px !important;
+                font-size: 16px !important;
+                line-height: 1.6 !important;
+                font-weight: 400 !important;
                 width: auto;
             }
 
             .fcard-premium .title-text {
-                left: 16px;
-                top: 98px;
+                left: 16px !important;
+                top: 98px !important;
                 bottom: auto;
-                font-size: 30px;
-                line-height: 1.4;
+                font-size: 30px !important;
+                line-height: 1.4 !important;
             }
 
-            /* 카드2, 카드3: flex로 전환하여 겹침 방지 */
+            /* 카드2, 카드3: 디켈 기준 flex 전환 */
             .fcard-stable,
             .fcard-nextgen {
-                display: flex;
-                flex-direction: column;
-                padding: 16px;
-                box-sizing: border-box;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: flex-start !important;
+                padding: 16px !important;
+                gap: 30px !important;
+                box-sizing: border-box !important;
             }
 
             .fcard-stable .label-text,
             .fcard-nextgen .label-text {
-                position: static;
-                font-size: 16px;
+                position: relative !important;
+                left: auto !important;
+                top: auto !important;
+                font-size: 16px !important;
+                line-height: 1.6 !important;
+                font-weight: 400 !important;
                 width: auto;
                 max-width: 100%;
-                line-height: 1.6;
                 margin: 0;
             }
 
             .fcard-stable .title-text,
             .fcard-nextgen .title-text {
-                position: static;
-                font-size: 30px;
-                line-height: 1.4;
+                position: relative !important;
+                left: auto !important;
+                top: auto !important;
+                font-size: 30px !important;
+                line-height: 1.4 !important;
                 margin: 0;
-                margin-top: auto;
             }
 
             .product-tabs {
