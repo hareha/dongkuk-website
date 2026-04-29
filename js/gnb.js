@@ -261,3 +261,41 @@ document.addEventListener('DOMContentLoaded', () => {
         updateGnb(); // 초기 실행
     }
 });
+
+/* ── BTN TOP 공통 로직 (Responsive) ── */
+document.addEventListener('DOMContentLoaded', function () {
+    const btnTop = document.getElementById('btn-top');
+    const footer = document.querySelector('.footer');
+
+    if (!btnTop) return;
+
+    btnTop.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    window.addEventListener('scroll', function () {
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const scrollBottom = scrollY + windowHeight;
+
+        if (scrollY > 300) {
+            btnTop.classList.add('show');
+        } else {
+            btnTop.classList.remove('show');
+        }
+
+        if (footer) {
+            const footerTop = footer.offsetTop;
+            const overlap = scrollBottom - footerTop;
+            const isMobile = window.innerWidth <= 1023;
+            const baseBottom = isMobile ? 16 : 80;
+
+            if (overlap > 0) {
+                btnTop.style.bottom = `${baseBottom + overlap}px`;
+            } else {
+                btnTop.style.bottom = `${baseBottom}px`;
+            }
+        }
+    });
+});

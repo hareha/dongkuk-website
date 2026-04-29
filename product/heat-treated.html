@@ -2572,49 +2572,6 @@
         activateStep(0);
         startAutoPlay();
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const btnTop = document.getElementById('btn-top');
-
-            // 💡 HTML에 있는 푸터의 클래스 이름과 똑같이 맞춰주세요! (현재 .footer로 가정)
-            const footer = document.querySelector('.footer');
-
-            if (!btnTop) return;
-
-            // 1. 버튼 클릭 시 맨 위로 부드럽게 스크롤
-            btnTop.addEventListener('click', function (e) {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            // 2. 스크롤할 때 버튼 위치 계산
-            window.addEventListener('scroll', function () {
-                const scrollY = window.scrollY; // 현재 스크롤한 위치
-                const windowHeight = window.innerHeight; // 현재 화면 높이
-                const scrollBottom = scrollY + windowHeight; // 현재 화면 맨 아랫부분의 절대 위치
-
-                // 스크롤을 300px 이상 내리면 버튼 나타나게 하기
-                if (scrollY > 300) {
-                    btnTop.classList.add('show');
-                } else {
-                    btnTop.classList.remove('show');
-                }
-
-                // 푸터와 부딪히는지 계산하기
-                if (footer) {
-                    const footerTop = footer.offsetTop; // 문서 전체에서 푸터가 시작되는 높이 위치
-                    const overlap = scrollBottom - footerTop; // 화면 밑바닥이 푸터를 얼마나 침범했는지 계산
-
-                    if (overlap > 0) {
-                        // 푸터가 화면에 보이기 시작하면: 기본 80px + 화면에 보이는 푸터 높이만큼 더 위로 올림!
-                        btnTop.style.bottom = `${80 + overlap}px`;
-                    } else {
-                        // 푸터가 화면에 없으면: 기본 80px 유지
-                        btnTop.style.bottom = '80px';
-                    }
-                }
-            });
-        });
-
         /* ── Hero Text 스크롤 애니메이션 ── */
         document.addEventListener('DOMContentLoaded', () => {
             const h2 = document.querySelector('.hero-text-section h2');

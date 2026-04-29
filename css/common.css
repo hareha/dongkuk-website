@@ -247,9 +247,11 @@ body {
     z-index: 80;
 }
 
-.btn-top svg {
-    width: 36px;
-    height: 36px;
+.btn-top svg,
+.btn-top img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .btn-top:hover {
@@ -643,10 +645,10 @@ body {
 
     /* ── BTN TOP ── */
     .btn-top {
-        width: 48px;
-        height: 48px;
-        right: 24px;
-        bottom: 24px;
+        width: 52px;
+        height: 52px;
+        right: 16px;
+        bottom: 16px;
     }
 
     /* ── Footer ── */

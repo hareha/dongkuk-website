@@ -759,41 +759,6 @@
             updateNav();
         })();
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const btnTop = document.getElementById('btn-top');
-            const footer = document.querySelector('.footer');
-
-            if (!btnTop) return;
-
-            btnTop.addEventListener('click', function (e) {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            window.addEventListener('scroll', function () {
-                const scrollY = window.scrollY;
-                const windowHeight = window.innerHeight;
-                const scrollBottom = scrollY + windowHeight;
-
-                if (scrollY > 300) {
-                    btnTop.classList.add('show');
-                } else {
-                    btnTop.classList.remove('show');
-                }
-
-                if (footer) {
-                    const footerTop = footer.offsetTop;
-                    const overlap = scrollBottom - footerTop;
-
-                    if (overlap > 0) {
-                        btnTop.style.bottom = `${80 + overlap}px`;
-                    } else {
-                        btnTop.style.bottom = '80px';
-                    }
-                }
-            });
-        });
-
         // 💡 Subtitle Scroll Highlight
         document.addEventListener('DOMContentLoaded', () => {
             const p = document.querySelector('.subtitle-section p');
