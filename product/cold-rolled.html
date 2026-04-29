@@ -1324,10 +1324,10 @@
 
             .fcard-premium .product-img {
                 width: 157px !important;
-                height: 80px;
+                height: 75px;
                 left: auto !important;
                 right: 6px !important;
-                top: 50%;
+                top: 52%;
                 background-size: contain !important;
                 background-position: center bottom !important;
                 border-radius: 0 0 2.7px 2.7px !important;
@@ -1385,6 +1385,11 @@
                 margin: 0;
             }
 
+            .fcard-stable .title-text br,
+            .fcard-nextgen .title-text br {
+                display: none;
+            }
+
             .product-tabs {
                 position: fixed;
                 bottom: 0;
@@ -1398,9 +1403,9 @@
                 z-index: 100;
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
-                background: rgba(255,255,255,0.3);
-                border: 1px solid rgba(255,255,255,0.8);
-                box-shadow: 0 -2px 8px rgba(0,0,0,0.12);
+                background: rgba(255, 255, 255, 0.3);
+                border: 1px solid rgba(255, 255, 255, 0.8);
+                box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.12);
                 box-sizing: border-box;
             }
 
@@ -1653,16 +1658,26 @@
                 padding: 0 !important;
             }
 
-            .ps-label { display: none; }
+            .ps-label {
+                display: none;
+            }
 
             .ps-title {
                 font-size: 30px !important;
                 line-height: 1.5 !important;
             }
 
-            .ps-diagram-area { display: none !important; }
-            .ps-bubble { display: none !important; }
-            .ps-progress { display: none !important; }
+            .ps-diagram-area {
+                display: none !important;
+            }
+
+            .ps-bubble {
+                display: none !important;
+            }
+
+            .ps-progress {
+                display: none !important;
+            }
 
             /* ── 모바일 전용 4+3 다이어그램 ── */
             .ps-mobile-diagram {
