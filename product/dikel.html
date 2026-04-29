@@ -965,36 +965,30 @@
 
         .process-sticky {
             position: relative;
-            /* 💡 sticky 제거 */
             top: 0;
-            height: auto;
-            /* 100vh 제거 */
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: visible;
-            /* 툴팁이 잘리지 않도록 */
         }
 
         .process-card {
-            width: 1860px;
-            height: 1080px;
+            width: 100%;
+            aspect-ratio: 1860 / 1080;
             background: #F1EDEA;
             border-radius: 30px;
             position: relative;
             flex-shrink: 0;
             font-family: 'Pretendard', sans-serif;
             overflow: visible;
-            transform-origin: top center;
         }
 
         /* ── Header ── */
         .ps-header {
             position: absolute;
-            width: 1620px;
-            height: 126px;
-            left: 120px;
-            top: 100px;
+            width: 87.1%;
+            left: 6.45%;
+            top: 9.26%;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
@@ -1058,10 +1052,10 @@
         /* ── Diagram area: 1860×486, top:240 ── */
         .ps-diagram-area {
             position: absolute;
-            width: 1860px;
-            height: 486px;
+            width: 100%;
+            height: 45%;
             left: 0;
-            top: 240px;
+            top: 22.22%;
             overflow: visible;
         }
 
@@ -1158,10 +1152,9 @@
         /* ── Progress bar: absolute within card ── */
         .ps-progress {
             position: absolute;
-            width: calc(100% - 180px);
-            height: 182px;
-            left: 90px;
-            top: 808px;
+            width: calc(100% - 9.68%);
+            left: 4.84%;
+            top: 74.81%;
             background: #FFFFFF;
             border-radius: 30px;
             padding: 40px;
@@ -6958,10 +6951,7 @@
                     var rect = pageHeader.getBoundingClientRect();
                     window.scrollTo({ top: window.scrollY + rect.top - 100, behavior: 'smooth' });
                 }
-                // 탭 전환 후 공정카드 scale 재계산
-                if (typeof scaleProcessCard === 'function') {
-                    setTimeout(scaleProcessCard, 50);
-                }
+
             });
         });
 
@@ -6974,10 +6964,7 @@
                 var target = document.querySelector('.tab-item[data-tab="' + hash + '"]');
                 if (target) target.classList.add('active');
                 document.getElementById(hash).classList.add('active');
-                // 해시 탭 활성화 후 공정카드 scale 재계산
-                if (typeof scaleProcessCard === 'function') {
-                    setTimeout(scaleProcessCard, 50);
-                }
+
             }
         })();
 
@@ -7128,35 +7115,7 @@
         });
     </script>
     <script src="../js/gnb.js"></script>
-    <script>
-        /* 공정카드 뷰포트 맞춤 scale — 데스크탑 전용 */
-        function scaleProcessCard() {
-            const card = document.getElementById('process-card');
-            const sticky = card?.parentElement;
-            if (!card || !sticky) return;
-            if (window.innerWidth <= 1023) return;
-            const availW = sticky.clientWidth;
-            const cardW = 1860;
-            const cardH = 1080;
-            if (availW <= 0) return;
-            if (availW < cardW) {
-                const s = availW / cardW;
-                card.style.transform = `scale(${s})`;
-                sticky.style.height = (cardH * s) + 'px';
-            } else {
-                card.style.transform = '';
-                sticky.style.height = '';
-            }
-        }
-        document.addEventListener('DOMContentLoaded', function () {
-            scaleProcessCard();
-            let rafId = 0;
-            window.addEventListener('resize', function () {
-                cancelAnimationFrame(rafId);
-                rafId = requestAnimationFrame(scaleProcessCard);
-            });
-        });
-    </script>
+
 </body>
 
 </html>
