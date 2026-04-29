@@ -1764,25 +1764,33 @@
 
             .ps-mobile-row {
                 display: flex;
-                gap: 12px;
+                gap: 0;
                 justify-content: center;
-                align-items: center;
+                align-items: flex-end;
             }
 
             .ps-mobile-row + .ps-mobile-row {
-                margin-top: 12px;
+                margin-top: 4px;
             }
 
-            /* 1-2번, 5-6번 연속 공정 그룹: gap 0으로 딱 붙임 */
+            /* 1-2번, 5-6번 연속 공정 그룹: 딱 붙임 */
             .ps-mob-group {
                 display: flex;
                 gap: 0;
-                align-items: center;
+                align-items: flex-end;
+            }
+
+            /* 그룹 내 두 번째 아이콘: SVG 내부 여백 보상 → 실제로 겹쳐 붙임 */
+            .ps-mob-group .ps-mob-icon:nth-child(2) {
+                margin-left: -20px;
             }
 
             .ps-mob-icon {
-                width: 100px;
-                height: 100px;
+                flex: 1;
+                width: 0;
+                min-width: 0;
+                height: auto;
+                max-height: 140px;
                 object-fit: contain;
                 cursor: pointer;
                 opacity: 0.5;
@@ -1791,7 +1799,8 @@
 
             .ps-mob-icon.active {
                 opacity: 1;
-                transform: scale(1.1);
+                transform: scale(1.08);
+                z-index: 2;
             }
 
             /* ── 모바일 인디케이터 바 ── */
