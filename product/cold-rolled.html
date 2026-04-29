@@ -3356,7 +3356,11 @@
                 }
             }
             scaleProcessCard();
-            window.addEventListener('resize', scaleProcessCard);
+            let rafId = 0;
+            window.addEventListener('resize', function () {
+                cancelAnimationFrame(rafId);
+                rafId = requestAnimationFrame(scaleProcessCard);
+            });
         });
 
         /* ── Hero Text 스크롤 애니메이션 ── */

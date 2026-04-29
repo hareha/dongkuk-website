@@ -1775,6 +1775,8 @@
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
+                transform: none !important;
+                transition: none !important;
             }
 
             /* ── Header: 타이틀 + 토글 세로 배치 ── */
@@ -7153,7 +7155,11 @@
         }
         document.addEventListener('DOMContentLoaded', function () {
             scaleProcessCard();
-            window.addEventListener('resize', scaleProcessCard);
+            let rafId = 0;
+            window.addEventListener('resize', function () {
+                cancelAnimationFrame(rafId);
+                rafId = requestAnimationFrame(scaleProcessCard);
+            });
         });
     </script>
 </body>
