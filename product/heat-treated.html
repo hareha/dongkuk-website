@@ -1566,7 +1566,7 @@
                 font-size: 16px;
             }
 
-            /* Process Section */
+            /* ── 공정: 데스크탑 요소 숨김 ── */
             .process-scroll-outer {
                 padding: 0 !important;
                 overflow: visible !important;
@@ -1582,71 +1582,158 @@
             .process-card {
                 width: 100% !important;
                 height: auto !important;
-                min-height: 400px;
-                padding: 24px 16px !important;
-                border-radius: 16px;
+                padding: 30px 16px !important;
+                border-radius: 0 !important;
+                overflow: visible !important;
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
                 transform: none !important;
             }
 
             .ps-header {
-                position: relative;
-                padding: 0 0 20px;
-                width: 100%;
-                gap: 12px;
+                position: relative !important;
+                width: 100% !important;
+                height: auto !important;
+                left: 0 !important;
+                top: 0 !important;
+                padding: 0 !important;
             }
 
             .ps-label {
-                font-size: 16px;
+                display: none;
             }
 
             .ps-title {
-                font-size: 24px;
-            }
-
-            .ps-toggle {
-                width: 100%;
-                height: auto;
-            }
-
-            .ps-toggle-btn {
-                flex: 1;
-                height: 40px;
-                font-size: 14px;
+                font-size: 30px !important;
+                line-height: 1.5 !important;
             }
 
             .ps-diagram-area {
-                position: relative !important;
-                width: 100% !important;
-                height: auto !important;
-                top: 0 !important;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            .ps-progress {
-                position: relative !important;
-                width: 100% !important;
-                height: auto !important;
-                left: 0 !important;
-                top: 0 !important;
-                padding: 16px;
-                overflow-x: auto;
-            }
-
-            .ps-steps {
-                width: max-content;
-                min-width: 100%;
+                display: none !important;
             }
 
             .ps-bubble {
-                position: relative !important;
-                width: 100% !important;
-                left: 0 !important;
-                top: 0 !important;
+                display: none !important;
             }
 
-            .ps-bubble p {
-                width: 100% !important;
+            .ps-progress {
+                display: none !important;
+            }
+
+            /* ── 모바일 전용 공정 다이어그램 ── */
+            .ps-mobile-diagram {
+                display: block !important;
+                width: 100%;
+                position: relative;
+                aspect-ratio: 328 / 160;
+            }
+
+            .ps-mobile-row {
+                display: contents;
+            }
+
+            .ps-mob-group {
+                display: contents;
+            }
+
+            .ps-mob-icon {
+                position: absolute;
+                object-fit: contain;
+                cursor: pointer;
+                opacity: 0.4;
+                transition: opacity 0.3s;
+            }
+
+            .ps-mob-icon.active {
+                opacity: 1;
+            }
+
+            /* 1행: 냉연코일세팅, 열처리, 정밀컷팅, 포장정리 */
+            .ps-mob-icon[data-step="0"] {
+                left: 0%;
+                top: 10%;
+                width: 25%;
+            }
+
+            .ps-mob-icon[data-step="1"] {
+                left: 24%;
+                top: 10%;
+                width: 30%;
+            }
+
+            .ps-mob-icon[data-step="2"] {
+                left: 53%;
+                top: 10%;
+                width: 22%;
+            }
+
+            .ps-mob-icon[data-step="3"] {
+                left: 74%;
+                top: 5%;
+                width: 26%;
+            }
+
+            /* ── 모바일 인디케이터 바 ── */
+            .ps-mobile-indicators {
+                display: flex !important;
+                justify-content: center;
+                gap: 12px;
+                padding: 10px 0;
+                width: 100%;
+            }
+
+            .ps-mobile-dot {
+                width: 28px;
+                height: 6px;
+                border-radius: 3px;
+                background: #D3D3D3;
+                transition: background 0.3s;
+                cursor: pointer;
+            }
+
+            .ps-mobile-dot.active {
+                background: #F27100;
+            }
+
+            /* ── 모바일 설명 카드 ── */
+            .ps-mobile-info-card {
+                display: flex !important;
+                flex-direction: column;
+                gap: 10px;
+                background: #FFFFFF;
+                border-radius: 16px;
+                padding: 16px 20px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .ps-mobile-info-header {
+                display: flex;
+                gap: 10px;
+                align-items: flex-start;
+            }
+
+            .ps-mobile-info-num {
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 1.6;
+                color: #F27100;
+            }
+
+            .ps-mobile-info-name {
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 1.6;
+                color: #000;
+            }
+
+            .ps-mobile-info-desc {
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 1.6;
+                color: #4E4E4E;
+                margin: 0;
             }
 
             /* Grade Table — 1584px 고정폭 → 스크롤 */
@@ -2393,6 +2480,33 @@
                 </div>
 
             </div><!-- /process-card -->
+
+                <!-- ═══ 모바일 전용: 다이어그램 + 인디케이터 + 설명카드 ═══ -->
+                <div class="ps-mobile-diagram" style="display:none;">
+                    <div class="ps-mobile-row">
+                        <img class="ps-mob-icon" data-step="0" src="assets/heat-treated/1.냉연코일 세팅.svg" alt="냉연코일 세팅">
+                        <img class="ps-mob-icon" data-step="1" src="assets/heat-treated/2.열처리.svg" alt="열처리">
+                        <img class="ps-mob-icon" data-step="2" src="assets/heat-treated/3.정밀컷팅.svg" alt="정밀컷팅">
+                        <img class="ps-mob-icon" data-step="3" src="assets/heat-treated/4.포장정리.svg" alt="포장정리">
+                    </div>
+                </div>
+
+                <div class="ps-mobile-indicators" style="display:none;">
+                    <div class="ps-mobile-dot" data-step="0"></div>
+                    <div class="ps-mobile-dot" data-step="1"></div>
+                    <div class="ps-mobile-dot" data-step="2"></div>
+                    <div class="ps-mobile-dot" data-step="3"></div>
+                </div>
+
+                <div class="ps-mobile-info-card" style="display:none;">
+                    <div class="ps-mobile-info-header">
+                        <span class="ps-mobile-info-num">01</span>
+                        <span class="ps-mobile-info-name">냉연코일 세팅</span>
+                    </div>
+                    <p class="ps-mobile-info-desc">Q/T 열처리강판 공정의 원재료를 준비합니다.</p>
+                </div>
+
+            </div><!-- /process-card -->
         </div><!-- /process-sticky -->
     </section>
 
@@ -2521,39 +2635,66 @@
         let currentStep = 0;
         let autoTimer = null;
 
+        const STEP_DATA = [
+            { num: '01', name: '냉연코일 세팅', desc: 'Q/T 열처리강판 공정의 원재료를 준비합니다.' },
+            { num: '02', name: '열처리', desc: '고온 가열과 급속 냉각, 재가열 과정을 거쳐 소재 내부 미세 조직을 정밀하게 제어합니다.' },
+            { num: '03', name: '정밀컷팅', desc: '고객이 요구한 규격에 맞게 소재를 절단합니다.' },
+            { num: '04', name: '포장정리', desc: '완성된 제품을 보호 포장합니다.' }
+        ];
+
         function activateStep(idx) {
             if (idx < 0) idx = 0;
-            if (idx >= TOTAL_STEPS) idx = 0; // 순환을 위해 마지막 단계 초과 시 0으로 세팅
+            if (idx >= TOTAL_STEPS) idx = 0;
             currentStep = idx;
 
-            /* Progress bar 업데이트 */
+            /* 1. Progress bar 업데이트 (데스크탑) */
             document.querySelectorAll('#ps-steps-bar .ps-step').forEach((el, i) => {
                 el.classList.remove('active', 'done');
                 if (i < idx) el.classList.add('done');
                 if (i === idx) el.classList.add('active');
             });
 
-            /* SVG overlay images 업데이트 */
+            /* 2. SVG overlay images 업데이트 (데스크탑) */
             document.querySelectorAll('#diagram-열처리 .ps-step-img').forEach((el, i) => {
                 el.classList.toggle('visible', i === idx);
             });
 
-            /* Tooltips 업데이트 */
+            /* 3. Tooltips 업데이트 (데스크탑) */
             document.querySelectorAll('#diagram-열처리 .ps-bubble').forEach((el, i) => {
                 el.classList.toggle('visible', i === idx);
             });
+
+            /* 4. 모바일 아이콘 활성화 */
+            document.querySelectorAll('.ps-mob-icon').forEach((el) => {
+                el.classList.toggle('active', parseInt(el.dataset.step) === idx);
+            });
+
+            /* 5. 모바일 인디케이터 */
+            document.querySelectorAll('.ps-mobile-dot').forEach((el) => {
+                el.classList.toggle('active', parseInt(el.dataset.step) === idx);
+            });
+
+            /* 6. 모바일 설명카드 */
+            const numEl = document.querySelector('.ps-mobile-info-num');
+            const nameEl = document.querySelector('.ps-mobile-info-name');
+            const descEl = document.querySelector('.ps-mobile-info-desc');
+            if (numEl && STEP_DATA[idx]) {
+                numEl.textContent = STEP_DATA[idx].num;
+                nameEl.textContent = STEP_DATA[idx].name;
+                descEl.textContent = STEP_DATA[idx].desc;
+            }
         }
 
         /* 자동 재생: 3초마다 다음 스텝으로, 마지막에서 처음으로 순환 */
         function startAutoPlay() {
-            if (autoTimer) clearInterval(autoTimer); // 중복 실행 방지
+            if (autoTimer) clearInterval(autoTimer);
             autoTimer = setInterval(() => {
                 const next = (currentStep + 1) % TOTAL_STEPS;
                 activateStep(next);
             }, 3000);
         }
 
-        /* 💡 초기 실행 및 클릭 이벤트 연결 (안전하게 DOMContentLoaded 안에 묶음) */
+        /* 초기 실행 및 클릭 이벤트 연결 */
         document.addEventListener('DOMContentLoaded', () => {
             activateStep(0);
             startAutoPlay();
@@ -2567,10 +2708,10 @@
                 });
             });
 
-            /* 💡 2. [추가된 부분] 다이어그램 이미지 클릭 시 이동 */
+            /* 2. 다이어그램 이미지 클릭 시 이동 */
             document.querySelectorAll('#diagram-열처리 .ps-step-img').forEach((el, i) => {
-                el.style.pointerEvents = 'auto'; // 숨겨져 있어도 클릭 반응하도록 활성화
-                el.style.cursor = 'pointer';     // 마우스를 올리면 손가락 커서로 변경
+                el.style.pointerEvents = 'auto';
+                el.style.cursor = 'pointer';
 
                 el.addEventListener('click', () => {
                     clearInterval(autoTimer);
@@ -2578,11 +2719,26 @@
                     startAutoPlay();
                 });
             });
-        });
 
-        /* 초기 실행 */
-        activateStep(0);
-        startAutoPlay();
+            /* 3. 모바일 아이콘 클릭 */
+            document.querySelectorAll('.ps-mob-icon').forEach((el) => {
+                el.addEventListener('click', () => {
+                    clearInterval(autoTimer);
+                    activateStep(parseInt(el.dataset.step));
+                    startAutoPlay();
+                });
+            });
+
+            /* 4. 모바일 인디케이터 클릭 */
+            document.querySelectorAll('.ps-mobile-dot').forEach((el) => {
+                el.addEventListener('click', () => {
+                    clearInterval(autoTimer);
+                    activateStep(parseInt(el.dataset.step));
+                    startAutoPlay();
+                });
+            });
+
+        });
 
         /* ── Hero Text 스크롤 애니메이션 ── */
         document.addEventListener('DOMContentLoaded', () => {
