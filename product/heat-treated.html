@@ -1188,22 +1188,36 @@
            모든 고정 너비/절대 위치를 유연한 레이아웃으로 전환
            ════════════════════════════════════ */
         @media (max-width: 1023px) {
-            body { min-width: 0; width: 100%; overflow-x: hidden; }
+            body {
+                min-width: 0;
+                width: 100%;
+                overflow-x: hidden;
+            }
 
             /* Hero Text */
-            .hero-text-outer { min-height: 200vh; }
-            .hero-text-inner { top: 72px; }
+            .hero-text-outer {
+                min-height: 200vh;
+            }
+
+            .hero-text-inner {
+                top: 72px;
+            }
+
             .hero-text-section {
                 padding: 40px 16px 0;
                 text-align: center;
             }
+
             .hero-text-section h2 {
                 font-size: clamp(20px, 5vw, 28px);
                 line-height: 150%;
             }
 
             /* Feature Cards */
-            .feature-cards { padding: 20px 16px 0; }
+            .feature-cards {
+                padding: 20px 16px 0;
+            }
+
             .fcards-row {
                 flex-direction: column;
                 width: 100%;
@@ -1211,6 +1225,7 @@
                 gap: 12px;
                 padding: 0;
             }
+
             .fcard,
             .fcard-premium,
             .fcard-stable,
@@ -1220,30 +1235,50 @@
                 border-radius: 16px;
                 flex-shrink: 0;
             }
-            .fcard-premium .bg-main { display: none; }
+
+            .fcard-premium .bg-main {
+                display: none;
+            }
+
             .fcard-premium .bg-circle {
-                width: 171px; height: 166px;
-                left: auto; right: 0; top: 50px;
+                width: 171px;
+                height: 166px;
+                left: auto;
+                right: 0;
+                top: 50px;
             }
+
             .fcard-premium .product-img {
-                width: 161px; height: 78px;
-                left: auto; right: 10px; top: 78px;
+                width: 161px;
+                height: 78px;
+                left: auto;
+                right: 10px;
+                top: 78px;
             }
+
             .fcard .label-text,
             .fcard-premium .label-text,
             .fcard-stable .label-text,
             .fcard-nextgen .label-text {
-                left: 16px; top: 16px;
+                left: 16px;
+                top: 16px;
                 font-size: 16px;
             }
+
             .fcard .title-text,
             .fcard-premium .title-text,
             .fcard-stable .title-text,
             .fcard-nextgen .title-text {
-                left: 16px; top: auto; bottom: 16px;
+                left: 16px;
+                top: auto;
+                bottom: 16px;
                 font-size: 24px;
             }
-            .fcard-premium .title-text { top: 80px; bottom: auto; }
+
+            .fcard-premium .title-text {
+                top: 80px;
+                bottom: auto;
+            }
 
             /* Product Tabs */
             .product-tabs {
@@ -1259,11 +1294,12 @@
                 z-index: 100;
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
-                background: rgba(255,255,255,0.3);
-                border: 1px solid rgba(255,255,255,0.8);
-                box-shadow: 0 -2px 8px rgba(0,0,0,0.12);
+                background: rgba(255, 255, 255, 0.3);
+                border: 1px solid rgba(255, 255, 255, 0.8);
+                box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.12);
                 box-sizing: border-box;
             }
+
             .ptab {
                 flex: 1;
                 padding: 10px 12px;
@@ -1276,17 +1312,22 @@
             }
 
             /* Product Intro — 모든 743px/828px/464px 고정폭 해제 */
-            .product-intro { padding: 40px 0; }
+            .product-intro {
+                padding: 40px 0;
+            }
+
             .product-intro .inner {
                 flex-direction: column;
                 gap: 30px;
                 padding: 0 16px;
             }
+
             .pi-left {
                 width: 100% !important;
                 height: auto !important;
                 flex-shrink: 1;
             }
+
             .pi-top-content,
             .pi-main-texts,
             .pi-subtitle-group,
@@ -1295,23 +1336,38 @@
             .pi-desc {
                 width: 100% !important;
             }
+
             .pi-title {
                 font-size: clamp(24px, 6vw, 32px);
                 height: auto;
                 white-space: normal;
             }
-            .pi-subtitle { font-size: 20px; width: 100%; }
-            .pi-desc { font-size: 16px; width: 100%; }
+
+            .pi-subtitle {
+                font-size: 20px;
+                width: 100%;
+            }
+
+            .pi-desc {
+                font-size: 16px;
+                width: 100%;
+            }
+
             .pi-right {
                 width: 100% !important;
                 height: 250px;
                 flex-shrink: 1;
             }
-            .pi-brochure-section { width: 100% !important; }
+
+            .pi-brochure-section {
+                width: 100% !important;
+            }
+
             .pi-brochure-btns {
                 width: 100% !important;
                 flex-wrap: wrap;
             }
+
             .btn-round {
                 padding: 8px 16px;
                 font-size: 14px;
@@ -1319,19 +1375,37 @@
             }
 
             /* Accordion — 1680px 고정폭 해제 */
-            .accordion { padding: 20px 0 40px; }
+            .accordion {
+                padding: 20px 0 40px;
+            }
+
             .accordion .inner {
                 max-width: 100%;
                 padding: 0 16px;
             }
-            .acc-item { width: 100% !important; }
+
+            .acc-item {
+                width: 100% !important;
+            }
+
             .acc-header {
                 height: 70px;
                 padding-right: 8px;
             }
-            .acc-title { font-size: 18px; }
-            .acc-dropdown-icon { width: 36px; height: 36px; }
-            .acc-body { width: 100% !important; }
+
+            .acc-title {
+                font-size: 18px;
+            }
+
+            .acc-dropdown-icon {
+                width: 36px;
+                height: 36px;
+            }
+
+            .acc-body {
+                width: 100% !important;
+            }
+
             .acc-content-box {
                 width: 100% !important;
                 padding: 16px 0;
@@ -1345,32 +1419,43 @@
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
             }
+
             .spec-grid-row {
                 min-width: 500px;
                 width: max-content;
             }
 
             /* Usage Section — 572px + 1004px 고정폭 해제 */
-            .usage-section { padding: 40px 0; }
+            .usage-section {
+                padding: 40px 0;
+            }
+
             .usage-section .inner {
                 padding: 0 16px;
                 gap: 30px;
             }
+
             .usage-title {
                 font-size: 18px;
                 font-weight: 700;
                 color: #7A7A7A;
             }
+
             .usage-content {
                 flex-direction: column;
                 gap: 24px;
             }
+
             .usage-left {
                 width: 100% !important;
                 max-width: 100% !important;
                 flex-shrink: 1;
             }
-            .umi-title { font-size: 30px; }
+
+            .umi-title {
+                font-size: 30px;
+            }
+
             .umi-desc {
                 width: 100% !important;
                 max-width: 100% !important;
@@ -1378,33 +1463,50 @@
                 font-size: 16px;
                 height: auto !important;
             }
+
             .usage-right {
                 width: 100% !important;
                 max-width: 100% !important;
                 height: auto !important;
             }
+
             .usage-tab-content {
                 position: relative;
             }
+
             .utc-video {
                 height: 200px;
                 border-radius: 16px;
             }
-            .utc-parts { height: auto; flex-wrap: wrap; }
-            .utc-part-box { height: 80px; min-width: 80px; }
-            .utc-part-box img { width: 60px; height: 60px; }
+
+            .utc-parts {
+                height: auto;
+                flex-wrap: wrap;
+            }
+
+            .utc-part-box {
+                height: 80px;
+                min-width: 80px;
+            }
+
+            .utc-part-box img {
+                width: 60px;
+                height: 60px;
+            }
 
             /* Process Section */
             .process-scroll-outer {
                 padding: 0 !important;
                 overflow: visible !important;
             }
+
             .process-sticky {
                 display: block !important;
                 height: auto !important;
                 position: relative !important;
                 padding: 0 !important;
             }
+
             .process-card {
                 width: 100% !important;
                 height: auto !important;
@@ -1413,23 +1515,33 @@
                 border-radius: 16px;
                 transform: none !important;
             }
+
             .ps-header {
                 position: relative;
                 padding: 0 0 20px;
                 width: 100%;
                 gap: 12px;
             }
-            .ps-label { font-size: 16px; }
-            .ps-title { font-size: 24px; }
+
+            .ps-label {
+                font-size: 16px;
+            }
+
+            .ps-title {
+                font-size: 24px;
+            }
+
             .ps-toggle {
                 width: 100%;
                 height: auto;
             }
+
             .ps-toggle-btn {
                 flex: 1;
                 height: 40px;
                 font-size: 14px;
             }
+
             .ps-diagram-area {
                 position: relative !important;
                 width: 100% !important;
@@ -1438,6 +1550,7 @@
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
             }
+
             .ps-progress {
                 position: relative !important;
                 width: 100% !important;
@@ -1447,17 +1560,22 @@
                 padding: 16px;
                 overflow-x: auto;
             }
+
             .ps-steps {
                 width: max-content;
                 min-width: 100%;
             }
+
             .ps-bubble {
                 position: relative !important;
                 width: 100% !important;
                 left: 0 !important;
                 top: 0 !important;
             }
-            .ps-bubble p { width: 100% !important; }
+
+            .ps-bubble p {
+                width: 100% !important;
+            }
 
             /* Grade Table — 1584px 고정폭 → 스크롤 */
             .grade-table {
@@ -1466,6 +1584,7 @@
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
             }
+
             .grade-left,
             .grade-right {
                 min-width: 300px;
@@ -1780,40 +1899,40 @@
 
     <!-- Hero Text + Feature Cards -->
     <div class="hero-text-outer">
-      <div class="hero-text-inner">
-        <!-- Page Header -->
-        <section class="page-header">
-            <h1>Q/T 열처리강판</h1>
-        </section>
-        <section class="hero-text-section">
-            <h2>빈틈없는 내구성으로,<br>시장과 품질의 기준을 만듭니다.</h2>
-        </section>
+        <div class="hero-text-inner">
+            <!-- Page Header -->
+            <section class="page-header">
+                <h1>Q/T 열처리강판</h1>
+            </section>
+            <section class="hero-text-section">
+                <h2>빈틈없는 내구성으로,<br>시장과 품질의 기준을 만듭니다.</h2>
+            </section>
 
-        <section class="feature-cards">
-            <div class="fcards-row">
-                <!-- Premium -->
-                <div class="fcard fcard-premium">
-                    <div class="label-text">국내 3사 중<br>압도적인 생산 규모</div>
-                    <div class="title-text">No.1</div>
-                    <div class="bg-main"></div>
-                    <div class="bg-circle"></div>
-                    <div class="product-img"></div>
-                </div>
+            <section class="feature-cards">
+                <div class="fcards-row">
+                    <!-- Premium -->
+                    <div class="fcard fcard-premium">
+                        <div class="label-text">국내 3사 중<br>압도적인 생산 규모</div>
+                        <div class="title-text">No.1</div>
+                        <div class="bg-main"></div>
+                        <div class="bg-circle"></div>
+                        <div class="product-img"></div>
+                    </div>
 
-                <!-- Stable -->
-                <div class="fcard fcard-stable">
-                    <div class="label-text">탄소감축 및 환경을 고려한<br>친환경 생산 설비</div>
-                    <div class="title-text">ECO</div>
-                </div>
+                    <!-- Stable -->
+                    <div class="fcard fcard-stable">
+                        <div class="label-text">탄소감축 및 환경을 고려한<br>친환경 생산 설비</div>
+                        <div class="title-text">ECO</div>
+                    </div>
 
-                <!-- Next-Gen -->
-                <div class="fcard fcard-nextgen">
-                    <div class="label-text">미세 조직 제어 기술로<br>최상위 품질 완성</div>
-                    <div class="title-text">Quality</div>
+                    <!-- Next-Gen -->
+                    <div class="fcard fcard-nextgen">
+                        <div class="label-text">미세 조직 제어 기술로<br>최상위 품질 완성</div>
+                        <div class="title-text">Quality</div>
+                    </div>
                 </div>
-            </div>
-        </section>
-      </div>
+            </section>
+        </div>
     </div>
 
     <!-- Product Tabs -->
@@ -2028,10 +2147,8 @@
                             <div class="umi-icon"></div>
                             <span class="umi-title">모빌리티 산업</span>
                         </div>
-                        <p class="umi-desc" style="height: 105px;">
-                            충격과 하중을 견디는 동국산업의 고강도 Q/T 열처리강판<br>
-                            은 자동차의 핵심 부품에 적용되어 탑승자의 안전을 책임<br>
-                            집니다.
+                        <p class="umi-desc">
+                            충격과 하중을 견디는 동국산업의 고강도 Q/T 열처리강판은 자동차의 핵심 부품에 적용되어 탑승자의 안전을 책임집니다.
                         </p>
                     </div>
 
@@ -2040,10 +2157,8 @@
                             <div class="umi-icon"></div>
                             <span class="umi-title">산업용 부품</span>
                         </div>
-                        <p class="umi-desc" style="height: 70px;">
-                            산업 전반의 수명을 늘리는 동국산업의 Q/T 열처리강판은<br>
-                            우수한 표면 품질로 시공 및 절삭용 공구의 정밀도를 극대<br>
-                            화합니다. </p>
+                        <p class="umi-desc">
+                            산업 전반의 수명을 늘리는 동국산업의 Q/T 열처리강판은 우수한 표면 품질로 시공 및 절삭용 공구의 정밀도를 극대화합니다. </p>
                     </div>
                 </div>
 

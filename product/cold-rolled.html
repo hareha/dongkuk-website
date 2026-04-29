@@ -121,6 +121,34 @@
             height: 540px;
         }
 
+        .fcard {
+            position: relative;
+            overflow: hidden;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .fcard .label-text {
+            position: absolute;
+            left: 40px;
+            top: 50px;
+            font-size: clamp(16px, 1.35vw, 26px);
+            font-weight: 700;
+            line-height: 150%;
+            z-index: 10;
+        }
+
+        .fcard .title-text {
+            position: absolute;
+            left: 40px;
+            font-size: clamp(30px, 3.125vw, 60px);
+            font-weight: 700;
+            line-height: 140%;
+            display: flex;
+            align-items: center;
+            z-index: 10;
+        }
+
         /* Card 1 */
         .fcard-premium {
             max-width: 470px;
