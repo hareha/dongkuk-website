@@ -6845,6 +6845,31 @@
                 activateStep(0);
                 startAutoPlay();
             });
+
+            /* 공정카드 뷰포트 맞춤 scale */
+            function scaleProcessCard() {
+                const card = document.getElementById('process-card');
+                const sticky = card?.parentElement;
+                if (!card || !sticky) return;
+                if (window.innerWidth <= 1023) {
+                    card.style.transform = '';
+                    sticky.style.height = '';
+                    return;
+                }
+                const availW = sticky.clientWidth;
+                const cardW = 1860;
+                const cardH = 1080;
+                if (availW < cardW) {
+                    const s = availW / cardW;
+                    card.style.transform = `scale(${s})`;
+                    sticky.style.height = (cardH * s) + 'px';
+                } else {
+                    card.style.transform = '';
+                    sticky.style.height = '';
+                }
+            }
+            scaleProcessCard();
+            window.addEventListener('resize', scaleProcessCard);
         });
 
         document.addEventListener('DOMContentLoaded', function () {
