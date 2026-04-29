@@ -1425,15 +1425,71 @@
             }
 
             .product-intro .inner {
+                display: flex;
                 flex-direction: column;
-                gap: 30px;
+                gap: 20px;
                 padding: 0 16px;
+                padding-bottom: 20px;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+                overflow: hidden;
             }
 
             .pi-left {
+                display: contents;
+            }
+
+            .pi-top-content {
+                display: contents;
+            }
+
+            /* 피그마: 타이틀 → 이미지 → 서브타이틀+본문 → 브로슈어 순서 */
+            .pi-title {
+                order: 1;
                 width: 100% !important;
-                height: auto !important;
-                flex-shrink: 1;
+                font-size: 30px !important;
+                line-height: 1.4 !important;
+                height: auto;
+                white-space: normal;
+            }
+
+            .pi-right {
+                order: 2;
+                width: 100% !important;
+                height: 232px !important;
+                aspect-ratio: unset !important;
+                border-radius: 16px !important;
+                flex-shrink: 0;
+                overflow: hidden;
+            }
+
+            .pi-main-texts {
+                display: contents;
+            }
+
+            .pi-subtitle-group {
+                order: 3;
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                box-sizing: border-box !important;
+                overflow-wrap: break-word;
+                word-break: keep-all;
+                gap: 20px !important;
+            }
+
+            .pi-description-stack {
+                max-width: 100% !important;
+                min-width: 0 !important;
+                box-sizing: border-box !important;
+                overflow-wrap: break-word;
+                gap: 8px !important;
+            }
+
+            .pi-brochure-section {
+                order: 4;
+                width: 100% !important;
+                gap: 16px !important;
             }
 
             .pi-top-content,
@@ -1445,43 +1501,54 @@
                 width: 100% !important;
             }
 
-            .pi-title {
-                font-size: 30px;
-                height: auto;
-                white-space: normal;
-            }
-
             .pi-subtitle {
-                font-size: 24px;
+                font-size: 24px !important;
+                line-height: 1.5 !important;
                 width: 100%;
             }
 
             .pi-desc {
-                font-size: 16px;
+                font-size: 16px !important;
+                line-height: 1.6 !important;
                 width: 100%;
             }
 
-            .pi-right {
-                width: 100% !important;
-                height: 232px;
-                flex-shrink: 1;
-                border-radius: 16px;
-                overflow: hidden;
+            .pi-desc br {
+                display: none;
             }
 
-            .pi-brochure-section {
-                width: 100% !important;
+            .pi-brochure-label {
+                font-size: 18px !important;
+                line-height: 1.6 !important;
             }
 
             .pi-brochure-btns {
                 width: 100% !important;
-                flex-wrap: wrap;
+                display: flex;
+                flex-wrap: nowrap !important;
+                gap: 4px;
+                justify-content: flex-start;
             }
 
             .btn-round {
-                padding: 8px 16px;
-                font-size: 14px;
+                flex: 0 0 auto;
+                min-width: 0;
+                width: auto !important;
+                flex-shrink: 0 !important;
+                padding: 10px 12px 10px 18px !important;
                 height: auto;
+                font-size: 16px;
+                gap: 8px;
+            }
+
+            .btn-round .ic-download {
+                width: 20px;
+                height: 20px;
+            }
+
+            .btn-round .ic-download svg {
+                width: 20px;
+                height: 20px;
             }
 
             .accordion {
