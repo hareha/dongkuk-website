@@ -1447,16 +1447,32 @@
 
             /* Product Tabs */
             .product-tabs {
-                margin: 30px auto;
-                width: calc(100% - 32px);
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                margin: 0;
+                width: 100%;
                 height: auto;
                 padding: 6px;
-                gap: 2px;
+                gap: 0;
+                border-radius: 0;
+                z-index: 100;
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                background: rgba(255,255,255,0.3);
+                border: 1px solid rgba(255,255,255,0.8);
+                box-shadow: 0 -2px 8px rgba(0,0,0,0.12);
+                box-sizing: border-box;
             }
             .ptab {
-                padding: 0 12px;
-                height: 44px;
+                flex: 1;
+                padding: 10px 12px;
+                height: 41px;
                 font-size: 14px;
+                font-weight: 400;
+                border-radius: 10px;
+                white-space: nowrap;
+                box-sizing: border-box;
             }
 
             /* Product Intro — 모든 743px/828px/464px 고정폭 해제 */
