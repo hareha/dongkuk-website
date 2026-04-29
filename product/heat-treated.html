@@ -1408,8 +1408,17 @@
             .utc-part-box { height: 80px; min-width: 80px; }
             .utc-part-box img { width: 60px; height: 60px; }
 
-            /* Process Section — 1860px 고정폭 해제 */
-            .process-sticky { padding: 20px 16px; }
+            /* Process Section */
+            .process-scroll-outer {
+                padding: 0 !important;
+                overflow: visible !important;
+            }
+            .process-sticky {
+                display: block !important;
+                height: auto !important;
+                position: relative !important;
+                padding: 0 !important;
+            }
             .process-card {
                 width: 100% !important;
                 height: auto !important;
@@ -1417,7 +1426,6 @@
                 padding: 24px 16px !important;
                 border-radius: 16px;
                 transform: none !important;
-                transition: none !important;
             }
             .ps-header {
                 position: relative;
@@ -2454,20 +2462,17 @@
     </script>
     <script src="../js/gnb.js"></script>
     <script>
-        /* 공정카드 뷰포트 맞춤 scale */
+        /* 공정카드 뷰포트 맞춤 scale — 데스크탑 전용 */
         document.addEventListener('DOMContentLoaded', function () {
             function scaleProcessCard() {
                 const card = document.getElementById('process-card');
                 const sticky = card?.parentElement;
                 if (!card || !sticky) return;
-                if (window.innerWidth <= 1023) {
-                    card.style.transform = '';
-                    sticky.style.height = '';
-                    return;
-                }
+                if (window.innerWidth <= 1023) return;
                 const availW = sticky.clientWidth;
                 const cardW = 1860;
                 const cardH = 1080;
+                if (availW <= 0) return;
                 if (availW < cardW) {
                     const s = availW / cardW;
                     card.style.transform = `scale(${s})`;

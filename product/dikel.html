@@ -1776,7 +1776,6 @@
                 flex-direction: column;
                 gap: 20px;
                 transform: none !important;
-                transition: none !important;
             }
 
             /* ── Header: 타이틀 + 토글 세로 배치 ── */
@@ -7130,16 +7129,12 @@
     </script>
     <script src="../js/gnb.js"></script>
     <script>
-        /* 공정카드 뷰포트 맞춤 scale — 전역 노출 (탭 전환 시 호출) */
+        /* 공정카드 뷰포트 맞춤 scale — 데스크탑 전용 */
         function scaleProcessCard() {
             const card = document.getElementById('process-card');
             const sticky = card?.parentElement;
             if (!card || !sticky) return;
-            if (window.innerWidth <= 1023) {
-                card.style.transform = '';
-                sticky.style.height = '';
-                return;
-            }
+            if (window.innerWidth <= 1023) return;
             const availW = sticky.clientWidth;
             const cardW = 1860;
             const cardH = 1080;
