@@ -284,25 +284,26 @@
         }
 
         /* ===== Product Tabs 최적화 ===== */
+        /* ===== 하단 플로팅 제품 네비게이션 ===== */
         .product-tabs {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             align-items: center;
-            /* 👈 세로 중앙 정렬 완벽 보장 */
             justify-content: center;
             padding: 10px;
             gap: 4px;
-            margin: 110px auto 130px;
             width: fit-content;
-            /* 👈 고정 픽셀(413px) 대신, 내부 탭들 크기에 맞춰 겉옷이 자연스럽게 늘어나도록 설정 */
             height: 78px;
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.85);
             border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.16);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.12);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-radius: 16px;
-            /* 👈 바깥 박스는 16px, 안쪽 탭은 12px로 주어야 곡률이 예쁘게 맞아떨어집니다 */
-            z-index: 50;
+            z-index: 999;
             box-sizing: border-box;
         }
 
@@ -544,13 +545,13 @@
         .accordion .inner {
             max-width: 1680px;
             margin: 0 auto;
-            padding: 0;
+            padding: 0 clamp(16px, 6.25vw, 120px);
             display: flex;
             flex-direction: column;
         }
 
         .acc-item {
-            width: 1680px;
+            width: 100%;
         }
 
         .acc-header {
@@ -617,7 +618,7 @@
 
         .acc-body {
             display: none;
-            width: 1680px;
+            width: 100%;
         }
 
         .acc-item.open .acc-body {
@@ -626,12 +627,10 @@
 
         /* 💡 아코디언 펼침 내용 박스 */
         .acc-content-box {
-            width: 1680px;
+            width: 100%;
             background: transparent;
-            /* 👈 회색(#F1F3F7)이었던 배경을 투명색으로 변경 */
             border-radius: 30px;
             padding: 48px 44px;
-            /* 👈 피그마 스펙의 패딩 값 적용 */
             display: flex;
             flex-direction: column;
             gap: 60px;
@@ -642,7 +641,7 @@
             display: flex;
             flex-direction: column;
             gap: 24px;
-            width: 1584px;
+            width: 100%;
         }
 
         .spec-grid-label {
@@ -653,7 +652,7 @@
 
         .spec-grid-row {
             display: flex;
-            width: 1584px;
+            width: 100%;
         }
 
         .spec-grid-col {
@@ -750,11 +749,10 @@
         .usage-section .inner {
             max-width: 1920px;
             margin: 0 auto;
-            padding: 0 120px;
+            padding: 0 clamp(16px, 6.25vw, 120px);
             display: flex;
             flex-direction: column;
             gap: 72px;
-            /* 타이틀과 컨텐츠 사이의 간격 */
         }
 
         .usage-title {
@@ -779,6 +777,8 @@
             display: flex;
             flex-direction: column;
             width: 572px;
+            max-width: 35%;
+            flex-shrink: 0;
             gap: 20px;
         }
 
@@ -833,19 +833,16 @@
 
         /* 텍스트 박스 공통 설정 (항상 노출, 색상만 변경) */
         .umi-desc {
-            width: 492px;
+            width: auto;
+            max-width: 492px;
             margin: 0 0 0 40px;
-            /* 왼쪽 아이콘 너비만큼 여백 40px */
             font-size: 22px;
             font-weight: 400;
             line-height: 160%;
             color: #A7A7A7;
-            /* 비활성 상태 색상 (연한 회색) */
             display: block;
-            /* 💡 아코디언 숨김 해제! 항상 노출 */
             word-break: keep-all;
             transition: color 0.3s;
-            /* 부드러운 색상 전환 */
         }
 
         /* 활성 상태 텍스트 색상 */
@@ -857,8 +854,9 @@
         /* ── 오른쪽 컨텐츠 영역 ── */
         .usage-right {
             width: 1004px;
+            max-width: 60%;
+            flex: 1 1 auto;
             position: relative;
-            /* 탭 전환을 위해 부모 높이를 고정(비디오494 + 갭30 + 부품150 + 갭30 + 푸터35) */
             height: 739px;
         }
 
@@ -937,19 +935,21 @@
         /* Auto-play: 스크롤 고정 없이 자연스럽게 흐름 */
         .process-scroll-outer {
             position: relative;
-            background: #FFFFFF;
-        }
-
-        .process-sticky {
             height: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 60px 0;
+            background: #FFFFFF;
+            padding: 100px 30px;
             overflow: hidden;
         }
 
-        /* The big 1860×1080 card */
+        .process-sticky {
+            position: relative;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: visible;
+        }
+
         .process-card {
             width: 1860px;
             height: 1080px;
@@ -959,6 +959,7 @@
             flex-shrink: 0;
             font-family: 'Pretendard', sans-serif;
             overflow: visible;
+            transform-origin: top center;
         }
 
         /* ── Header ── */
@@ -1556,24 +1557,32 @@
                 padding: 0 16px;
                 gap: 30px;
             }
-            .usage-title { font-size: clamp(24px, 6vw, 28px); }
+            .usage-title {
+                font-size: 18px;
+                font-weight: 700;
+                color: #7A7A7A;
+            }
             .usage-content {
                 flex-direction: column;
                 gap: 24px;
             }
             .usage-left {
                 width: 100% !important;
+                max-width: 100% !important;
+                flex-shrink: 1;
             }
-            .umi-title { font-size: 24px; }
+            .umi-title { font-size: 30px; }
             .umi-desc {
                 width: 100% !important;
+                max-width: 100% !important;
                 margin-left: 0;
                 font-size: 16px;
+                height: auto !important;
             }
             .usage-right {
                 width: 100% !important;
+                max-width: 100% !important;
                 height: auto !important;
-                position: relative;
             }
             .usage-tab-content {
                 position: relative;
@@ -2636,6 +2645,34 @@
         });
     </script>
     <script src="../js/gnb.js"></script>
+    <script>
+        /* 공정카드 뷰포트 맞춤 scale */
+        document.addEventListener('DOMContentLoaded', function () {
+            function scaleProcessCard() {
+                const card = document.getElementById('process-card');
+                const sticky = card?.parentElement;
+                if (!card || !sticky) return;
+                if (window.innerWidth <= 1023) {
+                    card.style.transform = '';
+                    sticky.style.height = '';
+                    return;
+                }
+                const availW = sticky.clientWidth;
+                const cardW = 1860;
+                const cardH = 1080;
+                if (availW < cardW) {
+                    const s = availW / cardW;
+                    card.style.transform = `scale(${s})`;
+                    sticky.style.height = (cardH * s) + 'px';
+                } else {
+                    card.style.transform = '';
+                    sticky.style.height = '';
+                }
+            }
+            scaleProcessCard();
+            window.addEventListener('resize', scaleProcessCard);
+        });
+    </script>
 </body>
 
 </html>
