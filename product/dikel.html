@@ -776,9 +776,9 @@
         .usage-left {
             display: flex;
             flex-direction: column;
-            flex: 0 0 auto;
-            width: 33%;
-            max-width: 572px;
+            width: 572px;
+            max-width: 35%;
+            flex-shrink: 0;
             gap: 20px;
         }
 
@@ -857,9 +857,9 @@
 
         /* ── 오른쪽 컨텐츠 영역 ── */
         .usage-right {
-            flex: 1;
-            max-width: 1004px;
-            min-width: 0;
+            width: 1004px;
+            max-width: 60%;
+            flex: 1 1 auto;
             position: relative;
             height: 739px;
         }
