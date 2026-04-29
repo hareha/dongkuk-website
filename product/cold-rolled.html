@@ -956,8 +956,9 @@
             height: auto;
             /* 고정 높이 제거 */
             background: #FFFFFF;
-            padding: 100px 0;
-            /* 상하 여백 부여 */
+            padding: 100px 30px;
+            /* 상하 여백 부여, 좌우 30px */
+            overflow: hidden;
         }
 
         /* 2. 화면에 고정(sticky)되던 설비를 일반 레이아웃으로 변경합니다 */
@@ -965,7 +966,6 @@
             position: relative;
             /* sticky 제거 */
             top: 0;
-            height: auto;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -981,6 +981,7 @@
             position: relative;
             flex-shrink: 0;
             overflow: visible;
+            transform-origin: top center;
         }
 
         /* ── Header ── */
@@ -2672,6 +2673,31 @@
                     startAutoPlay();
                 });
             });
+
+            /* 3. 공정카드 뷰포트 맞춤 scale */
+            function scaleProcessCard() {
+                const card = document.getElementById('process-card');
+                const sticky = card?.parentElement;
+                if (!card || !sticky) return;
+                if (window.innerWidth <= 1023) {
+                    card.style.transform = '';
+                    sticky.style.height = '';
+                    return;
+                }
+                const availW = sticky.clientWidth;
+                const cardW = 1860;
+                const cardH = 1080;
+                if (availW < cardW) {
+                    const s = availW / cardW;
+                    card.style.transform = `scale(${s})`;
+                    sticky.style.height = (cardH * s) + 'px';
+                } else {
+                    card.style.transform = '';
+                    sticky.style.height = '';
+                }
+            }
+            scaleProcessCard();
+            window.addEventListener('resize', scaleProcessCard);
         });
 
         /* ── Hero Text 스크롤 애니메이션 ── */
