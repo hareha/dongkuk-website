@@ -1456,6 +1456,7 @@
             .pi-right {
                 order: 2;
                 width: 100% !important;
+                max-width: 100% !important;
                 height: 232px !important;
                 aspect-ratio: unset !important;
                 border-radius: 16px !important;
@@ -1622,6 +1623,8 @@
 
             .usage-left {
                 width: 100% !important;
+                max-width: 100% !important;
+                flex-shrink: 1;
             }
 
             .umi-title {
@@ -1645,6 +1648,7 @@
 
             .usage-right {
                 width: 100% !important;
+                max-width: 100% !important;
                 height: auto !important;
             }
 
@@ -1758,11 +1762,28 @@
                 width: 100%;
             }
 
+            .ps-mobile-row {
+                display: flex;
+                gap: 12px;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .ps-mobile-row + .ps-mobile-row {
+                margin-top: 12px;
+            }
+
+            /* 1-2번, 5-6번 연속 공정 그룹: gap 0으로 딱 붙임 */
+            .ps-mob-group {
+                display: flex;
+                gap: 0;
+                align-items: center;
+            }
+
             .ps-mob-icon {
-                width: 70px;
-                height: 70px;
+                width: 100px;
+                height: 100px;
                 object-fit: contain;
-                border-radius: 8px;
                 cursor: pointer;
                 opacity: 0.5;
                 transition: opacity 0.3s, transform 0.3s;
@@ -3011,15 +3032,19 @@
 
                 <!-- ═══ 모바일 전용: 다이어그램 + 인디케이터 + 설명카드 ═══ -->
                 <div class="ps-mobile-diagram" style="display:none;">
-                    <div class="ps-mobile-row" style="display:flex;gap:8px;justify-content:center;">
-                        <img class="ps-mob-icon" data-step="0" src="assets/cold-rolled/1.열연 코일 세팅.svg" alt="열연 코일 세팅">
-                        <img class="ps-mob-icon" data-step="1" src="assets/cold-rolled/2.산세라인.png" alt="산세라인">
+                    <div class="ps-mobile-row">
+                        <div class="ps-mob-group">
+                            <img class="ps-mob-icon" data-step="0" src="assets/cold-rolled/1.열연 코일 세팅.svg" alt="열연 코일 세팅">
+                            <img class="ps-mob-icon" data-step="1" src="assets/cold-rolled/2.산세라인.png" alt="산세라인">
+                        </div>
                         <img class="ps-mob-icon" data-step="2" src="assets/cold-rolled/3.정밀컷팅.svg" alt="정밀컷팅">
                         <img class="ps-mob-icon" data-step="3" src="assets/cold-rolled/4.냉간압연.svg" alt="냉간압연">
                     </div>
-                    <div class="ps-mobile-row" style="display:flex;gap:8px;justify-content:center;margin-top:8px;">
-                        <img class="ps-mob-icon" data-step="4" src="assets/cold-rolled/5.소둔라인.svg" alt="소둔라인">
-                        <img class="ps-mob-icon" data-step="5" src="assets/cold-rolled/6.표면마감.svg" alt="표면마감">
+                    <div class="ps-mobile-row">
+                        <div class="ps-mob-group">
+                            <img class="ps-mob-icon" data-step="4" src="assets/cold-rolled/5.소둔라인.svg" alt="소둔라인">
+                            <img class="ps-mob-icon" data-step="5" src="assets/cold-rolled/6.표면마감.svg" alt="표면마감">
+                        </div>
                         <img class="ps-mob-icon" data-step="6" src="assets/cold-rolled/7.포장정리.svg" alt="포장정리">
                     </div>
                 </div>
