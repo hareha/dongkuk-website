@@ -981,7 +981,8 @@
         }
 
         .process-card {
-            width: 1860px;
+            max-width: 1860px;
+            width: calc(100% - 60px);
             height: 1080px;
             background: #F1EDEA;
             border-radius: 30px;
@@ -995,7 +996,7 @@
         /* ── Header ── */
         .ps-header {
             position: absolute;
-            width: 1620px;
+            width: calc(100% - 240px);
             height: 126px;
             left: 120px;
             top: 100px;
@@ -3418,8 +3419,6 @@
         }
 
         .hero-sub {
-            width: 100%;
-            max-width: 580px;
             height: auto;
             font-family: 'Pretendard';
             font-style: normal;
@@ -5944,7 +5943,8 @@
                     <div class="story-desc-group">
                         <p class="story-desc">DiKel은 <b>Dongkuk과 Nickel의 결합</b>에서 탄생한 동국산업의 니켈도금강판 브랜드입니다.</p>
                         <p class="story-desc"><b>D</b>는 탈탄소화(<b>Decarbonize</b>)를 향한 방향성을, <b>The</b> Nickel의
-                            <b>디</b>(The)는 동국산업이 완성한 <b>단 하나의 니켈</b>이라는 기술적 차별성과 브랜드 자신감을 담고 있습니다.</p>
+                            <b>디</b>(The)는 동국산업이 완성한 <b>단 하나의 니켈</b>이라는 기술적 차별성과 브랜드 자신감을 담고 있습니다.
+                        </p>
                     </div>
                 </div>
                 <div class="story-cards">
@@ -6845,31 +6845,6 @@
                 activateStep(0);
                 startAutoPlay();
             });
-
-            /* 공정카드 뷰포트 맞춤 scale */
-            function scaleProcessCard() {
-                const card = document.getElementById('process-card');
-                const sticky = card?.parentElement;
-                if (!card || !sticky) return;
-                if (window.innerWidth <= 1023) {
-                    card.style.transform = '';
-                    sticky.style.height = '';
-                    return;
-                }
-                const availW = sticky.clientWidth;
-                const cardW = 1860;
-                const cardH = 1080;
-                if (availW < cardW) {
-                    const s = availW / cardW;
-                    card.style.transform = `scale(${s})`;
-                    sticky.style.height = (cardH * s) + 'px';
-                } else {
-                    card.style.transform = '';
-                    sticky.style.height = '';
-                }
-            }
-            scaleProcessCard();
-            window.addEventListener('resize', scaleProcessCard);
         });
 
         document.addEventListener('DOMContentLoaded', function () {
