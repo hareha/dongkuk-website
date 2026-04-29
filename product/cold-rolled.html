@@ -1756,50 +1756,73 @@
                 display: none !important;
             }
 
-            /* ── 모바일 전용 4+3 다이어그램 ── */
+            /* ── 모바일 전용 공정 다이어그램 (피그마 38:3921 좌표 기반) ── */
             .ps-mobile-diagram {
                 display: block !important;
                 width: 100%;
+                position: relative;
+                aspect-ratio: 328 / 240;
             }
 
             .ps-mobile-row {
-                display: flex;
-                gap: 0;
-                justify-content: center;
-                align-items: flex-end;
+                display: contents;
             }
 
-            .ps-mobile-row + .ps-mobile-row {
-                margin-top: 4px;
-            }
-
-            /* 1-2번, 5-6번 연속 공정 그룹: 딱 붙임 */
             .ps-mob-group {
-                display: flex;
-                flex: none;
-                gap: 0;
-                align-items: flex-end;
-            }
-
-            /* 그룹 내 두 번째 아이콘: SVG 내부 여백 보상 → 오버랩 */
-            .ps-mob-group .ps-mob-icon:nth-child(2) {
-                margin-left: -15px;
+                display: contents;
             }
 
             .ps-mob-icon {
-                width: 22vw;
-                height: auto;
+                position: absolute;
                 object-fit: contain;
                 cursor: pointer;
-                opacity: 0.5;
+                opacity: 0.4;
                 transition: opacity 0.3s, transform 0.3s;
             }
 
             .ps-mob-icon.active {
                 opacity: 1;
-                transform: scale(1.08);
+                transform: scale(1.05);
                 z-index: 2;
-                position: relative;
+            }
+
+            /* 1행: 1-열연코일세팅, 2-산세라인, 3-정밀컷팅, 4-냉간압연 */
+            .ps-mob-icon[data-step="0"] {
+                left: 0%;
+                top: 12%;
+                width: 32%;
+            }
+            .ps-mob-icon[data-step="1"] {
+                left: 23%;
+                top: 12%;
+                width: 22%;
+            }
+            .ps-mob-icon[data-step="2"] {
+                left: 46%;
+                top: 8%;
+                width: 28%;
+            }
+            .ps-mob-icon[data-step="3"] {
+                left: 74%;
+                top: 8%;
+                width: 26%;
+            }
+
+            /* 2행: 5-소둔라인, 6-표면마감, 7-포장정리 */
+            .ps-mob-icon[data-step="4"] {
+                left: 5%;
+                top: 48%;
+                width: 28%;
+            }
+            .ps-mob-icon[data-step="5"] {
+                left: 26%;
+                top: 48%;
+                width: 24%;
+            }
+            .ps-mob-icon[data-step="6"] {
+                left: 52%;
+                top: 46%;
+                width: 38%;
             }
 
             /* ── 모바일 인디케이터 바 ── */
