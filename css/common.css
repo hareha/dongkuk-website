@@ -23,7 +23,7 @@ body {
     background: #fff;
     color: #111;
     min-width: 1280px;
-    overflow-x: hidden;
+    overflow-x: clip; /* hidden은 position:sticky를 무력화하므로 clip 사용 */
     padding-top: 100px; /* GNB fixed 높이 보정 */
 }
 
@@ -515,7 +515,7 @@ body {
     body {
         min-width: 0 !important;
         width: 100% !important;
-        overflow-x: hidden;
+        overflow-x: clip;
         padding-top: 72px; /* 모바일 GNB 높이 보정 */
     }
 

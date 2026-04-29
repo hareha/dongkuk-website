@@ -10,126 +10,23 @@
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/gnb.css">
     <style>
-        /* ===== Reset ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Pretendard', sans-serif;
-            list-style: none;
-            text-decoration: none;
-        }
-
-        html {
-            font-size: clamp(12px, 0.833vw, 16px);
-            /* 16px @ 1920px */
-            overflow-x: hidden;
-        }
-
-        body {
-            background: #fff;
-            color: #111;
-            overflow-x: hidden;
-        }
-
         /* ===== Layout helpers ===== */
         .mo-br {
             display: none;
         }
 
-        .inner {
-            max-width: 1920px;
-            margin: 0 auto;
-            padding: 0 clamp(16px, 6.25vw, 120px);
-        }
-
-        /* ===== GNB ===== */
-
-        .gnb-utils-links a {
-            font-family: 'Pretendard', sans-serif;
-            font-weight: 400;
-            font-size: 20px;
-            line-height: 160%;
-            color: #7A7A7A;
-            text-decoration: none;
-            padding: 4px 8px;
-            border-radius: 50px;
-        }
-
-        /* ===== Page Header ===== */
-        .page-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 0;
-            gap: 0;
-            width: 100%;
-            background: #FFFFFF;
-        }
-
-        .page-header h1 {
-            width: 100%;
-            max-width: 948px;
-            height: auto;
-            margin: 70px auto 0;
-            padding: 0 16px;
-            font-family: 'Pretendard', sans-serif;
-            font-size: clamp(30px, 4.16vw, 80px);
-            font-weight: 700;
-            color: #000000;
-            line-height: 140%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        /* ===== 탭 내비게이션 ===== */
-        .tab-nav {
-            margin-top: clamp(30px, 5.2vw, 100px);
-            width: 100%;
-            height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            border-bottom: 1px solid #E9E9E9;
-        }
-
-        .tab-item {
-            width: auto;
-            min-width: 120px;
-            height: 60px;
-            padding: 0 20px 21px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            font-family: 'Pretendard', sans-serif;
-            font-weight: 700;
-            font-size: clamp(16px, 1.35vw, 26px);
-            line-height: 150%;
-            letter-spacing: 0%;
-            color: #A7A7A7;
-            cursor: pointer;
-            box-sizing: border-box;
-            border-bottom: 2px solid #E9E9E9;
-            margin-bottom: -1px;
-            transition: color 0.2s, border-color 0.2s;
-        }
-
-        .tab-item.active {
-            color: #1B1B1B;
-            border-bottom: 2px solid #A7A7A7;
-        }
-
-        /* ===== Hero Text (sticky wrapper) ===== */
+        /* ===== Hero Text (sticky scroll-to-color) ===== */
         .hero-text-outer {
             position: relative;
-            min-height: 300vh;
+            min-height: 250vh;
+            /* CSS fallback, JS가 정확한 값으로 덮어씀 */
+            padding-bottom: 100px;
         }
 
         .hero-text-inner {
             position: sticky;
-            top: 100px;
+            top: 50px;
+            background: #fff;
         }
 
         .hero-text-section {
@@ -139,9 +36,7 @@
 
         .hero-text-section h2 {
             font-size: clamp(30px, 3.125vw, 60px);
-            /* 60px */
             font-weight: 700;
-            /* 💡 Default Text 컬러: 전체를 옅은 회색으로 시작 */
             color: #E9E9E9;
             line-height: 1.4;
             letter-spacing: -0.02em;
@@ -149,32 +44,27 @@
 
         .hero-text-section h2 em {
             font-style: normal;
-            /* 💡 em 태그도 기본은 옅은 회색으로 숨겨둡니다 */
             color: #E9E9E9;
         }
 
-        /* 💡 JS가 생성할 글자 단위 <span> 스타일 */
         .hero-text-section h2 .char {
             transition: color 0.15s ease;
-            /* 색상이 부드럽게 번지듯 전환 */
         }
 
-        /* 💡 스크롤에 의해 Active 되었을 때의 색상 */
         .hero-text-section h2 .char.active {
             color: #363636;
         }
 
-        /* 💡 em 태그 안의 글자가 Active 되었을 때는 포인트 컬러로! */
         .hero-text-section h2 em .char.active {
             color: #363636;
         }
 
-        /* ===== Feature Cards (Figma Implementation) ===== */
+        /* ===== Feature Cards ===== */
         .feature-cards {
             padding: 60px 0 0;
             display: flex;
             justify-content: center;
-            background: #fff;
+            width: 100%;
         }
 
         .fcards-row {
@@ -395,8 +285,6 @@
         }
 
         .pi-title {
-            width: 260px;
-            height: 70px;
             font-size: clamp(30px, 2.6vw, 50px);
             font-weight: 700;
             line-height: 140%;
@@ -1000,6 +888,20 @@
             width: 100%;
             height: 494px;
             border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .utc-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .utc-video-bg {
+            width: 100%;
+            height: 494px;
+            border-radius: 30px;
             background-size: cover;
             background-position: center;
         }
@@ -1007,32 +909,32 @@
         .utc-parts {
             display: flex;
             gap: 9px;
-            width: 100%;
-            height: 150px;
+            justify-content: center;
         }
 
         .utc-part-box {
-            flex: 1;
-            height: 150px;
+            width: 135px;
+            height: 135px;
             background: #ECEDF0;
             border-radius: 16px;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-shrink: 0;
         }
 
         .utc-part-box img {
-            width: 118px;
-            height: 118px;
+            width: 94px;
+            height: 94px;
             object-fit: contain;
         }
 
         .utc-footer-info {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 6px;
             width: 100%;
-            height: 35px;
         }
 
         .utc-footer-icon {
@@ -1084,7 +986,6 @@
             position: relative;
             flex-shrink: 0;
             font-family: 'Pretendard', sans-serif;
-            /* 💡 화면 밖으로 뚫고 나가는 것을 방지하고 내부에서만 가로 스크롤 허용 */
             overflow-x: auto;
             overflow-y: hidden;
         }
@@ -1159,7 +1060,7 @@
         /* ── Diagram area: 1860×486, top:240 ── */
         .ps-diagram-area {
             position: absolute;
-            width: 1860px; /* 원래 데스크탑 원본 크기로 복구 (오버레이 좌표 일치) */
+            width: 1860px;
             height: 486px;
             left: 0;
             top: 240px;
@@ -1372,15 +1273,16 @@
             body {
                 min-width: 0 !important;
                 width: 100%;
-                overflow-x: hidden;
+                overflow-x: clip;
             }
 
             .hero-text-outer {
-                min-height: 200vh;
+                min-height: 150vh;
+                padding-bottom: 60px;
             }
 
             .hero-text-inner {
-                top: 72px;
+                top: 0;
             }
 
             .hero-text-section {
@@ -1389,12 +1291,12 @@
             }
 
             .hero-text-section h2 {
-                font-size: clamp(20px, 5vw, 28px);
+                font-size: clamp(20px, 6vw, 24px);
                 line-height: 150%;
             }
 
             .feature-cards {
-                padding: 20px 16px 0;
+                padding: 24px 16px 0;
             }
 
             .fcards-row {
@@ -1409,8 +1311,10 @@
             .fcard-stable,
             .fcard-nextgen {
                 width: 100% !important;
+                max-width: 100% !important;
                 height: 156px;
                 border-radius: 16px;
+                flex: none;
             }
 
             .product-tabs {
@@ -1446,10 +1350,35 @@
                 display: contents;
             }
 
-            .pi-top-content { order: 1; width: 100% !important; }
-            .pi-right { order: 2; width: 100% !important; height: auto; aspect-ratio: 1.44; flex-shrink: 1; }
-            .pi-main-texts { order: 3; width: 100% !important; }
-            .pi-brochure-section { order: 4; width: 100% !important; }
+            .pi-top-content {
+                display: contents;
+            }
+
+            .pi-title {
+                order: 1;
+            }
+
+            .pi-right {
+                order: 2;
+                width: 100% !important;
+                height: auto;
+                aspect-ratio: 1.41;
+                flex-shrink: 1;
+            }
+
+            .pi-main-texts {
+                display: contents;
+            }
+
+            .pi-subtitle-group {
+                order: 3;
+                width: 100% !important;
+            }
+
+            .pi-brochure-section {
+                order: 4;
+                width: 100% !important;
+            }
 
             .pi-top-content,
             .pi-main-texts,
@@ -1489,19 +1418,29 @@
                 width: 100% !important;
                 display: flex;
                 flex-wrap: nowrap !important;
-                gap: 8px;
-                justify-content: space-between;
+                gap: 4px;
+                justify-content: flex-start;
             }
-            
-            .btn-brochure {
+
+            .btn-round {
                 flex: 1;
                 min-width: 0;
-                padding: 0;
-                height: 44px;
-                font-size: 14px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                width: auto !important;
+                flex-shrink: 1 !important;
+                padding: 0 !important;
+                height: clamp(38px, 10vw, 46px);
+                font-size: clamp(12px, 3.5vw, 14px);
+                gap: 4px;
+            }
+
+            .btn-round .ic-download {
+                width: 18px;
+                height: 18px;
+            }
+
+            .btn-round .ic-download svg {
+                width: 18px;
+                height: 18px;
             }
 
             .accordion {
@@ -1562,7 +1501,7 @@
             }
 
             .usage-title {
-                font-size: clamp(24px, 6vw, 28px);
+                font-size: clamp(18px, 5.5vw, 20px);
             }
 
             .usage-content {
@@ -1582,6 +1521,7 @@
                 width: 100% !important;
                 margin-left: 0;
                 font-size: 16px;
+                height: auto !important;
             }
 
             .usage-right {
@@ -1591,7 +1531,39 @@
 
             .usage-tab-content.active {
                 position: relative !important;
-                /* 높이 붕괴 방지 */
+            }
+
+            .utc-video {
+                height: 161px;
+                border-radius: 16px;
+            }
+
+            .utc-parts {
+                justify-content: flex-start;
+            }
+
+            .utc-part-box {
+                width: 62px;
+                height: 76px;
+                border-radius: 10px;
+            }
+
+            .utc-part-box img {
+                width: 54px;
+                height: 54px;
+            }
+
+            .utc-footer-info {
+                justify-content: flex-start;
+            }
+
+            .utc-footer-icon {
+                width: 20px;
+                height: 20px;
+            }
+
+            .utc-footer-text {
+                font-size: 14px;
             }
 
             .ps-card {
@@ -1670,12 +1642,12 @@
                 width: 100%;
                 min-width: 0;
             }
-            
+
             .ps-step {
                 flex: 0 0 calc(25% - 9px);
                 height: auto;
             }
-            
+
             .ps-step-name {
                 font-size: 14px;
                 line-height: 140%;
@@ -1746,111 +1718,6 @@
             display: block;
         }
 
-        /* ===== BRAND RESOURCE CSS ===== */
-        /* ===== Reset ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Pretendard', sans-serif;
-            list-style: none;
-            text-decoration: none;
-        }
-
-        html {
-            font-size: clamp(12px, 0.833vw, 16px);
-        }
-
-        body {
-            background: #fff;
-            color: #111;
-            overflow-x: hidden;
-        }
-
-        /* ===== Layout ===== */
-        .inner {
-            max-width: 1920px;
-            margin: 0 auto;
-            padding: 0 clamp(16px, 5.2vw, 100px);
-        }
-
-        /* ===== GNB ===== */
-
-        .gnb-utils-links a {
-            font-family: 'Pretendard', sans-serif;
-            font-weight: 400;
-            font-size: 20px;
-            line-height: 160%;
-            color: #7A7A7A;
-            text-decoration: none;
-            padding: 4px 8px;
-            border-radius: 50px;
-        }
-
-        /* ===== Page Header ===== */
-        .page-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 0;
-            gap: 0;
-            width: 100%;
-            background: #FFFFFF;
-        }
-
-        .page-header h1 {
-            width: 100%;
-            max-width: 948px;
-            height: auto;
-            margin: 70px auto 0;
-            padding: 0 16px;
-            font-family: 'Pretendard', sans-serif;
-            font-size: clamp(30px, 4.16vw, 80px);
-            font-weight: 700;
-            color: #000000;
-            line-height: 140%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        /* ===== 탭 내비게이션 ===== */
-        .tab-nav {
-            margin-top: clamp(30px, 5.2vw, 100px);
-            width: 100%;
-            height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            border-bottom: 1px solid #E9E9E9;
-        }
-
-        .tab-item {
-            width: auto;
-            min-width: 120px;
-            height: 60px;
-            padding: 0 20px 21px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            font-family: 'Pretendard', sans-serif;
-            font-weight: 700;
-            font-size: clamp(16px, 1.35vw, 26px);
-            line-height: 150%;
-            letter-spacing: 0%;
-            color: #A7A7A7;
-            cursor: pointer;
-            box-sizing: border-box;
-            border-bottom: 2px solid transparent;
-            margin-bottom: -1px;
-            transition: color 0.2s, border-color 0.2s;
-        }
-
-        .tab-item.active {
-            color: #1B1B1B;
-            border-bottom: 2px solid #1B1B1B;
-        }
 
         /* ===== DiKel 스토리 ===== */
         .story-section {
@@ -4866,9 +4733,12 @@
                             <div class="pi-subtitle-group">
                                 <h2 class="pi-subtitle">차세대 에너지 산업을 위한 고기능 소재</h2>
                                 <div class="pi-description-stack">
-                                    <p class="pi-desc">냉연코일에 전기도금과 확산 열처리를 적용한 디켈(DiKel)은 <br>우수한 내식성과 가공성으로 원통형 배터리 케이스 제작에 최적화되어 있습니다.</p>
-                                    <p class="pi-desc">이 케이스는 내부 재료를 견고히 보호하는 동시에 효율적인 전기적 연결을 지원하며, <br>특히 뛰어난 박리 안정성으로 2차 전지의 안전성을 보장합니다.</p>
-                                    <p class="pi-desc">대량 생산 체계를 구축한 동국산업은 이러한 기술력을 바탕으로<br> 차세대 배터리 산업의 수요에 안정적이고 능동적으로 대응하고 있습니다.</p>
+                                    <p class="pi-desc">냉연코일에 전기도금과 확산 열처리를 적용한 디켈(DiKel)은 <br>우수한 내식성과 가공성으로 원통형 배터리 케이스
+                                        제작에 최적화되어 있습니다.</p>
+                                    <p class="pi-desc">이 케이스는 내부 재료를 견고히 보호하는 동시에 효율적인 전기적 연결을 지원하며, <br>특히 뛰어난 박리 안정성으로
+                                        2차 전지의 안전성을 보장합니다.</p>
+                                    <p class="pi-desc">대량 생산 체계를 구축한 동국산업은 이러한 기술력을 바탕으로<br> 차세대 배터리 산업의 수요에 안정적이고 능동적으로
+                                        대응하고 있습니다.</p>
                                 </div>
                             </div>
                         </div>
@@ -5149,7 +5019,7 @@
                                 <span class="umi-title">산업용 부품</span>
                             </div>
                             <p class="umi-desc" style="height: 70px;">
-                                도금 품질이 뛰어난 동국산업의 니켈도금강판은<br>차세대 산업에서 정밀함과 안정성을 구현합니다.
+                                도금 품질이 뛰어난 동국산업의 니켈도금강판은<br>차세대 산업의 정밀성과 안정성을 높이는 소재로 활용됩니다.
                             </p>
                         </div>
                     </div>
@@ -5157,7 +5027,15 @@
                     <div class="usage-right">
 
                         <div class="usage-tab-content active" id="usage-tab-0">
-                            <div class="utc-video" style="background-image: url('assets/dikel/video.png');"></div>
+                            <div class="utc-video">
+                                <video autoplay loop muted playsinline>
+                                    <source src="assets/dikel/니켈도금강판_제품소개.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div class="utc-footer-info">
+                                <img src="../assets/common/dk-industry.svg" class="utc-footer-icon" alt="icon">
+                                <span class="utc-footer-text">동국산업의 정밀 소재가 다양한 분야의 핵심 부품으로 탄생합니다.</span>
+                            </div>
                             <div class="utc-parts">
                                 <div class="utc-part-box">
                                     <img src="assets/dikel/전기차.svg" alt="전기차 부품">
@@ -5166,25 +5044,22 @@
                                     <img src="assets/dikel/전동이륜.svg" alt="전동이륜 부품">
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="usage-tab-content" id="usage-tab-1">
+                            <div class="utc-video">
+                                <video autoplay loop muted playsinline>
+                                    <source src="assets/dikel/니켈산업용부품.mp4" type="video/mp4">
+                                </video>
+                            </div>
                             <div class="utc-footer-info">
                                 <img src="../assets/common/dk-industry.svg" class="utc-footer-icon" alt="icon">
                                 <span class="utc-footer-text">동국산업의 정밀 소재가 다양한 분야의 핵심 부품으로 탄생합니다.</span>
                             </div>
-                        </div>
-
-                        <div class="usage-tab-content" id="usage-tab-1">
-                            <div class="utc-video" style="background-image: url('assets/dikel/video1.png');">
-                            </div>
-
                             <div class="utc-parts">
                                 <div class="utc-part-box">
                                     <img src="assets/dikel/전동드라이버.svg" alt="전동드라이버">
                                 </div>
-                            </div>
-
-                            <div class="utc-footer-info">
-                                <img src="../assets/common/dk-industry.svg" class="utc-footer-icon" alt="icon">
-                                <span class="utc-footer-text">동국산업의 정밀 소재가 다양한 분야의 핵심 부품으로 탄생합니다.</span>
                             </div>
                         </div>
 
@@ -6258,14 +6133,23 @@
 
             const chars = h2.querySelectorAll('.char');
             const outer = document.querySelector('.hero-text-outer');
-            if (!outer) return;
+            const inner = document.querySelector('.hero-text-inner');
+            if (!outer || !inner) return;
+
+            // 스크롤 여유 = 글자 수 × px
+            const SCROLL_DISTANCE = chars.length * 20;
+
+            function setOuterSize() {
+                const innerH = inner.offsetHeight;
+                outer.style.height = (innerH + SCROLL_DISTANCE) + 'px';
+            }
+            setOuterSize();
+            window.addEventListener('resize', setOuterSize);
 
             function onScroll() {
                 const rect = outer.getBoundingClientRect();
-                const scrollRoom = outer.offsetHeight - outer.querySelector('.hero-text-inner').offsetHeight;
                 const scrolled = -rect.top;
-
-                let progress = Math.max(0, Math.min(1, scrolled / Math.max(scrollRoom, 1)));
+                let progress = Math.max(0, Math.min(1, scrolled / SCROLL_DISTANCE));
 
                 const activeCount = Math.floor(progress * chars.length);
                 chars.forEach((c, i) => c.classList.toggle('active', i < activeCount));
