@@ -12,6 +12,11 @@
     <style>
         /* ===== 냉연강판 전용 스타일 (common.css 보완) ===== */
 
+        /* ===== Layout helpers ===== */
+        .mo-br {
+            display: none;
+        }
+
         /* ===== Page Header (sticky hero 전용 오버라이드) ===== */
         .page-header {
             padding: 0;
@@ -57,12 +62,14 @@
         /* ===== Hero Text (sticky wrapper) ===== */
         .hero-text-outer {
             position: relative;
-            min-height: 300vh;
+            min-height: 250vh;
+            padding-bottom: 100px;
         }
 
         .hero-text-inner {
             position: sticky;
-            top: 100px;
+            top: 50px;
+            background: #fff;
         }
 
         .hero-text-section {
@@ -71,7 +78,7 @@
         }
 
         .hero-text-section h2 {
-            font-size: 3.75rem;
+            font-size: clamp(30px, 3.125vw, 60px);
             font-weight: 700;
             color: #E9E9E9;
             line-height: 1.4;
@@ -100,7 +107,7 @@
             padding: 60px 0 0;
             display: flex;
             justify-content: center;
-            background: #fff;
+            width: 100%;
         }
 
         .fcards-row {
@@ -344,19 +351,18 @@
 
         .product-intro .inner {
             display: flex;
-            gap: clamp(40px, 5.2vw, 100px);
+            gap: 6.25rem;
             align-items: flex-start;
         }
 
         .pi-left {
-            width: 743px;
-            max-width: 45%;
-            height: auto;
+            flex: 1;
+            max-width: 743px;
+            min-width: 0;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             gap: 12px;
-            flex: 1 1 auto;
         }
 
         .pi-top-content {
@@ -386,9 +392,7 @@
         }
 
         .pi-title {
-            width: auto;
-            height: auto;
-            font-size: 50px;
+            font-size: clamp(30px, 2.6vw, 50px);
             font-weight: 700;
             line-height: 140%;
             display: flex;
@@ -407,7 +411,7 @@
 
         .pi-subtitle {
             width: 100%;
-            font-size: 26px;
+            font-size: clamp(16px, 1.35vw, 26px);
             font-weight: 700;
             line-height: 150%;
             color: #1B1B1B;
@@ -424,7 +428,7 @@
 
         .pi-desc {
             width: 100%;
-            font-size: 22px;
+            font-size: clamp(16px, 1.14vw, 22px);
             font-weight: 400;
             line-height: 160%;
             color: #4E4E4E;
@@ -520,17 +524,18 @@
         }
 
         .pi-right {
-            width: 828px;
-            max-width: 50%;
+            flex: 1;
+            max-width: 100%;
+            max-width: 828px;
+            min-width: 0;
             height: 720px;
-            border-radius: 30px;
+            border-radius: 1rem;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #9E9E9E;
             font-size: 1rem;
-            flex: 1 1 auto;
         }
 
         .pi-right img {
@@ -590,7 +595,7 @@
         }
 
         .acc-title {
-            font-size: 32px;
+            font-size: clamp(18px, 1.66vw, 32px);
             font-weight: 700;
             line-height: 150%;
             color: #222222;
@@ -762,7 +767,7 @@
 
         .usage-title {
             font-family: 'Pretendard', sans-serif;
-            font-size: 50px;
+            font-size: clamp(30px, 2.6vw, 50px);
             font-weight: 700;
             color: #000000;
             line-height: 140%;
@@ -825,7 +830,7 @@
         }
 
         .umi-title {
-            font-size: 44px;
+            font-size: clamp(24px, 2.29vw, 44px);
             font-weight: 700;
             line-height: 150%;
             color: #A7A7A7;
@@ -942,7 +947,7 @@
         }
 
         .utc-footer-text {
-            font-size: 22px;
+            font-size: clamp(16px, 1.14vw, 22px);
             font-weight: 400;
             line-height: 160%;
             color: #4E4E4E;
