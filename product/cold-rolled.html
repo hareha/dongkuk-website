@@ -1261,7 +1261,7 @@
             }
 
             .hero-text-section h2 {
-                font-size: clamp(20px, 5vw, 28px);
+                font-size: 24px;
                 line-height: 150%;
             }
 
@@ -1344,17 +1344,26 @@
             }
 
             .product-tabs {
-                margin: 30px auto;
-                width: calc(100% - 32px);
+                margin: 0;
+                width: 100%;
                 height: auto;
                 padding: 6px;
-                gap: 2px;
+                gap: 0;
+                border-radius: 0;
+                position: sticky;
+                bottom: 0;
+                z-index: 100;
+                backdrop-filter: blur(10px);
+                background: rgba(255,255,255,0.3);
+                border: 1px solid rgba(255,255,255,0.8);
+                box-shadow: 0 -2px 8px rgba(0,0,0,0.12);
             }
 
             .ptab {
-                padding: 0 12px;
-                height: 44px;
+                padding: 10px 12px;
+                height: 41px;
                 font-size: 14px;
+                border-radius: 10px;
             }
 
             .product-intro {
@@ -1383,13 +1392,13 @@
             }
 
             .pi-title {
-                font-size: clamp(24px, 6vw, 32px);
+                font-size: 30px;
                 height: auto;
                 white-space: normal;
             }
 
             .pi-subtitle {
-                font-size: 20px;
+                font-size: 24px;
                 width: 100%;
             }
 
@@ -1400,8 +1409,10 @@
 
             .pi-right {
                 width: 100% !important;
-                height: 250px;
+                height: 232px;
                 flex-shrink: 1;
+                border-radius: 16px;
+                overflow: hidden;
             }
 
             .pi-brochure-section {
@@ -1478,12 +1489,14 @@
             }
 
             .usage-title {
-                font-size: clamp(24px, 6vw, 28px);
+                font-size: 18px;
+                font-weight: 700;
+                color: #7A7A7A;
             }
 
             .usage-content {
                 flex-direction: column;
-                gap: 24px;
+                gap: 20px;
             }
 
             .usage-left {
@@ -1491,7 +1504,15 @@
             }
 
             .umi-title {
-                font-size: 24px;
+                font-size: 30px;
+            }
+
+            .usage-menu-item:not(.active) .umi-title {
+                color: #D3D3D3;
+            }
+
+            .usage-menu-item:not(.active) .umi-desc {
+                display: none;
             }
 
             .umi-desc {
@@ -1511,7 +1532,8 @@
             }
 
             .utc-video {
-                height: 200px;
+                height: auto;
+                aspect-ratio: 651 / 320;
                 border-radius: 16px;
             }
 
@@ -1521,20 +1543,23 @@
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
                 scroll-snap-type: x mandatory;
-                gap: 8px;
-                padding-bottom: 8px;
+                gap: 4px;
+                padding-bottom: 4px;
             }
 
             .utc-part-box {
-                flex: 0 0 100px;
-                height: 100px;
-                min-width: 100px;
+                flex: 0 0 62px;
+                width: 62px;
+                height: 76px;
+                min-width: 62px;
+                border-radius: 10px;
+                padding: 11px 4px;
                 scroll-snap-align: start;
             }
 
             .utc-part-box img {
-                width: 70px;
-                height: 70px;
+                width: 54px;
+                height: 54px;
             }
 
             .utc-footer-info {
@@ -1542,79 +1567,135 @@
             }
 
             .utc-footer-text {
-                font-size: 14px;
+                font-size: 16px;
+            }
+
+            /* ── 공정: 데스크탑 요소 숨김 ── */
+            .process-scroll-outer {
+                padding: 0 !important;
+                overflow: visible !important;
             }
 
             .process-sticky {
-                padding: 20px 16px;
+                display: block !important;
+                height: auto !important;
+                position: relative !important;
+                padding: 0 !important;
             }
 
             .process-card {
                 width: 100% !important;
                 height: auto !important;
-                min-height: 400px;
-                padding: 24px 16px !important;
-                border-radius: 16px;
+                padding: 40px 16px !important;
+                border-radius: 0 !important;
+                overflow: visible !important;
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                transform: none !important;
             }
 
             .ps-header {
-                position: relative;
-                padding: 0 0 20px;
-                width: 100%;
-                gap: 12px;
+                position: relative !important;
+                width: 100% !important;
+                height: auto !important;
+                left: 0 !important;
+                top: 0 !important;
+                padding: 0 !important;
             }
 
-            .ps-label {
-                font-size: 16px;
-            }
+            .ps-label { display: none; }
 
             .ps-title {
-                font-size: 24px;
+                font-size: 30px !important;
+                line-height: 1.5 !important;
             }
 
-            .ps-toggle {
+            .ps-diagram-area { display: none !important; }
+            .ps-bubble { display: none !important; }
+            .ps-progress { display: none !important; }
+
+            /* ── 모바일 전용 4+3 다이어그램 ── */
+            .ps-mobile-diagram {
+                display: block !important;
                 width: 100%;
-                height: auto;
             }
 
-            .ps-toggle-btn {
-                flex: 1;
-                height: 40px;
-                font-size: 14px;
+            .ps-mob-icon {
+                width: 70px;
+                height: 70px;
+                object-fit: contain;
+                border-radius: 8px;
+                cursor: pointer;
+                opacity: 0.5;
+                transition: opacity 0.3s, transform 0.3s;
             }
 
-            .ps-diagram-area {
-                position: relative !important;
-                width: 100% !important;
-                height: auto !important;
-                top: 0 !important;
-                overflow-x: auto;
+            .ps-mob-icon.active {
+                opacity: 1;
+                transform: scale(1.1);
             }
 
-            .ps-progress {
-                position: relative !important;
-                width: 100% !important;
-                height: auto !important;
-                left: 0 !important;
-                top: 0 !important;
-                padding: 16px;
-                overflow-x: auto;
+            /* ── 모바일 인디케이터 바 ── */
+            .ps-mobile-indicators {
+                display: flex !important;
+                justify-content: center;
+                gap: 12px;
+                padding: 10px 0;
+                width: 100%;
             }
 
-            .ps-steps {
-                width: max-content;
-                min-width: 100%;
+            .ps-mobile-dot {
+                width: 28px;
+                height: 6px;
+                border-radius: 3px;
+                background: #D3D3D3;
+                transition: background 0.3s;
+                cursor: pointer;
             }
 
-            .ps-bubble {
-                position: relative !important;
-                width: 100% !important;
-                left: 0 !important;
-                top: 0 !important;
+            .ps-mobile-dot.active {
+                background: #F27100;
             }
 
-            .ps-bubble p {
-                width: 100% !important;
+            /* ── 모바일 설명 카드 ── */
+            .ps-mobile-info-card {
+                display: flex !important;
+                flex-direction: column;
+                gap: 10px;
+                background: #FFFFFF;
+                border-radius: 16px;
+                padding: 16px 20px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .ps-mobile-info-header {
+                display: flex;
+                gap: 10px;
+                align-items: flex-start;
+            }
+
+            .ps-mobile-info-num {
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 1.6;
+                color: #F27100;
+            }
+
+            .ps-mobile-info-name {
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 1.6;
+                color: #000;
+            }
+
+            .ps-mobile-info-desc {
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 1.6;
+                color: #4E4E4E;
+                margin: 0;
             }
 
             .grade-table {
@@ -2791,6 +2872,39 @@
                     </div>
                 </div>
 
+                <!-- ═══ 모바일 전용: 다이어그램 + 인디케이터 + 설명카드 ═══ -->
+                <div class="ps-mobile-diagram" style="display:none;">
+                    <div class="ps-mobile-row" style="display:flex;gap:8px;justify-content:center;">
+                        <img class="ps-mob-icon" data-step="0" src="assets/cold-rolled/1.열연 코일 세팅.svg" alt="열연 코일 세팅">
+                        <img class="ps-mob-icon" data-step="1" src="assets/cold-rolled/2.산세라인.png" alt="산세라인">
+                        <img class="ps-mob-icon" data-step="2" src="assets/cold-rolled/3.정밀컷팅.svg" alt="정밀컷팅">
+                        <img class="ps-mob-icon" data-step="3" src="assets/cold-rolled/4.냉간압연.svg" alt="냉간압연">
+                    </div>
+                    <div class="ps-mobile-row" style="display:flex;gap:8px;justify-content:center;margin-top:8px;">
+                        <img class="ps-mob-icon" data-step="4" src="assets/cold-rolled/5.소둔라인.svg" alt="소둔라인">
+                        <img class="ps-mob-icon" data-step="5" src="assets/cold-rolled/6.표면마감.svg" alt="표면마감">
+                        <img class="ps-mob-icon" data-step="6" src="assets/cold-rolled/7.포장정리.svg" alt="포장정리">
+                    </div>
+                </div>
+
+                <div class="ps-mobile-indicators" style="display:none;">
+                    <div class="ps-mobile-dot" data-step="0"></div>
+                    <div class="ps-mobile-dot" data-step="1"></div>
+                    <div class="ps-mobile-dot" data-step="2"></div>
+                    <div class="ps-mobile-dot" data-step="3"></div>
+                    <div class="ps-mobile-dot" data-step="4"></div>
+                    <div class="ps-mobile-dot" data-step="5"></div>
+                    <div class="ps-mobile-dot" data-step="6"></div>
+                </div>
+
+                <div class="ps-mobile-info-card" style="display:none;">
+                    <div class="ps-mobile-info-header">
+                        <span class="ps-mobile-info-num">01</span>
+                        <span class="ps-mobile-info-name">열연 코일 세팅</span>
+                    </div>
+                    <p class="ps-mobile-info-desc">냉연강판 공정의 원재료인 열연코일을 준비합니다.</p>
+                </div>
+
             </div><!-- /process-card -->
         </div><!-- /process-sticky -->
     </section>
@@ -2920,27 +3034,57 @@
         let currentStep = 0;
         let autoTimer = null;
 
+        const STEP_DATA = [
+            { num: '01', name: '열연 코일 세팅', desc: '냉연강판 공정의 원재료인 열연코일을 준비합니다.' },
+            { num: '02', name: '산세라인', desc: '불순물을 제거하여 표면을 깨끗하게 만드는 과정으로, 우수한 표면 구현에 도움이 됩니다.' },
+            { num: '03', name: '정밀컷팅', desc: '고객이 요구한 규격에 맞게 소재를 절단합니다.' },
+            { num: '04', name: '냉간압연', desc: '강판을 상온에서 압연하는 과정으로, 강도와 표면 품질을 높이고 원하는 두께를 구현합니다.' },
+            { num: '05', name: '소둔라인', desc: '경화된 강판을 가열 후 냉각하는 과정으로, 강판을 부드럽게 만들어 가공성을 높입니다.' },
+            { num: '06', name: '표면마감', desc: '압연 후 표면 상태를 정리하는 과정으로, 균일하고 매끄러운 품질을 완성합니다.' },
+            { num: '07', name: '포장정리', desc: '완성된 제품을 보호 포장합니다.' }
+        ];
+
         function activateStep(idx) {
             if (idx < 0) idx = 0;
-            if (idx >= TOTAL_STEPS) idx = 0; // 마지막에서 다음으로 넘어가면 처음으로
+            if (idx >= TOTAL_STEPS) idx = 0;
             currentStep = idx;
 
-            /* 1. Progress bar 업데이트 */
+            /* 1. Progress bar 업데이트 (데스크탑) */
             document.querySelectorAll('#ps-steps-bar .ps-step').forEach((el, i) => {
                 el.classList.remove('active', 'done');
                 if (i < idx) el.classList.add('done');
                 if (i === idx) el.classList.add('active');
             });
 
-            /* 2. 공정 이미지(SVG/PNG) 업데이트 */
+            /* 2. 공정 이미지(SVG/PNG) 업데이트 (데스크탑) */
             document.querySelectorAll('#diagram-냉연 .ps-step-img').forEach((el, i) => {
                 el.classList.toggle('visible', i === idx);
             });
 
-            /* 3. 말풍선(Tooltip) 업데이트 */
+            /* 3. 말풍선(Tooltip) 업데이트 (데스크탑) */
             document.querySelectorAll('#diagram-냉연 .ps-bubble').forEach((el, i) => {
                 el.classList.toggle('visible', i === idx);
             });
+
+            /* 4. 모바일 아이콘 활성화 */
+            document.querySelectorAll('.ps-mob-icon').forEach((el) => {
+                el.classList.toggle('active', parseInt(el.dataset.step) === idx);
+            });
+
+            /* 5. 모바일 인디케이터 */
+            document.querySelectorAll('.ps-mobile-dot').forEach((el) => {
+                el.classList.toggle('active', parseInt(el.dataset.step) === idx);
+            });
+
+            /* 6. 모바일 설명카드 */
+            const numEl = document.querySelector('.ps-mobile-info-num');
+            const nameEl = document.querySelector('.ps-mobile-info-name');
+            const descEl = document.querySelector('.ps-mobile-info-desc');
+            if (numEl && STEP_DATA[idx]) {
+                numEl.textContent = STEP_DATA[idx].num;
+                nameEl.textContent = STEP_DATA[idx].name;
+                descEl.textContent = STEP_DATA[idx].desc;
+            }
         }
 
         /* 자동 재생 시작 함수 */
@@ -2968,12 +3112,30 @@
 
             /* 💡 2. [추가] 다이어그램 이미지 클릭 시 해당 스텝으로 이동 */
             document.querySelectorAll('#diagram-냉연 .ps-step-img').forEach((el, i) => {
-                el.style.pointerEvents = 'auto'; // 이미지 클릭 영역 활성화
-                el.style.cursor = 'pointer';     // 마우스 커서 변경
+                el.style.pointerEvents = 'auto';
+                el.style.cursor = 'pointer';
 
                 el.addEventListener('click', () => {
                     clearInterval(autoTimer);
                     activateStep(i);
+                    startAutoPlay();
+                });
+            });
+
+            /* 3. 모바일 아이콘 클릭 */
+            document.querySelectorAll('.ps-mob-icon').forEach((el) => {
+                el.addEventListener('click', () => {
+                    clearInterval(autoTimer);
+                    activateStep(parseInt(el.dataset.step));
+                    startAutoPlay();
+                });
+            });
+
+            /* 4. 모바일 인디케이터 클릭 */
+            document.querySelectorAll('.ps-mobile-dot').forEach((el) => {
+                el.addEventListener('click', () => {
+                    clearInterval(autoTimer);
+                    activateStep(parseInt(el.dataset.step));
                     startAutoPlay();
                 });
             });
