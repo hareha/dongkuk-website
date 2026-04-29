@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>니켈도금강판: DiKel - 동국산업</title>
-    <link rel="stylesheet" as="style" crossorigin
-        href="https://cdn.jsdelivr.n../orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/gnb.css">
     <style>
@@ -954,6 +952,13 @@
 
         /* ===== 공정과정 (Auto-Play 전환 대응) ===== */
 
+        /* 모바일 전용 요소: 데스크탑에서 숨김 */
+        .ps-mobile-indicators,
+        .ps-mobile-info-card,
+        .ps-mobile-diagram {
+            display: none;
+        }
+
         .process-scroll-outer {
             position: relative;
             height: auto;
@@ -1273,11 +1278,16 @@
             body {
                 min-width: 0 !important;
                 width: 100%;
-                overflow-x: clip;
+                max-width: 100vw;
+                overflow-x: hidden;
+            }
+
+            html {
+                overflow-x: hidden;
             }
 
             .hero-text-outer {
-                min-height: 150vh;
+                min-height: 200vh;
                 padding-bottom: 60px;
             }
 
@@ -1297,6 +1307,7 @@
 
             .feature-cards {
                 padding: 24px 16px 0;
+                box-sizing: border-box;
             }
 
             .fcards-row {
@@ -1315,6 +1326,111 @@
                 height: 156px;
                 border-radius: 16px;
                 flex: none;
+            }
+
+            /* ── Premium 카드 모바일: 피그마 38:4423 ── */
+            .fcard-premium {
+                overflow: hidden !important;
+            }
+
+            .fcard-premium .bg-main {
+                width: 100% !important;
+                height: 100% !important;
+                left: 0 !important;
+                top: 0 !important;
+                border-radius: 16px !important;
+            }
+
+            .fcard-premium .bg-circle {
+                width: 170px;
+                left: unset;
+                right: 0;
+                top: 50%;
+                /* transform: translateY(-50%) !important; */
+                border-radius: 50% !important;
+                height: 170px;
+            }
+
+
+            .fcard-premium .product-img {
+                width: 157px !important;
+                height: 80px;
+                left: auto !important;
+                right: 6px !important;
+                top: 50%;
+                background-size: contain !important;
+                background-position: center bottom !important;
+                border-radius: 0 0 2.7px 2.7px !important;
+            }
+
+            .fcard-premium .label-text {
+                left: 16px !important;
+                top: 16px !important;
+                font-size: 16px !important;
+                line-height: 1.6 !important;
+                font-weight: 400 !important;
+            }
+
+            .fcard-premium .title-text {
+                left: 16px !important;
+                top: 98px !important;
+                font-size: 30px !important;
+                line-height: 1.4 !important;
+            }
+
+            /* ── Stable 카드 모바일: 피그마 38:4430 ── */
+            .fcard-stable {
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: flex-start !important;
+                padding: 16px !important;
+                gap: 30px !important;
+                box-sizing: border-box !important;
+            }
+
+            .fcard-stable .label-text {
+                position: relative !important;
+                left: auto !important;
+                top: auto !important;
+                font-size: 16px !important;
+                line-height: 1.6 !important;
+                font-weight: 400 !important;
+            }
+
+            .fcard-stable .title-text {
+                position: relative !important;
+                left: auto !important;
+                top: auto !important;
+                font-size: 30px !important;
+                line-height: 1.4 !important;
+            }
+
+            /* ── Next-Gen 카드 모바일: 피그마 38:4434 ── */
+            .fcard-nextgen {
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-between !important;
+                padding: 16px !important;
+                box-sizing: border-box !important;
+            }
+
+            .fcard-nextgen .label-text {
+                position: relative !important;
+                left: auto !important;
+                top: auto !important;
+                font-size: 16px !important;
+                line-height: 1.6 !important;
+                font-weight: 400 !important;
+                color: #4E4E4E !important;
+            }
+
+            .fcard-nextgen .title-text {
+                position: relative !important;
+                left: auto !important;
+                top: auto !important;
+                font-size: 30px !important;
+                line-height: 1.4 !important;
+                color: #000000 !important;
             }
 
             .product-tabs {
@@ -1339,11 +1455,16 @@
                 z-index: 10;
             }
 
+            /* 피그마 38:4443: flex-col gap-[20px] pb-[20px] */
             .product-intro .inner {
                 display: flex;
                 flex-direction: column;
-                gap: 30px;
+                gap: 20px;
                 padding: 0 16px;
+                padding-bottom: 20px;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+                overflow: hidden;
             }
 
             .pi-left {
@@ -1354,6 +1475,7 @@
                 display: contents;
             }
 
+            /* 피그마: 타이틀 → 이미지 → 서브타이틀+본문 → 브로슈어 순서 */
             .pi-title {
                 order: 1;
             }
@@ -1361,9 +1483,11 @@
             .pi-right {
                 order: 2;
                 width: 100% !important;
-                height: auto;
-                aspect-ratio: 1.41;
-                flex-shrink: 1;
+                height: 232px !important;
+                aspect-ratio: unset !important;
+                border-radius: 16px !important;
+                flex-shrink: 0;
+                overflow: hidden;
             }
 
             .pi-main-texts {
@@ -1373,11 +1497,25 @@
             .pi-subtitle-group {
                 order: 3;
                 width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                box-sizing: border-box !important;
+                overflow-wrap: break-word;
+                word-break: keep-all;
+                gap: 20px !important;
+            }
+
+            .pi-description-stack {
+                max-width: 100% !important;
+                min-width: 0 !important;
+                box-sizing: border-box !important;
+                overflow-wrap: break-word;
             }
 
             .pi-brochure-section {
                 order: 4;
                 width: 100% !important;
+                gap: 16px !important;
             }
 
             .pi-top-content,
@@ -1389,21 +1527,43 @@
                 width: 100% !important;
             }
 
+            /* 피그마: 30px Bold, line-height 1.4 */
             .pi-title {
                 width: 100% !important;
-                font-size: clamp(24px, 6vw, 32px);
+                font-size: clamp(26px, 7.5vw, 30px) !important;
+                line-height: 1.4 !important;
                 height: auto;
                 white-space: normal;
             }
 
+            /* 피그마: 24px Bold, line-height 1.5, color #1B1B1B */
             .pi-subtitle {
-                font-size: 20px;
+                font-size: clamp(20px, 6vw, 24px) !important;
+                line-height: 1.5 !important;
                 width: 100%;
             }
 
+            /* 피그마: Description gap-[8px] */
+            .pi-description-stack {
+                gap: 8px !important;
+            }
+
+            /* 피그마: 16px Regular, line-height 1.6, color #4E4E4E */
             .pi-desc {
-                font-size: 16px;
+                font-size: clamp(14px, 4vw, 16px) !important;
+                line-height: 1.6 !important;
                 width: 100%;
+            }
+
+            /* 모바일에서 본문 내 <br> 숨김 → 자연스럽게 이어지는 세 문단 */
+            .pi-desc br {
+                display: none;
+            }
+
+            /* 피그마: 브로슈어 라벨 18px Bold */
+            .pi-brochure-label {
+                font-size: clamp(16px, 4.5vw, 18px) !important;
+                line-height: 1.6 !important;
             }
 
             .pi-right {
@@ -1422,25 +1582,30 @@
                 justify-content: flex-start;
             }
 
+            /* 피그마: 버튼 16px Bold, padding 10px 12px 10px 18px, gap 4px */
             .btn-round {
-                flex: 1;
+                flex: 0 0 auto;
                 min-width: 0;
                 width: auto !important;
-                flex-shrink: 1 !important;
-                padding: 0 !important;
-                height: clamp(38px, 10vw, 46px);
-                font-size: clamp(12px, 3.5vw, 14px);
-                gap: 4px;
+                flex-shrink: 0 !important;
+                padding: 10px 12px 10px 18px !important;
+                height: auto;
+                font-size: clamp(14px, 4vw, 16px);
+                gap: 8px;
+            }
+
+            .pi-brochure-btns {
+                gap: 4px !important;
             }
 
             .btn-round .ic-download {
-                width: 18px;
-                height: 18px;
+                width: 20px;
+                height: 20px;
             }
 
             .btn-round .ic-download svg {
-                width: 18px;
-                height: 18px;
+                width: 20px;
+                height: 20px;
             }
 
             .accordion {
@@ -1566,134 +1731,232 @@
                 font-size: 14px;
             }
 
-            .ps-card {
-                width: 100% !important;
+            /* ═══════════════════════════════════════════════
+               공정과정 모바일 – 피그마 38:4523 기준
+               ═══════════════════════════════════════════════ */
+
+            .process-scroll-outer {
+                padding: 0 !important;
                 height: auto !important;
-                min-height: 400px;
-                padding: 24px 16px !important;
-                border-radius: 16px;
+                overflow: visible !important;
+            }
+
+            .process-sticky {
+                align-items: stretch !important;
+                display: block !important;
+                height: auto !important;
+                position: relative !important;
             }
 
             .process-card {
                 width: 100% !important;
-                max-width: 100vw !important;
+                max-width: 100% !important;
                 height: auto !important;
-                padding: 20px 16px !important;
-                border-radius: 16px !important;
-                overflow: hidden !important;
+                padding: 40px 16px 20px !important;
+                border-radius: 0 !important;
+                overflow: visible !important;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
             }
 
+            /* ── Header: 타이틀 + 토글 세로 배치 ── */
             .ps-header {
-                position: relative;
-                padding: 0 0 20px;
-                width: 100%;
-                gap: 12px;
-            }
-
-            .ps-label {
-                font-size: 16px;
-            }
-
-            .ps-title {
-                font-size: 24px;
-            }
-
-            .ps-toggle {
-                width: 100%;
-                height: auto;
-            }
-
-            .ps-toggle-btn {
-                flex: 1;
-                height: 40px;
-                font-size: 14px;
-            }
-
-            .ps-diagram-area {
-                position: relative !important;
-                width: 100% !important;
-                height: 486px !important;
-                top: 0 !important;
-                overflow-x: auto;
-                overflow-y: hidden;
-            }
-
-            .ps-diagram-default {
-                position: relative !important;
-                width: 1760px !important;
-                height: 486px !important;
-                max-width: none !important;
-            }
-
-            .ps-progress {
                 position: relative !important;
                 width: 100% !important;
                 height: auto !important;
                 left: 0 !important;
                 top: 0 !important;
-                padding: 16px;
-            }
-
-            .ps-steps {
                 display: flex;
-                flex-wrap: wrap;
-                justify-content: flex-start;
-                gap: 12px;
-                width: 100%;
-                min-width: 0;
-            }
-
-            .ps-step {
-                flex: 0 0 calc(25% - 9px);
-                height: auto;
-            }
-
-            .ps-step-name {
-                font-size: 14px;
-                line-height: 140%;
-            }
-
-            .story-section {
-                height: auto;
-            }
-
-            .story-section .inner {
                 flex-direction: column;
-                width: 100% !important;
-                height: auto;
-                padding: 40px 16px;
-                gap: 30px;
-            }
-
-            .story-txt {
-                width: 100% !important;
                 gap: 20px;
+                padding: 0 !important;
             }
 
-            .story-title {
+            .ps-label {
+                display: none;
+            }
+
+            .ps-title {
+                font-size: clamp(26px, 7.5vw, 30px) !important;
+                line-height: 1.4 !important;
+            }
+
+            /* 토글 버튼 – 피그마: 57px, 14px Bold, pill */
+            .ps-toggle {
                 width: 100% !important;
-                font-size: 24px;
+                height: 57px !important;
+                padding: 6px !important;
+                border-radius: 50px !important;
+                gap: 4px !important;
             }
 
-            .story-desc {
-                width: 100% !important;
-                font-size: 16px;
-                min-height: auto;
+            .ps-toggle-btn {
+                flex: 1 !important;
+                height: 45px !important;
+                font-size: 14px !important;
+                border-radius: 30px !important;
             }
 
-            .story-cards {
+            /* ── 데스크탑 다이어그램: 모바일에서 숨김 ── */
+            .ps-diagram-area {
+                display: none !important;
+            }
+
+            /* ── 말풍선: 모바일에서 숨김 ── */
+            .ps-bubble {
+                display: none !important;
+            }
+
+            /* ── 기존 Progress bar 숨김 ── */
+            .ps-progress {
+                display: none !important;
+            }
+
+            /* ═══ 모바일 3줄 다이어그램 ═══ */
+            .ps-mobile-diagram {
+                display: block !important;
+                position: relative;
+                width: 100%;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+            .ps-mobile-row {
+                position: relative;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            /* 각 row 내부의 원본 이미지 컨테이너 (1860×486 좌표계 유지) */
+            .ps-row-inner {
+                position: absolute;
+                width: 1860px;
+                height: 486px;
+                left: 0;
+                top: 0;
+            }
+
+            .ps-row-inner img.ps-diagram-default {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                inset: 0;
+            }
+
+            .ps-row-inner .ps-step-img {
+                position: absolute;
+                opacity: 0;
+                transition: opacity 0.4s ease;
+                pointer-events: none;
+            }
+
+            .ps-row-inner .ps-step-img.visible {
+                opacity: 1;
+            }
+
+            /* 활성 공정 라벨 (연속소둔 등) */
+            .ps-mobile-step-label {
+                position: absolute;
+                display: flex;
                 flex-direction: column;
-                width: 100% !important;
-                height: auto;
-                gap: 12px;
+                align-items: center;
+                gap: 2px;
+                opacity: 0;
+                transition: opacity 0.4s ease;
+                pointer-events: none;
+                z-index: 10;
             }
 
-            .scard-dk,
-            .scard-db,
-            .scard-nickel {
-                width: 100% !important;
-                height: 120px;
+            .ps-mobile-step-label.visible {
+                opacity: 1;
             }
+
+            .ps-mobile-step-label span {
+                font-family: 'Pretendard', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 1.5;
+                color: #4E4E4E;
+            }
+
+            .ps-mobile-step-label .label-arrow {
+                width: 0;
+                height: 0;
+                border-left: 5.5px solid transparent;
+                border-right: 5.5px solid transparent;
+                border-top: 9px solid #F27100;
+            }
+
+            /* ── 모바일 인디케이터 바 ── */
+            .ps-mobile-indicators {
+                display: flex !important;
+                justify-content: center;
+                gap: 12px;
+                padding: 10px 0;
+                width: 100%;
+            }
+
+            .ps-mobile-dot {
+                width: 28px;
+                height: 6px;
+                border-radius: 3px;
+                background: #D3D3D3;
+                transition: background 0.3s;
+            }
+
+            .ps-mobile-dot.active {
+                background: #F27100;
+            }
+
+            /* ── 모바일 설명 카드 ── */
+            .ps-mobile-info-card {
+                display: flex !important;
+                flex-direction: column;
+                gap: 10px;
+                background: #FFFFFF;
+                border-radius: 16px;
+                padding: 16px 20px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            /* is-hidden 클래스로 모바일 요소 숨김 제어 */
+            .ps-mobile-indicators.is-hidden,
+            .ps-mobile-info-card.is-hidden,
+            .ps-mobile-diagram.is-hidden {
+                display: none !important;
+            }
+
+            .ps-mobile-info-header {
+                display: flex;
+                gap: 10px;
+                align-items: flex-start;
+            }
+
+            .ps-mobile-info-num {
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 1.6;
+                color: #F27100;
+            }
+
+            .ps-mobile-info-name {
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 1.6;
+                color: #000;
+            }
+
+            .ps-mobile-info-desc {
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 1.6;
+                color: #4E4E4E;
+                margin: 0;
+            }
+
+
 
             .grade-table {
                 width: 100% !important;
@@ -1701,9 +1964,316 @@
                 overflow-x: auto;
             }
 
+
             .grade-left,
             .grade-right {
                 min-width: 300px;
+            }
+
+            /* ===== 브랜드 리소스 모바일 반응형 ===== */
+
+            /* --- DiKel 스토리 --- */
+            .story-section {
+                padding: clamp(32px, 8.9vw, 40px) 0 !important;
+            }
+
+            .story-section .inner {
+                flex-direction: column !important;
+                width: 100% !important;
+                padding: 0 clamp(16px, 4.4vw, 24px) !important;
+                gap: clamp(24px, 6.7vw, 30px) !important;
+            }
+
+            /* --- 제목 전환 --- */
+            .story-title-desktop {
+                display: none !important;
+            }
+
+            .story-title-mobile {
+                display: block !important;
+                order: -1 !important;
+                width: 100% !important;
+            }
+
+            .story-title {
+                font-size: clamp(24px, 8.3vw, 30px) !important;
+                line-height: 1.4;
+                min-height: auto !important;
+                max-width: 100% !important;
+            }
+
+            .story-desc {
+                font-size: clamp(14px, 4.4vw, 16px) !important;
+                line-height: 1.6;
+                min-height: auto !important;
+                max-width: 100% !important;
+            }
+
+            /* --- 카드 세로 배치 --- */
+            .story-txt {
+                order: 1;
+                gap: 20px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            .story-cards {
+                order: 0;
+                flex-direction: column !important;
+                gap: 0 !important;
+                align-items: center !important;
+                width: 100% !important;
+                height: auto !important;
+            }
+
+            .scard-dk,
+            .scard-db,
+            .scard-nickel {
+                width: clamp(200px, 57.8vw, 208px) !important;
+                height: clamp(72px, 22.2vw, 80px) !important;
+                margin: 0 auto;
+            }
+
+            .scard-dk {
+                border-radius: clamp(12px, 4.3vw, 15.4px) clamp(12px, 4.3vw, 15.4px) 0 clamp(12px, 4.3vw, 15.4px) !important;
+            }
+
+            .scard-db {
+                border-radius: clamp(12px, 4.3vw, 15.4px) !important;
+            }
+
+            .scard-nickel {
+                border-radius: 0 clamp(12px, 4.3vw, 15.4px) clamp(12px, 4.3vw, 15.4px) clamp(12px, 4.3vw, 15.4px) !important;
+            }
+
+            .scard-dk-inner,
+            .scard-db-inner,
+            .scard-nickel-inner {
+                font-size: clamp(22px, 7.2vw, 26px) !important;
+            }
+
+            .scard-plus-1,
+            .scard-plus-2 {
+                display: none !important;
+            }
+
+            .scard-mobile-plus {
+                display: flex !important;
+                width: 24px !important;
+                height: 24px !important;
+                font-size: 12px !important;
+                margin: -8px auto !important;
+            }
+
+            /* --- BI 섹션 --- */
+            .bi-section {
+                padding: 40px 0 !important;
+            }
+
+            .bi-section .inner {
+                padding: 0 16px !important;
+                gap: 30px !important;
+            }
+
+            .bi-header {
+                height: auto !important;
+                gap: 20px !important;
+                margin-bottom: 0 !important;
+            }
+
+            .bi-title {
+                font-size: clamp(24px, 8.3vw, 30px) !important;
+                height: auto !important;
+            }
+
+            .bi-header-row {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                height: auto !important;
+                gap: clamp(16px, 4.4vw, 20px) !important;
+            }
+
+            .bi-desc {
+                font-size: clamp(14px, 4.4vw, 16px) !important;
+                height: auto !important;
+                max-width: 100% !important;
+            }
+
+            .btn-brochure {
+                width: auto !important;
+                height: auto !important;
+                padding: 10px 12px 10px 18px !important;
+                border-radius: 100px !important;
+            }
+
+            .btn-brochure span {
+                font-size: clamp(14px, 4.4vw, 16px) !important;
+            }
+
+            .btn-brochure svg {
+                width: 20px !important;
+                height: 20px !important;
+            }
+
+            /* --- 로고활용 / 로고여백 --- */
+            .logo-usage-block {
+                margin-bottom: 0 !important;
+                height: auto !important;
+                gap: 16px !important;
+            }
+
+            .logo-usage-label,
+            .lmg-col-label {
+                font-size: 24px !important;
+                height: auto !important;
+                min-height: 0 !important;
+            }
+
+            .lmg-col-label {
+                display: none !important;
+            }
+
+            .mobile-only-label {
+                display: block !important;
+            }
+
+            .logo-usage-card {
+                height: 174px !important;
+                min-height: 0 !important;
+                border-radius: 16px !important;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .logo-usage-card img {
+                position: relative !important;
+                width: 68% !important;
+                max-width: 224px !important;
+                height: auto !important;
+                left: auto !important;
+                top: auto !important;
+            }
+
+            .logo-margin-block {
+                margin-bottom: 0 !important;
+            }
+
+            .logo-margin-cards {
+                flex-direction: column !important;
+                gap: 10px !important;
+            }
+
+            .lmg-col {
+                width: 100% !important;
+                gap: 10px !important;
+            }
+
+            .logo-margin-card {
+                height: 174px !important;
+                min-height: 0 !important;
+                border-radius: 16px !important;
+            }
+
+            /* --- 모노로고 (BI 색상활용) --- */
+            .mono-logo-block {
+                margin-bottom: 0 !important;
+                gap: 16px !important;
+            }
+
+            .mono-logo-subtitle {
+                font-size: 24px !important;
+                height: auto !important;
+                min-height: 0 !important;
+            }
+
+            .mono-logo-subtitle .desktop-label {
+                display: none !important;
+            }
+
+            .mono-logo-subtitle .mobile-label {
+                display: inline !important;
+            }
+
+            .mono-grid {
+                gap: 10px !important;
+            }
+
+            .mono-row {
+                gap: 10px !important;
+                height: auto !important;
+                min-height: 0 !important;
+            }
+
+            .mono-card-half,
+            .mono-card-full {
+                height: 174px !important;
+                min-height: 0 !important;
+                border-radius: 16px !important;
+                padding: 16px !important;
+            }
+
+            .dikel-mark {
+                width: 121px !important;
+                height: 26px !important;
+            }
+
+            .dikel-mark img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: contain;
+            }
+
+            /* --- BI 컬러 --- */
+            .bi-color-block {
+                height: auto !important;
+                gap: 16px !important;
+                margin-bottom: 0 !important;
+            }
+
+            .bi-color-label {
+                font-size: 24px !important;
+                height: auto !important;
+                min-height: 0 !important;
+            }
+
+            .bi-color-grid {
+                flex-direction: column !important;
+                height: auto !important;
+                gap: 20px !important;
+            }
+
+            .bi-color-card {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+                gap: 24px !important;
+            }
+
+            .color-circle {
+                width: 100px !important;
+                height: 100px !important;
+            }
+
+            .color-info-group {
+                width: auto !important;
+                height: auto !important;
+                gap: 8px !important;
+            }
+
+            .color-name {
+                width: auto !important;
+                height: auto !important;
+                font-size: 18px !important;
+            }
+
+            .color-values {
+                width: auto !important;
+                height: auto !important;
+            }
+
+            .color-val-text {
+                font-size: 16px !important;
             }
 
 
@@ -1722,24 +2292,26 @@
         /* ===== DiKel 스토리 ===== */
         .story-section {
             width: 100%;
-            height: 555px;
             background: #ffffff;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            padding: clamp(40px, 5.2vw, 100px) 0;
         }
 
         .story-section .inner {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            flex-wrap: wrap;
+            justify-content: center;
             align-items: center;
-            padding: 0;
+            gap: clamp(40px, 8.3vw, 160px);
+            padding: 0 clamp(16px, 6.25vw, 120px);
             width: 100%;
-            height: 355px;
+            max-width: 1920px;
             margin: 0 auto;
+            box-sizing: border-box;
         }
 
         .story-txt {
@@ -1751,44 +2323,40 @@
             width: 100%;
             max-width: 464px;
             height: auto;
-            flex: none;
-            order: 0;
-            flex-grow: 0;
+            order: 1;
         }
 
         .story-title {
-            width: 100%;
-            max-width: 464px;
-            height: auto;
-            min-height: 70px;
             font-family: 'Pretendard', sans-serif;
             font-weight: 700;
             font-size: clamp(24px, 2.6vw, 50px);
-            line-height: 140%;
-            display: block;
+            line-height: 1.4;
             color: #000000;
             margin: 0;
-            flex: none;
-            order: 0;
-            flex-grow: 0;
+        }
+
+        .story-title-mobile {
+            display: none;
         }
 
         .story-desc {
-            width: 100%;
-            max-width: 456px;
-            height: auto;
-            min-height: 245px;
             font-family: 'Pretendard', sans-serif;
             font-weight: 400;
             font-size: clamp(16px, 1.14vw, 22px);
-            line-height: 160%;
-            display: block;
+            line-height: 1.6;
             color: #4E4E4E;
             margin: 0;
-            flex: none;
-            order: 1;
-            flex-grow: 0;
             word-break: keep-all;
+        }
+
+        .story-desc b {
+            font-weight: 700;
+        }
+
+        .story-desc-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         .story-cards {
@@ -1796,257 +2364,138 @@
             flex-direction: row;
             align-items: center;
             padding: 0;
-            gap: 24px;
+            gap: 0;
             isolation: isolate;
-            width: 100%;
-            max-width: 1064px;
-            height: 260px;
-            margin: 0 0;
-            flex: none;
-            order: 1;
-            flex-grow: 0;
+            height: auto;
             position: relative;
+            flex-shrink: 0;
+            order: 0;
         }
 
         .scard-dk {
-            width: 320px;
-            height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: clamp(200px, 22vw, 320px);
+            height: clamp(160px, 18vw, 260px);
             background: #F27100;
             border-radius: 50px 50px 0px 50px;
-            flex: none;
-            order: 0;
-            flex-grow: 0;
-            z-index: 0;
             position: relative;
+            z-index: 0;
         }
 
         .scard-dk-inner {
             display: flex;
-            flex-direction: row;
             align-items: center;
-            padding: 0;
-            position: absolute;
-            width: 248px;
-            height: 70px;
-            left: calc(50% - 248px/2);
-            top: calc(50% - 70px/2 - 0.5px);
+            font-family: 'Pretendard', sans-serif;
+            font-weight: 700;
+            font-size: clamp(30px, 2.6vw, 50px);
+            line-height: 1.4;
+            color: #FFFFFF;
+            white-space: nowrap;
         }
 
         .scard-text-d {
-            width: 36px;
-            height: 70px;
-            font-family: 'Pretendard', sans-serif;
-            font-weight: 700;
-            font-size: clamp(30px, 2.6vw, 50px);
-            line-height: 140%;
-            text-align: center;
-            color: #FFFFFF;
-            flex: none;
-            order: 0;
-            flex-grow: 0;
+            opacity: 1;
         }
 
         .scard-text-ongkuk {
-            width: 212px;
-            height: 70px;
-            font-family: 'Pretendard', sans-serif;
-            font-weight: 700;
-            font-size: clamp(30px, 2.6vw, 50px);
-            line-height: 140%;
-            text-align: center;
-            color: #FFFFFF;
             opacity: 0.3;
-            flex: none;
-            order: 1;
-            flex-grow: 0;
         }
 
+        /* -- Decarbonize 카드 -- */
         .scard-db {
-            width: 376px;
-            height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: clamp(220px, 25vw, 376px);
+            height: clamp(160px, 18vw, 260px);
             background: #CDEBFB;
             border-radius: 50px;
-            flex: none;
-            order: 1;
-            flex-grow: 0;
-            z-index: 1;
             position: relative;
+            z-index: 1;
         }
 
         .scard-db-inner {
             display: flex;
-            flex-direction: row;
             align-items: center;
-            padding: 0;
-            position: absolute;
-            width: 299px;
-            height: 70px;
-            left: calc(50% - 299px/2 - 0.5px);
-            top: calc(50% - 70px/2 - 0.5px);
+            font-family: 'Pretendard', sans-serif;
+            font-weight: 700;
+            font-size: clamp(30px, 2.6vw, 50px);
+            line-height: 1.4;
+            color: #000000;
+            white-space: nowrap;
         }
 
         .scard-text-db-d {
-            width: 36px;
-            height: 70px;
-            font-family: 'Pretendard', sans-serif;
-            font-weight: 700;
-            font-size: clamp(30px, 2.6vw, 50px);
-            line-height: 140%;
-            text-align: center;
-            color: #000000;
-            flex: none;
-            order: 0;
-            flex-grow: 0;
+            opacity: 1;
         }
 
         .scard-text-ecarbonize {
-            width: 263px;
-            height: 70px;
-            font-family: 'Pretendard', sans-serif;
-            font-weight: 700;
-            font-size: clamp(30px, 2.6vw, 50px);
-            line-height: 140%;
-            text-align: center;
-            color: #000000;
             opacity: 0.2;
-            flex: none;
-            order: 1;
-            flex-grow: 0;
         }
 
+        /* -- Nickel 카드 -- */
         .scard-nickel {
-            width: 320px;
-            height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: clamp(200px, 22vw, 320px);
+            height: clamp(160px, 18vw, 260px);
             border-radius: 0px 50px 50px 50px;
-            flex: none;
-            order: 2;
-            flex-grow: 0;
-            z-index: 2;
             position: relative;
+            z-index: 2;
             overflow: hidden;
         }
 
         .scard-nickel::before {
             content: '';
             position: absolute;
-            width: 100%;
-            max-width: 491px;
-            height: 328px;
-            left: calc(50% - 491px / 2 + 59.5px);
-            top: calc(50% - 328px / 2);
+            inset: 0;
             background: linear-gradient(0deg, rgba(91, 102, 139, 0.32), rgba(91, 102, 139, 0.32)), url('assets/dikel/Nickel.png') no-repeat center/cover;
         }
 
         .scard-nickel-inner {
             display: flex;
-            flex-direction: row;
             align-items: center;
-            padding: 0;
-            position: absolute;
-            width: 147px;
-            height: 70px;
-            left: calc(50% - 147px/2 - 2px);
-            top: calc(50% - 70px/2 - 0.5px);
-        }
-
-        .snt-n {
-            width: 36px;
-            height: 70px;
+            position: relative;
+            z-index: 1;
             font-family: 'Pretendard', sans-serif;
             font-weight: 700;
             font-size: clamp(30px, 2.6vw, 50px);
-            line-height: 140%;
-            text-align: center;
+            line-height: 1.4;
             color: #FFFFFF;
-            opacity: 0.3;
-            flex: none;
-            order: 0;
-            flex-grow: 0;
+            white-space: nowrap;
         }
 
-        .snt-i {
-            width: 13px;
-            height: 70px;
-            font-family: 'Pretendard', sans-serif;
-            font-weight: 700;
-            font-size: clamp(30px, 2.6vw, 50px);
-            line-height: 140%;
-            text-align: center;
-            color: #FFFFFF;
-            flex: none;
-            order: 1;
-            flex-grow: 0;
-        }
+        .snt-n { opacity: 0.3; }
+        .snt-i { opacity: 1; }
+        .snt-c { opacity: 0.3; }
+        .snt-kel { opacity: 1; }
 
-        .snt-c {
-            width: 29px;
-            height: 70px;
-            font-family: 'Pretendard', sans-serif;
-            font-weight: 700;
-            font-size: clamp(30px, 2.6vw, 50px);
-            line-height: 140%;
-            text-align: center;
-            color: #FFFFFF;
-            opacity: 0.3;
-            flex: none;
-            order: 2;
-            flex-grow: 0;
-        }
-
-        .snt-kel {
-            width: 69px;
-            height: 70px;
-            font-family: 'Pretendard', sans-serif;
-            font-weight: 700;
-            font-size: clamp(30px, 2.6vw, 50px);
-            line-height: 140%;
-            text-align: center;
-            color: #FFFFFF;
-            flex: none;
-            order: 3;
-            flex-grow: 0;
-        }
-
-        .scard-plus-1 {
+        /* + 커넥터 (모든 뷰포트) */
+        .scard-mobile-plus {
             display: flex;
-            flex-direction: row;
             align-items: center;
             justify-content: center;
-            padding: 15.6923px;
-            gap: 7.85px;
-            position: absolute;
             width: 50px;
             height: 50px;
-            left: 305px;
-            top: 107.5px;
             background: #FFFFFF;
-            border-radius: 313.846px;
-            flex: none;
-            order: 3;
-            flex-grow: 0;
-            z-index: 3;
-            box-sizing: border-box;
+            border-radius: 50%;
+            font-family: 'Pretendard', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: #4E4E4E;
+            z-index: 5;
+            flex-shrink: 0;
+            line-height: 1;
+            margin: 0 -13px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
         }
 
+        .scard-plus-1,
         .scard-plus-2 {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            padding: 15.6923px;
-            gap: 7.85px;
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            left: 706px;
-            top: 107.5px;
-            background: #FFFFFF;
-            border-radius: 313.846px;
-            flex: none;
-            order: 4;
-            flex-grow: 0;
-            z-index: 4;
-            box-sizing: border-box;
+            display: none;
         }
 
         .plus-bars {
@@ -2226,11 +2675,13 @@
         .mono-row {
             display: flex;
             flex-direction: row;
+            flex-wrap: wrap;
             align-items: flex-start;
             padding: 0;
             gap: 24px;
             width: 100%;
-            height: 280px;
+            height: auto;
+            min-height: 0;
             align-self: stretch;
         }
 
@@ -2242,8 +2693,8 @@
             align-items: center;
             padding: 24px 40px;
             gap: 100px;
-            width: 100%;
-            max-width: 828px;
+            flex: 1 1 45%;
+            min-width: 0;
             height: 280px;
             border-radius: 30px;
         }
@@ -2280,6 +2731,7 @@
 
         .dikel-mark {
             width: 318px;
+            max-width: 100%;
             height: 68px;
             position: relative;
         }
@@ -2305,7 +2757,7 @@
             padding: 0px;
             gap: 20px;
             width: 100%;
-            height: 382px;
+            height: auto;
         }
 
         .bi-color-label {
@@ -2323,11 +2775,12 @@
         .bi-color-grid {
             display: flex;
             flex-direction: row;
+            flex-wrap: wrap;
             align-items: center;
             padding: 0px;
             gap: 30px;
             width: 100%;
-            height: 320px;
+            height: auto;
         }
 
         .bi-color-card {
@@ -2339,10 +2792,12 @@
             width: 100%;
             max-width: 540px;
             height: 230px;
+            box-sizing: border-box;
         }
 
         .color-circle {
             width: 230px;
+            max-width: 100%;
             height: 230px;
             border-radius: 50%;
             flex-shrink: 0;
@@ -2560,21 +3015,7 @@
             flex-shrink: 0;
         }
 
-        /* 💡 추가된 핵심 기능: 하얀색 그라데이션으로 선 양끝 40px을 안개처럼 가려줌 */
-        .logo-margin-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                linear-gradient(to right, #FFFFFF 0px, rgba(255, 255, 255, 0) 120px, rgba(255, 255, 255, 0) calc(100% - 120px), #FFFFFF 100%),
-                linear-gradient(to bottom, #FFFFFF 0px, rgba(255, 255, 255, 0) 120px, rgba(255, 255, 255, 0) calc(100% - 120px), #FFFFFF 100%);
-            border-radius: inherit;
-            z-index: 2;
-            pointer-events: none;
-        }
+
 
         .lmg-line {
             box-sizing: border-box;
@@ -4064,7 +4505,7 @@
             }
 
             .mcard-illus img {
-                height: 150px !important;
+                height: 100% !important;
                 object-fit: contain !important;
             }
 
@@ -5396,6 +5837,67 @@
                         </div>
                     </div>
 
+                    <!-- ═══════════════════════════════════════════
+                         모바일 전용: 3줄 다이어그램 (대량생산)
+                         각 row는 1860×486 원본 이미지를 crop해서 보여줌
+                         ═══════════════════════════════════════════ -->
+                    <div class="ps-mobile-diagram" id="ps-mobile-diagram-bulk">
+                        <!-- Row 1: Steps 1-3 (desktop: x80~960, y50~270) -->
+                        <div class="ps-mobile-row" id="ps-mob-row1-bulk"></div>
+                        <!-- Row 2: Steps 4-6 (desktop: x900~1720, y130~340) -->
+                        <div class="ps-mobile-row" id="ps-mob-row2-bulk"></div>
+                        <!-- Row 3: Steps 7-8 (desktop: x540~1140, y270~486) -->
+                        <div class="ps-mobile-row" id="ps-mob-row3-bulk"></div>
+                    </div>
+
+                    <!-- 모바일 전용: 3줄 다이어그램 (특수대응) -->
+                    <div class="ps-mobile-diagram is-hidden" id="ps-mobile-diagram-special">
+                        <div class="ps-mobile-row" id="ps-mob-row1-special"></div>
+                        <div class="ps-mobile-row" id="ps-mob-row2-special"></div>
+                        <div class="ps-mobile-row" id="ps-mob-row3-special"></div>
+                    </div>
+
+                    <!-- 모바일 전용: 인디케이터 (대량생산) -->
+                    <div class="ps-mobile-indicators" id="ps-mobile-dots-bulk">
+                        <div class="ps-mobile-dot" data-step="0"></div>
+                        <div class="ps-mobile-dot" data-step="1"></div>
+                        <div class="ps-mobile-dot" data-step="2"></div>
+                        <div class="ps-mobile-dot" data-step="3"></div>
+                        <div class="ps-mobile-dot" data-step="4"></div>
+                        <div class="ps-mobile-dot" data-step="5"></div>
+                        <div class="ps-mobile-dot" data-step="6"></div>
+                        <div class="ps-mobile-dot" data-step="7"></div>
+                    </div>
+
+                    <!-- 모바일 전용: 인디케이터 (특수대응) -->
+                    <div class="ps-mobile-indicators is-hidden" id="ps-mobile-dots-special">
+                        <div class="ps-mobile-dot" data-step="0"></div>
+                        <div class="ps-mobile-dot" data-step="1"></div>
+                        <div class="ps-mobile-dot" data-step="2"></div>
+                        <div class="ps-mobile-dot" data-step="3"></div>
+                        <div class="ps-mobile-dot" data-step="4"></div>
+                        <div class="ps-mobile-dot" data-step="5"></div>
+                        <div class="ps-mobile-dot" data-step="6"></div>
+                    </div>
+
+                    <!-- 모바일 전용: 설명 카드 (대량생산) -->
+                    <div class="ps-mobile-info-card" id="ps-mobile-card-bulk">
+                        <div class="ps-mobile-info-header">
+                            <span class="ps-mobile-info-num">01</span>
+                            <span class="ps-mobile-info-name">냉연코일 세팅</span>
+                        </div>
+                        <p class="ps-mobile-info-desc">니켈도금강판 공정의 원재료를 준비합니다.</p>
+                    </div>
+
+                    <!-- 모바일 전용: 설명 카드 (특수대응) -->
+                    <div class="ps-mobile-info-card is-hidden" id="ps-mobile-card-special">
+                        <div class="ps-mobile-info-header">
+                            <span class="ps-mobile-info-num">01</span>
+                            <span class="ps-mobile-info-name">냉연코일 세팅</span>
+                        </div>
+                        <p class="ps-mobile-info-desc">니켈도금강판 공정의 원재료를 준비합니다.</p>
+                    </div>
+
                 </div><!-- /process-card -->
             </div><!-- /process-sticky -->
         </section>
@@ -5406,15 +5908,13 @@
     <div id="tab-brand" class="tab-panel">
         <section class="story-section">
             <div class="inner">
+                <h2 class="story-title story-title-mobile">DiKel 스토리</h2>
                 <div class="story-txt">
-                    <h2 class="story-title">DiKel이 무엇인가요?</h2>
-                    <p class="story-desc">DiKel은 <b>Dongkuk과 Nickel의 결합</b>에서 탄생한 동국산업의 니켈도금강판 브랜드입니다. <br> 또한
-                        <b>‘D’</b>에는
-                        <b>탈탄소화(Decarbonize)</b>를 향한 <br> 지향이 담겨 있으며, “The Nickel” – ‘디(The)’에는 <br> 수많은 니켈 중 동국산업이 완성한
-                        단
-                        하나의 니켈,<br> ‘그
-                        니켈’이라는 기술적 차별성과 브랜드 자신감이 <br> 담겨 있습니다.
-                    </p>
+                    <h2 class="story-title story-title-desktop">DiKel이 무엇인가요?</h2>
+                    <div class="story-desc-group">
+                    <p class="story-desc">DiKel은 <b>Dongkuk과 Nickel의 결합</b>에서 탄생한 동국산업의 니켈도금강판 브랜드입니다.</p>
+                    <p class="story-desc"><b>D</b>는 탈탄소화(<b>Decarbonize</b>)를 향한 방향성을, <b>The</b> Nickel의 <b>디</b>(The)는 동국산업이 완성한 <b>단 하나의 니켈</b>이라는 기술적 차별성과 브랜드 자신감을 담고 있습니다.</p>
+                    </div>
                 </div>
                 <div class="story-cards">
                     <div class="scard-dk">
@@ -5423,12 +5923,14 @@
                             <span class="scard-text-ongkuk">ONGKUK</span>
                         </div>
                     </div>
+                    <div class="scard-mobile-plus">+</div>
                     <div class="scard-db">
                         <div class="scard-db-inner">
                             <span class="scard-text-db-d">D</span>
                             <span class="scard-text-ecarbonize">ecarbonize</span>
                         </div>
                     </div>
+                    <div class="scard-mobile-plus">+</div>
                     <div class="scard-nickel">
                         <div class="scard-nickel-inner">
                             <span class="snt-n">N</span>
@@ -5483,6 +5985,7 @@
                 </div>
 
                 <div class="logo-margin-block">
+                    <p class="logo-margin-label mobile-only-label" style="display:none; font-family:'Pretendard',sans-serif; font-weight:700; font-size:24px; line-height:1.5; color:#4E4E4E; margin:0;">로고여백</p>
                     <div class="logo-margin-cards">
                         <!-- English Col -->
                         <div class="lmg-col">
@@ -5505,7 +6008,7 @@
                 </div>
 
                 <div class="mono-logo-block">
-                    <h3 class="mono-logo-subtitle">BI 색상활용</h3>
+                    <h3 class="mono-logo-subtitle"><span class="desktop-label">BI 색상활용</span><span class="mobile-label" style="display:none">모노로고</span></h3>
 
                     <div class="mono-grid">
                         <!-- Row 1 (White Background) -->
@@ -5955,6 +6458,29 @@
         let currentMode = 'bulk'; /* 'bulk' | 'special' */
         let autoTimer = null;
 
+        /* 대량생산 공정 데이터 */
+        const BULK_STEPS_DATA = [
+            { num: '01', name: '냉연코일 세팅', desc: '니켈도금강판 공정의 원재료를 준비합니다.' },
+            { num: '02', name: '탈지라인', desc: '불순물을 제거하고 표면을 깨끗하게 만들어, 도금층의 품질을 확보하는 전처리 공정입니다.' },
+            { num: '03', name: '전해 니켈 도금', desc: '강판을 니켈 이온 용액에 담그고 전기를 가하여, 표면의 내식성과 전기 안정성을 향상시킵니다.' },
+            { num: '04', name: '연속소둔', desc: '코일을 펼친 상태로 가열과 냉각을 반복하여, 니켈과 강판을 균일하게 합금합니다.' },
+            { num: '05', name: '표면마감', desc: '소둔 후 표면 상태를 정리하는 과정으로, 균일하고 매끄러운 품질을 완성합니다.' },
+            { num: '06', name: '장력 형상 조정', desc: '강판을 롤 사이로 통과시켜 당기는 과정으로, 표면을 평탄하게 교정합니다.' },
+            { num: '07', name: '정밀컷팅', desc: '고객이 요구한 규격에 맞게 소재를 절단합니다.' },
+            { num: '08', name: '포장정리', desc: '완성된 제품을 보호 포장합니다.' }
+        ];
+
+        /* 특수대응 공정 데이터 */
+        const SPECIAL_STEPS_DATA = [
+            { num: '01', name: '냉연코일 세팅', desc: '니켈도금강판 공정의 원재료를 준비합니다.' },
+            { num: '02', name: '탈지라인', desc: '불순물을 제거하고 표면을 깨끗하게 만들어, 도금층의 품질을 확보하는 전처리 공정입니다.' },
+            { num: '03', name: '전해 니켈 도금', desc: '강판을 니켈 이온 용액에 담그고 전기를 가하여, 표면의 내식성과 전기 안정성을 향상시킵니다.' },
+            { num: '04', name: '배치형 소둔', desc: '코일이 말린 상태로 상온 압연하는 과정으로, 특수한 스펙이나 강종에 대응이 가능합니다.' },
+            { num: '05', name: '표면마감', desc: '소둔 후 표면 상태를 정리하는 과정으로, 균일하고 매끄러운 품질을 완성합니다.' },
+            { num: '06', name: '정밀컷팅', desc: '고객이 요구한 규격에 맞게 소재를 절단합니다.' },
+            { num: '07', name: '포장정리', desc: '완성된 제품을 보호 포장합니다.' }
+        ];
+
         function activateStep(idx) {
             const totalSteps = (currentMode === 'bulk') ? TOTAL_STEPS_BULK : TOTAL_STEPS_SPECIAL;
             const stepsBarId = (currentMode === 'bulk') ? 'ps-steps-bar' : 'ps-steps-bar-special';
@@ -5981,6 +6507,35 @@
             document.querySelectorAll('#' + diagramId + ' .ps-bubble').forEach((el, i) => {
                 el.classList.toggle('visible', i === idx);
             });
+
+            /* 4. 모바일 인디케이터 dot 업데이트 */
+            const dotsId = (currentMode === 'bulk') ? 'ps-mobile-dots-bulk' : 'ps-mobile-dots-special';
+            const dotsContainer = document.getElementById(dotsId);
+            if (dotsContainer) {
+                dotsContainer.querySelectorAll('.ps-mobile-dot').forEach((dot, i) => {
+                    dot.classList.toggle('active', i === idx);
+                });
+            }
+
+            /* 5. 모바일 설명 카드 업데이트 */
+            const cardId = (currentMode === 'bulk') ? 'ps-mobile-card-bulk' : 'ps-mobile-card-special';
+            const stepsData = (currentMode === 'bulk') ? BULK_STEPS_DATA : SPECIAL_STEPS_DATA;
+            const card = document.getElementById(cardId);
+            if (card && stepsData[idx]) {
+                card.querySelector('.ps-mobile-info-num').textContent = stepsData[idx].num;
+                card.querySelector('.ps-mobile-info-name').textContent = stepsData[idx].name;
+                card.querySelector('.ps-mobile-info-desc').textContent = stepsData[idx].desc;
+            }
+
+            /* 6. 모바일 3줄 다이어그램 step overlay 업데이트 */
+            const mobileDiagramId = (currentMode === 'bulk') ? 'ps-mobile-diagram-bulk' : 'ps-mobile-diagram-special';
+            const mobileDiagram = document.getElementById(mobileDiagramId);
+            if (mobileDiagram) {
+                mobileDiagram.querySelectorAll('.ps-step-img').forEach(img => {
+                    const step = parseInt(img.dataset.mobileStep);
+                    img.classList.toggle('visible', step === idx);
+                });
+            }
         }
 
         /* 자동 재생 시작 */
@@ -5995,10 +6550,180 @@
 
         /* 초기 실행 및 이벤트 연결 */
         document.addEventListener('DOMContentLoaded', () => {
+
+            /* ═══ 모바일 3줄 다이어그램 동적 생성 ═══ */
+            /* 각 row는 원본 1860×486 이미지의 특정 영역을 crop해서 보여줌 */
+            const BULK_ROW_CONFIG = [
+                { // Row 1: Steps 0,1,2 (냉연코일, 탈지라인, 전해니켈도금)
+                    cropX: 80, cropY: 50, cropW: 880, cropH: 220,
+                    steps: [0, 1, 2],
+                    defaultSrc: 'assets/dikel/니켈도금강판_대량_Default.svg',
+                    stepSrcs: {
+                        0: { src: 'assets/dikel/1.냉연코일 세팅.svg', w: 72, h: 93, l: 146, t: 84 },
+                        1: { src: 'assets/dikel/2.탈지라인.svg', w: 446, h: 134, l: 224, t: 90 },
+                        2: { src: 'assets/dikel/3.전해니켈도금.svg', w: 288, h: 147, l: 667, t: 116 }
+                    },
+                    covers: []
+                },
+                { // Row 2: Steps 3,4,5 (연속소둔, 표면마감, 장력형상조정)
+                    cropX: 960, cropY: 140, cropW: 760, cropH: 195,
+                    steps: [3, 4, 5],
+                    defaultSrc: 'assets/dikel/니켈도금강판_대량_Default.svg',
+                    stepSrcs: {
+                        3: { src: 'assets/dikel/4.연속소둔.svg', w: 394, h: 139, l: 972, t: 154 },
+                        4: { src: 'assets/dikel/5.표면마감.svg', w: 103, h: 117, l: 1366, t: 185 },
+                        5: { src: 'assets/dikel/6.장력 형상 조정.svg', w: 258, h: 135, l: 1450, t: 196 }
+                    },
+                    covers: [
+                        // 왼쪽 아래 겹침 가림 (최소한만)
+                        { left: '0', bottom: '0', width: '10%', height: '25%' }
+                    ]
+                },
+                { // Row 3: Steps 6,7 (정밀컷팅, 포장정리)
+                    cropX: 540, cropY: 278, cropW: 620, cropH: 208,
+                    steps: [6, 7],
+                    defaultSrc: 'assets/dikel/니켈도금강판_대량_Default.svg',
+                    stepSrcs: {
+                        6: { src: 'assets/dikel/7.정밀컷팅.svg', w: 251, h: 116, l: 609, t: 287 },
+                        7: { src: 'assets/dikel/8.포장정리.svg', w: 260, h: 154, l: 872, t: 327 }
+                    },
+                    covers: [
+                        // 오른쪽 위 겹침 가림
+                        { right: '0', top: '0', width: '18%', height: '25%' },
+                        // 왼쪽 위 겹침 가림 (얇은 선)
+                        { left: '0', top: '0', width: '10%', height: '12%' }
+                    ]
+                }
+            ];
+
+            const SPECIAL_ROW_CONFIG = [
+                { // Row 1: Steps 0,1,2
+                    cropX: 180, cropY: 50, cropW: 900, cropH: 220,
+                    steps: [0, 1, 2],
+                    defaultSrc: 'assets/dikel/니켈도금강판_특수.png',
+                    stepSrcs: {
+                        0: { src: 'assets/dikel/1.냉연코일 세팅.svg', w: 72, h: 94, l: 258, t: 86 },
+                        1: { src: 'assets/dikel/2.탈지라인.svg', w: 449, h: 132, l: 336, t: 94 },
+                        2: { src: 'assets/dikel/3.전해니켈도금.svg', w: 288, h: 148, l: 785, t: 120 }
+                    },
+                    covers: []
+                },
+                { // Row 2: Steps 3,4 (배치형소둔, 표면마감)
+                    cropX: 960, cropY: 130, cropW: 700, cropH: 200,
+                    steps: [3, 4],
+                    defaultSrc: 'assets/dikel/니켈도금강판_특수.png',
+                    stepSrcs: {
+                        3: { src: 'assets/dikel/4.배치형 소둔.svg', w: 161, h: 162, l: 1091, t: 141 },
+                        4: { src: 'assets/dikel/5.표면마감1.svg', w: 227, h: 146, l: 1294, t: 180 }
+                    },
+                    covers: [
+                        { left: '0', top: '0', width: '16%', height: '100%' }
+                    ]
+                },
+                { // Row 3: Steps 5,6 (정밀컷팅, 포장정리)
+                    cropX: 440, cropY: 278, cropW: 720, cropH: 208,
+                    steps: [5, 6],
+                    defaultSrc: 'assets/dikel/니켈도금강판_특수.png',
+                    stepSrcs: {
+                        5: { src: 'assets/dikel/7.정밀컷팅.svg', w: 249, h: 115, l: 521, t: 287 },
+                        6: { src: 'assets/dikel/8.포장정리.svg', w: 260, h: 154, l: 782, t: 327 }
+                    },
+                    covers: [
+                        { right: '0', top: '0', width: '18%', height: '20%' }
+                    ]
+                }
+            ];
+
+            function buildMobileRows(containerId, rowConfig) {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+
+                const rows = container.querySelectorAll('.ps-mobile-row');
+                const containerWidth = container.clientWidth || (window.innerWidth - 32);
+
+                rowConfig.forEach((cfg, rowIdx) => {
+                    const row = rows[rowIdx];
+                    if (!row) return;
+
+                    const scale = containerWidth / cfg.cropW;
+                    const rowHeight = cfg.cropH * scale;
+                    row.style.height = rowHeight + 'px';
+
+                    // 내부 래퍼 (1860×486 좌표계)
+                    const inner = document.createElement('div');
+                    inner.className = 'ps-row-inner';
+                    inner.style.transform = `scale(${scale})`;
+                    inner.style.transformOrigin = '0 0';
+                    inner.style.left = (-cfg.cropX * scale) + 'px';
+                    inner.style.top = (-cfg.cropY * scale) + 'px';
+
+                    // 기본 배경 이미지
+                    const bgImg = document.createElement('img');
+                    bgImg.className = 'ps-diagram-default';
+                    bgImg.src = cfg.defaultSrc;
+                    bgImg.alt = '';
+                    bgImg.style.cssText = 'position:absolute;width:100%;height:100%;inset:0;';
+                    inner.appendChild(bgImg);
+
+                    // 각 step의 focus 오버레이 SVG
+                    cfg.steps.forEach(stepIdx => {
+                        const stepCfg = cfg.stepSrcs[stepIdx];
+                        if (!stepCfg) return;
+
+                        const stepImg = document.createElement('img');
+                        stepImg.className = 'ps-step-img';
+                        stepImg.dataset.mobileStep = stepIdx;
+                        stepImg.src = stepCfg.src;
+                        stepImg.alt = '';
+                        stepImg.style.cssText = `width:${stepCfg.w}px;height:${stepCfg.h}px;left:${stepCfg.l}px;top:${stepCfg.t}px;position:absolute;pointer-events:auto;cursor:pointer;`;
+                        // 클릭 시 해당 스텝으로 이동
+                        stepImg.addEventListener('click', () => {
+                            clearInterval(autoTimer);
+                            activateStep(stepIdx);
+                            startAutoPlay();
+                        });
+                        inner.appendChild(stepImg);
+                    });
+
+                    row.innerHTML = '';
+                    row.appendChild(inner);
+
+                    // 겹침 가림용 커버 div 생성
+                    if (cfg.covers && cfg.covers.length > 0) {
+                        cfg.covers.forEach(cover => {
+                            const coverDiv = document.createElement('div');
+                            coverDiv.style.cssText = 'position:absolute;background:#f1edea;z-index:5;';
+                            if (cover.left !== undefined) coverDiv.style.left = cover.left;
+                            if (cover.right !== undefined) coverDiv.style.right = cover.right;
+                            if (cover.top !== undefined) coverDiv.style.top = cover.top;
+                            if (cover.bottom !== undefined) coverDiv.style.bottom = cover.bottom;
+                            coverDiv.style.width = cover.width;
+                            coverDiv.style.height = cover.height;
+                            row.appendChild(coverDiv);
+                        });
+                    }
+                });
+            }
+
+            // 모바일 3줄 다이어그램 생성
+            buildMobileRows('ps-mobile-diagram-bulk', BULK_ROW_CONFIG);
+            buildMobileRows('ps-mobile-diagram-special', SPECIAL_ROW_CONFIG);
+
+            // 리사이즈 시 재생성
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    buildMobileRows('ps-mobile-diagram-bulk', BULK_ROW_CONFIG);
+                    buildMobileRows('ps-mobile-diagram-special', SPECIAL_ROW_CONFIG);
+                    activateStep(currentStep); // 현재 상태 복원
+                }, 200);
+            });
+
             activateStep(0);
             startAutoPlay();
 
-            // 1. 진행 바 클릭 시 타이머 리셋 로직 (전체 스텝 바 대상)
+            // 1. 진행 바 클릭 시 타이머 리셋 로직
             document.querySelectorAll('.ps-steps .ps-step').forEach((el) => {
                 el.addEventListener('click', function () {
                     const stepIdx = parseInt(this.getAttribute('data-step'));
@@ -6008,24 +6733,22 @@
                 });
             });
 
-            // 💡 2. [추가] 대량생산 다이어그램 이미지 클릭 시 해당 스텝으로 이동
+            // 2. 대량생산 다이어그램 이미지 클릭
             document.querySelectorAll('#diagram-bulk .ps-step-img').forEach((el, i) => {
-                el.style.pointerEvents = 'auto'; // CSS의 none 설정을 무시하고 클릭 가능하게 만듦
-                el.style.cursor = 'pointer';     // 마우스 커서를 손가락 모양으로 변경
-
+                el.style.pointerEvents = 'auto';
+                el.style.cursor = 'pointer';
                 el.addEventListener('click', () => {
-                    if (currentMode !== 'bulk') return; // 다른 모드일 때는 작동 방지
+                    if (currentMode !== 'bulk') return;
                     clearInterval(autoTimer);
                     activateStep(i);
                     startAutoPlay();
                 });
             });
 
-            // 💡 3. [추가] 특수스펙 다이어그램 이미지 클릭 시 해당 스텝으로 이동
+            // 3. 특수스펙 다이어그램 이미지 클릭
             document.querySelectorAll('#diagram-special .ps-step-img').forEach((el, i) => {
                 el.style.pointerEvents = 'auto';
                 el.style.cursor = 'pointer';
-
                 el.addEventListener('click', () => {
                     if (currentMode !== 'special') return;
                     clearInterval(autoTimer);
@@ -6033,17 +6756,27 @@
                     startAutoPlay();
                 });
             });
+
+            // 4. 모바일 인디케이터 dot 클릭
+            document.querySelectorAll('.ps-mobile-dot').forEach((dot) => {
+                dot.addEventListener('click', function () {
+                    const stepIdx = parseInt(this.getAttribute('data-step'));
+                    clearInterval(autoTimer);
+                    activateStep(stepIdx);
+                    startAutoPlay();
+                });
+                dot.style.cursor = 'pointer';
+            });
         });
 
-        /* 모드 전환 버튼 (Toggle) 로직 수정 */
+        /* 모드 전환 버튼 (Toggle) 로직 – is-hidden 클래스 기반 */
         document.querySelectorAll('.ps-toggle-btn').forEach((btn, index) => {
             btn.addEventListener('click', function () {
-                if (this.classList.contains('active')) return; // 이미 활성화된 탭이면 무시
+                if (this.classList.contains('active')) return;
 
                 document.querySelectorAll('.ps-toggle-btn').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
 
-                // 타이머 중지 및 스텝 초기화
                 clearInterval(autoTimer);
                 currentStep = 0;
 
@@ -6053,15 +6786,28 @@
                     document.getElementById('diagram-special').style.display = 'none';
                     document.getElementById('ps-steps-bar').closest('.ps-progress').style.display = '';
                     document.getElementById('ps-progress-special').style.display = 'none';
+                    // 모바일 요소: is-hidden 토글
+                    document.getElementById('ps-mobile-diagram-bulk').classList.remove('is-hidden');
+                    document.getElementById('ps-mobile-diagram-special').classList.add('is-hidden');
+                    document.getElementById('ps-mobile-dots-bulk').classList.remove('is-hidden');
+                    document.getElementById('ps-mobile-dots-special').classList.add('is-hidden');
+                    document.getElementById('ps-mobile-card-bulk').classList.remove('is-hidden');
+                    document.getElementById('ps-mobile-card-special').classList.add('is-hidden');
                 } else {
                     currentMode = 'special';
                     document.getElementById('diagram-bulk').style.display = 'none';
                     document.getElementById('diagram-special').style.display = '';
                     document.getElementById('ps-steps-bar').closest('.ps-progress').style.display = 'none';
                     document.getElementById('ps-progress-special').style.display = '';
+                    // 모바일 요소: is-hidden 토글
+                    document.getElementById('ps-mobile-diagram-bulk').classList.add('is-hidden');
+                    document.getElementById('ps-mobile-diagram-special').classList.remove('is-hidden');
+                    document.getElementById('ps-mobile-dots-bulk').classList.add('is-hidden');
+                    document.getElementById('ps-mobile-dots-special').classList.remove('is-hidden');
+                    document.getElementById('ps-mobile-card-bulk').classList.add('is-hidden');
+                    document.getElementById('ps-mobile-card-special').classList.remove('is-hidden');
                 }
 
-                // 새 모드에서 재생 시작
                 activateStep(0);
                 startAutoPlay();
             });
