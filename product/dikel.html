@@ -6957,6 +6957,10 @@
                     var rect = pageHeader.getBoundingClientRect();
                     window.scrollTo({ top: window.scrollY + rect.top - 100, behavior: 'smooth' });
                 }
+                // 탭 전환 후 공정카드 scale 재계산
+                if (typeof scaleProcessCard === 'function') {
+                    setTimeout(scaleProcessCard, 50);
+                }
             });
         });
 
@@ -6969,6 +6973,10 @@
                 var target = document.querySelector('.tab-item[data-tab="' + hash + '"]');
                 if (target) target.classList.add('active');
                 document.getElementById(hash).classList.add('active');
+                // 해시 탭 활성화 후 공정카드 scale 재계산
+                if (typeof scaleProcessCard === 'function') {
+                    setTimeout(scaleProcessCard, 50);
+                }
             }
         })();
 
@@ -7120,29 +7128,30 @@
     </script>
     <script src="../js/gnb.js"></script>
     <script>
-        /* 공정카드 뷰포트 맞춤 scale */
-        document.addEventListener('DOMContentLoaded', function () {
-            function scaleProcessCard() {
-                const card = document.getElementById('process-card');
-                const sticky = card?.parentElement;
-                if (!card || !sticky) return;
-                if (window.innerWidth <= 1023) {
-                    card.style.transform = '';
-                    sticky.style.height = '';
-                    return;
-                }
-                const availW = sticky.clientWidth;
-                const cardW = 1860;
-                const cardH = 1080;
-                if (availW < cardW) {
-                    const s = availW / cardW;
-                    card.style.transform = `scale(${s})`;
-                    sticky.style.height = (cardH * s) + 'px';
-                } else {
-                    card.style.transform = '';
-                    sticky.style.height = '';
-                }
+        /* 공정카드 뷰포트 맞춤 scale — 전역 노출 (탭 전환 시 호출) */
+        function scaleProcessCard() {
+            const card = document.getElementById('process-card');
+            const sticky = card?.parentElement;
+            if (!card || !sticky) return;
+            if (window.innerWidth <= 1023) {
+                card.style.transform = '';
+                sticky.style.height = '';
+                return;
             }
+            const availW = sticky.clientWidth;
+            const cardW = 1860;
+            const cardH = 1080;
+            if (availW <= 0) return;
+            if (availW < cardW) {
+                const s = availW / cardW;
+                card.style.transform = `scale(${s})`;
+                sticky.style.height = (cardH * s) + 'px';
+            } else {
+                card.style.transform = '';
+                sticky.style.height = '';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function () {
             scaleProcessCard();
             window.addEventListener('resize', scaleProcessCard);
         });
