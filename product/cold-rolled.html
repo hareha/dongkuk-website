@@ -1281,6 +1281,7 @@
             .fcard-stable,
             .fcard-nextgen {
                 width: 100% !important;
+                max-width: 100% !important;
                 height: 156px;
                 border-radius: 16px;
                 overflow: hidden;
@@ -1320,27 +1321,48 @@
                 top: 78px;
             }
 
-            .fcard-premium .label-text,
-            .fcard-stable .label-text,
-            .fcard-nextgen .label-text {
+            /* 카드1: 절대 위치 유지 (이미지 겹침 필요) */
+            .fcard-premium .label-text {
                 left: 16px;
                 top: 16px;
                 font-size: 16px;
                 width: auto;
             }
 
-            .fcard-premium .title-text,
-            .fcard-stable .title-text,
-            .fcard-nextgen .title-text {
+            .fcard-premium .title-text {
                 left: 16px;
-                top: auto;
-                bottom: 16px;
-                font-size: 24px;
+                top: 98px;
+                bottom: auto;
+                font-size: 30px;
+                line-height: 1.4;
             }
 
-            .fcard-premium .title-text {
-                top: 80px;
-                bottom: auto;
+            /* 카드2, 카드3: flex로 전환하여 겹침 방지 */
+            .fcard-stable,
+            .fcard-nextgen {
+                display: flex;
+                flex-direction: column;
+                padding: 16px;
+                box-sizing: border-box;
+            }
+
+            .fcard-stable .label-text,
+            .fcard-nextgen .label-text {
+                position: static;
+                font-size: 16px;
+                width: auto;
+                max-width: 100%;
+                line-height: 1.6;
+                margin: 0;
+            }
+
+            .fcard-stable .title-text,
+            .fcard-nextgen .title-text {
+                position: static;
+                font-size: 30px;
+                line-height: 1.4;
+                margin: 0;
+                margin-top: auto;
             }
 
             .product-tabs {
