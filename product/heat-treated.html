@@ -1210,7 +1210,7 @@
             }
 
             .hero-text-section h2 {
-                font-size: clamp(20px, 5vw, 28px);
+                font-size: 24px;
                 line-height: 150%;
             }
 
@@ -1227,58 +1227,117 @@
                 padding: 0;
             }
 
-            .fcard,
             .fcard-premium,
             .fcard-stable,
             .fcard-nextgen {
                 width: 100% !important;
+                max-width: 100% !important;
                 height: 156px;
                 border-radius: 16px;
-                flex-shrink: 0;
+                flex: none;
+            }
+
+            /* 카드1 */
+            .fcard-premium {
+                overflow: hidden !important;
             }
 
             .fcard-premium .bg-main {
+                width: 100% !important;
+                height: 100% !important;
+                left: 0 !important;
+                top: 0 !important;
+                border-radius: 16px !important;
+            }
+
+            .fcard-stable .bg-main,
+            .fcard-nextgen .bg-main {
                 display: none;
             }
 
+            .fcard-stable {
+                background: #F27100;
+            }
+
+            .fcard-nextgen {
+                background: #F1F3F7;
+            }
+
             .fcard-premium .bg-circle {
-                width: 171px;
-                height: 166px;
-                left: auto;
+                width: 170px;
+                height: 170px;
+                left: unset;
                 right: 0;
-                top: 50px;
+                top: 50%;
+                border-radius: 50% !important;
             }
 
             .fcard-premium .product-img {
-                width: 161px;
-                height: 78px;
-                left: auto;
-                right: 10px;
-                top: 78px;
+                width: 157px !important;
+                height: 75px;
+                left: auto !important;
+                right: 6px !important;
+                top: 52%;
+                background-size: contain !important;
+                background-position: center bottom !important;
+                border-radius: 0 0 2.7px 2.7px !important;
             }
 
-            .fcard .label-text,
-            .fcard-premium .label-text,
-            .fcard-stable .label-text,
-            .fcard-nextgen .label-text {
-                left: 16px;
-                top: 16px;
-                font-size: 16px;
-            }
-
-            .fcard .title-text,
-            .fcard-premium .title-text,
-            .fcard-stable .title-text,
-            .fcard-nextgen .title-text {
-                left: 16px;
-                top: auto;
-                bottom: 16px;
-                font-size: 24px;
+            /* 카드1 텍스트 */
+            .fcard-premium .label-text {
+                left: 16px !important;
+                top: 16px !important;
+                font-size: 16px !important;
+                line-height: 1.6 !important;
+                font-weight: 400 !important;
+                width: auto;
             }
 
             .fcard-premium .title-text {
-                top: 80px;
+                left: 16px !important;
+                top: 98px !important;
                 bottom: auto;
+                font-size: 30px !important;
+                line-height: 1.4 !important;
+            }
+
+            /* 카드2, 카드3: flex 전환 */
+            .fcard-stable,
+            .fcard-nextgen {
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: flex-start !important;
+                padding: 16px !important;
+                gap: 30px !important;
+                box-sizing: border-box !important;
+            }
+
+            .fcard-stable .label-text,
+            .fcard-nextgen .label-text {
+                position: relative !important;
+                left: auto !important;
+                top: auto !important;
+                font-size: 16px !important;
+                line-height: 1.6 !important;
+                font-weight: 400 !important;
+                width: auto;
+                max-width: 100%;
+                margin: 0;
+            }
+
+            .fcard-stable .title-text,
+            .fcard-nextgen .title-text {
+                position: relative !important;
+                left: auto !important;
+                top: auto !important;
+                font-size: 30px !important;
+                line-height: 1.4 !important;
+                margin: 0;
+            }
+
+            .fcard-stable .title-text br,
+            .fcard-nextgen .title-text br {
+                display: none;
             }
 
             /* Product Tabs */
