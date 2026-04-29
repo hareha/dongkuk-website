@@ -1617,7 +1617,7 @@
 
             .usage-content {
                 flex-direction: column;
-                gap: 20px;
+                gap: 24px;
             }
 
             .usage-left {
@@ -1640,16 +1640,16 @@
                 width: 100% !important;
                 margin-left: 0;
                 font-size: 16px;
+                height: auto !important;
             }
 
             .usage-right {
                 width: 100% !important;
                 height: auto !important;
-                position: relative;
             }
 
-            .usage-tab-content {
-                position: relative;
+            .usage-tab-content.active {
+                position: relative !important;
             }
 
             .utc-video {
@@ -1666,6 +1666,7 @@
                 scroll-snap-type: x mandatory;
                 gap: 4px;
                 padding-bottom: 4px;
+                justify-content: flex-start;
             }
 
             .utc-part-box {
@@ -1685,6 +1686,11 @@
 
             .utc-footer-info {
                 justify-content: flex-start;
+            }
+
+            .utc-footer-icon {
+                width: 20px;
+                height: 20px;
             }
 
             .utc-footer-text {
