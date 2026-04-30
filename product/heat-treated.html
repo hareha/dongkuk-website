@@ -1714,11 +1714,13 @@
                 object-fit: contain;
                 cursor: pointer;
                 opacity: 0.4;
-                transition: opacity 0.3s;
+                filter: grayscale(1);
+                transition: opacity 0.3s, filter 0.3s;
             }
 
             .ps-mob-icon.active {
                 opacity: 1;
+                filter: grayscale(0);
             }
 
             /* 1행: 냉연코일세팅, 열처리, 정밀컷팅, 포장정리 */

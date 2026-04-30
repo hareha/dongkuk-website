@@ -1833,11 +1833,13 @@
                 object-fit: contain;
                 cursor: pointer;
                 opacity: 0.4;
-                transition: opacity 0.3s;
+                filter: grayscale(1);
+                transition: opacity 0.3s, filter 0.3s;
             }
 
             .ps-mob-icon.active {
                 opacity: 1;
+                filter: grayscale(0);
             }
 
             /* 1행: 1-열연코일세팅, 2-산세라인, 3-정밀컷팅, 4-냉간압연 */
