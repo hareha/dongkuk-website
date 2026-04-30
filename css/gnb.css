@@ -24,8 +24,10 @@
 .gnb-menu {
   position: fixed;
   top: 100px;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
+  max-width: 1920px;
   max-height: 0;
   z-index: 99;
   background: #fff;
@@ -249,13 +251,15 @@
 .gnb {
     position: fixed;
     top: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100%;
+    max-width: 1920px;
     z-index: 1000;
-    transition: transform 0.3s ease-in-out;
+    transition: top 0.3s ease-in-out;
 }
 
 /* 스크롤을 내렸을 때 GNB를 위로 숨기는 역할 */
 .gnb.gnb-hidden {
-    transform: translateY(-100%);
+    top: -110px;
 }

@@ -48,7 +48,7 @@
     }
 
     .gnb.gnb-hidden {
-      transform: translateY(-100%);
+      top: -110px;
     }
 
     /* ══ HERO ══ */
@@ -98,6 +98,7 @@
       color: #fff;
       letter-spacing: -0.03em;
       line-height: 1;
+      transition: top 0.3s ease, bottom 0.3s ease;
     }
 
     .hero-sub-text {
@@ -127,7 +128,7 @@
       position: sticky;
       top: 0;
       left: 0;
-      width: 100vw;
+      width: 100%;
       height: 100vh;
       background: transparent;
       overflow: hidden;
@@ -1670,24 +1671,31 @@
 
       /* ── Hero ── */
       #hero {
-        min-height: 60vh;
-        height: 60vh;
+        height: 100svh;
+        min-height: 0;
         margin-bottom: 0;
       }
       .hero-title {
-        font-size: clamp(32px, 8vw, 48px);
-        top: 80px;
-        left: 16px;
-        right: 16px;
+        font-size: clamp(48px, 16.67vw, 60px) !important;
+        font-weight: 700 !important;
+        top: auto !important;
+        bottom: 3.2svh;
+        left: clamp(16px, 6.67vw, 24px) !important;
+        right: auto !important;
         width: auto;
+        line-height: 1.4 !important;
       }
       .hero-sub-text {
-        right: 16px;
-        bottom: 40px;
-        left: 16px;
+        right: clamp(16px, 6.67vw, 24px);
+        top: auto;
+        bottom: 22.3svh;
+        left: auto;
+        text-align: right;
       }
       .hero-sub-text p {
-        font-size: 16px;
+        font-size: clamp(20px, 6.67vw, 24px) !important;
+        font-weight: 700 !important;
+        line-height: 1.5 !important;
       }
       .hero-blob {
         width: 200px;
@@ -1700,7 +1708,7 @@
         height: 350vh;
       }
       .orbital-sticky {
-        width: 100vw;
+        width: 100%;
         overflow: hidden;
       }
       .orb-heading {
@@ -1712,8 +1720,8 @@
         text-align: center;
       }
       .orb-coil {
-        width: 80vw !important;
-        height: 80vw !important;
+        width: min(70vw, 40svh) !important;
+        height: min(70vw, 40svh) !important;
       }
       #orb-card-1,
       #orb-card-2,
@@ -1765,22 +1773,22 @@
       .product-sticky {
         position: sticky;
         top: 0;
-        height: 740px;
+        height: 100svh;
         width: 100%;
         padding: 0;
         background: #fff;
-        overflow: hidden;
+        overflow: visible;
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         justify-content: center;
       }
       .product-card {
         width: 100% !important;
         max-width: 100% !important;
-        height: 614px !important;
-        padding: 150px 16px 20px !important;
+        height: 75svh !important;
+        padding: 24px 16px 20px !important;
         border-radius: 16px !important;
-        margin: 0 !important;
+        margin: 0 0 16px !important;
         position: relative;
         overflow: hidden !important;
         background-size: cover !important;
@@ -1790,7 +1798,6 @@
         justify-content: flex-end !important;
         box-sizing: border-box !important;
       }
-
       /* ── 좌측 컨텐츠 ── */
       .product-left {
         width: 100%;
@@ -1869,13 +1876,17 @@
         top: auto !important;
         width: 100% !important;
         height: auto !important;
-        font-size: 18px !important;
+        font-size: clamp(14px, 4vw, 18px) !important;
         font-weight: 700 !important;
         color: #fff !important;
         opacity: 0.8;
         padding: 0 !important;
         margin: 0 !important;
         line-height: 1.6 !important;
+        white-space: nowrap !important;
+      }
+      .product-info-text h3 br {
+        display: none;
       }
       .product-info-text p {
         position: relative !important;
@@ -1974,15 +1985,15 @@
         padding: 0 !important;
       }
       #invest {
-        padding: 16px !important;
+        padding: 0 !important;
       }
       .invest-card-wrap {
         width: 100% !important;
         max-width: 100% !important;
         min-height: auto !important;
-        padding: 24px 16px !important;
-        border-radius: 16px !important;
-        gap: 24px !important;
+        padding: 40px 16px !important;
+        border-radius: 0 !important;
+        gap: 30px !important;
       }
       .invest-title-block {
         gap: 20px;
@@ -2002,33 +2013,32 @@
       }
       .invest-cards-row {
         flex-direction: column !important;
-        gap: 16px !important;
+        gap: 8px !important;
         width: 100% !important;
       }
       .inv-card-stock {
         width: 100% !important;
         min-height: auto !important;
-        padding: 24px !important;
-        border-radius: 20px !important;
-        flex-shrink: 1 !important;
-        gap: 20px;
+        padding: 16px !important;
+        border-radius: 16px !important;
+        flex-shrink: 0 !important;
       }
       .inv-price-num {
-        font-size: clamp(32px, 8vw, 48px);
+        font-size: 36px;
       }
       .inv-card-col {
         width: 100% !important;
-        flex-shrink: 1 !important;
-        gap: 12px !important;
+        flex-shrink: 0 !important;
+        gap: 8px !important;
       }
       .inv-card-market,
       .inv-card-accum {
-        padding: 20px !important;
+        padding: 16px !important;
         border-radius: 16px !important;
       }
       .inv-card-num,
       .inv-card-num-dark {
-        font-size: clamp(28px, 8vw, 40px);
+        font-size: 36px;
       }
       .inv-card-label,
       .inv-card-label-dark {
@@ -2036,11 +2046,11 @@
       }
       .inv-card-sub,
       .inv-card-sub-dark {
-        font-size: 14px;
+        font-size: 16px;
       }
       .inv-card-icon {
-        width: 48px;
-        height: 48px;
+        width: 62px;
+        height: 62px;
       }
       .inv-card-ir {
         min-height: auto !important;
@@ -2479,7 +2489,7 @@
             <a href="#" class="invest-btn-fill">투자정보 센터</a>
             <a href="#" class="invest-btn-outline">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4.5 3L12.5 10L4.5 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                <path d="M3 10H16.5M16.5 10L10.5 4M16.5 10L10.5 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round" />
               </svg>
             </a>
@@ -2803,10 +2813,10 @@
         isMobile = window.innerWidth <= 1023;
         cx = W * 0.50;
         cy = H * 0.50;
-        /* 모바일: 코일 궤도 반경 축소 */
-        const COIL_R = isMobile ? Math.min(W * 0.35, 180) : 420;
+        /* 모바일: 코일 궤도 반경 — 코일보다 훨씬 넓게 */
+        const COIL_R = isMobile ? Math.min(W * 0.8, H * 0.42, 380) : 420;
         rx_in = COIL_R; ry_in = COIL_R;
-        const R_OUT = isMobile ? Math.min(W * 0.45, 240) : Math.min(W * 0.7, H * 0.7);
+        const R_OUT = isMobile ? Math.min(W * 1.0, H * 0.52, 460) : Math.min(W * 0.7, H * 0.7);
         rx_out = R_OUT; ry_out = R_OUT;
 
         svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
@@ -2818,7 +2828,7 @@
         coil.style.left = cx + 'px';
         coil.style.top = cy + 'px';
         /* 모바일: orb-coil 크기 동적 조절 (인라인 style 오버라이드) */
-        var coilSize = isMobile ? Math.min(W * 0.7, 300) : Math.max(560, W * 0.4);
+        var coilSize = isMobile ? Math.min(W * 0.7, H * 0.4, 320) : Math.max(560, W * 0.4);
         coil.style.width = coilSize + 'px';
         coil.style.height = coilSize + 'px';
 
@@ -3164,24 +3174,29 @@
         if (range <= 0) return;
         var p = Math.max(0, Math.min(1, -rect.top / range));
         if (loadingBar) loadingBar.style.width = (p * 100) + '%';
-        var idx = Math.min(Math.floor(p * 3), 2);
+        var idx = Math.min(Math.floor(Math.max(0, (p - 0.15) / 0.85) * 3), 2);
         setStep(idx);
 
         /* 3D 코일: product 섹션 접근 시 이동 + 각도 변경 + 스크롤 아웃 */
         if (window._coil3d) {
           var vh = window.innerHeight;
+          var vw = window.innerWidth;
           var fixedWrap = document.getElementById('coil-3d-fixed');
+          var mobCoil = vw <= 1023;
+          var mobUp = mobCoil ? Math.round(vh * -0.25) : 0; /* 모바일: 25vh 위로 */
 
           if (rect.top > 0 && rect.top < vh) {
             /* ── 섹션이 아래에서 올라오는 중: 코일 이동 (center → product) ── */
+            var entry = 1 - (rect.top / vh);
             if (!window._coilLocked) {
-              var entry = 1 - (rect.top / vh);
-              var tRaw = 0.20 + entry * 0.15; /* 0.20→0.35 (orbital 끝에서 이어짐) */
+              var tRaw = 0.20 + entry * 0.15;
               window._coil3d.updateRotation(tRaw);
             }
             if (fixedWrap) {
               fixedWrap.classList.add('coil-fixed');
               fixedWrap.classList.add('coil-on-product');
+              var curUp = mobUp ? Math.round(mobUp * entry) : 0;
+              fixedWrap.style.transform = curUp ? 'translateY(' + curUp + 'px)' : 'none';
               fixedWrap.style.opacity = '1';
             }
           } else if (rect.top <= 0) {
@@ -3202,18 +3217,18 @@
             /* 카드가 위로 빠질 때 코일도 같이 올라감 */
             if (rect.bottom <= 0) {
               if (fixedWrap) {
-                fixedWrap.style.transform = 'translateY(-100vh)';
+                fixedWrap.style.transform = 'translateY(' + (mobUp - vh) + 'px)';
                 fixedWrap.style.opacity = '1';
               }
             } else if (rect.bottom < vh) {
               var offset = vh - rect.bottom;
               if (fixedWrap) {
-                fixedWrap.style.transform = 'translateY(-' + offset + 'px)';
+                fixedWrap.style.transform = 'translateY(' + (mobUp - offset) + 'px)';
                 fixedWrap.style.opacity = '1';
               }
             } else {
               if (fixedWrap) {
-                fixedWrap.style.transform = 'none';
+                fixedWrap.style.transform = mobUp ? 'translateY(' + mobUp + 'px)' : 'none';
                 fixedWrap.style.opacity = '1';
               }
             }
@@ -4382,8 +4397,8 @@
       var ROLL_END = Math.PI * 5.50;
       var _isMob = window.innerWidth <= 1023;
       var X_END = _isMob ? 0.6 : 0.5;
-      var CAM_Y_START = 0.3, CAM_Y_END = _isMob ? 1.8 : 0.53;
-      var CAM_Z_START = 2.8, CAM_Z_END = _isMob ? 2.4 : 2.7;
+      var CAM_Y_START = 0.3, CAM_Y_END = _isMob ? 1.2 : 0.53;
+      var CAM_Z_START = 2.8, CAM_Z_END = _isMob ? 3.2 : 2.7;
 
       /* ════════════════════════════════════════════════════
          window._coil3d 노출 + 렌더 루프
@@ -4409,7 +4424,7 @@
           var _deg3 = ov.deg3 !== undefined ? ov.deg3 : deg3;
           var _CAM_Y_END = ov.camY !== undefined ? ov.camY : CAM_Y_END;
           var _CAM_Z_END = ov.camZ !== undefined ? ov.camZ : CAM_Z_END;
-          var _lookAtY = ov.lookAtY !== undefined ? ov.lookAtY : -0.01;
+          var _lookAtY = ov.lookAtY !== undefined ? ov.lookAtY : (window.innerWidth <= 1023 ? 1.0 : -0.01);
           var _scale = ov.scale !== undefined ? ov.scale : 1.0;
 
           var currentYaw = 0, currentX = 0, currentZ = 0, currentRoll = 0;
@@ -4492,7 +4507,7 @@
           /* 모바일: 카드 우상단에 안착 → X 더 크게, Y 더 크게 */
           var _mobNow = window.innerWidth <= 1023;
           var modelXEnd = ov.modelX !== undefined ? ov.modelX : (_mobNow ? 0.55 : 0.75);
-          var modelYEnd = ov.modelY !== undefined ? ov.modelY : (_mobNow ? 1.8 : 0.3);
+          var modelYEnd = ov.modelY !== undefined ? ov.modelY : (_mobNow ? 1.2 : 0.3);
           var curScale = yawGroup.scale.x;
           yawGroup.position.set(
             -OUTER_R * curScale + lerp3d(0, modelXEnd, et),

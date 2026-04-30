@@ -17,12 +17,15 @@
 
 html {
     font-size: clamp(12px, 0.833vw, 16px);
+    background: #e0e0e0; /* 1920px 바깥 배경 */
 }
 
 body {
     background: #fff;
     color: #111;
     min-width: 0;
+    max-width: 1920px;
+    margin: 0 auto;
     overflow-x: clip;
     /* hidden은 position:sticky를 무력화하므로 clip 사용 */
     padding-top: 100px;
@@ -155,8 +158,10 @@ body {
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06) !important;
     position: fixed !important;
     top: 0 !important;
-    left: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
     width: 100% !important;
+    max-width: 1920px !important;
     z-index: 100 !important;
 }
 
@@ -256,7 +261,7 @@ body {
     position: fixed;
     width: 80px;
     height: 80px;
-    right: 40px;
+    right: max(40px, calc((100vw - 1920px) / 2 + 40px));
     bottom: 40px;
     background: #1B1B1B;
     border-radius: 800px;

@@ -575,7 +575,7 @@
             gap: 10px;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.25s ease 0.15s;
+            transition: opacity 0.05s ease; /* 닫힐 때: 즉시 사라짐 */
         }
 
         /* 텍스트 그룹 */
@@ -647,6 +647,7 @@
         .product-card.expanded .pc-expanded-content {
             opacity: 1;
             pointer-events: auto;
+            transition: opacity 0.3s ease 0.45s; /* 열릴 때: 타이틀 올라간 후 나타남 */
         }
 
         /* 버튼: 기본 숨김 및 클릭 방지 */
@@ -654,14 +655,14 @@
             opacity: 0;
             pointer-events: none;
             /* 💡 평소에는 클릭을 아예 무시합니다 */
-            transition: opacity 0.25s ease 0.15s;
+            transition: opacity 0.05s ease; /* 닫힐 때: 즉시 사라짐 */
         }
 
         /* 💡 핵심 수정: :hover 부분을 지우고 .expanded일 때만 활성화합니다 */
         .product-card.expanded .pc-btn-group {
             opacity: 1;
             pointer-events: auto;
-            /* 💡 카드가 확장되었을 때만 클릭이 가능해집니다 */
+            transition: opacity 0.3s ease 0.5s; /* 열릴 때: 딜레이 후 나타남 */
         }
 
 
@@ -1019,9 +1020,9 @@
                 -webkit-backdrop-filter: blur(31px);
                 background: #000;
             }
-            .marker-china   { bottom: auto; left: 16px; top: calc(232px + 168px); }
-            .marker-japan    { bottom: auto; left: auto; right: 16px; top: calc(232px + 211px); }
-            .marker-america  { top: calc(232px + 49px); right: 16px; left: auto; }
+            .marker-china   { bottom: auto; left: 16px; top: 58%; }
+            .marker-japan    { bottom: auto; left: auto; right: 16px; top: 64%; }
+            .marker-america  { top: 32%; right: 16px; left: auto; }
 
             /* ── Products: Figma h-740, 3카드 세로 스택 ── */
             .products-section {
@@ -1380,7 +1381,7 @@
         <section class="products-section">
             <div class="products-container">
 
-                <div class="product-card expanded"
+                <div class="product-card expanded" data-href="dikel.html"
                     style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('assets/product-center/니켈도금강판.png');">
                     <div class="pc-content">
                         <h3 class="pc-title-small">니켈도금강판</h3>
@@ -1403,7 +1404,7 @@
                     </div>
                 </div>
 
-                <div class="product-card"
+                <div class="product-card" data-href="cold-rolled.html"
                     style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('assets/product-center/냉연강판.png');">
                     <div class="pc-content">
                         <h3 class="pc-title-small">냉연강판</h3>
@@ -1426,7 +1427,7 @@
                     </div>
                 </div>
 
-                <div class="product-card"
+                <div class="product-card" data-href="heat-treated.html"
                     style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('assets/product-center/열처리강판.png');">
                     <div class="pc-content">
                         <h3 class="pc-title-small">Q/T 열처리강판</h3>
@@ -1591,14 +1592,22 @@
 
         // 🌟 제품 카드 확장 아코디언 스크립트 🌟
         const productCards = document.querySelectorAll('.product-card');
+        const isMobile = window.innerWidth <= 1023;
         productCards.forEach(card => {
-            const expandCard = () => {
+            card.addEventListener('click', () => {
+                if (isMobile && card.dataset.href) {
+                    location.href = card.dataset.href;
+                    return;
+                }
                 productCards.forEach(c => c.classList.remove('expanded'));
                 card.classList.add('expanded');
-            };
-
-            card.addEventListener('click', expandCard);
-            card.addEventListener('mouseenter', expandCard);
+            });
+            if (!isMobile) {
+                card.addEventListener('mouseenter', () => {
+                    productCards.forEach(c => c.classList.remove('expanded'));
+                    card.classList.add('expanded');
+                });
+            }
         });
 
         // 🌐 글로벌 비즈니스 — 진입 시 프레임 확장 + 영상 재생 + 종료 시 오버레이

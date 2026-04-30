@@ -2837,7 +2837,7 @@
                 const scrollRoom = outer.offsetHeight - outer.querySelector('.hero-text-inner').offsetHeight;
                 const scrolled = -rect.top;
 
-                let progress = Math.max(0, Math.min(1, scrolled / Math.max(scrollRoom, 1)));
+                let progress = Math.max(0, Math.min(1, scrolled / Math.max(scrollRoom * 0.6, 1)));
 
                 const activeCount = Math.floor(progress * chars.length);
                 chars.forEach((c, i) => c.classList.toggle('active', i < activeCount));
