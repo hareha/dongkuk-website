@@ -442,8 +442,6 @@
         }
 
         .accordion .inner {
-            max-width: 1680px;
-            margin: 0 auto;
             padding: 0 clamp(16px, 6.25vw, 120px);
             display: flex;
             flex-direction: column;
@@ -3306,8 +3304,7 @@
             width: calc(100% - 60px);
             height: 800px;
             border-radius: 30px;
-            background: linear-gradient(0deg, rgba(67, 67, 67, 0.1), rgba(67, 67, 67, 0.1)),
-                url('assets/dikel/dikel/video_dikel_value.png') center/cover no-repeat;
+            background: #333;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -3316,10 +3313,45 @@
             margin: 30px auto 0;
         }
 
-        .hero-bg-decor {
+        .hero-video {
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(80, 140, 80, 0.3) 0%, transparent 70%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-bg-decor {
+            position: absolute;
+            width: 80vw;
+            max-width: 1532px;
+            aspect-ratio: 1;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            animation: circleReveal 1.2s cubic-bezier(.25, .46, .45, .94) forwards 0.1s;
+        }
+
+        .hero-bg-decor img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        @keyframes circleReveal {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.15);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
         }
 
         .hero-content {
@@ -3332,7 +3364,9 @@
             width: 100%;
             max-width: 1153px;
             height: auto;
-            top: 375px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             z-index: 1;
         }
 
@@ -4435,11 +4469,17 @@
                 margin: 0 !important;
             }
 
+            .hero-bg-decor {
+                width: 130vw !important;
+                max-width: none !important;
+            }
+
             .hero-content {
                 width: 100% !important;
                 max-width: 328px !important;
                 top: 50% !important;
-                transform: translateY(-50%) !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
                 padding: 0 !important;
                 gap: 6px !important;
                 height: auto !important;
@@ -5465,7 +5505,7 @@
                                 <div class="umi-icon"></div>
                                 <span class="umi-title">모빌리티 산업</span>
                             </div>
-                            <p class="umi-desc" style="height: 105px;">
+                            <p class="umi-desc">
                                 높은 내식성과 가공성을 갖춘 동국산업의 니켈도금강판은<br>전기차 및 이동장치 배터리의 안정성과 성능 향상에 기여합니다.
                             </p>
                         </div>
@@ -5475,7 +5515,7 @@
                                 <div class="umi-icon"></div>
                                 <span class="umi-title">산업용 부품</span>
                             </div>
-                            <p class="umi-desc" style="height: 70px;">
+                            <p class="umi-desc">
                                 도금 품질이 뛰어난 동국산업의 니켈도금강판은<br>차세대 산업의 정밀성과 안정성을 높이는 소재로 활용됩니다.
                             </p>
                         </div>
@@ -6143,7 +6183,12 @@
     <!-- TAB: DiKel 가치 -->
     <div id="tab-dikel" class="tab-panel active">
         <section class="hero">
-            <div class="hero-bg-decor"></div>
+            <video class="hero-video" autoplay loop muted playsinline>
+                <source src="assets/dikel/video_dikel 가치.mp4" type="video/mp4">
+            </video>
+            <div class="hero-bg-decor">
+                <img src="assets/dikel/hero-circles.svg" alt="">
+            </div>
             <div class="hero-content">
                 <div class="hero-title">
                     <div class="hero-title-left">
