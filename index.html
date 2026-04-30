@@ -3619,14 +3619,15 @@
       /* ════════════════════════════════════════════════════
          THREE.JS 기본 설정
          ════════════════════════════════════════════════════ */
-      var renderer = new THREE.WebGLRenderer({ canvas: canvas3d, antialias: true, alpha: true, premultipliedAlpha: false });
-      renderer.setPixelRatio(window.devicePixelRatio);
+      var isMobile = window.innerWidth <= 1023;
+      var renderer = new THREE.WebGLRenderer({ canvas: canvas3d, antialias: !isMobile, alpha: true, premultipliedAlpha: false });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 2 : 3));
       renderer.setClearColor(0x000000, 0); /* 완전 투명 */
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1.10;
       renderer.outputEncoding = THREE.sRGBEncoding;
       renderer.shadowMap.enabled = true;
-      renderer.shadowMap.type = THREE.VSMShadowMap;
+      renderer.shadowMap.type = isMobile ? THREE.PCFSoftShadowMap : THREE.VSMShadowMap;
 
       var scene = new THREE.Scene();
       window._scene = scene;
@@ -3751,8 +3752,9 @@
       var keyLight = new THREE.DirectionalLight(0xffffff, 1.80);
       keyLight.position.set(0, 2.5, 1.7);
       keyLight.castShadow = true;
-      keyLight.shadow.mapSize.width = 2048;
-      keyLight.shadow.mapSize.height = 2048;
+      var shadowRes = isMobile ? 512 : 2048;
+      keyLight.shadow.mapSize.width = shadowRes;
+      keyLight.shadow.mapSize.height = shadowRes;
       keyLight.shadow.camera.near = 0.1;
       keyLight.shadow.camera.far = 20;
       keyLight.shadow.camera.left = -5;
