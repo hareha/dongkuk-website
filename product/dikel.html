@@ -4505,7 +4505,7 @@
                 text-align: center !important;
             }
 
-            /* ── 새로운 소재: 피그마 MOB px-[16px] py-[40px] gap-[20px] ── */
+            /* ── 새로운 소재: 피그마 38:4175 MOB ── */
             .material-section {
                 padding: 40px 0 !important;
                 overflow: clip !important;
@@ -4521,12 +4521,14 @@
 
             .material-title {
                 font-size: 30px !important;
+                font-weight: 700 !important;
                 height: auto !important;
                 max-width: 100% !important;
                 line-height: 1.4 !important;
+                text-align: left !important;
             }
 
-            /* 피그마 MOB: flex-col gap-[10px], 각 카드 h-[356px] rounded-[16px] */
+            /* 카드 그리드 → 세로 스택 gap-10 */
             .material-cards {
                 flex-direction: column !important;
                 height: auto !important;
@@ -4541,9 +4543,13 @@
                 border-radius: 16px !important;
                 padding: 40px 40px 60px !important;
                 overflow: hidden !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: space-between !important;
             }
 
-            /* 피그마 MOB: illus h-[150px] w-[296px] overflow-clip */
+            /* illus: h-150 w-296 */
             .mcard-illus {
                 max-width: 296px !important;
                 height: 150px !important;
@@ -4555,23 +4561,28 @@
                 object-fit: contain !important;
             }
 
-            /* 피그마 MOB: title 20px, desc 16px */
+            /* txt: w-288 gap-20, title 20px/1.5, desc 16px/1.6 #4E4E4E */
             .mcard-txt {
                 width: 100% !important;
                 max-width: 288px !important;
                 gap: 20px !important;
+                align-items: flex-start !important;
             }
 
             .mcard-title {
                 font-size: 20px !important;
+                font-weight: 700 !important;
                 height: auto !important;
                 line-height: 1.5 !important;
+                color: #1B1B1B !important;
             }
 
             .mcard-desc {
                 font-size: 16px !important;
+                font-weight: 400 !important;
                 height: auto !important;
                 line-height: 1.6 !important;
+                color: #4E4E4E !important;
             }
 
             /* ── Why DiKel: 피그마 MOB px-[16px] py-[40px] gap-[30px] ── */
