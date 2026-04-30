@@ -17,7 +17,7 @@
 
 html {
     font-size: clamp(12px, 0.833vw, 16px);
-    background: #e0e0e0; /* 1920px 바깥 배경 */
+    background: #fff; /* 1920px 바깥 배경 */
 }
 
 body {
