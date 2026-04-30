@@ -54,6 +54,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .gnb-logo {
@@ -72,7 +73,12 @@ body {
     transition: filter 0.3s ease;
 }
 
-/* 투명 배경(스크롤 전)일 때 흰 로고 */
+/* 투명 배경(스크롤 전)일 때 */
+.gnb.gnb-transparent {
+    background: transparent;
+    box-shadow: none;
+}
+
 .gnb.gnb-transparent .gnb-logo img {
     filter: brightness(0) invert(1);
 }
@@ -87,6 +93,14 @@ body {
 
 .gnb.gnb-transparent .gnb-menu-btn span {
     background: #fff;
+}
+
+/* solid 배경(스크롤 후) */
+.gnb.gnb-solid {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
 }
 
 .gnb-utils {
