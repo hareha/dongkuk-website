@@ -956,17 +956,18 @@
 
         .utc-footer-info {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             gap: 6px;
             width: 100%;
-            height: 35px;
         }
 
         .utc-footer-icon {
             width: 30px;
             height: 30px;
             object-fit: contain;
+            flex-shrink: 0;
+            margin-top: 2px;
         }
 
         .utc-footer-text {
@@ -1624,8 +1625,13 @@
             }
 
             .acc-dropdown-icon {
-                width: 36px;
-                height: 36px;
+                width: 22px;
+                height: 22px;
+            }
+
+            .acc-dropdown-icon img {
+                width: 22px;
+                height: 22px;
             }
 
             .acc-body {
@@ -2007,7 +2013,7 @@
                     <div class="fcard fcard-nextgen">
                         <div class="bg-main"></div>
                         <p class="label-text">글로벌 비즈니스 노하우 &amp; 탄탄한 수출 인프라</p>
-                        <p class="title-text">Global<br>Business</p>
+                        <p class="title-text">Global <br>Business</p>
                     </div>
                 </div>
             </section>

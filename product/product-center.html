@@ -79,95 +79,6 @@
             margin: 0;
         }
 
-        /* GNB Header */
-        .header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 80px;
-            z-index: 10;
-            transition: transform 0.3s ease;
-            will-change: transform;
-        }
-
-        .header.nav-hidden {
-            transform: translateY(-100%);
-        }
-
-        .logo-box {
-            width: 163px;
-            height: 34px;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-box img {
-            width: 163px;
-            height: 27px;
-            display: block;
-        }
-
-        .utils {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 24px;
-            height: 44px;
-        }
-
-        .utils-text {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 16px;
-            height: 44px;
-        }
-
-        .utils-text a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 44px;
-            padding: 4px 8px;
-            border-radius: 50px;
-            font-size: 20px;
-            font-weight: 700;
-            color: #FFFFFF;
-            line-height: 160%;
-        }
-
-        .divider {
-            width: 1px;
-            height: 22px;
-            background-color: #ffffff;
-            flex-shrink: 0;
-        }
-
-        .btn-menu {
-            width: 44px;
-            height: 44px;
-            border-radius: 100px;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 8.86px;
-        }
-
-        .btn-menu span {
-            display: block;
-            width: 28px;
-            height: 2px;
-            background: #FFFFFF;
-        }
 
         /* ================= 동국산업의 기준 (Standards Section) ================= */
         .standards-section {
@@ -891,17 +802,6 @@
                 line-height: 1.5;
             }
 
-            /* ── Header/GNB ── */
-            .header {
-                height: 72px;
-                padding: 0 16px;
-            }
-            .utils-text { display: none; }
-            .divider { display: none; }
-            .logo-box { width: 156px; height: 30px; }
-            .logo-box img { width: 156px; height: auto; }
-            .btn-menu { width: 32px; height: 32px; gap: 7px; }
-            .btn-menu span { width: 22px; height: 1.5px; }
 
             /* ── Standards: 모바일 Figma 38:3589 ── */
             .standards-section {
@@ -972,11 +872,13 @@
                 font-size: 18px;
                 line-height: 1.6;
             }
+            .card-desc {
+                font-size: 16px;
+                line-height: 1.6;
+            }
             .swiper-slide-active .card-desc {
                 max-height: 200px;
                 opacity: 1;
-                font-size: 16px;
-                line-height: 1.6;
             }
             .slider-nav {
                 margin-top: 24px;
@@ -1195,20 +1097,17 @@
     <div class="container">
 
         <section class="hero-section">
-            <header class="header">
-                <div class="logo-box">
-                    <a href="../index.html"><img src="assets/product-center/로고.svg" alt="DK Steel"></a>
+            <header class="gnb gnb-transparent" data-gnb-transparent>
+                <div class="gnb-logo">
+                    <a href="../index.html"><img src="../assets/common/logo.svg" alt="동국산업 로고"></a>
                 </div>
-
-                <div class="utils">
-                    <div class="utils-text">
-                        <a href="#" class="item-inquiry">문의</a>
-                        <a href="#" class="item-lang">KR</a>
+                <div class="gnb-utils">
+                    <div class="gnb-utils-links">
+                        <a href="#">문의</a>
+                        <a href="#">KR</a>
                     </div>
-                    <div class="divider"></div>
-                    <button class="btn-menu">
-                        <span></span><span></span><span></span>
-                    </button>
+                    <span class="gnb-divider"></span>
+                    <button class="gnb-menu-btn" aria-label="메뉴"><span></span><span></span><span></span></button>
                 </div>
             </header>
 
@@ -1517,40 +1416,8 @@
 
     <div class="btn-top">TOP</div>
 
-    <script>
-        (function () {
-            const nav = document.querySelector('.header');
-            if (!nav) return;
 
-            let lastY = window.scrollY;
-            let ticking = false;
-            const threshold = 8;
-            const revealOffset = 80;
-
-            function updateNav() {
-                const currentY = window.scrollY;
-                const delta = currentY - lastY;
-
-                if (currentY <= revealOffset) {
-                    nav.classList.remove('nav-hidden');
-                } else if (Math.abs(delta) >= threshold) {
-                    nav.classList.toggle('nav-hidden', delta > 0);
-                }
-
-                lastY = currentY;
-                ticking = false;
-            }
-
-            window.addEventListener('scroll', () => {
-                if (ticking) return;
-                ticking = true;
-                window.requestAnimationFrame(updateNav);
-            }, { passive: true });
-
-            updateNav();
-        })();
-
-        // ===== Swiper 슬라이더 =====
+    <script>        // ===== Swiper 슬라이더 =====
         const swiperScript = document.createElement('script');
         swiperScript.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
         swiperScript.onload = function () {

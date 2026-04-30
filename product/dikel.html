@@ -923,7 +923,7 @@
 
         .utc-footer-info {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             gap: 6px;
             width: 100%;
@@ -933,6 +933,8 @@
             width: 30px;
             height: 30px;
             object-fit: contain;
+            flex-shrink: 0;
+            margin-top: 2px;
         }
 
         .utc-footer-text {
@@ -1616,8 +1618,13 @@
             }
 
             .acc-dropdown-icon {
-                width: 36px;
-                height: 36px;
+                width: 22px;
+                height: 22px;
+            }
+
+            .acc-dropdown-icon img {
+                width: 22px;
+                height: 22px;
             }
 
             .acc-body {

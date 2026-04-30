@@ -25,7 +25,17 @@
             line-height: 140%;
         }
 
-        /* ===== Subtitle ===== */
+        /* ===== Subtitle (sticky scroll-to-color) ===== */
+        .hero-text-outer {
+            position: relative;
+        }
+
+        .hero-text-inner {
+            position: sticky;
+            top: 50px;
+            background: #fff;
+        }
+
         .subtitle-section {
             display: flex;
             justify-content: center;
@@ -36,17 +46,12 @@
 
         .subtitle-section p {
             width: 100%;
-            max-width: 564px;
             margin: 0;
             font-size: clamp(32px, 3.125vw, 60px);
             font-weight: 700;
             line-height: 140%;
             color: #E9E9E9;
             text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
         }
 
         .subtitle-section p .char {
@@ -90,7 +95,7 @@
             align-items: center;
             width: 100%;
             max-width: 1680px;
-            gap: clamp(40px, 6.25vw, 120px);
+            gap: 120px;
         }
 
         .story-row.row-text-left {
@@ -98,7 +103,9 @@
         }
 
         .story-img {
-            flex: 1 1 48%;
+            flex: 0 0 auto;
+            width: 820px;
+            max-width: 48%;
             min-width: 0;
             aspect-ratio: 820 / 600;
             border-radius: clamp(16px, 1.56vw, 30px);
@@ -150,7 +157,8 @@
             justify-content: center;
             align-items: flex-start;
             gap: clamp(20px, 3.125vw, 60px);
-            flex: 1 1 30%;
+            flex: 0 1 464px;
+            max-width: 464px;
             min-width: 0;
         }
 
@@ -228,8 +236,13 @@
         }
 
         @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-100%); }
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
         }
 
         .scene-img {
@@ -281,6 +294,14 @@
             }
 
             /* Subtitle */
+            .hero-text-outer {
+                /* JS가 높이 세팅 */
+            }
+
+            .hero-text-inner {
+                top: 72px;
+            }
+
             .subtitle-section {
                 padding: 40px 16px;
             }
@@ -301,7 +322,7 @@
             }
 
             .story-rows {
-                gap: 40px;
+                gap: 10px;
             }
 
             .story-row,
@@ -309,7 +330,7 @@
                 flex-direction: column;
                 width: 100% !important;
                 height: auto;
-                gap: 20px;
+                gap: 10px;
             }
 
             /* 모바일에서 텍스트-왼쪽 행의 순서 반전 (이미지가 먼저 오도록) */
@@ -319,6 +340,7 @@
 
             .story-img {
                 width: 100% !important;
+                max-width: 100% !important;
                 height: 200px;
                 border-radius: 16px;
             }
@@ -332,8 +354,11 @@
 
             .story-text {
                 width: 100% !important;
+                max-width: 100% !important;
+                flex: none;
                 height: auto;
-                gap: 20px;
+                gap: 30px;
+                padding: 20px 0;
             }
 
             .story-text h2 {
@@ -351,7 +376,7 @@
             }
 
             .story-bullets li::before {
-                margin-top: 12px;
+                margin-top: 8px;
             }
 
             .story-bullets li span {
@@ -426,69 +451,73 @@
     </section>
 
     <!-- Subtitle -->
-    <section class="subtitle-section">
-        <p>끊임없는 기술 혁신으로<br>내일의 동력을 만듭니다.</p>
-    </section>
+    <div class="hero-text-outer">
+        <div class="hero-text-inner">
+            <section class="subtitle-section">
+                <p>끊임없는 기술 혁신으로 <br>내일의 동력을 만듭니다.</p>
+            </section>
 
-    <!-- 연구개발 스토리 -->
-    <section class="story-section">
-        <div class="inner">
-            <p class="section-label">연구개발 스토리</p>
-            <div class="story-rows">
+            <!-- 연구개발 스토리 -->
+            <section class="story-section">
+                <div class="inner">
+                    <p class="section-label">연구개발 스토리</p>
+                    <div class="story-rows">
 
-                <div class="story-row">
-                    <div class="story-img lab1">
-                        <div class="story-ic">
-                            <img src="assets/rnd/ic_연구개발.svg" alt="기술 기획 아이콘">
+                        <div class="story-row">
+                            <div class="story-img lab1">
+                                <div class="story-ic">
+                                    <img src="assets/rnd/ic_연구개발.svg" alt="기술 기획 아이콘">
+                                </div>
+                            </div>
+                            <div class="story-text">
+                                <h2>변화의 흐름을 읽는<br>기술 기획</h2>
+                                <ul class="story-bullets">
+                                    <li><span>국내외 기술 정보 수집</span></li>
+                                    <li><span>친환경 산업 동향 파악</span></li>
+                                    <li><span>정부·국책 연구과제 발굴 및 추진</span></li>
+                                    <li><span>외부 연구기관·경제연구소 협업</span></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="story-text">
-                        <h2>변화의 흐름을 읽는<br>기술 기획</h2>
-                        <ul class="story-bullets">
-                            <li><span>국내외 기술 정보 수집</span></li>
-                            <li><span>친환경 산업 동향 파악</span></li>
-                            <li><span>정부·국책 연구과제 발굴 및 추진</span></li>
-                            <li><span>외부 연구기관·경제연구소 협업</span></li>
-                        </ul>
+
+                        <div class="story-row row-text-left">
+                            <div class="story-text">
+                                <h2>실제적 가치로<br>이어진 연구</h2>
+                                <ul class="story-bullets">
+                                    <li><span>니켈도금강판 생산 기술 연구</span></li>
+                                    <li><span>양산화 및 품질 안정화를 위한 기술 협력 강화</span></li>
+                                    <li><span>생산성 향상 및 원가 절감을 위한 공정 최적화 연구</span></li>
+                                    <li><span>외부 전문기관과의 기술 협력</span></li>
+                                </ul>
+                            </div>
+                            <div class="story-img lab2">
+                                <div class="story-ic">
+                                    <img src="assets/rnd/ic_연구개발1.svg" alt="연구 가치 아이콘">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="story-row">
+                            <div class="story-img lab3">
+                                <div class="story-ic">
+                                    <img src="assets/rnd/ic_연구개발2.svg" alt="기회 탐색 아이콘">
+                                </div>
+                            </div>
+                            <div class="story-text">
+                                <h2>미래 혁신의<br>기회 탐색</h2>
+                                <ul class="story-bullets">
+                                    <li><span>신규 사업 기회 조사 및 검토</span></li>
+                                    <li><span>미래 시장성과 투자 타당성 분석</span></li>
+                                    <li><span>신제품 개발 및 설계</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-
-                <div class="story-row row-text-left">
-                    <div class="story-text">
-                        <h2>실제적 가치로<br>이어진 연구</h2>
-                        <ul class="story-bullets">
-                            <li><span>니켈도금강판 생산 기술 연구</span></li>
-                            <li><span>양산화 및 품질 안정화를 위한 기술 협력 강화</span></li>
-                            <li><span>생산성 향상 및 원가 절감을 위한 공정 최적화 연구</span></li>
-                            <li><span>외부 전문기관과의 기술 협력</span></li>
-                        </ul>
-                    </div>
-                    <div class="story-img lab2">
-                        <div class="story-ic">
-                            <img src="assets/rnd/ic_연구개발1.svg" alt="연구 가치 아이콘">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="story-row">
-                    <div class="story-img lab3">
-                        <div class="story-ic">
-                            <img src="assets/rnd/ic_연구개발2.svg" alt="기회 탐색 아이콘">
-                        </div>
-                    </div>
-                    <div class="story-text">
-                        <h2>미래 혁신의<br>기회 탐색</h2>
-                        <ul class="story-bullets">
-                            <li><span>신규 사업 기회 조사 및 검토</span></li>
-                            <li><span>미래 시장성과 투자 타당성 분석</span></li>
-                            <li><span>신제품 개발 및 설계</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
+            </section>
+        </div><!-- /hero-text-inner -->
+    </div><!-- /hero-text-outer -->
 
     <!-- 연구개발 현장 -->
     <section class="scene-section">
@@ -607,7 +636,7 @@
             updateNav();
         })();
 
-        /* ── Subtitle Scroll Highlight ── */
+        /* ── Subtitle Scroll Highlight (sticky 방식, 다른 제품 페이지와 동일) ── */
         document.addEventListener('DOMContentLoaded', () => {
             const p = document.querySelector('.subtitle-section p');
             if (!p) return;
@@ -635,29 +664,30 @@
             wrapCharacters(p);
 
             const chars = p.querySelectorAll('.char');
-            const section = document.querySelector('.subtitle-section');
+            const outer = document.querySelector('.hero-text-outer');
+            const innerEl = outer ? outer.querySelector('.hero-text-inner') : null;
+            if (!outer || !innerEl) return;
+
+            /* outer 높이를 inner + 1 화면(스크롤 여유)으로 정확히 세팅 → 빈 여백 없음 */
+            function setOuterHeight() {
+                const scrollDistance = window.innerHeight;
+                outer.style.height = innerEl.offsetHeight + scrollDistance + 'px';
+            }
+            setOuterHeight();
+            window.addEventListener('resize', setOuterHeight);
 
             function onScroll() {
-                const sectionTop = section.offsetTop;
-                const startScroll = Math.max(0, sectionTop - window.innerHeight * 0.8);
-                const endScroll = startScroll + 300;
+                const rect = outer.getBoundingClientRect();
+                const scrollRoom = outer.offsetHeight - innerEl.offsetHeight;
+                const scrolled = -rect.top;
 
-                let progress = (window.scrollY - startScroll) / (endScroll - startScroll);
-                progress = Math.max(0, Math.min(1, progress));
+                let progress = Math.max(0, Math.min(1, scrolled / Math.max(scrollRoom * 0.6, 1)));
 
-                const total = chars.length;
-                const activeCount = Math.floor(progress * total);
-
-                chars.forEach((char, index) => {
-                    if (index < activeCount) {
-                        char.classList.add('active');
-                    } else {
-                        char.classList.remove('active');
-                    }
-                });
+                const activeCount = Math.floor(progress * chars.length);
+                chars.forEach((c, i) => c.classList.toggle('active', i < activeCount));
             }
 
-            window.addEventListener('scroll', onScroll);
+            window.addEventListener('scroll', onScroll, { passive: true });
             onScroll();
         });
 

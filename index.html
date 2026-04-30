@@ -29,7 +29,8 @@
       background: #fff;
       color: #070707;
       overflow-x: hidden;
-      padding-top: 0; /* 히어로가 GNB 뒤로 풀스크린 */
+      padding-top: 0;
+      /* 히어로가 GNB 뒤로 풀스크린 */
     }
 
     /* ══ NAV — Figma: h100 px80 ══ */
@@ -58,7 +59,6 @@
       height: 100vh;
       min-height: 720px;
       overflow: hidden;
-      margin-bottom: 60px;
     }
 
     .hero-bg {
@@ -122,6 +122,7 @@
       position: relative;
       height: 500vh;
       z-index: 3;
+      margin-top: 120px;
     }
 
     .orbital-sticky {
@@ -470,6 +471,11 @@
     .prod-step.prod-active .product-info-img video {
       transform: translateY(0);
       opacity: 1;
+    }
+
+    /* 점 내비게이터: 데스크탑에서 숨김, 모바일에서만 표시 */
+    .prod-dots {
+      display: none;
     }
 
     .product-title {
@@ -1675,6 +1681,7 @@
         min-height: 0;
         margin-bottom: 0;
       }
+
       .hero-title {
         font-size: clamp(48px, 16.67vw, 60px) !important;
         font-weight: 700 !important;
@@ -1685,6 +1692,7 @@
         width: auto;
         line-height: 1.4 !important;
       }
+
       .hero-sub-text {
         right: clamp(16px, 6.67vw, 24px);
         top: auto;
@@ -1692,11 +1700,13 @@
         left: auto;
         text-align: right;
       }
+
       .hero-sub-text p {
         font-size: clamp(20px, 6.67vw, 24px) !important;
         font-weight: 700 !important;
         line-height: 1.5 !important;
       }
+
       .hero-blob {
         width: 200px;
         height: 200px;
@@ -1707,28 +1717,34 @@
       #orbital-wrapper {
         height: 350vh;
       }
+
       .orbital-sticky {
         width: 100%;
         overflow: hidden;
       }
+
       .orb-heading {
         font-size: clamp(20px, 5vw, 28px);
         text-align: center;
       }
+
       .orb-line {
         font-size: clamp(20px, 5vw, 28px);
         text-align: center;
       }
+
       .orb-coil {
         width: min(70vw, 40svh) !important;
         height: min(70vw, 40svh) !important;
       }
+
       #orb-card-1,
       #orb-card-2,
       #orb-card-3,
       #orb-card-4 {
         display: none !important;
       }
+
       .orb-btn-main {
         width: auto;
         padding: 8px 16px;
@@ -1736,14 +1752,17 @@
         font-size: 14px;
         border-radius: 10px;
       }
+
       .orb-btn-circle {
         width: 36px;
         height: 36px;
         border-radius: 10px;
       }
+
       .orb-cta-group {
         margin-top: 16px;
       }
+
       #orb-phase-1 {
         white-space: normal;
         left: 0 !important;
@@ -1755,6 +1774,7 @@
         text-align: center;
         transform: translateY(60px);
       }
+
       #orb-phase-2 {
         left: 0 !important;
         right: 0 !important;
@@ -1770,6 +1790,7 @@
         height: 300vh;
         padding: 0 16px !important;
       }
+
       .product-sticky {
         position: sticky;
         top: 0;
@@ -1782,6 +1803,7 @@
         align-items: flex-end;
         justify-content: center;
       }
+
       .product-card {
         width: 100% !important;
         max-width: 100% !important;
@@ -1798,6 +1820,7 @@
         justify-content: flex-end !important;
         box-sizing: border-box !important;
       }
+
       /* ── 좌측 컨텐츠 ── */
       .product-left {
         width: 100%;
@@ -1806,38 +1829,48 @@
         flex-direction: column;
         gap: 20px;
       }
+
       .product-dikel {
         margin-bottom: 0 !important;
         gap: 8px !important;
       }
+
       .product-dikel-icon {
         width: 28px !important;
         height: 28px !important;
       }
+
       .product-dikel-icon svg {
         width: 28px !important;
         height: 28px !important;
       }
+
       .product-dikel-name {
         font-size: 18px !important;
       }
+
       #prod-steps {
         flex: 0 0 auto;
         position: relative;
         min-height: 0 !important;
         margin-top: 0 !important;
       }
+
       .prod-step {
         position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: column;
         gap: 20px;
       }
+
       .prod-step.prod-active {
         position: relative;
       }
+
       .product-title {
         font-size: 30px !important;
         font-weight: 700 !important;
@@ -1863,6 +1896,7 @@
         flex-direction: column;
         gap: 20px;
       }
+
       .product-info-text {
         position: relative !important;
         width: 100%;
@@ -1870,6 +1904,7 @@
         flex-direction: column;
         gap: 6px;
       }
+
       .product-info-text h3 {
         position: relative !important;
         left: auto !important;
@@ -1885,9 +1920,11 @@
         line-height: 1.6 !important;
         white-space: nowrap !important;
       }
+
       .product-info-text h3 br {
         display: none;
       }
+
       .product-info-text p {
         position: relative !important;
         left: auto !important;
@@ -1901,6 +1938,7 @@
         padding: 0 !important;
         margin: 0 !important;
       }
+
       /* 비디오: Figma에서는 카드 내부에 표시 */
       .product-info-img {
         display: block !important;
@@ -1913,6 +1951,31 @@
         border-radius: 8px !important;
         overflow: hidden;
         background: transparent !important;
+      }
+
+      /* ── 점 내비게이터 (모바일) ── */
+      .prod-dots {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        margin-top: 20px;
+        padding: 0;
+        z-index: 10;
+      }
+
+      .prod-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.8);
+        transition: background 0.3s ease;
+        cursor: pointer;
+      }
+
+      .prod-dot.active {
+        background: #000;
       }
 
       /* ── 3D 코일: div 숨김, 3D 캔버스가 직접 표시 ── */
@@ -1930,18 +1993,23 @@
         width: 100%;
         z-index: 3;
       }
+
       .product-bottom-group-wrap {
         display: none !important;
       }
+
       .product-loading-container {
         display: none !important;
       }
+
       .product-status-row {
         display: none !important;
       }
+
       .product-detail-btn {
         width: 100%;
       }
+
       .product-detail-btn a:not(.circle-arrow) {
         width: auto;
         padding: 10px 16px;
@@ -1952,6 +2020,7 @@
         background: #fff !important;
         color: #000 !important;
       }
+
       .product-detail-btn .circle-arrow {
         width: 42px;
         height: 42px;
@@ -1959,10 +2028,12 @@
         border-radius: 10px;
         border-color: #fff !important;
       }
+
       .mouse-icon-box {
         display: none !important;
         margin-left: 0 !important;
       }
+
       .keep-scrolling {
         display: none !important;
       }
@@ -1972,9 +2043,11 @@
         height: auto;
         padding: 40px 0;
       }
+
       .slogan-text {
         font-size: clamp(28px, 8vw, 48px);
       }
+
       .slogan-circle {
         width: clamp(40px, 10vw, 60px);
         height: clamp(40px, 10vw, 60px);
@@ -1984,9 +2057,11 @@
       #invest-wrapper {
         padding: 0 !important;
       }
+
       #invest {
         padding: 0 !important;
       }
+
       .invest-card-wrap {
         width: 100% !important;
         max-width: 100% !important;
@@ -1995,27 +2070,33 @@
         border-radius: 0 !important;
         gap: 30px !important;
       }
+
       .invest-title-block {
         gap: 20px;
       }
+
       .invest-title-text {
         font-size: clamp(24px, 6vw, 32px) !important;
       }
+
       .invest-btn-fill {
         padding: 10px 16px;
         font-size: 14px;
         border-radius: 10px;
       }
+
       .invest-btn-outline {
         width: 40px;
         height: 40px;
         border-radius: 10px;
       }
+
       .invest-cards-row {
         flex-direction: column !important;
         gap: 8px !important;
         width: 100% !important;
       }
+
       .inv-card-stock {
         width: 100% !important;
         min-height: auto !important;
@@ -2023,81 +2104,102 @@
         border-radius: 16px !important;
         flex-shrink: 0 !important;
       }
+
       .inv-price-num {
         font-size: 36px;
       }
+
       .inv-card-col {
         width: 100% !important;
         flex-shrink: 0 !important;
         gap: 8px !important;
       }
+
       .inv-card-market,
       .inv-card-accum {
         padding: 16px !important;
         border-radius: 16px !important;
       }
+
       .inv-card-num,
       .inv-card-num-dark {
         font-size: 36px;
       }
+
       .inv-card-label,
       .inv-card-label-dark {
         font-size: 18px;
       }
+
       .inv-card-sub,
       .inv-card-sub-dark {
         font-size: 16px;
       }
+
       .inv-card-icon {
         width: 62px;
         height: 62px;
       }
+
       .inv-card-ir {
         min-height: auto !important;
         padding: 16px !important;
         border-radius: 16px !important;
       }
+
       .ir-card-header {
         margin-bottom: 30px;
       }
+
       .ir-header-left {
         padding: 0 !important;
       }
+
       .ir-header-title {
         font-size: 18px !important;
       }
+
       .ir-header-right-icon {
         width: 62px !important;
         height: 62px !important;
       }
+
       .ir-doc-area {
         margin-top: 0 !important;
       }
+
       .ir-doc-row {
         flex-direction: column;
         gap: 0;
       }
+
       .ir-doc-item {
         padding: 0;
       }
+
       .ir-doc-type {
         font-size: 30px !important;
         line-height: 1.5;
       }
+
       .ir-doc-desc-wrap {
         gap: 16px !important;
       }
+
       .ir-doc-desc {
         font-size: 16px !important;
       }
+
       .ir-doc-date {
         font-size: 16px !important;
       }
+
       .ir-doc-dl {
         width: 42px !important;
         height: 42px !important;
         border-radius: 30px;
       }
+
       .ir-divider-v {
         width: 100% !important;
         height: 1px !important;
@@ -2110,20 +2212,24 @@
       #support-wrapper {
         height: auto !important;
       }
+
       .support-sticky {
         position: relative !important;
         height: auto !important;
         padding: 40px 16px !important;
       }
+
       .support-heading {
         font-size: clamp(24px, 6vw, 32px);
         width: 100% !important;
       }
+
       .support-grid {
         grid-template-columns: 1fr !important;
         width: 100% !important;
         gap: 24px;
       }
+
       .support-card-arrow {
         margin-left: 8px;
       }
@@ -2132,6 +2238,7 @@
       footer {
         height: auto !important;
       }
+
       .footer-coil {
         display: block !important;
         position: absolute;
@@ -2139,6 +2246,7 @@
         overflow: hidden;
         pointer-events: none;
       }
+
       .footer-coil img {
         width: 107% !important;
         height: 100% !important;
@@ -2147,9 +2255,11 @@
         left: -61% !important;
         top: 2% !important;
       }
+
       .footer-coil-fade {
-        background: linear-gradient(to right, #1a1a1a 0%, rgba(26,26,26,0.7) 40%, rgba(26,26,26,0.3) 70%, transparent 100%) !important;
+        background: linear-gradient(to right, #1a1a1a 0%, rgba(26, 26, 26, 0.7) 40%, rgba(26, 26, 26, 0.3) 70%, transparent 100%) !important;
       }
+
       .footer-content-wrap {
         position: relative !important;
         width: 100% !important;
@@ -2159,6 +2269,7 @@
         gap: 0 !important;
         padding: 40px 20px 0 !important;
       }
+
       .footer-logo {
         position: relative !important;
         left: auto !important;
@@ -2167,6 +2278,7 @@
         height: 28px !important;
         margin-bottom: 40px !important;
       }
+
       .footer-btns {
         position: relative !important;
         top: auto !important;
@@ -2176,6 +2288,7 @@
         gap: 16px !important;
         margin-bottom: 0 !important;
       }
+
       .footer-btn {
         width: 100% !important;
         font-size: 16px !important;
@@ -2184,9 +2297,11 @@
         border-radius: 6px !important;
         justify-content: center !important;
       }
+
       .footer-info-box {
         display: none !important;
       }
+
       .footer-bottom {
         width: calc(100% - 40px) !important;
         margin: 0 auto !important;
@@ -2199,9 +2314,11 @@
         column-gap: 0 !important;
         overflow: visible !important;
       }
+
       .footer-bottom::before {
         display: none !important;
       }
+
       .footer-bottom a {
         font-size: 14px !important;
         font-weight: 400 !important;
@@ -2210,7 +2327,8 @@
         color: #fff !important;
         white-space: nowrap !important;
       }
-      .footer-bottom > span:not(.sep):not(.footer-copy) {
+
+      .footer-bottom>span:not(.sep):not(.footer-copy) {
         font-size: 14px !important;
         font-weight: 400 !important;
         height: auto !important;
@@ -2219,6 +2337,7 @@
         white-space: nowrap !important;
         flex-basis: 100% !important;
       }
+
       .footer-bottom .sep {
         height: 11px !important;
         display: inline-flex !important;
@@ -2227,11 +2346,13 @@
         margin: 0 6px !important;
         font-size: 10px !important;
       }
+
       /* 사이트맵 뒤 sep(6번째), 전화 뒤 sep(8번째) 숨김 */
       .footer-bottom .sep:nth-child(6),
       .footer-bottom .sep:nth-child(8) {
         display: none !important;
       }
+
       .footer-bottom span.footer-copy {
         position: relative !important;
         right: auto !important;
@@ -2462,6 +2583,13 @@
             </a>
           </div>
         </div>
+
+        <!-- 모바일 점 내비게이터 -->
+        <div class="prod-dots" id="prod-dots">
+          <span class="prod-dot active" data-step="0"></span>
+          <span class="prod-dot" data-step="1"></span>
+          <span class="prod-dot" data-step="2"></span>
+        </div>
       </div>
     </div>
   </section>
@@ -2489,8 +2617,8 @@
             <a href="#" class="invest-btn-fill">투자정보 센터</a>
             <a href="#" class="invest-btn-outline">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 10H16.5M16.5 10L10.5 4M16.5 10L10.5 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" />
+                <path d="M3 10H16.5M16.5 10L10.5 4M16.5 10L10.5 16" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </a>
           </div>
@@ -3065,14 +3193,14 @@
       function updateGnb() {
         const currentY = window.scrollY;
         const delta = currentY - lastY;
-        const scrollingUp = delta < 0;
 
-        // 1. 투명↔solid 전환 (히어로 섹션을 벗어났을 때)
+        // 1. 투명↔solid 전환
+        // 투명 = 최상단(scrollY ≈ 0)에서만
+        // solid = 그 외 모든 경우 (히어로 영역 안이라도 스크롤 내리면 solid)
         if (hero) {
-          const heroBottom = hero.getBoundingClientRect().bottom;
-          const pastHero = heroBottom <= 0;
-          gnb.classList.toggle('gnb-solid', pastHero);
-          gnb.classList.toggle('gnb-transparent', !pastHero);
+          const atTop = currentY <= 10;
+          gnb.classList.toggle('gnb-transparent', atTop);
+          gnb.classList.toggle('gnb-solid', !atTop);
         }
 
         // 2. orbital 섹션 감지
@@ -3083,7 +3211,7 @@
           gnb.classList.remove('gnb-hidden');
         } else if (delta > 0 && currentY > 50) {
           gnb.classList.add('gnb-hidden');
-        } else if (scrollingUp) {
+        } else if (delta < 0) {
           gnb.classList.remove('gnb-hidden');
         }
 
@@ -3158,6 +3286,7 @@
       var imgs = Array.from(document.querySelectorAll('.prod-coil-img'));
       var segs = Array.from(document.querySelectorAll('.prod-arc-seg'));
       var loadingBar = document.querySelector('.product-loading-bar');
+      var dots = Array.from(document.querySelectorAll('.prod-dot'));
       var curStep = -1;
 
       function setStep(idx) {
@@ -3166,6 +3295,7 @@
         steps.forEach(function (el, i) { el.classList.toggle('prod-active', i === idx); });
         imgs.forEach(function (el, i) { el.classList.toggle('prod-active', i === idx); });
         segs.forEach(function (el, i) { el.style.opacity = i === idx ? '1' : '0'; });
+        dots.forEach(function (el, i) { el.classList.toggle('active', i === idx); });
       }
 
       function onProdScroll() {
@@ -3183,7 +3313,7 @@
           var vw = window.innerWidth;
           var fixedWrap = document.getElementById('coil-3d-fixed');
           var mobCoil = vw <= 1023;
-          var mobUp = mobCoil ? Math.round(vh * -0.25) : 0; /* 모바일: 25vh 위로 */
+          var mobUp = mobCoil ? Math.round(vh * -0.20) : 0; /* 모바일: 20vh 위로 */
 
           if (rect.top > 0 && rect.top < vh) {
             /* ── 섹션이 아래에서 올라오는 중: 코일 이동 (center → product) ── */

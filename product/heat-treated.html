@@ -827,8 +827,14 @@
             width: 100%;
             height: 494px;
             border-radius: 30px;
-            background-size: cover;
-            background-position: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .utc-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .utc-parts {
@@ -856,17 +862,18 @@
 
         .utc-footer-info {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             gap: 6px;
             width: 100%;
-            height: 35px;
         }
 
         .utc-footer-icon {
             width: 30px;
             height: 30px;
             object-fit: contain;
+            flex-shrink: 0;
+            margin-top: 2px;
         }
 
         .utc-footer-text {
@@ -1157,16 +1164,12 @@
 
         /* ===== Responsive: 1280–1760 ===== */
         @media (max-width: 1760px) {
-            .inner {
-                padding: 0 5vw;
-            }
-
             .feature-cards {
                 padding: 2.5rem 5vw 0;
             }
 
             .hero-text-section {
-                padding: 5rem 5vw 0;
+                padding: 100px 5vw 0;
             }
         }
 
@@ -1507,8 +1510,13 @@
             }
 
             .acc-dropdown-icon {
-                width: 36px;
-                height: 36px;
+                width: 22px;
+                height: 22px;
+            }
+
+            .acc-dropdown-icon img {
+                width: 22px;
+                height: 22px;
             }
 
             .acc-body {
@@ -1587,6 +1595,7 @@
                 height: auto;
                 aspect-ratio: 651 / 320;
                 border-radius: 16px;
+                overflow: hidden;
             }
 
             .utc-parts {
@@ -1809,6 +1818,10 @@
             .grade-left,
             .grade-right {
                 min-width: 300px;
+            }
+
+            .spec-note {
+                font-size: 14px;
             }
 
         }
@@ -2297,11 +2310,11 @@
                     </div>
                 </div>
                 <div class="acc-body">
-                    <div class="acc-content-box" style="padding:48px 44px; gap:30px;">
+                    <div class="acc-content-box">
                         <p class="spec-note"
                             style="color: #F27100; font-size: 20px; font-weight: 400; line-height: 160%;">표의 색상 영역에서 제품별
                             상세 생산 범위를 확인해 보세요.</p>
-                        <div style="width: 890px; border-radius: 30px; overflow: hidden; background: #F8F9FB;">
+                        <div style="max-width: 890px; border-radius: 30px; overflow: hidden; background: #F8F9FB;">
                             <img src="assets/heat-treated/열처리제품사양.png" alt="제품사양" style="width: 100%; display: block;">
                         </div>
                     </div>
@@ -2386,7 +2399,11 @@
                 <div class="usage-right">
 
                     <div class="usage-tab-content active" id="usage-tab-0">
-                        <div class="utc-video" style="background-image: url('assets/heat-treated/video.png');"></div>
+                        <div class="utc-video">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/heat-treated/모빌리티산업영상.mp4" type="video/mp4">
+                            </video>
+                        </div>
                         <div class="utc-footer-info">
                             <img src="../assets/common/dk-industry.svg" class="utc-footer-icon" alt="icon">
                             <span class="utc-footer-text">동국산업의 정밀 소재가 다양한 분야의 핵심 부품으로 탄생합니다.</span>
@@ -2411,7 +2428,11 @@
                     </div>
 
                     <div class="usage-tab-content" id="usage-tab-1">
-                        <div class="utc-video" style="background-image: url('assets/heat-treated/video1.png');"></div>
+                        <div class="utc-video">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/heat-treated/열처리부품영상.mp4" type="video/mp4">
+                            </video>
+                        </div>
                         <div class="utc-footer-info">
                             <img src="../assets/common/dk-industry.svg" class="utc-footer-icon" alt="icon">
                             <span class="utc-footer-text">동국산업의 정밀 소재가 다양한 분야의 핵심 부품으로 탄생합니다.</span>

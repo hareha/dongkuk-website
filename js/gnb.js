@@ -28,8 +28,8 @@
         { text: '회사소개', href: '#', key: '' },
         { text: '연혁', href: '#', key: '' },
         { text: '네트워크', href: '#', key: '' },
-        { text: '뉴스', href: '#', key: '' },
-        { text: 'CI', href: '#', key: '' }
+        { text: 'CI', href: '#', key: '' },
+        { text: '뉴스', href: '#', key: '' }
       ]
     },
     {
@@ -48,9 +48,8 @@
         { text: '투자정보 센터', href: '#', key: '' },
         { text: '주식정보', href: '#', key: '' },
         { text: '재무정보', href: '#', key: '' },
-        { text: '공시', href: '#', key: '' },
-        { text: '공고', href: '#', key: '' },
-        { text: '내부관리규정', href: '#', key: '' }
+        { text: '공시 및 공고', href: '#', key: '' },
+        { text: 'IR 자료실', href: '#', key: '' }
       ]
     },
     {
@@ -65,9 +64,11 @@
     {
       title: '인재경영',
       items: [
-        { text: '기업문화', href: '#', key: '' },
+        { text: '인재상', href: '#', key: '' },
         { text: '직무소개', href: '#', key: '' },
-        { text: '모집공고', href: '#', key: '' }
+        { text: '복리후생', href: '#', key: '' },
+        { text: '채용안내', href: '#', key: '' },
+        { text: '채용공고', href: '#', key: '' }
       ]
     }
   ];
@@ -228,74 +229,75 @@
 
 /* ── GNB 스크롤 숨김 애니메이션 로직 ── */
 document.addEventListener('DOMContentLoaded', () => {
-    let lastScrollY = window.scrollY;
-    const gnb = document.querySelector('.gnb');
+  let lastScrollY = window.scrollY;
+  const gnb = document.querySelector('.gnb');
 
-    if (gnb) {
-        // 투명 배경 모드가 필요한 페이지인지 확인 (data-gnb-transparent 속성)
-        const useTransparent = gnb.hasAttribute('data-gnb-transparent');
+  if (gnb) {
+    const useTransparent = gnb.hasAttribute('data-gnb-transparent');
+    const page = document.body.getAttribute('data-page');
 
-        function updateGnb() {
-            const currentScrollY = window.scrollY;
+    // index 페이지는 orbital 등 자체 스크롤 로직이 있어 여기선 스킵
+    if (page === 'main') return;
 
-            // 스크롤 숨기기
-            if (currentScrollY > lastScrollY && currentScrollY > 50) {
-                gnb.classList.add('gnb-hidden');
-            } else {
-                gnb.classList.remove('gnb-hidden');
-            }
+    function updateGnb() {
+      const currentScrollY = window.scrollY;
 
-            // 투명 배경 전환 (최상단에서만 투명)
-            if (useTransparent) {
-                if (currentScrollY <= 10) {
-                    gnb.classList.add('gnb-transparent');
-                } else {
-                    gnb.classList.remove('gnb-transparent');
-                }
-            }
+      // 투명 GNB 페이지: 최상단(10px 이내)이면 투명, 그 외 solid
+      if (useTransparent) {
+        const atTop = currentScrollY <= 10;
+        gnb.classList.toggle('gnb-transparent', atTop);
+        gnb.classList.toggle('gnb-solid', !atTop);
+      }
 
-            lastScrollY = currentScrollY;
-        }
+      // 스크롤 숨기기
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        gnb.classList.add('gnb-hidden');
+      } else {
+        gnb.classList.remove('gnb-hidden');
+      }
 
-        window.addEventListener('scroll', updateGnb);
-        updateGnb(); // 초기 실행
+      lastScrollY = currentScrollY;
     }
+
+    window.addEventListener('scroll', updateGnb);
+    updateGnb(); // 초기 실행
+  }
 });
 
 /* ── BTN TOP 공통 로직 (Responsive) ── */
 document.addEventListener('DOMContentLoaded', function () {
-    const btnTop = document.getElementById('btn-top');
-    const footer = document.querySelector('.footer');
+  const btnTop = document.getElementById('btn-top');
+  const footer = document.querySelector('.footer');
 
-    if (!btnTop) return;
+  if (!btnTop) return;
 
-    btnTop.addEventListener('click', function (e) {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+  btnTop.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 
-    window.addEventListener('scroll', function () {
-        const scrollY = window.scrollY;
-        const windowHeight = window.innerHeight;
-        const scrollBottom = scrollY + windowHeight;
+  window.addEventListener('scroll', function () {
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const scrollBottom = scrollY + windowHeight;
 
-        if (scrollY > 300) {
-            btnTop.classList.add('show');
-        } else {
-            btnTop.classList.remove('show');
-        }
+    if (scrollY > 300) {
+      btnTop.classList.add('show');
+    } else {
+      btnTop.classList.remove('show');
+    }
 
-        if (footer) {
-            const footerTop = footer.offsetTop;
-            const overlap = scrollBottom - footerTop;
-            const isMobile = window.innerWidth <= 1023;
-            const baseBottom = isMobile ? 16 : 80;
+    if (footer) {
+      const footerTop = footer.offsetTop;
+      const overlap = scrollBottom - footerTop;
+      const isMobile = window.innerWidth <= 1023;
+      const baseBottom = isMobile ? 66 : 80;
 
-            if (overlap > 0) {
-                btnTop.style.bottom = `${baseBottom + overlap}px`;
-            } else {
-                btnTop.style.bottom = `${baseBottom}px`;
-            }
-        }
-    });
+      if (overlap > 0) {
+        btnTop.style.bottom = `${baseBottom + overlap}px`;
+      } else {
+        btnTop.style.bottom = `${baseBottom}px`;
+      }
+    }
+  });
 });

@@ -141,6 +141,8 @@ body {
     border: none;
     cursor: pointer;
     border-radius: 100px;
+    position: relative;
+    overflow: visible;
 }
 
 .gnb-menu-btn span {
@@ -149,6 +151,7 @@ body {
     background: #4E4E4E;
     display: block;
     flex-shrink: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 /* 메뉴 열렸을 때: 투명 → 흰 배경 + 다크 텍스트 */
@@ -175,13 +178,29 @@ body {
     background: #D3D3D3 !important;
 }
 
-.gnb.gnb-menu-active .gnb-menu-btn span,
-.header.gnb-menu-active .btn-menu span {
+.gnb.gnb-menu-active .gnb-menu-btn span {
     background: #4E4E4E !important;
 }
 
-.gnb.gnb-menu-active .gnb-logo img,
-.header.gnb-menu-active .logo-box img {
+/* 메뉴 열렸을 때: 햄버거 → X 변환 */
+.gnb.gnb-menu-active .gnb-menu-btn {
+    gap: 0;
+    overflow: visible;
+}
+
+.gnb.gnb-menu-active .gnb-menu-btn span:nth-child(1) {
+    transform: translateY(2px) rotate(45deg);
+}
+
+.gnb.gnb-menu-active .gnb-menu-btn span:nth-child(2) {
+    opacity: 0;
+}
+
+.gnb.gnb-menu-active .gnb-menu-btn span:nth-child(3) {
+    transform: translateY(-2px) rotate(-45deg);
+}
+
+.gnb.gnb-menu-active .gnb-logo img {
     filter: none !important;
 }
 
@@ -257,12 +276,12 @@ body {
 
 
 /* ===== BTN TOP ===== */
+/* bottom 위치는 gnb.js에서 인라인으로 제어 (데스크탑 80px, 모바일 66px) */
 .btn-top {
     position: fixed;
     width: 80px;
     height: 80px;
     right: max(40px, calc((100vw - 1920px) / 2 + 40px));
-    bottom: 40px;
     background: #1B1B1B;
     border-radius: 800px;
     border: none;
@@ -689,7 +708,6 @@ body {
         width: 52px;
         height: 52px;
         right: 16px;
-        bottom: 16px;
     }
 
     /* ── Footer ── */
