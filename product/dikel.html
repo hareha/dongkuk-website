@@ -3642,7 +3642,7 @@
         .value-inner-box {
             position: relative;
             width: 100%;
-            height: 1080px;
+            height: min(1080px, 56.25vw);
             margin: 0 auto;
             background: #FFFFFF;
         }
@@ -3651,10 +3651,10 @@
         .value-img {
             position: absolute;
             width: 38.54%;
-            height: 820px;
+            height: 76%;
             left: 6.25%;
-            top: 120px;
-            border-radius: 30px;
+            top: 11.1%;
+            border-radius: clamp(16px, 1.56vw, 30px);
             overflow: hidden;
         }
 
@@ -3669,9 +3669,9 @@
         .value-section-label {
             position: absolute;
             width: auto;
-            height: 45px;
+            height: auto;
             left: 51.04%;
-            top: 119px;
+            top: 11%;
             font-family: 'Pretendard';
             font-style: normal;
             font-weight: 700;
@@ -3694,7 +3694,7 @@
             position: absolute;
             width: 42.18%;
             right: 6.25%;
-            top: 262px;
+            top: 24.3%;
             height: 1000px;
             overflow: hidden;
             z-index: 10;
