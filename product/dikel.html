@@ -1271,9 +1271,7 @@
                 overflow-x: hidden;
             }
 
-            html {
-                overflow-x: hidden;
-            }
+
 
             .hero-text-outer {
                 min-height: 200vh;
@@ -6859,19 +6857,19 @@
             });
         });
 
+        /* ── Hero Text 스크롤 애니메이션 (냉연강판과 동일 로직) ── */
         document.addEventListener('DOMContentLoaded', () => {
             const h2 = document.querySelector('.hero-text-section h2');
             if (!h2) return;
 
-            // 1. HTML 태그 유지하면서 텍스트만 한 글자씩 <span>으로 쪼개는 함수
             function wrapCharacters(node) {
-                if (node.nodeType === 3) { // 텍스트 노드인 경우
+                if (node.nodeType === 3) {
                     const text = node.nodeValue;
                     const fragment = document.createDocumentFragment();
                     for (let i = 0; i < text.length; i++) {
                         const char = text[i];
                         if (char === ' ' || char === '\n') {
-                            fragment.appendChild(document.createTextNode(char)); // 공백 유지
+                            fragment.appendChild(document.createTextNode(char));
                         } else {
                             const span = document.createElement('span');
                             span.className = 'char';
@@ -6880,35 +6878,24 @@
                         }
                     }
                     node.parentNode.replaceChild(fragment, node);
-                } else if (node.nodeType === 1 && node.nodeName !== 'BR') { // Element (em 등)
+                } else if (node.nodeType === 1 && node.nodeName !== 'BR') {
                     Array.from(node.childNodes).forEach(wrapCharacters);
                 }
             }
 
-            // 함수 실행! (이제 모든 글자가 <span class="char">로 감싸짐)
             wrapCharacters(h2);
 
             const chars = h2.querySelectorAll('.char');
             const outer = document.querySelector('.hero-text-outer');
-            const inner = document.querySelector('.hero-text-inner');
-            if (!outer || !inner) return;
-
-            // 스크롤 여유 = 글자 수 × px
-            const SCROLL_DISTANCE = chars.length * 20;
-
-            function setOuterSize() {
-                const innerH = inner.offsetHeight;
-                if (innerH === 0) return; // 탭 비활성 시 건너뜀
-                outer.style.height = (innerH + SCROLL_DISTANCE) + 'px';
-            }
-            setOuterSize();
-            window.addEventListener('resize', setOuterSize);
-            window.addEventListener('heroRecalc', setOuterSize);
+            if (!outer) return;
 
             function onScroll() {
                 const rect = outer.getBoundingClientRect();
+                const innerEl = outer.querySelector('.hero-text-inner');
+                const scrollRoom = outer.offsetHeight - (innerEl ? innerEl.offsetHeight : 0);
                 const scrolled = -rect.top;
-                let progress = Math.max(0, Math.min(1, scrolled / SCROLL_DISTANCE));
+
+                let progress = Math.max(0, Math.min(1, scrolled / Math.max(scrollRoom, 1)));
 
                 const activeCount = Math.floor(progress * chars.length);
                 chars.forEach((c, i) => c.classList.toggle('active', i < activeCount));
@@ -6938,12 +6925,6 @@
                     var rect = pageHeader.getBoundingClientRect();
                     window.scrollTo({ top: window.scrollY + rect.top - 100, behavior: 'smooth' });
                 }
-
-                // hero-text-outer 높이 재계산 (탭 전환 후 display:block 되면 offsetHeight 정상)
-                requestAnimationFrame(function() {
-                    var evt = new Event('heroRecalc');
-                    window.dispatchEvent(evt);
-                });
             });
         });
 
@@ -6956,10 +6937,6 @@
                 var target = document.querySelector('.tab-item[data-tab="' + hash + '"]');
                 if (target) target.classList.add('active');
                 document.getElementById(hash).classList.add('active');
-
-                requestAnimationFrame(function() {
-                    window.dispatchEvent(new Event('heroRecalc'));
-                });
             }
         })();
 
