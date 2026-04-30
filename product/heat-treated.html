@@ -1581,28 +1581,40 @@
                 height: auto !important;
             }
 
-            .usage-tab-content {
-                position: relative;
+            .usage-tab-content.active {
+                position: relative !important;
             }
 
             .utc-video {
-                height: 200px;
+                height: auto;
+                aspect-ratio: 651 / 320;
                 border-radius: 16px;
             }
 
             .utc-parts {
                 height: auto;
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scroll-snap-type: x mandatory;
+                gap: 4px;
+                padding-bottom: 4px;
+                justify-content: flex-start;
             }
 
             .utc-part-box {
-                height: 80px;
-                min-width: 80px;
+                flex: 0 0 62px;
+                width: 62px;
+                height: 76px;
+                min-width: 62px;
+                border-radius: 10px;
+                padding: 11px 4px;
+                scroll-snap-align: start;
             }
 
             .utc-part-box img {
-                width: 60px;
-                height: 60px;
+                width: 54px;
+                height: 54px;
             }
 
             .utc-footer-info {
