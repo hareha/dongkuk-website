@@ -56,7 +56,9 @@
     #hero {
       position: relative;
       width: 100%;
-      height: 100vh;
+      height: 100svh;
+      height: 100vh; /* fallback */
+      height: 100svh;
       min-height: 720px;
       overflow: hidden;
     }
@@ -130,7 +132,9 @@
       top: 0;
       left: 0;
       width: 100%;
+      height: 100svh;
       height: 100vh;
+      height: 100svh;
       background: transparent;
       overflow: hidden;
     }
@@ -195,7 +199,9 @@
       top: 0;
       left: 0;
       width: 100%;
+      height: 100svh;
       height: 100vh;
+      height: 100svh;
       pointer-events: none;
       z-index: -1;
     }
@@ -381,7 +387,9 @@
     .product-sticky {
       position: sticky;
       top: 0;
+      height: 100svh;
       height: 100vh;
+      height: 100svh;
       width: 100%;
       padding: 40px 0;
       background: #fff;
@@ -394,7 +402,9 @@
       z-index: 1;
       width: 100%;
       /* 100vh에서 위아래 40px(총 80px) 패딩을 제외한 높이 꽉 채우기 */
+      height: calc(100svh - 80px);
       height: calc(100vh - 80px);
+      height: calc(100svh - 80px);
       background: linear-gradient(135deg, #E46116 0%, #FF7824 66%, #F98039 100%);
       border-radius: clamp(16px, 1.458vw, 28px);
       overflow: visible;
