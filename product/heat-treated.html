@@ -1825,6 +1825,16 @@
                 font-size: 14px;
             }
 
+            /* ── 제품사양 이미지: 모바일 가로 스크롤 ── */
+            .acc-content-box {
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .acc-content-box > div[style*="max-width"] {
+                min-width: 600px;
+            }
+
         }
 
         /* ===== 제품등급 테이블 ===== */

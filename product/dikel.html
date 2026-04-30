@@ -4634,11 +4634,21 @@
             .value-img {
                 position: relative !important;
                 width: 100% !important;
-                height: 363px !important;
+                height: auto !important;
                 left: auto !important;
                 top: auto !important;
                 border-radius: 16px !important;
+                overflow: hidden !important;
                 opacity: 1 !important;
+                flex-shrink: 0 !important;
+            }
+
+            .value-img img {
+                width: 100% !important;
+                height: auto !important;
+                display: block !important;
+                object-fit: cover !important;
+                border-radius: 16px !important;
             }
 
             #value-img-1 {
@@ -4646,7 +4656,7 @@
             }
 
             #value-img-2 {
-                order: 3 !important;
+                order: 4 !important;
                 opacity: 1 !important;
             }
 
@@ -4660,7 +4670,15 @@
             }
 
             #vitem-1 {
-                order: 4 !important;
+                order: 3 !important;
+                display: contents !important;
+            }
+
+            /* vitem-1 내부 자식들: 이미지(order:4) 뒤에 배치 */
+            #vitem-1 > .value-item-top,
+            #vitem-1 > .value-item-divider,
+            #vitem-1 > .value-item-desc {
+                order: 5 !important;
             }
 
             /* ── 가치 섹션 추가 간격 (피그마: txt wrapper py-20 gap-30) ── */
@@ -4719,6 +4737,7 @@
                 color: #7A7A7A !important;
                 line-height: 1.6 !important;
                 margin-bottom: 0 !important;
+                order: 3 !important;
             }
 
             /* 두번째 이미지: 모바일에서 보이고 순서 조정 */
