@@ -1370,21 +1370,78 @@
                 box-sizing: border-box;
             }
 
-            /* Product Intro — 모든 743px/828px/464px 고정폭 해제 */
+            /* Product Intro — 냉연강판 모바일 동일 구조 */
             .product-intro {
                 padding: 40px 0;
             }
 
             .product-intro .inner {
+                display: flex;
                 flex-direction: column;
-                gap: 30px;
+                gap: 20px;
                 padding: 0 16px;
+                padding-bottom: 20px;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+                overflow: hidden;
             }
 
             .pi-left {
+                display: contents;
+            }
+
+            .pi-top-content {
+                display: contents;
+            }
+
+            /* 피그마: 타이틀 → 이미지 → 서브타이틀+본문 → 브로슈어 순서 */
+            .pi-title {
+                order: 1;
                 width: 100% !important;
-                height: auto !important;
-                flex-shrink: 1;
+                font-size: 30px !important;
+                line-height: 1.4 !important;
+                height: auto;
+                white-space: normal;
+            }
+
+            .pi-right {
+                order: 2;
+                width: 100% !important;
+                max-width: 100% !important;
+                height: 232px !important;
+                aspect-ratio: unset !important;
+                border-radius: 16px !important;
+                flex-shrink: 0;
+                overflow: hidden;
+            }
+
+            .pi-main-texts {
+                display: contents;
+            }
+
+            .pi-subtitle-group {
+                order: 3;
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                box-sizing: border-box !important;
+                overflow-wrap: break-word;
+                word-break: keep-all;
+                gap: 20px !important;
+            }
+
+            .pi-description-stack {
+                max-width: 100% !important;
+                min-width: 0 !important;
+                box-sizing: border-box !important;
+                overflow-wrap: break-word;
+                gap: 8px !important;
+            }
+
+            .pi-brochure-section {
+                order: 4;
+                width: 100% !important;
+                gap: 16px !important;
             }
 
             .pi-top-content,
@@ -1396,30 +1453,25 @@
                 width: 100% !important;
             }
 
-            .pi-title {
-                font-size: clamp(24px, 6vw, 32px);
-                height: auto;
-                white-space: normal;
-            }
-
             .pi-subtitle {
-                font-size: 20px;
+                font-size: 24px !important;
+                line-height: 1.5 !important;
                 width: 100%;
             }
 
             .pi-desc {
-                font-size: 16px;
+                font-size: 16px !important;
+                line-height: 1.6 !important;
                 width: 100%;
             }
 
-            .pi-right {
-                width: 100% !important;
-                height: 250px;
-                flex-shrink: 1;
+            .pi-desc br {
+                display: none;
             }
 
-            .pi-brochure-section {
-                width: 100% !important;
+            .pi-brochure-label {
+                font-size: 18px !important;
+                line-height: 1.6 !important;
             }
 
             .pi-brochure-btns {
@@ -2478,8 +2530,6 @@
                         </div>
                     </div>
                 </div>
-
-            </div><!-- /process-card -->
 
                 <!-- ═══ 모바일 전용: 다이어그램 + 인디케이터 + 설명카드 ═══ -->
                 <div class="ps-mobile-diagram" style="display:none;">

@@ -30,7 +30,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 104px 0;
+            padding: clamp(40px, 5.4vw, 104px) 0;
             background: #fff;
         }
 
@@ -38,7 +38,7 @@
             width: 100%;
             max-width: 564px;
             margin: 0;
-            font-size: 60px;
+            font-size: clamp(32px, 3.125vw, 60px);
             font-weight: 700;
             line-height: 140%;
             color: #E9E9E9;
@@ -65,16 +65,16 @@
         .story-section .inner {
             max-width: 1920px;
             margin: 0 auto;
-            padding: 120px 120px;
+            padding: clamp(40px, 6.25vw, 120px) clamp(16px, 6.25vw, 120px);
             box-sizing: border-box;
         }
 
         .section-label {
-            font-size: 30px;
+            font-size: clamp(18px, 1.56vw, 30px);
             font-weight: 700;
             color: #7A7A7A;
             line-height: 140%;
-            margin-bottom: 80px;
+            margin-bottom: clamp(20px, 4.16vw, 80px);
         }
 
         .story-rows {
@@ -90,7 +90,7 @@
             align-items: center;
             width: 100%;
             max-width: 1680px;
-            gap: 120px;
+            gap: clamp(40px, 6.25vw, 120px);
         }
 
         .story-row.row-text-left {
@@ -98,10 +98,10 @@
         }
 
         .story-img {
-            flex-shrink: 0;
-            width: 820px;
-            height: 600px;
-            border-radius: 30px;
+            flex: 1 1 48%;
+            min-width: 0;
+            aspect-ratio: 820 / 600;
+            border-radius: clamp(16px, 1.56vw, 30px);
             background: #323232;
             position: relative;
             overflow: hidden;
@@ -149,13 +149,14 @@
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            gap: 60px;
-            flex-shrink: 0;
+            gap: clamp(20px, 3.125vw, 60px);
+            flex: 1 1 30%;
+            min-width: 0;
         }
 
         .story-text h2 {
-            width: 464px;
-            font-size: 50px;
+            width: 100%;
+            font-size: clamp(24px, 2.6vw, 50px);
             font-weight: 700;
             line-height: 140%;
             color: #000000;
@@ -167,7 +168,7 @@
             flex-direction: column;
             align-items: flex-start;
             gap: 4px;
-            width: 464px;
+            width: 100%;
         }
 
         .story-bullets li {
@@ -190,7 +191,7 @@
         }
 
         .story-bullets li span {
-            font-size: 24px;
+            font-size: clamp(16px, 1.25vw, 24px);
             font-weight: 400;
             line-height: 150%;
             color: #4E4E4E;
@@ -199,7 +200,7 @@
         /* ===== 연구개발 현장 ===== */
         .scene-section {
             background: #CDEBFB;
-            padding: 119px 0 135px;
+            padding: clamp(40px, 6.2vw, 119px) 0 clamp(40px, 7vw, 135px);
             overflow: hidden;
             width: 100%;
         }
@@ -207,7 +208,7 @@
         .scene-section .inner {
             max-width: 1920px;
             margin: 0 auto;
-            padding: 0 120px;
+            padding: 0 clamp(16px, 6.25vw, 120px);
         }
 
         .scene-gallery-wrap {
