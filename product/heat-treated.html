@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>열처리강판</title>
     <link rel="stylesheet" as="style" crossorigin
-        href="https://cdn.jsdelivr.n../orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/gnb.css">
     <style>
@@ -749,7 +749,6 @@
             height: 53px;
             background-size: contain;
             background-repeat: no-repeat;
-            background-position: center;
             flex-shrink: 0;
             transform: scaleX(1);
             /* 좌우 반전 */
@@ -1197,6 +1196,11 @@
                 overflow-x: hidden;
             }
 
+            .page-header h1 {
+                font-size: 30px !important;
+                line-height: 1.4 !important;
+            }
+
             /* Hero Text */
             .hero-text-outer {
                 min-height: 200vh;
@@ -1550,7 +1554,7 @@
 
             .usage-section .inner {
                 padding: 0 16px;
-                gap: 30px;
+                gap: 0;
             }
 
             .usage-title {
@@ -1568,6 +1572,7 @@
                 width: 100% !important;
                 max-width: 100% !important;
                 flex-shrink: 1;
+                gap: 0
             }
 
             .umi-title {
@@ -1580,6 +1585,26 @@
                 margin-left: 0;
                 font-size: 16px;
                 height: auto !important;
+            }
+
+            .umi-icon {
+                height: 30px !important;
+            }
+
+            .umi-header {
+                gap: 0 !important;
+            }
+
+            .usage-menu-item {
+                gap: 0 !important;
+            }
+
+            .usage-menu-item .umi-desc {
+                display: none !important;
+            }
+
+            .usage-menu-item.active .umi-desc {
+                display: block !important;
             }
 
             .usage-right {
@@ -1653,13 +1678,14 @@
 
             .process-card {
                 width: 100% !important;
+                max-width: 100% !important;
                 height: auto !important;
-                padding: 30px 16px !important;
+                padding: 40px 16px 20px !important;
                 border-radius: 0 !important;
                 overflow: visible !important;
                 display: flex;
                 flex-direction: column;
-                gap: 30px;
+                gap: 60px;
                 transform: none !important;
             }
 
@@ -1699,6 +1725,7 @@
                 width: 100%;
                 position: relative;
                 aspect-ratio: 328 / 160;
+                overflow: visible;
             }
 
             .ps-mobile-row {
@@ -1712,6 +1739,7 @@
             .ps-mob-icon {
                 position: absolute;
                 object-fit: contain;
+                object-position: bottom;
                 cursor: pointer;
                 opacity: 0.4;
                 filter: grayscale(1);
@@ -1748,17 +1776,73 @@
                 width: 26%;
             }
 
+            /* 활성 공정 라벨 (공정 이름 + 화살표) */
+            .ps-mobile-step-label {
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 2px;
+                opacity: 0;
+                transition: opacity 0.4s ease;
+                pointer-events: none;
+                z-index: 10;
+                transform: translateX(-50%) translateY(-100%);
+            }
+
+            .ps-mobile-step-label.visible {
+                opacity: 1;
+            }
+
+            .ps-mobile-step-label span {
+                font-family: 'Pretendard', sans-serif;
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 1.5;
+                color: #4E4E4E;
+                white-space: nowrap;
+            }
+
+            .ps-mobile-step-label .label-arrow {
+                width: 0;
+                height: 0;
+                border-left: 5.5px solid transparent;
+                border-right: 5.5px solid transparent;
+                border-top: 9px solid #F27100;
+            }
+
+            /* 각 step 라벨 위치 (아이콘 top과 동일) */
+            .ps-mobile-step-label[data-step="0"] {
+                left: 12%;
+                top: 10%;
+            }
+
+            .ps-mobile-step-label[data-step="1"] {
+                left: 35%;
+                top: 26%;
+            }
+
+            .ps-mobile-step-label[data-step="2"] {
+                left: 60%;
+                top: 27%;
+            }
+
+            .ps-mobile-step-label[data-step="3"] {
+                left: 87%;
+                top: 22%;
+            }
+
             /* ── 모바일 인디케이터 바 ── */
             .ps-mobile-indicators {
                 display: flex !important;
-                justify-content: center;
-                gap: 12px;
+                justify-content: space-between;
+                gap: 10px;
                 padding: 10px 0;
                 width: 100%;
             }
 
             .ps-mobile-dot {
-                width: 28px;
+                flex: 1;
                 height: 6px;
                 border-radius: 3px;
                 background: #D3D3D3;
@@ -1780,6 +1864,7 @@
                 padding: 16px 20px;
                 width: 100%;
                 box-sizing: border-box;
+                margin-top: -50px;
             }
 
             .ps-mobile-info-header {
@@ -1841,7 +1926,7 @@
                 padding: 16px 0 !important;
             }
 
-            .acc-content-box > div[style*="max-width"] {
+            .acc-content-box>div[style*="max-width"] {
                 min-width: 600px;
             }
 
@@ -2637,6 +2722,19 @@
                         <img class="ps-mob-icon" data-step="2" src="assets/heat-treated/3.정밀컷팅.svg" alt="정밀컷팅">
                         <img class="ps-mob-icon" data-step="3" src="assets/heat-treated/4.포장정리.svg" alt="포장정리">
                     </div>
+                    <!-- 모바일 공정 라벨 -->
+                    <div class="ps-mobile-step-label" data-step="0"><span>냉연코일 세팅</span>
+                        <div class="label-arrow"></div>
+                    </div>
+                    <div class="ps-mobile-step-label" data-step="1"><span>열처리</span>
+                        <div class="label-arrow"></div>
+                    </div>
+                    <div class="ps-mobile-step-label" data-step="2"><span>정밀컷팅</span>
+                        <div class="label-arrow"></div>
+                    </div>
+                    <div class="ps-mobile-step-label" data-step="3"><span>포장정리</span>
+                        <div class="label-arrow"></div>
+                    </div>
                 </div>
 
                 <div class="ps-mobile-indicators" style="display:none;">
@@ -2820,6 +2918,11 @@
             /* 5. 모바일 인디케이터 */
             document.querySelectorAll('.ps-mobile-dot').forEach((el) => {
                 el.classList.toggle('active', parseInt(el.dataset.step) === idx);
+            });
+
+            /* 5-1. 모바일 공정 라벨 */
+            document.querySelectorAll('.ps-mobile-step-label').forEach((el) => {
+                el.classList.toggle('visible', parseInt(el.dataset.step) === idx);
             });
 
             /* 6. 모바일 설명카드 */

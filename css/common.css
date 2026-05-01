@@ -4,6 +4,7 @@
    사용법: <link rel="stylesheet" href="common.css">
    ============================================================ */
 
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
 
 /* ===== RESET / BASE ===== */
 * {

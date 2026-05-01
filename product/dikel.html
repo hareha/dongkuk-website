@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>니켈도금강판: DiKel - 동국산업</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/gnb.css">
     <style>
@@ -783,7 +785,7 @@
         .usage-menu-item {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 0px;
             width: 100%;
             cursor: pointer;
         }
@@ -802,7 +804,6 @@
             height: 53px;
             background-size: contain;
             background-repeat: no-repeat;
-            background-position: center;
             flex-shrink: 0;
             transform: scaleX(1);
             /* 좌우 반전 */
@@ -1655,7 +1656,7 @@
 
             .usage-section .inner {
                 padding: 0 16px;
-                gap: 30px;
+                gap: 0px;
             }
 
             .usage-title {
@@ -1673,6 +1674,7 @@
                 width: 100% !important;
                 max-width: 100% !important;
                 flex-shrink: 1;
+                GAP: 0
             }
 
             .umi-title {
@@ -1739,7 +1741,7 @@
             }
 
             .utc-footer-text {
-                font-size: 14px;
+                font-size: 16px;
             }
 
             /* ═══════════════════════════════════════════════
@@ -1768,7 +1770,7 @@
                 overflow: visible !important;
                 display: flex;
                 flex-direction: column;
-                gap: 20px;
+                gap: 60px;
                 transform: none !important;
             }
 
@@ -1832,6 +1834,7 @@
                 width: 100%;
                 border-radius: 8px;
                 overflow: hidden;
+                padding-top: 30px;
             }
 
             .ps-mobile-row {
@@ -1887,9 +1890,10 @@
             .ps-mobile-step-label span {
                 font-family: 'Pretendard', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 700;
                 line-height: 1.5;
                 color: #4E4E4E;
+                white-space: nowrap;
             }
 
             .ps-mobile-step-label .label-arrow {
@@ -1903,14 +1907,14 @@
             /* ── 모바일 인디케이터 바 ── */
             .ps-mobile-indicators {
                 display: flex !important;
-                justify-content: center;
-                gap: 12px;
+                justify-content: space-between;
+                gap: 10px;
                 padding: 10px 0;
                 width: 100%;
             }
 
             .ps-mobile-dot {
-                width: 28px;
+                flex: 1;
                 height: 6px;
                 border-radius: 3px;
                 background: #D3D3D3;
@@ -1931,6 +1935,7 @@
                 padding: 16px 20px;
                 width: 100%;
                 box-sizing: border-box;
+                margin-top: -50px;
             }
 
             /* is-hidden 클래스로 모바일 요소 숨김 제어 */
@@ -4539,9 +4544,9 @@
                 flex: none !important;
                 width: 100% !important;
                 max-width: 100% !important;
-                height: 356px !important;
+                height: auto !important;
                 border-radius: 16px !important;
-                padding: 40px 40px 60px !important;
+                padding: 40px 20px 60px !important;
                 overflow: hidden !important;
                 display: flex !important;
                 flex-direction: column !important;
@@ -4552,12 +4557,16 @@
             /* illus: h-150 w-296 */
             .mcard-illus {
                 max-width: 296px !important;
+                min-width: 155px !important;
                 height: 150px !important;
+                min-height: 130px !important;
                 overflow: hidden !important;
             }
 
             .mcard-illus img {
                 height: 100% !important;
+                min-width: 155px !important;
+                min-height: 130px !important;
                 object-fit: contain !important;
             }
 
@@ -4686,9 +4695,9 @@
             }
 
             /* vitem-1 내부 자식들: 이미지(order:4) 뒤에 배치 */
-            #vitem-1 > .value-item-top,
-            #vitem-1 > .value-item-divider,
-            #vitem-1 > .value-item-desc {
+            #vitem-1>.value-item-top,
+            #vitem-1>.value-item-divider,
+            #vitem-1>.value-item-desc {
                 order: 5 !important;
             }
 
@@ -4881,7 +4890,8 @@
 
             .bat-float-tag {
                 padding: 8px 0 !important;
-                font-size: clamp(10px, 2.6vw, 14px) !important;
+                font-size: clamp(14px, 2.6vw, 14px) !important;
+                font-weight: 700 !important;
                 border-radius: 685px !important;
                 box-shadow: none !important;
                 flex: 1 !important;
@@ -4918,7 +4928,7 @@
             /* side 라벨: 모바일 14px */
             .side-label {
                 margin: 0 !important;
-                font-size: clamp(12px, 3.12vw, 14px) !important;
+                font-size: clamp(14px, 3.12vw, 14px) !important;
                 color: #4E4E4E !important;
                 line-height: 1.5 !important;
                 white-space: normal !important;
@@ -5123,6 +5133,26 @@
                 padding: 0 16px !important;
             }
 
+            .umi-icon {
+                height: 30px !important;
+            }
+
+            .umi-header {
+                gap: 0 !important;
+            }
+
+            .usage-menu-item {
+                gap: 12px !important;
+            }
+
+            .usage-menu-item .umi-desc {
+                display: none !important;
+            }
+
+            .usage-menu-item.active .umi-desc {
+                display: block !important;
+            }
+
             /* ── 고객지원: 피그마 MOB py-[40px] px-[16px] round-[16px] ── */
             .support-section {
                 padding: 40px 16px !important;
@@ -5164,6 +5194,17 @@
             .inquiry-section .inquiry-card {
                 width: 100% !important;
                 max-width: 100% !important;
+            }
+
+            /* ── BI: 로고여백 블록 ── */
+            .logo-margin-block {
+                gap: 16px !important;
+            }
+
+            /* ── BI: color-values 아래 텍스트 라이트 ── */
+            .color-val-text,
+            .color-values {
+                font-weight: 300 !important;
             }
         }
     </style>
@@ -6042,7 +6083,8 @@
                     <h2 class="bi-title">DiKel BI</h2>
 
                     <div class="bi-header-row">
-                        <p class="bi-desc">로고 활용 규정은 가독성과 독립적인 시각 정체성을 유지하기 위한 기준입니다. 임의의 변경이나 변형은 허용되지 않으며 규정된 형태와 색상을
+                        <p class="bi-desc">로고 활용 규정은 가독성과 독립적인 시각 정체성을 유지하기 위한 기준입니다.<br> 임의의 변경이나 변형은 허용되지 않으며 규정된 형태와
+                            색상을
                             사용해야
                             합니다.</p>
 
@@ -6072,7 +6114,7 @@
                         <div class="lmg-col">
                             <p class="lmg-col-label">영문</p>
                             <div class="logo-margin-card">
-                                <img src="assets/dikel/brand/영문.png" alt="DiKel 영문 로고 여백 가이드"
+                                <img src="assets/dikel/brand/Frame 2116934547.png" alt="DiKel 영문 로고 여백 가이드"
                                     style="width: 100%; height: 100%; object-fit: contain;">
                             </div>
                         </div>
@@ -6081,7 +6123,7 @@
                         <div class="lmg-col">
                             <p class="lmg-col-label">국문</p>
                             <div class="logo-margin-card">
-                                <img src="assets/dikel/brand/국문.png" alt="DiKel 국문 로고 여백 가이드"
+                                <img src="assets/dikel/brand/Frame 2116934548.png" alt="DiKel 국문 로고 여백 가이드"
                                     style="width: 100%; height: 100%; object-fit: contain;">
                             </div>
                         </div>
@@ -6228,7 +6270,7 @@
         <section class="material-section">
             <div class="inner">
                 <div class="material-content">
-                    <h2 class="material-title">시대가 요구하는 새로운 소재</h2>
+                    <h2 class="material-title">시대가 요구하는<br class="mo-br"> 새로운 소재</h2>
                     <div class="material-cards">
                         <div class="mcard mcard-1">
                             <div class="mcard-illus">
@@ -6328,7 +6370,7 @@
                         <div class="compare-images">
                             <div class="img-box-side pouch">
                                 <img src="assets/dikel/dikel/pouch.png" alt="파우치형 배터리">
-                                <span class="side-label">파우치형 배터리 / 필름</span>
+                                <span class="side-label">파우치형 배터리<br class="mo-br"> / 필름</span>
                             </div>
 
                             <div class="img-box-center-wrap">
@@ -6346,13 +6388,13 @@
 
                             <div class="img-box-side prism">
                                 <img src="assets/dikel/dikel/prismatic.png" alt="각형 배터리">
-                                <span class="side-label">각형 배터리 / 알루미늄</span>
+                                <span class="side-label">각형 배터리<br class="mo-br"> / 알루미늄</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="battery-head">
-                        <h3 class="battery-sub-title">파우치형/각형 대비 공정 효율 및 안정성 우위</h3>
+                        <h3 class="battery-sub-title">파우치형/각형 대비 공정<br class="mo-br"> 효율 및 안정성 우위</h3>
                         <p class="battery-sub-desc">화재 안정성과 대량 생산에 최적화된 원통형 배터리 글로벌 파트너들이 신뢰하는 차세대 모빌리티의 핵심 솔루션입니다.</p>
                     </div>
                 </div>
@@ -6395,7 +6437,7 @@
                     </div>
 
                     <div class="bsys-head">
-                        <h3 class="battery-sub-title">효율적 에너지의 시작, 원통형 배터리 시스템</h3>
+                        <h3 class="battery-sub-title">효율적 에너지의 시작,<br class="mo-br"> 원통형 배터리 시스템</h3>
                         <p class="battery-sub-desc">니켈도금강판이 감싼 Cell은 Module을 거쳐, 최종적인 Battery Pack으로 완성됩니다.<br>(차량별 최적의
                             수량 설계 적용)</p>
                     </div>
@@ -6622,6 +6664,10 @@
                     const step = parseInt(img.dataset.mobileStep);
                     img.classList.toggle('visible', step === idx);
                 });
+                mobileDiagram.querySelectorAll('.ps-mobile-step-label').forEach(label => {
+                    const step = parseInt(label.dataset.mobileStep);
+                    label.classList.toggle('visible', step === idx);
+                });
             }
         }
 
@@ -6721,7 +6767,7 @@
                 }
             ];
 
-            function buildMobileRows(containerId, rowConfig) {
+            function buildMobileRows(containerId, rowConfig, stepsData) {
                 const container = document.getElementById(containerId);
                 if (!container) return;
 
@@ -6775,6 +6821,41 @@
                     row.innerHTML = '';
                     row.appendChild(inner);
 
+                    // 각 step 위에 공정 이름 라벨 생성 (상위 container에 붙임)
+                    cfg.steps.forEach(stepIdx => {
+                        const stepCfg = cfg.stepSrcs[stepIdx];
+                        if (!stepCfg) return;
+                        const stepName = (stepsData && stepsData[stepIdx]) ? stepsData[stepIdx].name : '';
+                        if (!stepName) return;
+
+                        const label = document.createElement('div');
+                        label.className = 'ps-mobile-step-label';
+                        label.dataset.mobileStep = stepIdx;
+
+                        const nameSpan = document.createElement('span');
+                        nameSpan.textContent = stepName;
+                        label.appendChild(nameSpan);
+
+                        const arrow = document.createElement('div');
+                        arrow.className = 'label-arrow';
+                        label.appendChild(arrow);
+
+                        // 위치 계산: step 이미지 중앙 x, 이미지 상단 바로 위
+                        const centerX = (stepCfg.l - cfg.cropX + stepCfg.w / 2) * scale;
+                        const imgTop = (stepCfg.t - cfg.cropY) * scale;
+                        // row의 상단 위치 계산 (이전 row들의 높이 합산)
+                        let rowTopOffset = 0;
+                        for (let r = 0; r < rowIdx; r++) {
+                            const prevRow = rows[r];
+                            if (prevRow) rowTopOffset += prevRow.offsetHeight || (rowConfig[r].cropH * scale);
+                        }
+                        label.style.left = centerX + 'px';
+                        label.style.top = (rowTopOffset + 30 + imgTop - 4) + 'px';
+                        label.style.transform = 'translateX(-50%) translateY(-100%)';
+
+                        container.appendChild(label);
+                    });
+
                     // 겹침 가림용 커버 div 생성
                     if (cfg.covers && cfg.covers.length > 0) {
                         cfg.covers.forEach(cover => {
@@ -6793,16 +6874,16 @@
             }
 
             // 모바일 3줄 다이어그램 생성
-            buildMobileRows('ps-mobile-diagram-bulk', BULK_ROW_CONFIG);
-            buildMobileRows('ps-mobile-diagram-special', SPECIAL_ROW_CONFIG);
+            buildMobileRows('ps-mobile-diagram-bulk', BULK_ROW_CONFIG, BULK_STEPS_DATA);
+            buildMobileRows('ps-mobile-diagram-special', SPECIAL_ROW_CONFIG, SPECIAL_STEPS_DATA);
 
             // 리사이즈 시 재생성
             let resizeTimer;
             window.addEventListener('resize', () => {
                 clearTimeout(resizeTimer);
                 resizeTimer = setTimeout(() => {
-                    buildMobileRows('ps-mobile-diagram-bulk', BULK_ROW_CONFIG);
-                    buildMobileRows('ps-mobile-diagram-special', SPECIAL_ROW_CONFIG);
+                    buildMobileRows('ps-mobile-diagram-bulk', BULK_ROW_CONFIG, BULK_STEPS_DATA);
+                    buildMobileRows('ps-mobile-diagram-special', SPECIAL_ROW_CONFIG, SPECIAL_STEPS_DATA);
                     activateStep(currentStep); // 현재 상태 복원
                 }, 200);
             });

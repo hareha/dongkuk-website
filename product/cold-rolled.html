@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>냉연강판 - 동국산업</title>
     <link rel="stylesheet" as="style" crossorigin
-        href="https://cdn.jsdelivr.n../orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/gnb.css">
     <style>
@@ -837,7 +837,6 @@
             height: 53px;
             background-size: contain;
             background-repeat: no-repeat;
-            background-position: center;
             flex-shrink: 0;
             transform: scaleX(1);
             /* 좌우 반전 */
@@ -1299,6 +1298,11 @@
                 overflow-x: hidden;
             }
 
+            .page-header h1 {
+                font-size: 30px !important;
+                line-height: 1.4 !important;
+            }
+
             .hero-text-outer {
                 min-height: 200vh;
             }
@@ -1681,6 +1685,7 @@
                 width: 100% !important;
                 max-width: 100% !important;
                 flex-shrink: 1;
+                gap: 0
             }
 
             .umi-title {
@@ -1693,6 +1698,26 @@
 
             .usage-menu-item:not(.active) .umi-desc {
                 display: none;
+            }
+
+            .umi-icon {
+                height: 30px !important;
+            }
+
+            .umi-header {
+                gap: 0 !important;
+            }
+
+            .usage-menu-item {
+                gap: 0;
+            }
+
+            .usage-menu-item .umi-desc {
+                display: none !important;
+            }
+
+            .usage-menu-item.active .umi-desc {
+                display: block !important;
             }
 
             .umi-desc {
@@ -1772,13 +1797,14 @@
 
             .process-card {
                 width: 100% !important;
+                max-width: 100% !important;
                 height: auto !important;
-                padding: 30px 16px !important;
+                padding: 40px 16px 20px !important;
                 border-radius: 0 !important;
                 overflow: visible !important;
                 display: flex;
                 flex-direction: column;
-                gap: 30px;
+                gap: 60px;
                 transform: none !important;
             }
 
@@ -1818,6 +1844,7 @@
                 width: 100%;
                 position: relative;
                 aspect-ratio: 328 / 240;
+                overflow: visible;
             }
 
             .ps-mobile-row {
@@ -1831,6 +1858,7 @@
             .ps-mob-icon {
                 position: absolute;
                 object-fit: contain;
+                object-position: bottom;
                 cursor: pointer;
                 opacity: 0.4;
                 filter: grayscale(1);
@@ -1880,6 +1908,77 @@
                 width: 20%;
             }
 
+            /* 활성 공정 라벨 (공정 이름 + 화살표) */
+            .ps-mobile-step-label {
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 2px;
+                opacity: 0;
+                transition: opacity 0.4s ease;
+                pointer-events: none;
+                z-index: 10;
+                transform: translateX(-50%) translateY(-100%);
+            }
+
+            .ps-mobile-step-label.visible {
+                opacity: 1;
+            }
+
+            .ps-mobile-step-label span {
+                font-family: 'Pretendard', sans-serif;
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 1.5;
+                color: #4E4E4E;
+                white-space: nowrap;
+            }
+
+            .ps-mobile-step-label .label-arrow {
+                width: 0;
+                height: 0;
+                border-left: 5.5px solid transparent;
+                border-right: 5.5px solid transparent;
+                border-top: 9px solid #F27100;
+            }
+
+            /* 각 step 라벨 위치 (아이콘 top과 동일) */
+            .ps-mobile-step-label[data-step="0"] {
+                left: 14%;
+                top: 16%;
+            }
+
+            .ps-mobile-step-label[data-step="1"] {
+                left: 33%;
+                top: 16%;
+            }
+
+            .ps-mobile-step-label[data-step="2"] {
+                left: 58%;
+                top: 16%;
+            }
+
+            .ps-mobile-step-label[data-step="3"] {
+                left: 86%;
+                top: 12%;
+            }
+
+            .ps-mobile-step-label[data-step="4"] {
+                left: 20%;
+                top: 62%;
+            }
+
+            .ps-mobile-step-label[data-step="5"] {
+                left: 40%;
+                top: 70%;
+            }
+
+            .ps-mobile-step-label[data-step="6"] {
+                left: 70%;
+                top: 76%;
+            }
+
             .ps-mob-icon[data-step="6"] {
                 left: 54%;
                 top: 48%;
@@ -1889,14 +1988,14 @@
             /* ── 모바일 인디케이터 바 ── */
             .ps-mobile-indicators {
                 display: flex !important;
-                justify-content: center;
-                gap: 12px;
+                justify-content: space-between;
+                gap: 10px;
                 padding: 10px 0;
                 width: 100%;
             }
 
             .ps-mobile-dot {
-                width: 28px;
+                flex: 1;
                 height: 6px;
                 border-radius: 3px;
                 background: #D3D3D3;
@@ -1918,6 +2017,7 @@
                 padding: 16px 20px;
                 width: 100%;
                 box-sizing: border-box;
+                margin-top: -50px;
             }
 
             .ps-mobile-info-header {
@@ -2096,7 +2196,7 @@
                             <div class="pi-description-stack">
                                 <p class="pi-desc">냉연강판은 원재료인 열연강판을 화학적 표면 처리(산세)하여<br>상온에서 압연 공정을 통해 두께와 강도를 정밀하게 제어한
                                     강판입니다.</p>
-                                <p class="pi-desc">특히 동국산업의 냉연상판은 고탄소강 및 특수합금상으로 제작되어,<br>높은 경도와 마모 저항성이 뛰어나 정밀 산업 부품에
+                                <p class="pi-desc">특히 동국산업의 냉연상판은 고탄소강 및 특수합금강으로 제작되어,<br>높은 경도와 마모 저항성이 뛰어나 정밀 산업 부품에
                                     적합한 소재입니다.</p>
                                 <p class="pi-desc">최첨단 설비로 생산되는 동국산업의 고기능성 소재는<br>전 세계 글로벌 파트너들의 신뢰를 받고 있습니다.</p>
                             </div>
@@ -3194,6 +3294,28 @@
                         </div>
                         <img class="ps-mob-icon" data-step="6" src="assets/cold-rolled/7.포장정리.svg" alt="포장정리">
                     </div>
+                    <!-- 모바일 공정 라벨 -->
+                    <div class="ps-mobile-step-label" data-step="0"><span>열연 코일 세팅</span>
+                        <div class="label-arrow"></div>
+                    </div>
+                    <div class="ps-mobile-step-label" data-step="1"><span>산세라인</span>
+                        <div class="label-arrow"></div>
+                    </div>
+                    <div class="ps-mobile-step-label" data-step="2"><span>정밀컷팅</span>
+                        <div class="label-arrow"></div>
+                    </div>
+                    <div class="ps-mobile-step-label" data-step="3"><span>냉간압연</span>
+                        <div class="label-arrow"></div>
+                    </div>
+                    <div class="ps-mobile-step-label" data-step="4"><span>소둔라인</span>
+                        <div class="label-arrow"></div>
+                    </div>
+                    <div class="ps-mobile-step-label" data-step="5"><span>표면마감</span>
+                        <div class="label-arrow"></div>
+                    </div>
+                    <div class="ps-mobile-step-label" data-step="6"><span>포장정리</span>
+                        <div class="label-arrow"></div>
+                    </div>
                 </div>
 
                 <div class="ps-mobile-indicators" style="display:none;">
@@ -3383,6 +3505,11 @@
             /* 5. 모바일 인디케이터 */
             document.querySelectorAll('.ps-mobile-dot').forEach((el) => {
                 el.classList.toggle('active', parseInt(el.dataset.step) === idx);
+            });
+
+            /* 5-1. 모바일 공정 라벨 */
+            document.querySelectorAll('.ps-mobile-step-label').forEach((el) => {
+                el.classList.toggle('visible', parseInt(el.dataset.step) === idx);
             });
 
             /* 6. 모바일 설명카드 */
