@@ -325,6 +325,7 @@
             margin: 0;
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
+        .global-title .mob-br { display: none; }
         .global-title-2 {
             opacity: 0;
             transform: translateY(30px);
@@ -903,6 +904,8 @@
             .global-section { height: 740px; }
             .global-label { top: 40px; left: 16px; font-size: 18px; }
             .global-title { top: 76px; left: 16px; font-size: 30px; line-height: 1.5; }
+            .global-title .desk-br { display: none; }
+            .global-title .mob-br { display: inline; }
             .global-video-frame { top: 232px; left: 0; right: 0; bottom: 0; border-radius: 0; }
             .global-video-frame.expanded { top: 0; }
             .global-stats {
@@ -1257,7 +1260,7 @@
 
         <section class="global-section" id="globalSection">
             <span class="global-label">글로벌 비즈니스</span>
-            <h2 class="global-title global-title-1">동국산업의 소재 솔루션은<br>세계에서 그 가치를 증명하며</h2>
+            <h2 class="global-title global-title-1">동국산업의 소재<br class="mob-br"> 솔루션은<br class="desk-br"> 세계에서<br class="mob-br"> 그 가치를 증명하며</h2>
             <h2 class="global-title global-title-2">기술과 파트너십으로<br>미래 가치를 이어갑니다.</h2>
 
             <div class="global-video-frame" id="globalVideoFrame">

@@ -1526,6 +1526,8 @@
 
             .acc-body {
                 width: 100% !important;
+                overflow-x: hidden !important;
+                max-width: 100vw !important;
             }
 
             .acc-content-box {
@@ -1533,6 +1535,16 @@
                 padding: 16px 0;
                 gap: 24px;
                 border-radius: 16px;
+                overflow-x: hidden !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            .acc-content-box > div[style] {
+                max-width: 100% !important;
+                border-radius: 16px !important;
+                box-sizing: border-box !important;
+                padding: 20px !important;
             }
 
             /* Tables — 1584px 고정폭 → 스크롤 */
@@ -1926,9 +1938,8 @@
                 padding: 16px 0 !important;
             }
 
-            .acc-content-box>div[style*="max-width"] {
-                min-width: 600px;
-            }
+
+
 
             /* ── 제품설비: 모바일 반응형 (피그마 38:9189) ── */
             .equip-box {
@@ -2467,7 +2478,10 @@
                             style="color: #F27100; font-size: 20px; font-weight: 400; line-height: 160%;">표의 색상 영역에서 제품별
                             상세 생산 범위를 확인해 보세요.</p>
                         <div style="max-width: 890px; border-radius: 30px; overflow: hidden; background: #F8F9FB;">
-                            <img src="assets/heat-treated/열처리제품사양.png" alt="제품사양" style="width: 100%; display: block;">
+                            <picture>
+                                <source media="(max-width: 1023px)" srcset="assets/heat-treated/대응규격_모바일.png">
+                                <img src="assets/heat-treated/열처리제품사양.png" alt="제품사양" style="width: 100%; display: block;">
+                            </picture>
                         </div>
                     </div>
                 </div>
