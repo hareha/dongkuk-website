@@ -728,13 +728,13 @@ body {
     /* ── Footer ── */
     .footer {
         height: auto;
-        padding: 40px 20px 30px;
-        gap: 30px;
+        padding: 40px 20px 40px;
+        gap: 40px;
     }
 
     .footer-top {
         flex-direction: column;
-        gap: 24px;
+        gap: 40px;
     }
 
     .footer-logo {
@@ -746,7 +746,7 @@ body {
         width: 100%;
         height: auto;
         flex-direction: column;
-        gap: 12px;
+        gap: 16px;
     }
 
     .footer-btn {
@@ -758,7 +758,12 @@ body {
         justify-content: center !important;
     }
 
+    .footer-divider {
+        display: none;
+    }
+
     .footer-bottom {
+        padding-top: 40px;
         gap: 16px;
     }
 
@@ -774,11 +779,27 @@ body {
     }
 
     .footer-links a {
-        font-size: 12px;
+        font-size: 14px;
+    }
+
+    .footer-links .bar {
+        height: 11px;
+    }
+
+    .footer-links .bar:nth-child(6),
+    .footer-links .bar:nth-child(8) {
+        display: none;
+    }
+
+    .footer-links a:nth-child(7),
+    .footer-links a:nth-child(9) {
+        display: block;
+        width: 100%;
     }
 
     .footer-copy {
-        font-size: 12px;
+        font-size: 14px;
         text-align: left;
+        word-break: keep-all;
     }
 }
