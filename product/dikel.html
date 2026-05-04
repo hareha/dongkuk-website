@@ -4505,13 +4505,14 @@
                 left: 0;
             }
 
-            /* 안쪽 원 - hero 가로폭에 맞춤 */
+            /* 안쪽 원 - 9시~12시 비어있는 호 */
             .hero-bg-decor::after {
-                width: calc(100vw - 60px);
-                height: calc(100vw - 60px);
+                width: 100vw;
+                height: 100vw;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
+                clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 50%, 50% 50%);
             }
 
             /* ── 히어로: 피그마 MOB h-[700px] 전체너비, 라운딩없음 ── */
