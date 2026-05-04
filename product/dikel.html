@@ -4481,6 +4481,9 @@
             .hero-bg-decor {
                 width: 150vw !important;
                 max-width: none !important;
+                overflow: hidden !important;
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
             }
 
             /* ── 히어로: 피그마 MOB h-[700px] 전체너비, 라운딩없음 ── */
@@ -6795,6 +6798,9 @@
                 const container = document.getElementById(containerId);
                 if (!container) return;
 
+                // 기존 라벨 모두 제거 (중복 방지)
+                container.querySelectorAll('.ps-mobile-step-label').forEach(el => el.remove());
+
                 const rows = container.querySelectorAll('.ps-mobile-row');
                 const containerWidth = container.clientWidth || (window.innerWidth - 32);
 
@@ -6845,7 +6851,14 @@
                     row.innerHTML = '';
                     row.appendChild(inner);
 
-                    // 각 step 위에 공정 이름 라벨 생성 (상위 container에 붙임)
+                    // 각 step 위에 공정 이름 라벨 생성 (순수 수학 계산, DOM 의존 없음)
+                    // 이 row의 top 위치를 수학적으로 계산 (padding-top 30px + 이전 row들의 높이 + margin 30px)
+                    let rowTop = 30; // container padding-top
+                    for (let r = 0; r < rowIdx; r++) {
+                        const prevScale = containerWidth / rowConfig[r].cropW;
+                        rowTop += rowConfig[r].cropH * prevScale + 30; // row height + margin-bottom
+                    }
+
                     cfg.steps.forEach(stepIdx => {
                         const stepCfg = cfg.stepSrcs[stepIdx];
                         if (!stepCfg) return;
@@ -6864,11 +6877,11 @@
                         arrow.className = 'label-arrow';
                         label.appendChild(arrow);
 
-                        // 위치 계산: step 이미지 중앙 x, 이미지 상단 바로 위 (row의 실제 DOM 위치 기준)
+                        // 위치: 순수 수학 계산 (DOM offsetTop 사용 안 함)
                         const centerX = (stepCfg.l - cfg.cropX + stepCfg.w / 2) * scale;
                         const imgTop = (stepCfg.t - cfg.cropY) * scale;
                         label.style.left = centerX + 'px';
-                        label.style.top = (row.offsetTop + imgTop - 6) + 'px';
+                        label.style.top = (rowTop + imgTop - 4) + 'px';
                         label.style.transform = 'translateX(-50%) translateY(-100%)';
 
                         container.appendChild(label);
