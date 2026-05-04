@@ -1841,6 +1841,11 @@
                 position: relative;
                 width: 100%;
                 overflow: hidden;
+                margin-bottom: 30px;
+            }
+
+            .ps-mobile-row:last-child {
+                margin-bottom: 0;
             }
 
             /* 각 row 내부의 원본 이미지 컨테이너 (1860×486 좌표계 유지) */
@@ -3336,7 +3341,23 @@
         }
 
         .hero-bg-decor {
-            display: none;
+            position: absolute;
+            width: 80vw;
+            max-width: 1532px;
+            aspect-ratio: 1;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            animation: circleReveal 1.2s cubic-bezier(.25, .46, .45, .94) forwards 0.1s;
+        }
+
+        .hero-bg-decor img {
+            width: 100%;
+            height: 100%;
+            display: block;
         }
 
         @keyframes circleReveal {
@@ -4457,6 +4478,11 @@
                 font-size: 16px !important;
             }
 
+            .hero-bg-decor {
+                width: 150vw !important;
+                max-width: none !important;
+            }
+
             /* ── 히어로: 피그마 MOB h-[700px] 전체너비, 라운딩없음 ── */
             .hero {
                 max-width: 100% !important;
@@ -4466,9 +4492,7 @@
                 margin: 0 !important;
             }
 
-            .hero-bg-decor {
-                display: none !important;
-            }
+
 
             .hero-content {
                 width: 100% !important;
@@ -6840,17 +6864,11 @@
                         arrow.className = 'label-arrow';
                         label.appendChild(arrow);
 
-                        // 위치 계산: step 이미지 중앙 x, 이미지 상단 바로 위
+                        // 위치 계산: step 이미지 중앙 x, 이미지 상단 바로 위 (row의 실제 DOM 위치 기준)
                         const centerX = (stepCfg.l - cfg.cropX + stepCfg.w / 2) * scale;
                         const imgTop = (stepCfg.t - cfg.cropY) * scale;
-                        // row의 상단 위치 계산 (이전 row들의 높이 합산)
-                        let rowTopOffset = 0;
-                        for (let r = 0; r < rowIdx; r++) {
-                            const prevRow = rows[r];
-                            if (prevRow) rowTopOffset += prevRow.offsetHeight || (rowConfig[r].cropH * scale);
-                        }
                         label.style.left = centerX + 'px';
-                        label.style.top = (rowTopOffset + 30 + imgTop - 4) + 'px';
+                        label.style.top = (row.offsetTop + imgTop - 6) + 'px';
                         label.style.transform = 'translateX(-50%) translateY(-100%)';
 
                         container.appendChild(label);
