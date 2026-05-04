@@ -4481,7 +4481,35 @@
             .hero-bg-decor {
                 width: 150vw !important;
                 max-width: none !important;
-                mix-blend-mode: multiply;
+            }
+
+            /* foreignObject가 모바일 Safari에서 흰 배경으로 렌더링되는 버그 회피 */
+            .hero-bg-decor img {
+                display: none !important;
+            }
+
+            .hero-bg-decor::before,
+            .hero-bg-decor::after {
+                content: '';
+                position: absolute;
+                border-radius: 50%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            /* 바깥 원 */
+            .hero-bg-decor::before {
+                width: 100%;
+                height: 100%;
+                border: 3px solid rgba(255, 255, 255, 0.45);
+            }
+
+            /* 안쪽 원 */
+            .hero-bg-decor::after {
+                width: 66.5%;
+                height: 66.5%;
+                border: 3px solid rgba(255, 255, 255, 0.65);
             }
 
             /* ── 히어로: 피그마 MOB h-[700px] 전체너비, 라운딩없음 ── */
