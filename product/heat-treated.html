@@ -579,6 +579,7 @@
             display: flex;
             flex-direction: column;
             gap: 60px;
+            overflow-x: auto;
         }
 
         /* Specification Grids */
@@ -2194,7 +2195,8 @@
 
         /* ===== 제품설비 ===== */
         .equip-box {
-            width: 1680px;
+            width: 100%;
+            max-width: 1680px;
             background: #F1F3F7;
             border-radius: 30px;
             padding: 48px;
@@ -2202,13 +2204,13 @@
             flex-direction: row;
             gap: 48px;
             box-sizing: border-box;
-            height: 800px;
+            min-height: 800px;
             align-items: flex-start;
         }
 
         .equip-img-box {
-            width: 704px;
-            height: 704px;
+            width: 45%;
+            aspect-ratio: 1 / 1;
             background: #FFFFFF;
             border-radius: 20px;
             overflow: hidden;
