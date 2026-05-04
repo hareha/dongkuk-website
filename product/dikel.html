@@ -4488,7 +4488,7 @@
                 display: none !important;
             }
 
-            /* CSS로 원래 SVG와 동일한 conic-gradient 원 재현 */
+            /* CSS로 원래 SVG 링 형태 재현 (mask로 안쪽 투명 처리) */
             .hero-bg-decor::before,
             .hero-bg-decor::after {
                 content: '';
@@ -4496,7 +4496,7 @@
                 border-radius: 50%;
             }
 
-            /* 바깥 원 (Ellipse 1816: 전체 크기, opacity 0.4, 회전된 gradient) */
+            /* 바깥 원 링 */
             .hero-bg-decor::before {
                 width: 100%;
                 height: 100%;
@@ -4504,9 +4504,11 @@
                 left: 0;
                 background: conic-gradient(from 150deg, rgba(183, 201, 231, 1) 0deg, rgba(255, 255, 255, 1) 360deg);
                 opacity: 0.4;
+                -webkit-mask: radial-gradient(circle, transparent 48.5%, black 49%, black 51%, transparent 51.5%);
+                mask: radial-gradient(circle, transparent 48.5%, black 49%, black 51%, transparent 51.5%);
             }
 
-            /* 안쪽 원 (Ellipse 1815: 66.5% 크기, opacity 0.6) */
+            /* 안쪽 원 링 */
             .hero-bg-decor::after {
                 width: 66.5%;
                 height: 66.5%;
@@ -4515,6 +4517,8 @@
                 transform: translate(-50%, -50%);
                 background: conic-gradient(from 270deg, rgba(183, 201, 231, 0) 0deg, rgba(255, 255, 255, 1) 360deg);
                 opacity: 0.6;
+                -webkit-mask: radial-gradient(circle, transparent 48%, black 48.5%, black 51.5%, transparent 52%);
+                mask: radial-gradient(circle, transparent 48%, black 48.5%, black 51.5%, transparent 52%);
             }
 
             /* ── 히어로: 피그마 MOB h-[700px] 전체너비, 라운딩없음 ── */
