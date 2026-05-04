@@ -4488,28 +4488,33 @@
                 display: none !important;
             }
 
+            /* CSS로 원래 SVG와 동일한 conic-gradient 원 재현 */
             .hero-bg-decor::before,
             .hero-bg-decor::after {
                 content: '';
                 position: absolute;
                 border-radius: 50%;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
             }
 
-            /* 바깥 원 */
+            /* 바깥 원 (Ellipse 1816: 전체 크기, opacity 0.4, 회전된 gradient) */
             .hero-bg-decor::before {
                 width: 100%;
                 height: 100%;
-                border: 3px solid rgba(255, 255, 255, 0.45);
+                top: 0;
+                left: 0;
+                background: conic-gradient(from 150deg, rgba(183, 201, 231, 1) 0deg, rgba(255, 255, 255, 1) 360deg);
+                opacity: 0.4;
             }
 
-            /* 안쪽 원 */
+            /* 안쪽 원 (Ellipse 1815: 66.5% 크기, opacity 0.6) */
             .hero-bg-decor::after {
                 width: 66.5%;
                 height: 66.5%;
-                border: 3px solid rgba(255, 255, 255, 0.65);
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: conic-gradient(from 270deg, rgba(183, 201, 231, 0) 0deg, rgba(255, 255, 255, 1) 360deg);
+                opacity: 0.6;
             }
 
             /* ── 히어로: 피그마 MOB h-[700px] 전체너비, 라운딩없음 ── */
