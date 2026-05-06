@@ -106,11 +106,68 @@ document.querySelectorAll('.tab-item[data-tab]').forEach(function (tab) {
     tab.addEventListener('click', function () {
         const panelId = this.getAttribute('data-tab');
 
-        document.querySelectorAll('.tab-item[data-tab]').forEach(function (t) { t.classList.remove('active'); });
-        document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
+        // 모든 탭 아이템에서 active 제거
+        document.querySelectorAll('.tab-item[data-tab]').forEach(function (t) { 
+            t.classList.remove('active'); 
+        });
+        
+        // 모든 탭 패널에서 active 제거
+        document.querySelectorAll('.tab-panel').forEach(function (p) { 
+            p.classList.remove('active'); 
+        });
 
-        this.classList.add('active');
+        // 클릭된 탭과 동일한 data-tab을 가진 모든 탭 아이템에 active 추가 (동기화)
+        document.querySelectorAll('.tab-item[data-tab="' + panelId + '"]').forEach(function (t) {
+            t.classList.add('active');
+        });
+
+        // 해당 패널 활성화
         const panel = document.getElementById(panelId);
         if (panel) panel.classList.add('active');
     });
 });
+
+/* ── 가로 스크롤바 동기화 (모바일 전용) ── */
+document.addEventListener('DOMContentLoaded', function() {
+    function initScrollSync() {
+        // 기존 .spec-table-container 대응
+        document.querySelectorAll('.spec-table-container').forEach(function(container) {
+            const scrollHorizontal = container.nextElementSibling;
+            if (scrollHorizontal && scrollHorizontal.classList.contains('scroll-horizontal')) {
+                const thumb = scrollHorizontal.querySelector('.scroll-thumb');
+                const track = scrollHorizontal.querySelector('.scroll-track');
+                
+                container.addEventListener('scroll', function() {
+                    const scrollWidth = container.scrollWidth - container.clientWidth;
+                    if (scrollWidth <= 0) return;
+                    const scrollLeft = container.scrollLeft;
+                    const scrollPercent = Math.max(0, Math.min(1, scrollLeft / scrollWidth));
+                    const maxTravel = track.clientWidth - thumb.clientWidth;
+                    thumb.style.transform = `translateX(${scrollPercent * maxTravel}px)`;
+                });
+            }
+        });
+
+        // 새로운 .cat-table-wrap 대응
+        document.querySelectorAll('.cat-table-wrap').forEach(function(container) {
+            const indicator = container.querySelector('.cat-scroll-indicator');
+            if (indicator) {
+                const thumb = indicator.querySelector('.cat-scroll-thumb');
+                const bg = indicator.querySelector('.cat-scroll-bg');
+                
+                container.addEventListener('scroll', function() {
+                    const scrollWidth = container.scrollWidth - container.clientWidth;
+                    if (scrollWidth <= 0) return;
+                    const scrollLeft = container.scrollLeft;
+                    const scrollPercent = Math.max(0, Math.min(1, scrollLeft / scrollWidth));
+                    const maxTravel = bg.clientWidth - thumb.clientWidth;
+                    thumb.style.transform = `translateX(${scrollPercent * maxTravel}px)`;
+                });
+            }
+        });
+    }
+    
+    initScrollSync();
+    window.addEventListener('resize', initScrollSync);
+});
+

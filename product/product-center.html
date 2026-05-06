@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/gnb.css">
     <link rel="stylesheet" href="css/product-center.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
 
 </head>
 
@@ -61,99 +61,54 @@
                 </div>
             </div>
 
-            <div class="swiper standards-swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="standard-card" style="background-image: url('assets/product-center/대규모.png'); --active-icon: url('assets/product-center/대규모1.svg');">
-                            <div class="card-icon"></div>
-                            <div class="card-text-area">
-                                <h3 class="card-title">대규모 투자를 통한<br>생산 인프라</h3>
-                                <p class="card-desc">친환경 수소 열처리 및 1,330억 규모 니켈도금강판 전용 라인의 대규모 투자는 제조 공정의 지속가능성을 높이는 동시에, 시장에서의 독보적인 경쟁력을 입증합니다.</p>
-                            </div>
+            <div class="slider-wrapper">
+                <div class="slider-track" id="sliderTrack">
+
+                    <div class="standard-card slide-item"
+                        style="background-image: url('assets/product-center/대규모.png'); --active-icon: url('../assets/product-center/대규모1.svg');">
+                        <div class="card-icon"></div>
+                        <div class="card-text-area">
+                            <h3 class="card-title">대규모 투자를 통한<br>생산 인프라</h3>
+                            <p class="card-desc">친환경 수소 열처리 및 1,330억 규모 <br class="mob-br"><span class="desk-br"></span>니켈도금강판 전용 라인의 대규모 투자는 <br class="mob-br"><span class="desk-br"></span>제조 공정의 지속가능성을 높이는 동시에, <br class="mob-br"><span class="desk-br"></span>시장에서의 독보적인 경쟁력을 입증합니다.</p>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="standard-card" style="background-image: url('assets/product-center/세계시장.png'); --active-icon: url('assets/product-center/세계시장1.svg');">
-                            <div class="card-icon"></div>
-                            <div class="card-text-area">
-                                <h3 class="card-title">세계 시장이 인정한<br>품질과 대응력</h3>
-                                <p class="card-desc">세계 시장의 높은 진입 장벽을 넘어서는 정밀한 공정 대응력으로 글로벌 고객사의 신뢰를 확보했습니다.</p>
-                            </div>
+
+                    <div class="standard-card slide-item"
+                        style="background-image: url('assets/product-center/세계시장.png'); --active-icon: url('../assets/product-center/세계시장1.svg');">
+                        <div class="card-icon"></div>
+                        <div class="card-text-area">
+                            <h3 class="card-title">세계 시장이 인정한<br>품질과 대응력</h3>
+                            <p class="card-desc">세계 시장의 높은 진입 장벽을 넘어서는 <br class="mob-br">정밀한 공정 대응력으로 글로벌 고객사의 <br class="mob-br">신뢰를 확보했습니다.</p>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="standard-card" style="background-image: url('assets/product-center/품질의.png'); --active-icon: url('assets/product-center/품질의1.svg');">
-                            <div class="card-icon"></div>
-                            <div class="card-text-area">
-                                <h3 class="card-title">품질의 기본이 되는<br>원료 선택의 기준</h3>
-                                <p class="card-desc">국산 고청정 강판과 CLASS 1 고순도 원료(99.9%)를 사용합니다. 가격 변동에 타협하지 않으며 엄격한 기준으로 최고급 원료를 선택합니다.</p>
-                            </div>
+
+                    <div class="standard-card slide-item active"
+                        style="background-image: url('assets/product-center/품질의.png'); --active-icon: url('../assets/product-center/품질의1.svg');">
+                        <div class="card-icon"></div>
+                        <div class="card-text-area">
+                            <h3 class="card-title">품질의 기본이 되는<br>원료 선택의 기준</h3>
+                            <p class="card-desc">국산 고청정 강판과 CLASS 1 고순도 원료(99.9%)를 사용합니다. 가격 변동에 <br class="mob-br">타협하지 않으며 엄격한 기준으로 최고급 <br class="mob-br">원료를 선택합니다.</p>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="standard-card" style="background-image: url('assets/product-center/산업별.png'); --active-icon: url('assets/product-center/산업별1.svg');">
-                            <div class="card-icon"></div>
-                            <div class="card-text-area">
-                                <h3 class="card-title">산업별 최적화된<br>맞춤 소재 솔루션</h3>
-                                <p class="card-desc">엔진·변속기 등 고도의 신뢰성이 요구되는 분야에서도 고객사의 비즈니스 가치를 극대화하는 최적화된 맞춤형 솔루션을 제안합니다.</p>
-                            </div>
+
+                    <div class="standard-card slide-item"
+                        style="background-image: url('assets/product-center/산업별.png'); --active-icon: url('../assets/product-center/산업별1.svg');">
+                        <div class="card-icon"></div>
+                        <div class="card-text-area">
+                            <h3 class="card-title">산업별 최적화된<br>맞춤 소재 솔루션</h3>
+                            <p class="card-desc">엔진·변속기 등 고도의 신뢰성이 요구되는 <br class="mob-br">분야에서도 고객사의 비즈니스 가치를 <br class="mob-br">극대화하는최적화된 맞춤형 솔루션을 <br class="mob-br">제안합니다.</p>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="standard-card" style="background-image: url('assets/product-center/경험이.png'); --active-icon: url('assets/product-center/경험이1.svg');">
-                            <div class="card-icon"></div>
-                            <div class="card-text-area">
-                                <h3 class="card-title">경험이 축적된<br>정밀 제어 기술</h3>
-                                <p class="card-desc">오랜 기간 축적된 고탄소강 공정 역량과 고객 맞춤형 대응 경험은 동국산업만의 독보적인 자부심입니다.</p>
-                            </div>
+
+                    <div class="standard-card slide-item"
+                        style="background-image: url('assets/product-center/경험이.png'); --active-icon: url('../assets/product-center/경험이1.svg');">
+                        <div class="card-icon"></div>
+                        <div class="card-text-area">
+                            <h3 class="card-title">경험이 축적된<br>정밀 제어 기술</h3>
+                            <p class="card-desc">오랜 기간 축적된 고탄소강 공정 역량과 고객 맞춤형 대응 경험은 동국산업만의 독보적인 자부심입니다.</p>
                         </div>
                     </div>
-                    <!-- 2배수 복제 -->
-                    <div class="swiper-slide">
-                        <div class="standard-card" style="background-image: url('assets/product-center/대규모.png'); --active-icon: url('assets/product-center/대규모1.svg');">
-                            <div class="card-icon"></div>
-                            <div class="card-text-area">
-                                <h3 class="card-title">대규모 투자를 통한<br>생산 인프라</h3>
-                                <p class="card-desc">친환경 수소 열처리 및 1,330억 규모 니켈도금강판 전용 라인의 대규모 투자는 제조 공정의 지속가능성을 높이는 동시에, 시장에서의 독보적인 경쟁력을 입증합니다.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="standard-card" style="background-image: url('assets/product-center/세계시장.png'); --active-icon: url('assets/product-center/세계시장1.svg');">
-                            <div class="card-icon"></div>
-                            <div class="card-text-area">
-                                <h3 class="card-title">세계 시장이 인정한<br>품질과 대응력</h3>
-                                <p class="card-desc">세계 시장의 높은 진입 장벽을 넘어서는 정밀한 공정 대응력으로 글로벌 고객사의 신뢰를 확보했습니다.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="standard-card" style="background-image: url('assets/product-center/품질의.png'); --active-icon: url('assets/product-center/품질의1.svg');">
-                            <div class="card-icon"></div>
-                            <div class="card-text-area">
-                                <h3 class="card-title">품질의 기본이 되는<br>원료 선택의 기준</h3>
-                                <p class="card-desc">국산 고청정 강판과 CLASS 1 고순도 원료(99.9%)를 사용합니다. 가격 변동에 타협하지 않으며 엄격한 기준으로 최고급 원료를 선택합니다.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="standard-card" style="background-image: url('assets/product-center/산업별.png'); --active-icon: url('assets/product-center/산업별1.svg');">
-                            <div class="card-icon"></div>
-                            <div class="card-text-area">
-                                <h3 class="card-title">산업별 최적화된<br>맞춤 소재 솔루션</h3>
-                                <p class="card-desc">엔진·변속기 등 고도의 신뢰성이 요구되는 분야에서도 고객사의 비즈니스 가치를 극대화하는 최적화된 맞춤형 솔루션을 제안합니다.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="standard-card" style="background-image: url('assets/product-center/경험이.png'); --active-icon: url('assets/product-center/경험이1.svg');">
-                            <div class="card-icon"></div>
-                            <div class="card-text-area">
-                                <h3 class="card-title">경험이 축적된<br>정밀 제어 기술</h3>
-                                <p class="card-desc">오랜 기간 축적된 고탄소강 공정 역량과 고객 맞춤형 대응 경험은 동국산업만의 독보적인 자부심입니다.</p>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <div class="slider-nav">
@@ -273,69 +228,171 @@
             </div>
         </section>
 
-    </div><!-- /container -->
+    </div>
 
-    <!-- 고객지원 -->
     <div id="support-placeholder"></div>
     <div id="footer-placeholder"></div>
     <div id="btn-top-placeholder"></div>
 
     <script src="../js/components.js"></script>
 
-    <script>        // ===== Swiper 슬라이더 =====
+    <script>
+        // ===== 무한 슬라이더 스크립트 =====
+        const wrapper = document.querySelector('.slider-wrapper');
+        const track = document.getElementById('sliderTrack');
+        const originalCards = Array.from(document.querySelectorAll('.slide-item'));
 
-        const swiperScript = document.createElement('script');
-        swiperScript.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
-        swiperScript.onload = function () {
-            let currentOrbAngle = 0;
-            const swiper = new Swiper('.standards-swiper', {
-                slidesPerView: 'auto',
-                centeredSlides: true,
-                spaceBetween: 30,
-                speed: 600,
-                grabCursor: true,
-                initialSlide: 7,
-                loop: true,
-                loopedSlides: 10,
-                slideToClickedSlide: true,
-                navigation: {
-                    prevEl: '#sliderPrev',
-                    nextEl: '#sliderNext',
-                },
-                breakpoints: {
-                    0: { spaceBetween: 10 },
-                    1024: { spaceBetween: 30 }
-                },
-                on: {
-                    slideChange: function () {
-                        const orbOrbit = document.getElementById('orbOrbit');
-                        if (!orbOrbit) return;
-                        const cardIndex = this.realIndex % 5;
-                        const targetAngle = cardIndex * -72;
-                        let diff = targetAngle - (currentOrbAngle % 360);
-                        while (diff > 180) diff -= 360;
-                        while (diff < -180) diff += 360;
-                        currentOrbAngle += diff;
-                        orbOrbit.style.transform = `rotate(${currentOrbAngle}deg)`;
-                    }
-                }
+        originalCards.forEach(card => {
+            let clone = card.cloneNode(true);
+            clone.classList.remove('active');
+            track.appendChild(clone);
+        });
+        for (let i = originalCards.length - 1; i >= 0; i--) {
+            let clone = originalCards[i].cloneNode(true);
+            clone.classList.remove('active');
+            track.prepend(clone);
+        }
+
+        const allCards = document.querySelectorAll('.slide-item');
+        let currentIndex = 7;
+        let isMoving = false;
+
+        function getTranslateX(index) {
+            const wrapperWidth = wrapper.clientWidth;
+            const winWidth = window.innerWidth;
+            const isMobile = winWidth <= 1023;
+            
+            // 데스크톱: 비율 기반 (1920px 기준)
+            // 카드 25.9375vw + 간격 1.5625vw = 27.5vw
+            // 활성카드 37.2916vw / 2 = 18.6458vw
+            const cardFullWidth = isMobile ? 320 : (winWidth * 0.275);
+            const activeHalfWidth = isMobile ? 155 : (winWidth * 0.186458);
+            
+            return (wrapperWidth / 2) - (index * cardFullWidth + activeHalfWidth);
+        }
+
+        function updateCarousel(index, animate = true) {
+            if (animate) {
+                track.classList.remove('no-transition');
+                track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            } else {
+                track.classList.add('no-transition');
+                track.style.transition = 'none';
+            }
+            track.style.transform = `translate3d(${getTranslateX(index)}px, 0, 0)`;
+
+            allCards.forEach((c, i) => {
+                if (i === index) c.classList.add('active');
+                else c.classList.remove('active');
             });
-        };
-        document.head.appendChild(swiperScript);
 
-        // 🌟 제품 카드 확장 아코디언 스크립트 🌟
+            if (orbOrbit) {
+                orbOrbit.style.transition = animate ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none';
+                orbOrbit.style.transform = `rotate(${(index - 7) * -72}deg)`;
+            }
+        }
+
+        function checkAndReset() {
+            if (currentIndex >= 10 || currentIndex <= 4) {
+                if (currentIndex >= 10) currentIndex -= 5;
+                else if (currentIndex <= 4) currentIndex += 5;
+                updateCarousel(currentIndex, false);
+            }
+            isMoving = false;
+        }
+
+        // 드래그 & 스와이프
+        let dragStartX = 0;
+        let dragBaseX = 0;
+        let isDragging = false;
+        const SWIPE_THRESHOLD = 30;
+
+        function getCurrentTranslateX() {
+            const style = window.getComputedStyle(track);
+            const matrix = new DOMMatrix(style.transform);
+            return matrix.m41;
+        }
+
+        function onDragStart(clientX) {
+            if (isMoving) return;
+            dragStartX = clientX;
+            dragBaseX = getCurrentTranslateX();
+            isDragging = true;
+            track.style.transition = 'none';
+        }
+
+        function onDragMove(clientX) {
+            if (!isDragging) return;
+            track.style.transform = `translate3d(${dragBaseX + (clientX - dragStartX)}px, 0, 0)`;
+        }
+
+        function onDragEnd(clientX) {
+            if (!isDragging) return;
+            isDragging = false;
+            const diff = dragStartX - clientX;
+            if (Math.abs(diff) < SWIPE_THRESHOLD) {
+                updateCarousel(currentIndex, true);
+                setTimeout(() => { isMoving = false; }, 500);
+                return;
+            }
+            isMoving = true;
+            currentIndex += diff > 0 ? 1 : -1;
+            updateCarousel(currentIndex, true);
+            setTimeout(checkAndReset, 500);
+        }
+
+        wrapper.addEventListener('mousedown', (e) => { e.preventDefault(); onDragStart(e.clientX); });
+        window.addEventListener('mousemove', (e) => onDragMove(e.clientX));
+        window.addEventListener('mouseup', (e) => onDragEnd(e.clientX));
+        wrapper.addEventListener('touchstart', (e) => onDragStart(e.touches[0].clientX), { passive: true });
+        wrapper.addEventListener('touchmove', (e) => { if (isDragging) { e.preventDefault(); onDragMove(e.touches[0].clientX); } }, { passive: false });
+        wrapper.addEventListener('touchend', (e) => onDragEnd(e.changedTouches[0].clientX), { passive: true });
+
+        // 클릭 이벤트
+        allCards.forEach((card, idx) => {
+            card.addEventListener('click', () => {
+                if (isMoving || idx === currentIndex) return;
+                isMoving = true;
+                currentIndex = idx;
+                updateCarousel(currentIndex, true);
+                setTimeout(checkAndReset, 500);
+            });
+        });
+
+
+
+        document.getElementById('sliderPrev').addEventListener('click', () => {
+            if (isMoving) return;
+            isMoving = true;
+            currentIndex--;
+            updateCarousel(currentIndex, true);
+            setTimeout(checkAndReset, 500);
+        });
+
+        document.getElementById('sliderNext').addEventListener('click', () => {
+            if (isMoving) return;
+            isMoving = true;
+            currentIndex++;
+            updateCarousel(currentIndex, true);
+            setTimeout(checkAndReset, 500);
+        });
+
+        window.addEventListener('resize', () => updateCarousel(currentIndex, false));
+        updateCarousel(currentIndex, false);
+
+        // 🌟 제품 카드 확장 아코디언 🌟
         const productCards = document.querySelectorAll('.product-card');
-        const isMobile = window.innerWidth <= 1023;
+        const isMobileDevice = window.innerWidth <= 1023;
         productCards.forEach(card => {
             card.addEventListener('click', () => {
-                if (isMobile && card.dataset.href) {
+                if (isMobileDevice && card.dataset.href) {
                     location.href = card.dataset.href;
                     return;
                 }
                 productCards.forEach(c => c.classList.remove('expanded'));
                 card.classList.add('expanded');
             });
-            if (!isMobile) {
+            if (!isMobileDevice) {
                 card.addEventListener('mouseenter', () => {
                     productCards.forEach(c => c.classList.remove('expanded'));
                     card.classList.add('expanded');
@@ -343,14 +400,13 @@
             }
         });
 
-        // 🌐 글로벌 비즈니스 — 진입 시 프레임 확장 + 영상 재생 + 종료 시 오버레이
+        // 🌐 글로벌 비즈니스 섹션 🌐
         (function() {
             const section = document.getElementById('globalSection');
             const frame   = document.getElementById('globalVideoFrame');
             const video   = document.getElementById('globalVideo');
             if (!section || !frame || !video) return;
 
-            // 첫 프레임 강제 표시
             video.addEventListener('loadeddata', () => { video.currentTime = 0.01; });
 
             const title1  = section.querySelector('.global-title-1');
@@ -363,9 +419,7 @@
             let counted = false;
 
             function showOverlays() {
-                markers.forEach((m, i) => {
-                    setTimeout(() => m.classList.add('show'), i * 150);
-                });
+                markers.forEach((m, i) => setTimeout(() => m.classList.add('show'), i * 150));
                 if (stats) stats.classList.add('show');
                 if (!counted) {
                     counted = true;
@@ -384,11 +438,9 @@
 
             video.addEventListener('ended', showOverlays);
 
-            // 스크롤 리스너: 페이지 로드 1초 후 활성화, 섹션 상단이 뷰포트 20% 지점 위로 올라오면 트리거
             function checkScroll() {
                 if (triggered) return;
                 const rect = section.getBoundingClientRect();
-                // 섹션 상단이 뷰포트 높이의 20% 위치보다 위로 올라가야 트리거
                 if (rect.top < window.innerHeight * 0.2) {
                     triggered = true;
                     window.removeEventListener('scroll', checkScroll);

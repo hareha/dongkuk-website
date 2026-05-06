@@ -151,7 +151,8 @@
                 </div>
                 <div class="acc-body">
                     <div class="acc-content-box" style="padding:48px; gap:0;">
-                        <div class="grade-table">
+                        <!-- Desktop View -->
+                        <div class="grade-table desktop-only">
                             <!-- 등급 컬럼 -->
                             <div class="grade-left">
                                 <div class="grade-col">
@@ -186,9 +187,70 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Mobile View -->
+                        <div class="cat-table-wrap mobile-only">
+                            <div class="cat-table-inner" style="width: 760px; height: 540px;">
+                                <!-- 등급 컬럼 -->
+                                <div class="cat-col" style="width: 150px; height: 540px;">
+                                    <div class="cat-header-main" style="border-top: 1px solid #000;">등급</div>
+                                    <div class="cat-data-cell" style="height: 90px;">
+                                        <div class="cat-data-inner"><span>S35C~S75C</span></div>
+                                    </div>
+                                    <div class="cat-data-cell" style="height: 90px;">
+                                        <div class="cat-data-inner"><span>SK</span></div>
+                                    </div>
+                                    <div class="cat-data-cell" style="height: 90px;">
+                                        <div class="cat-data-inner"><span>SCM</span></div>
+                                    </div>
+                                    <div class="cat-data-cell" style="height: 90px;">
+                                        <div class="cat-data-inner"><span>SKS</span></div>
+                                    </div>
+                                    <div class="cat-data-cell" style="height: 90px;">
+                                        <div class="cat-data-inner"><span>Spring</span></div>
+                                    </div>
+                                </div>
+                                <!-- 허용 오차 범위 컬럼 -->
+                                <div class="cat-col" style="width: 160px; height: 540px;">
+                                    <div class="cat-header-main" style="border-top: 1px solid #000;">허용 오차 범위</div>
+                                    <div class="cat-data-cell" style="height: 180px;">
+                                        <div class="cat-data-inner"><span>1600~2300N/mm²<br>(Max. ±30)</span></div>
+                                    </div>
+                                    <div class="cat-data-cell" style="height: 180px;">
+                                        <div class="cat-data-inner"><span>1300N/mm²<br>(Max. ±40)</span></div>
+                                    </div>
+                                    <div class="cat-data-cell" style="height: 90px;">
+                                        <div class="cat-data-inner"><span>1100~1300N/mm²<br>(Max. ±40)</span></div>
+                                    </div>
+                                </div>
+                                <!-- 미세 구조 컬럼 -->
+                                <div class="cat-col" style="width: 450px; height: 540px;">
+                                    <div class="cat-header-main" style="border-top: 1px solid #000;">미세 구조</div>
+                                    <div class="cat-sub-cols" style="display: flex; flex-direction: row; width: 100%; height: 450px;">
+                                        <div class="cat-data-cell" style="width: 150px; height: 450px;">
+                                            <div class="cat-data-inner"><span style="height: 105px;">퀜칭 방식: Martempering (Martensite)<br>표면 색상: Bright / Light Yellow</span></div>
+                                        </div>
+                                        <div class="cat-data-cell" style="width: 150px; height: 450px;">
+                                            <div class="cat-data-inner"><span style="height: 105px;">퀜칭 방식: Austempering (Bainite)<br>표면 색상: Grey-Blue</span></div>
+                                        </div>
+                                        <div class="cat-data-cell" style="width: 150px; height: 450px;">
+                                            <div class="cat-data-inner"><span style="height: 84px;">퀜칭 방식: Patenting (Sorbite)<br>표면 색상: Bright</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Scroll indicator -->
+                            <div class="cat-scroll-indicator">
+                                <div class="cat-scroll-bg"></div>
+                                <div class="cat-scroll-thumb"></div>
+                            </div>
+                        </div>
                         <div class="grade-footnote">
                             <strong>*허용 오차 범위(Tolerance):</strong>
                             <span>두께에 따라 상이</span>
+                            <p style="color: #F27100; font-size: 14px; padding-top: 30px; margin: 0; font-weight: 500;">
+                                표의 색상 영역에서 제품별 상세 생산 범위를 확인해 보세요.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -242,11 +304,13 @@
                             </div>
                             <div class="equip-info">
                                 <div class="equip-texts">
-                                    <p class="equip-title">수소 열처리 기반 친환경 생산 설비</p>
+                                    <p class="equip-title">수소 열처리 기반 친환경 <br> 생산 설비</p>
                                     <p class="equip-desc">
-                                        동국산업은 친환경 수소 열처리 설비를 기반으로 Q/T 열처리강판을 생산함으로써,<br>
-                                        탄소 배출을 절감하고, 산세 공정 없는 생산으로 수질 오염을 방지합니다.<br>
-                                        이를 통해 생산 전 과정에서의 환경 부담을 줄이고, 지속가능한 제조 환경 구축에 기여합니다.</p>
+                                        동국산업은 친환경 수소 열처리 설비를 <br> 
+                                        기반으로 Q/T 열처리강판을 생산함으로써, <br> 
+                                        탄소 배출을 절감하고, 산세 공정 없는 생산으로 수질 오염을 방지합니다. <br> 
+                                        이를 통해 생산 전 과정에서의 환경 부담을 줄이고, 지속가능한 제조 <br> 
+                                        환경 구축에 기여합니다.</p>
                                 </div>
                                 <div class="equip-tags">
                                     <div class="equip-tags-row">

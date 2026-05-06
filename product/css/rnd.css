@@ -329,7 +329,7 @@
             .story-img {
                 width: 100% !important;
                 max-width: 100% !important;
-                height: 200px;
+                height: 272px;
                 border-radius: 16px;
             }
 
@@ -364,6 +364,8 @@
             }
 
             .story-bullets li::before {
+                width: 4px;
+                height: 4px;
                 margin-top: 8px;
             }
 
