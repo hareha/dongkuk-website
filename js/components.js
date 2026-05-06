@@ -26,8 +26,8 @@
             <div class="support-icon"></div>
             <div class="support-content-box">
                 <div class="support-info">
-                    <h3>동국산업에 대해 더 알고 싶으신가요?</h3>
-                    <p>제품, 기술, 협력, 채용 등 다양한 문의를 남겨주시면 담당자가 확인 후 안내드립니다.</p>
+                    <h3>동국산업에 대해 <br class="mo-br"> 더 알고 싶으신가요?</h3>
+                    <p>제품, 기술, 협력, 채용 등 다양한 문의를 남겨 <br class="mo-br"> 주시면 담당자가 확인 후 안내드립니다.</p>
                 </div>
                 <a href="#" class="btn-arrow-right">→</a>
             </div>

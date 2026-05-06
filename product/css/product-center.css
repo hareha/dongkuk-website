@@ -27,7 +27,7 @@
         .hero-section {
             position: relative;
             width: 100%;
-            height: 689px;
+            height: 35.8854vw; /* 689px / 1920px */
             background: url('../assets/product-center/Page Header.png') no-repeat center top / cover;
             display: flex;
             flex-direction: column;
@@ -37,28 +37,28 @@
 
         .hero-title-group {
             position: absolute;
-            top: 200px;
+            top: 10.4166vw; /* 200px / 1920px */
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 1.0416vw; /* 20px / 1920px */
             width: 100%;
-            max-width: 995px;
+            max-width: 51.8229vw; /* 995px / 1920px */
             text-align: center;
         }
 
         .hero-subtitle {
-            font-size: 26px;
-            font-weight: 700;
+            font-size: 1.3541vw; /* 26px / 1920px */
+            font-weight: 400;
             line-height: 150%;
             color: #FFFFFF;
             margin: 0;
         }
 
         .hero-maintitle {
-            font-size: 80px;
+            font-size: 4.1666vw; /* 80px / 1920px */
             font-weight: 700;
             line-height: 140%;
             letter-spacing: 0%;
@@ -75,78 +75,74 @@
         /* ================= 동국산업의 기준 (Standards Section) ================= */
         .standards-section {
             position: relative;
-            /* 💡 1. 궤도 선이 아래로 뚫고 나가지 못하게 기준점 설정 */
             width: 100%;
-            /* 반응형을 위해 1920px에서 변경 */
-            max-width: 1920px;
-            height: 1333px;
+            max-width: 100vw;
+            height: 69.427vw; /* 1333px / 1920px */
             margin: 0 auto;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding-top: 120px;
+            padding-top: 6.25vw; /* 120px / 1920px */
             background: #FFFFFF;
             overflow: hidden;
-            /* 💡 2. 삐져나온 3206px짜리 거대 궤도를 여기서 완벽하게 잘라냅니다 */
         }
 
         .section-title {
-            font-size: 60px;
+            font-size: 3.125vw; /* 60px / 1920px */
             font-weight: 700;
             line-height: 140%;
             text-align: center;
-            margin-bottom: 240px;
+            margin-bottom: 12.5vw; /* 240px / 1920px */
             color: #000000;
         }
 
-        /* ===== Swiper 슬라이더 ===== */
-        .standards-swiper {
+        /* ===== 커스텀 슬라이더 ===== */
+        .slider-wrapper {
             width: 100%;
             position: relative;
+            height: 560px;
             overflow: hidden;
             z-index: 1;
         }
-        .standards-swiper .swiper-slide {
-            width: 498px;
-            height: 560px;
+
+        .slider-track {
             display: flex;
             align-items: center;
-            justify-content: center;
+            height: 100%;
+            gap: 1.5625vw; /* 30px / 1920px */
+            width: max-content;
         }
 
         .standard-card {
             position: relative;
-            width: 100%;
-            height: 402px;
-            border-radius: 20px;
+            flex-shrink: 0;
+            width: 25.9375vw; /* 498px / 1920px */
+            height: 20.9375vw; /* 402px / 1920px */
+            border-radius: 1.5625vw; /* 30px / 1920px */
+            background-color: transparent;
             background-size: cover;
             background-position: center;
+            opacity: 1;
             cursor: pointer;
             overflow: hidden;
-            transition: height 0.6s ease, background-color 0.6s ease, border-radius 0.6s ease;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 5;
         }
-        /* 활성 카드 — 공통 */
-        .swiper-slide-active .standard-card {
-            background-color: #F27100;
-            background-image: none !important;
-        }
-        /* 데스크톱 전용: 활성 카드 크기 */
-        @media (min-width: 1024px) {
-            .swiper-slide-active .standard-card {
-                height: 560px;
-                border-radius: 30px;
-            }
+
+        .no-transition,
+        .no-transition * {
+            transition: none !important;
         }
 
         /* ===== 궤도 원 ===== */
         .orb-wrapper {
             position: absolute;
-            top: 436px;
+            top: 22.7083vw; /* 436px / 1920px */
             left: 50%;
             transform: translateX(-50%);
-            width: 3206px;
-            height: 3206px;
+            width: 166.9791vw; /* 3206px / 1920px */
+            height: 166.9791vw;
             pointer-events: none;
             z-index: 0;
         }
@@ -178,9 +174,11 @@
         }
         .orb-main-dot {
             position: absolute;
-            top: -16.5px; left: 50%;
+            top: -0.8593vw; /* -16.5px / 1920px */
+            left: 50%;
             transform: translateX(-50%);
-            width: 33px; height: 33px;
+            width: 1.7187vw; /* 33px / 1920px */
+            height: 1.7187vw;
             background: #F27100;
             border-radius: 50%;
             z-index: 2;
@@ -189,48 +187,96 @@
         /* 카드 내부 — 비활성 */
         .card-icon {
             position: absolute;
-            top: 30px; left: 30px;
-            width: 50px; height: 50px;
+            top: 2.0833vw; /* 40px / 1920px */
+            left: 2.0833vw;
+            width: 2.6041vw; /* 50px / 1920px */
+            height: 2.6041vw;
             background: var(--active-icon) no-repeat center/contain;
-            transition: all 0.6s ease;
-        }
-        .card-text-area {
-            position: absolute;
-            bottom: 30px; left: 30px; right: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            transition: all 0.6s ease;
-        }
-        .card-title {
-            font-size: 30px;
-            font-weight: 700;
-            line-height: 140%;
-            color: #FFF;
-            margin: 0;
-            transition: font-size 0.6s ease;
-        }
-        .card-desc {
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            font-size: 24px;
-            font-weight: 400;
-            line-height: 150%;
-            color: #FFF;
-            margin: 0;
-            transition: max-height 0.6s ease, opacity 0.5s ease;
+            opacity: 1;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* 카드 내부 — 활성 */
-        .swiper-slide-active .card-icon {
-            top: 40px; left: 40px;
-            width: 88px; height: 88px;
+        .standard-card.active .card-icon {
+            width: 4.5833vw; /* 88px / 1920px */
+            height: 4.5833vw;
+            opacity: 1;
         }
-        .swiper-slide-active .card-text-area {
-            top: 158px; bottom: 46px;
-            left: 40px; right: 40px;
-            justify-content: space-between;
+
+        .card-text-area {
+            position: absolute;
+            top: 13.0208vw; /* 250px / 1920px */
+            left: 2.0833vw;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-title {
+            font-size: 2.2916vw; /* 44px / 1920px */
+            font-weight: 700;
+            line-height: 150%;
+            color: #FFFFFF;
+            margin: 0;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-desc {
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+            font-size: 1.25vw; /* 24px / 1920px */
+            font-weight: 400;
+            line-height: 150%;
+            color: #FFFFFF;
+            margin: 0;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .standard-card.active {
+            width: 37.2916vw; /* 716px / 1920px */
+            height: 29.1666vw; /* 560px / 1920px */
+            background: #F27100 !important;
+            opacity: 1;
+        }
+
+        .standard-card.active .card-text-area {
+            top: 8.2291vw; /* 158px / 1920px */
+            left: 2.0833vw;
+            gap: 6.0416vw; /* 116px / 1920px */
+        }
+
+        .standard-card.active .card-title {
+            width: 33.125vw; /* 636px / 1920px */
+            height: 6.875vw; /* 132px / 1920px */
+            font-size: 2.2916vw;
+            display: flex;
+            align-items: center;
+        }
+
+        .standard-card.active .card-desc {
+            width: 33.125vw;
+            height: 5.625vw; /* 108px / 1920px */
+            opacity: 1;
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: 12px;
+            margin-top: 60px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #E9E9E9;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: #000000;
+        }-content: space-between;
         }
         .swiper-slide-active .card-title {
             font-size: 44px;
@@ -376,10 +422,10 @@
         /* 스탯 카드 */
         .global-stats {
             position: absolute;
-            bottom: 40px;
-            right: 120px;
+            bottom: 6.25vw; /* 120px / 1920px */
+            right: 6.25vw;  /* 120px / 1920px (aligning with frame margin) */
             display: flex;
-            gap: 16px;
+            gap: 0.8333vw; /* 16px / 1920px */
             z-index: 6;
             opacity: 0;
             transform: translateY(24px);
@@ -387,8 +433,8 @@
         }
         .global-stats.show { opacity: 1; transform: translateY(0); }
         .stat-box {
-            width: clamp(200px, 14vw, 240px);
-            height: clamp(200px, 14vw, 240px);
+            width: 11.4583vw;  /* 220px / 1920px */
+            height: 11.4583vw; /* 220px / 1920px */
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(12px);
             border-radius: 20px;
@@ -398,12 +444,14 @@
             justify-content: space-between;
         }
         .stat-box p {
-            font-size: clamp(18px, 1.2vw, 24px);
+            font-size: 1.25vw; /* 24px / 1920px */
+            line-height: 150%;
             color: #4E4E4E;
             text-align: left;
         }
         .stat-box strong {
-            font-size: clamp(50px, 4.5vw, 80px);
+            font-size: 3.125vw; /* 60px / 1920px */
+            line-height: 140%;
             font-weight: 600;
             color: #000;
             text-align: left;
@@ -411,7 +459,7 @@
 
         /* ================= 🌟 제품 (Products Section) 🌟 ================= */
         .products-section {
-            padding: 120px;
+            padding: 6.25vw; /* 120px / 1920px */
             background: #FFFFFF;
             display: flex;
             justify-content: center;
@@ -419,17 +467,16 @@
 
         .products-container {
             display: flex;
-            gap: 24px;
-            width: 1680px;
-            height: 808px;
+            gap: 1.25vw; /* 24px / 1920px */
+            width: 87.5vw; /* 1680px / 1920px */
+            height: 42.0833vw; /* 808px / 1920px */
         }
 
         .product-card {
             position: relative;
             flex: 329;
-            /* Using ratios instead of fixed pixels for fixed container width */
-            height: 808px;
-            border-radius: 20px;
+            height: 42.0833vw;
+            border-radius: 1.0416vw; /* 20px / 1920px */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -452,9 +499,9 @@
         /* 닫혀있을 때 하단 타이틀 */
         .pc-title-small {
             position: absolute;
-            bottom: 40px;      /* 📍 기본 위치: 박스 바닥에서 40px 위 */
-            left: 40px;        /* 📍 기본 위치: 박스 왼쪽에서 40px */
-            font-size: 36px;   /* 📍 기본 크기: 36px */
+            bottom: 2.0833vw; /* 40px / 1920px */
+            left: 2.0833vw;
+            font-size: 1.875vw; /* 36px / 1920px */
             font-weight: 700;
             line-height: 140%;
             color: #FFFFFF;
@@ -462,7 +509,6 @@
             white-space: nowrap;
             z-index: 10;
             
-            /* 💡 핵심: 아래 3개 속성(바닥거리, 왼쪽거리, 글자크기)이 변할 때 0.5초 동안 부드럽게 움직여라! */
             transition: bottom 0.5s cubic-bezier(0.4, 0, 0.2, 1),
                         left 0.5s cubic-bezier(0.4, 0, 0.2, 1),
                         font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -471,15 +517,15 @@
         /* 열렸을 때 상단 왼쪽 텍스트 그룹 */
         .pc-expanded-content {
             position: absolute;
-            top: 144px; /* 타이틀(60px)이 top:40px 위치에 오던 이전 디자인의 설명 위치(40+84+20)로 복구 */
-            left: 50px;
-            right: 40px;
+            top: 7.5vw; /* 144px / 1920px */
+            left: 2.6041vw; /* 50px / 1920px */
+            right: 2.0833vw;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 0.5208vw; /* 10px / 1920px */
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.05s ease; /* 닫힐 때: 즉시 사라짐 */
+            transition: opacity 0.05s ease;
         }
 
         /* 텍스트 그룹 */
@@ -494,7 +540,7 @@
         }
 
         .pc-text-group p {
-            font-size: 26px;
+            font-size: 1.3541vw; /* 26px / 1920px */
             font-weight: 700;
             line-height: 150%;
             color: #FFFFFF;
@@ -505,21 +551,21 @@
         /* 버튼 그룹: 우측 하단 */
         .pc-btn-group {
             position: absolute;
-            bottom: 40px;
-            right: 40px;
+            bottom: 2.0833vw;
+            right: 2.0833vw;
             display: flex;
-            gap: 4px;
+            gap: 0.2083vw; /* 4px / 1920px */
         }
 
         .pc-btn-text {
-            width: 140px;
-            height: 64px;
+            width: 7.2916vw; /* 140px / 1920px */
+            height: 3.3333vw; /* 64px / 1920px */
             background: #FFFFFF;
-            border-radius: 14px;
+            border-radius: 0.7291vw; /* 14px / 1920px */
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 20px;
+            font-size: 1.0416vw; /* 20px / 1920px */
             font-weight: 500;
             color: #000000;
             border: none;
@@ -527,11 +573,11 @@
         }
 
         .pc-btn-icon {
-            width: 64px;
-            height: 64px;
+            width: 3.3333vw; /* 64px / 1920px */
+            height: 3.3333vw;
             background: transparent;
-            border-radius: 14px;
-            border: 2px solid #FFFFFF;
+            border-radius: 0.7291vw;
+            border: 0.1041vw solid #FFFFFF; /* 2px / 1920px */
             display: flex;
             justify-content: center;
             color: #ffffff;
@@ -551,7 +597,7 @@
         .product-card.expanded .pc-expanded-content {
             opacity: 1;
             pointer-events: auto;
-            transition: opacity 0.3s ease 0.45s; /* 열릴 때: 타이틀 올라간 후 나타남 */
+            transition: opacity 0.3s ease 0.2s; /* 열릴 때: 지연 시간 단축 */
         }
 
         /* 버튼: 기본 숨김 및 클릭 방지 */
@@ -566,10 +612,19 @@
         .product-card.expanded .pc-btn-group {
             opacity: 1;
             pointer-events: auto;
-            transition: opacity 0.3s ease 0.5s; /* 열릴 때: 딜레이 후 나타남 */
+            transition: opacity 0.3s ease 0.2s; /* 열릴 때: 지연 시간 단축 */
         }
 
 
+
+        /* 반응형 줄바꿈 */
+        .mob-br { display: none; }
+        .desk-br { display: inline; }
+
+        @media (max-width: 1023px) {
+            .desk-br { display: none !important; }
+            .mob-br { display: inline !important; }
+        }
 
         /* ===== TOP 버튼 ===== */
         .btn-top {
@@ -646,7 +701,7 @@
             }
             .hero-subtitle {
                 font-size: 18px;
-                font-weight: 500;
+                font-weight: 400;
                 line-height: 1.6;
             }
             .hero-maintitle {
@@ -680,16 +735,32 @@
                 height: 16.5px;
                 top: -8.25px;
             }
+            .orb-orbit::before {
+                padding: 1px;
+                /* 양쪽 끝을 더 투명하고 연하게 처리 (중간 stop 추가) */
+                background: repeating-conic-gradient(from -30deg at 50% 50%,
+                    rgba(242, 113, 0, 0) 0deg,
+                    rgba(242, 113, 0, 0.1) 10deg,
+                    #F27100 30deg,
+                    rgba(242, 113, 0, 0.1) 50deg,
+                    rgba(242, 113, 0, 0) 60deg,
+                    transparent 60deg,
+                    transparent 72deg);
+            }
 
-            .standards-swiper .swiper-slide {
-                width: 310px;
+            .slider-wrapper {
                 height: 374px;
             }
+            .slider-track {
+                gap: 10px;
+            }
             .standard-card {
+                width: 310px;
                 height: 245px;
                 border-radius: 16px;
             }
-            .swiper-slide-active .standard-card {
+            .standard-card.active {
+                width: 310px;
                 height: 374px;
                 border-radius: 16px;
             }
@@ -699,29 +770,33 @@
                 width: 50px;
                 height: 50px;
             }
-            .swiper-slide-active .card-icon {
+            .standard-card.active .card-icon {
                 top: 16px;
                 left: 16px;
                 width: 50px;
                 height: 50px;
             }
             .card-text-area {
+                top: auto;
                 bottom: 20px;
                 left: 16px;
                 right: 16px;
             }
-            .swiper-slide-active .card-text-area {
+            .standard-card.active .card-text-area {
                 top: 78px;
                 bottom: 20px;
                 left: 16px;
                 right: 16px;
+                gap: 0;
                 justify-content: space-between;
             }
             .card-title {
                 font-size: 18px;
                 line-height: 1.6;
             }
-            .swiper-slide-active .card-title {
+            .standard-card.active .card-title {
+                width: auto;
+                height: auto;
                 font-size: 18px;
                 line-height: 1.6;
             }
@@ -729,7 +804,9 @@
                 font-size: 16px;
                 line-height: 1.6;
             }
-            .swiper-slide-active .card-desc {
+            .standard-card.active .card-desc {
+                width: auto;
+                height: auto;
                 max-height: 200px;
                 opacity: 1;
             }
@@ -823,7 +900,6 @@
                 position: relative;
                 display: flex;
                 flex-direction: column;
-                gap: 8px;
                 padding: 20px 16px;
             }
             .pc-expanded-content {
