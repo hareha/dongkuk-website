@@ -172,7 +172,7 @@
             height: 228px;
             left: 0;
             top: 312px;
-            background: url('assets/heat-treated/열처리강판.png') no-repeat center/contain;
+            background: url('../assets/heat-treated/열처리강판.png') no-repeat center/contain;
             border-radius: 0px 0px 8px 8px;
             z-index: 3;
         }
@@ -746,11 +746,11 @@
 
         /* 💡 로컬 절대 경로 대신 상대 경로 사용 */
         .usage-menu-item .umi-icon {
-            background-image: url('../assets/common/ic-semicircle-gray.svg');
+            background-image: url('../../assets/common/ic-semicircle-gray.svg');
         }
 
         .usage-menu-item.active .umi-icon {
-            background-image: url('../assets/common/ic-semicircle.svg');
+            background-image: url('../../assets/common/ic-semicircle.svg');
         }
 
         .umi-title {

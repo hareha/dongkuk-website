@@ -113,15 +113,15 @@
         }
 
         .story-img.lab1::before {
-            background: url('assets/rnd/img_w_변화의 흐름을 읽는 기술 기획.png') no-repeat center/cover;
+            background: url('../assets/rnd/img_w_변화의 흐름을 읽는 기술 기획.png') no-repeat center/cover;
         }
 
         .story-img.lab2::before {
-            background: url('assets/rnd/img_w_실제적 가치로 이어진 연구.png') no-repeat center/cover;
+            background: url('../assets/rnd/img_w_실제적 가치로 이어진 연구.png') no-repeat center/cover;
         }
 
         .story-img.lab3::before {
-            background: url('assets/rnd/img_w_미래 혁신의 기회 탐색.png') no-repeat center/cover;
+            background: url('../assets/rnd/img_w_미래 혁신의 기회 탐색.png') no-repeat center/cover;
         }
 
         .story-ic {
@@ -243,28 +243,28 @@
             width: 732px;
             height: 473px;
             border-radius: 50px 50px 0 50px;
-            background: url('assets/rnd/img_연구개발 현장_1_w.png') no-repeat center/cover;
+            background: url('../assets/rnd/img_연구개발 현장_1_w.png') no-repeat center/cover;
         }
 
         .scene-img.s2 {
             width: 354px;
             height: 389px;
             border-radius: 0 50px 50px 50px;
-            background: url('assets/rnd/img_연구개발 현장_2_w.png') no-repeat center/cover;
+            background: url('../assets/rnd/img_연구개발 현장_2_w.png') no-repeat center/cover;
         }
 
         .scene-img.s3 {
             width: 885px;
             height: 561px;
             border-radius: 50px 0 50px 0;
-            background: url('assets/rnd/img_연구개발 현장_3_w.png') no-repeat center/cover;
+            background: url('../assets/rnd/img_연구개발 현장_3_w.png') no-repeat center/cover;
         }
 
         .scene-img.s4 {
             width: 354px;
             height: 514px;
             border-radius: 0 50px 50px 50px;
-            background: url('assets/rnd/img_연구개발 현장_4_w.png') no-repeat center/cover;
+            background: url('../assets/rnd/img_연구개발 현장_4_w.png') no-repeat center/cover;
         }
 
         /* ════════════════════════════════════

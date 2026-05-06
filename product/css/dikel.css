@@ -129,7 +129,7 @@
             height: 228px;
             left: 0;
             top: 312px;
-            background: url('assets/dikel/강판.svg') no-repeat center/contain;
+            background: url('../assets/dikel/강판.svg') no-repeat center/contain;
             border-radius: 0px 0px 8px 8px;
             z-index: 3;
         }
@@ -801,11 +801,11 @@
 
         /* 💡 로컬 절대 경로 대신 상대 경로 사용 */
         .usage-menu-item .umi-icon {
-            background-image: url('assets/dikel/ic_SemiCircle_gray.svg');
+            background-image: url('../assets/dikel/ic_SemiCircle_gray.svg');
         }
 
         .usage-menu-item.active .umi-icon {
-            background-image: url('assets/dikel/ic_SemiCircle.svg');
+            background-image: url('../assets/dikel/ic_SemiCircle.svg');
         }
 
         .umi-title {
@@ -2464,7 +2464,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(0deg, rgba(91, 102, 139, 0.32), rgba(91, 102, 139, 0.32)), url('assets/dikel/Nickel.png') no-repeat center/cover;
+            background: linear-gradient(0deg, rgba(91, 102, 139, 0.32), rgba(91, 102, 139, 0.32)), url('../assets/dikel/Nickel.png') no-repeat center/cover;
         }
 
         .scard-nickel-inner {

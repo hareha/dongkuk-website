@@ -58,7 +58,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: url('assets/main/HERO_A.png') center/cover no-repeat;
+      background: url('../assets/main/HERO_A.png') center/cover no-repeat;
     }
 
     .hero-overlay {
