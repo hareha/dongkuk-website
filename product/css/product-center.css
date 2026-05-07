@@ -66,6 +66,14 @@
             margin: 0;
         }
 
+        .hero-mobile-br {
+            display: none;
+        }
+
+        .hero-desktop-br {
+            display: inline;
+        }
+
         /* GNB: 히어로 위 투명 오버레이 (index.html과 동일) */
         .gnb {
             position: fixed !important;
@@ -617,6 +625,28 @@
 
 
 
+        /* ================= Support (Desktop Fit) ================= */
+        @media (min-width: 1024px) {
+            .support-info {
+                flex: 1;
+            }
+
+            .support-info h3,
+            .support-info p {
+                display: inline-block;
+                width: auto;
+                max-width: 100%;
+            }
+
+            .support-info h3 br {
+                display: none;
+            }
+
+            .support-info p br.mo-br {
+                display: none;
+            }
+        }
+
         /* 반응형 줄바꿈 */
         .mob-br { display: none; }
         .desk-br { display: inline; }
@@ -708,6 +738,14 @@
                 font-size: 26px;
                 font-weight: 700;
                 line-height: 1.5;
+            }
+
+            .hero-mobile-br {
+                display: inline;
+            }
+
+            .hero-desktop-br {
+                display: none;
             }
 
 
@@ -952,4 +990,3 @@
                 height: 52px;
             }
         }
-

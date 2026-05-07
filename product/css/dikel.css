@@ -553,7 +553,8 @@
         }
 
         .spec-grid-col {
-            flex: 0 0 150px;
+            flex: 1 1 0;
+            min-width: 0;
             display: flex;
             flex-direction: column;
         }
@@ -592,6 +593,12 @@
         .spec-ann-value-center {
             justify-content: flex-start !important;
             padding-left: 24px !important;
+        }
+
+        @media (min-width: 1024px) {
+            .support-info h3 br {
+                display: none;
+            }
         }
 
 
@@ -965,7 +972,7 @@
             position: relative;
             height: auto;
             background: #FFFFFF;
-            padding: 100px 30px;
+            padding: 0 30px;
             overflow: hidden;
         }
 
@@ -1103,6 +1110,9 @@
             transition: opacity 0.4s ease;
             pointer-events: none;
             z-index: 20;
+            width: max-content;
+            min-width: 260px;
+            box-sizing: border-box;
         }
 
         .ps-bubble.visible {
@@ -1124,7 +1134,6 @@
             line-height: 160%;
             color: #4E4E4E;
             margin: 0;
-            width: 321px;
         }
 
         /* Arrow variants */
@@ -1192,14 +1201,33 @@
 
         .ps-step-line {
             width: 100%;
-            height: 0;
-            border-top: 6px solid #E9E9E9;
-            transition: border-color 0.3s;
+            height: 6px;
+            background: #E9E9E9;
+            position: relative;
+            overflow: hidden;
+            border-radius: 3px;
         }
 
-        .ps-step.active .ps-step-line,
-        .ps-step.done .ps-step-line {
-            border-top-color: #F27100;
+        .ps-step-line::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background: #F27100;
+        }
+
+        /* 활성화 시 3초 동안 서서히 채워짐 */
+        .ps-step.active .ps-step-line::after {
+            width: 100%;
+            transition: width 3s linear;
+        }
+
+        /* 완료된 상태는 즉시 100% */
+        .ps-step.done .ps-step-line::after {
+            width: 100%;
+            transition: none;
         }
 
         .ps-step-text {
@@ -5518,4 +5546,3 @@
                 font-weight: 300 !important;
             }
         }
-

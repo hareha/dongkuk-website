@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // 스크롤 숨기기
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+      if (currentScrollY > lastScrollY && currentScrollY > 5) {
         gnb.classList.add('gnb-hidden');
       } else {
         gnb.classList.remove('gnb-hidden');

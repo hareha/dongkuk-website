@@ -14,7 +14,13 @@ function toggleAcc(header) {
     const item = header.closest('.acc-item');
     const wasOpen = item.classList.contains('open');
     document.querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
-    if (!wasOpen) item.classList.add('open');
+    if (!wasOpen) {
+        item.classList.add('open');
+        // 아코디언이 열릴 때 레이아웃 재계산을 위해 resize 이벤트 발생 (약간의 지연 필요)
+        setTimeout(() => {
+            window.dispatchEvent(new Event('resize'));
+        }, 300);
+    }
 }
 
 /* ── 활용분야 탭 전환 ── */
@@ -30,6 +36,9 @@ function setUsageTab(index) {
         if (i === index) el.classList.add('active');
         else el.classList.remove('active');
     });
+    
+    // 탭 전환 시에도 레이아웃 재계산
+    window.dispatchEvent(new Event('resize'));
 }
 
 /* ── 공정카드 스케일링 (데스크탑) ── */
@@ -124,6 +133,9 @@ document.querySelectorAll('.tab-item[data-tab]').forEach(function (tab) {
         // 해당 패널 활성화
         const panel = document.getElementById(panelId);
         if (panel) panel.classList.add('active');
+        
+        // 패널 전환 시 레이아웃 재계산
+        window.dispatchEvent(new Event('resize'));
     });
 });
 
@@ -132,42 +144,71 @@ document.addEventListener('DOMContentLoaded', function() {
     function initScrollSync() {
         // 기존 .spec-table-container 대응
         document.querySelectorAll('.spec-table-container').forEach(function(container) {
+            if (container.dataset.scrollBound) return; // 이미 바인딩됨
+            
             const scrollHorizontal = container.nextElementSibling;
             if (scrollHorizontal && scrollHorizontal.classList.contains('scroll-horizontal')) {
                 const thumb = scrollHorizontal.querySelector('.scroll-thumb');
                 const track = scrollHorizontal.querySelector('.scroll-track');
                 
-                container.addEventListener('scroll', function() {
-                    const scrollWidth = container.scrollWidth - container.clientWidth;
-                    if (scrollWidth <= 0) return;
-                    const scrollLeft = container.scrollLeft;
-                    const scrollPercent = Math.max(0, Math.min(1, scrollLeft / scrollWidth));
-                    const maxTravel = track.clientWidth - thumb.clientWidth;
-                    thumb.style.transform = `translateX(${scrollPercent * maxTravel}px)`;
-                });
+                if (thumb && track) {
+                    container.addEventListener('scroll', function() {
+                        const scrollWidth = this.scrollWidth - this.clientWidth;
+                        if (scrollWidth <= 0) return;
+                        const scrollLeft = this.scrollLeft;
+                        const scrollPercent = Math.max(0, Math.min(1, scrollLeft / scrollWidth));
+                        const maxTravel = track.clientWidth - thumb.clientWidth;
+                        thumb.style.transform = `translateX(${scrollPercent * maxTravel}px)`;
+                    });
+                    container.dataset.scrollBound = "true";
+                }
             }
         });
 
-        // 새로운 .cat-table-wrap 대응
-        document.querySelectorAll('.cat-table-wrap').forEach(function(container) {
-            const indicator = container.querySelector('.cat-scroll-indicator');
-            if (indicator) {
-                const thumb = indicator.querySelector('.cat-scroll-thumb');
-                const bg = indicator.querySelector('.cat-scroll-bg');
-                
-                container.addEventListener('scroll', function() {
-                    const scrollWidth = container.scrollWidth - container.clientWidth;
+        // .cat-scroll-indicator 대응 (data-target 기반 혹은 형제 요소 기반)
+        document.querySelectorAll('.cat-scroll-indicator').forEach(function(indicator) {
+            if (indicator.dataset.scrollBound) return; // 이미 바인딩됨
+
+            const thumb = indicator.querySelector('.cat-scroll-thumb');
+            const track = indicator.querySelector('.cat-scroll-track, .cat-scroll-bg');
+            if (!thumb || !track) return;
+
+            const targetId = indicator.getAttribute('data-target');
+            let scrollBox = targetId ? document.getElementById(targetId) : null;
+            
+            if (!scrollBox) {
+                const prev = indicator.previousElementSibling;
+                if (prev) {
+                    scrollBox = prev.querySelector('[id*="scroll"]') || (prev.classList.contains('cat-table-wrap') ? prev : null);
+                }
+            }
+
+            if (scrollBox && thumb && track) {
+                scrollBox.addEventListener('scroll', function() {
+                    const scrollWidth = this.scrollWidth - this.clientWidth;
                     if (scrollWidth <= 0) return;
-                    const scrollLeft = container.scrollLeft;
+                    
+                    const scrollLeft = this.scrollLeft;
                     const scrollPercent = Math.max(0, Math.min(1, scrollLeft / scrollWidth));
-                    const maxTravel = bg.clientWidth - thumb.clientWidth;
+                    
+                    const maxTravel = track.clientWidth - thumb.clientWidth;
                     thumb.style.transform = `translateX(${scrollPercent * maxTravel}px)`;
                 });
+                indicator.dataset.scrollBound = "true";
+                
+                // 초기 위치 설정 (이미 스크롤되어 있을 경우 대비)
+                const initialWidth = scrollBox.scrollWidth - scrollBox.clientWidth;
+                if (initialWidth > 0) {
+                    const initialPercent = scrollBox.scrollLeft / initialWidth;
+                    const initialTravel = (track.clientWidth - thumb.clientWidth) * initialPercent;
+                    thumb.style.transform = `translateX(${initialTravel}px)`;
+                }
             }
         });
     }
     
     initScrollSync();
+    // 리사이즈 시 다시 시도 (숨겨져 있던 요소가 나타날 수 있음)
     window.addEventListener('resize', initScrollSync);
 });
 

@@ -144,7 +144,7 @@
                 <div class="acc-header" onclick="toggleAcc(this)">
                     <div class="acc-header-left">
                         <div class="acc-dot"></div>
-                        <span class="acc-title">제품분류 및 규격현황</span>
+                        <span class="acc-title">제품사양</span>
                     </div>
                     <div class="acc-dropdown-icon">
                         <img src="../assets/common/ic-dropdown.svg" class="plus" alt="열기">
@@ -152,7 +152,7 @@
                     </div>
                 </div>
                 <div class="acc-body">
-                    <div class="acc-content-box" style="padding-top: 0;">
+                    <div class="acc-content-box">
                         <!-- Desktop View: Original Table -->
                         <div class="cat-table-wrap desktop-only">
                             <table class="cat-f-table">
@@ -352,115 +352,265 @@
                             </table>
                         </div>
 
-                        <!-- Mobile View: New Flex Table -->
+                        <!-- Mobile View: Figma Spec Frame 2116935749 -->
                         <div class="cat-table-wrap mobile-only">
-                            <div class="cat-table-inner" style="width: 1242px;">
-                                <!-- 분류 컬럼 -->
-                                <div class="cat-col cat-col-label">
-                                    <div class="cat-cell cat-header-main" style="height: 90px;">분류</div>
-                                    <div class="cat-data-cell">JIS</div>
-                                    <div class="cat-data-cell">SAE</div>
-                                    <div class="cat-data-cell">DN</div>
-                                </div>
-
-                                <!-- 자동차 부품용 컬럼 -->
-                                <div class="cat-col cat-col-auto">
-                                    <div class="cat-cell cat-header-main">
-                                        자동차 부품용<br><span>Steel for Machine Structural Use</span>
+                            <div class="cat-scroll-box" id="cold-rolled-spec-scroll">
+                                <div class="cat-table-inner">
+                                    
+                                    <!-- 컬럼 1: 분류 (100px) -->
+                                    <div class="cat-col" style="display: flex; flex-direction: column; width: 101px; background: #FFF; flex-shrink: 0; border-right: 1px solid #D6D6D6; border-left: none !important; border-bottom: none !important; box-shadow: none !important;">
+                                        <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 100px; height: 209px; background: #F9FAFE; border-top: 1px solid #000000;">
+                                            <span style="font-family: 'Pretendard'; font-weight: 700; font-size: 18px; color: #000000;">분류</span>
+                                        </div>
+                                        <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 100px; height: 187px; background: #FFFFFF; border-top: 1px solid #D6D6D6;">
+                                            <span style="font-family: 'Pretendard'; font-weight: 700; font-size: 18px; color: #363636;">JIS</span>
+                                        </div>
+                                        <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 100px; height: 187px; background: #FFFFFF; border-top: 1px solid #D6D6D6;">
+                                            <span style="font-family: 'Pretendard'; font-weight: 700; font-size: 18px; color: #363636;">SAE</span>
+                                        </div>
+                                        <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 100px; height: 187px; background: #FFFFFF; border-top: 1px solid #D6D6D6;">
+                                            <span style="font-family: 'Pretendard'; font-weight: 700; font-size: 18px; color: #363636;">DN</span>
+                                        </div>
                                     </div>
-                                    <div class="cat-header-mid-row">
-                                        <div class="cat-cell cat-header-mid" style="width: 122px;">저탄소강<br><span>Low Carbon Steel</span></div>
-                                        <div class="cat-cell cat-header-mid" style="width: 122px;">고탄소강<br><span>High Carbon Steel</span></div>
-                                        <div class="cat-alloy-group">
-                                            <div class="cat-cell cat-header-mid alloy-title">합금강<br><span>Alloy Steel</span></div>
-                                            <div class="alloy-subs">
-                                                <div class="cat-header-sub">니켈 크롬<br>몰리브데넘강<br><span>Ni-Cr-Mo</span></div>
-                                                <div class="cat-header-sub">크롬<br>몰리브데넘강<br><span>Cr-Mo</span></div>
-                                                <div class="cat-header-sub">기타 합금<br><span>Others</span></div>
+
+                                    <!-- 컬럼 2: 자동차 부품용 (546px) -->
+                                    <div class="cat-col" style="display: flex; flex-direction: column; width: 547px; background: #FFF; flex-shrink: 0; border-right: 1px solid #D6D6D6;">
+                                        <div style="box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 546px; height: 90px; background: #F9FAFE; border-top: 1px solid #000000;">
+                                            <span style="font-family: 'Pretendard'; font-weight: 700; font-size: 18px; color: #363636;">자동차 부품용</span>
+                                            <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 12px; color: #A7A7A7;">Steel for Machine Structural Use</span>
+                                        </div>
+                                        <div style="display: flex; flex-direction: row; height: 119px;">
+                                            <div style="box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 122px; height: 119px; background: #F9FAFE; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 14px 18px;">
+                                                <span style="font-family: 'Pretendard'; font-size: 16px; color: #363636;">저탄소강</span>
+                                                <span style="font-family: 'Pretendard'; font-size: 12px; color: #A7A7A7; text-align: center; line-height: 150%;">Low Carbon<br>Steel</span>
+                                            </div>
+                                            <div style="box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 122px; height: 119px; background: #F9FAFE; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 14px 18px;">
+                                                <span style="font-family: 'Pretendard'; font-size: 16px; color: #363636;">고탄소강</span>
+                                                <span style="font-family: 'Pretendard'; font-size: 12px; color: #A7A7A7; text-align: center; line-height: 150%;">High Carbon<br>Steel</span>
+                                            </div>
+                                            <div style="display: flex; flex-direction: column; width: 302px; height: 119px; background: #F9FAFE;">
+                                                <div style="box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 302px; height: 55px; border-top: 1px solid #D6D6D6;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 16px; color: #363636;">합금강</span>
+                                                    <span style="font-family: 'Pretendard'; font-size: 12px; color: #A7A7A7;">Alloy Steel</span>
+                                                </div>
+                                                <div style="display: flex; flex-direction: row; height: 64px;">
+                                                    <div style="box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 101px; height: 64px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 6px;">
+                                                        <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636; text-align: center; line-height: 150%;">니켈 크롬<br>몰리브데넘강</span>
+                                                        <span style="font-family: 'Pretendard'; font-size: 12px; color: #A7A7A7;">Ni-Cr-Mo</span>
+                                                    </div>
+                                                    <div style="box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100px; height: 64px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 6px;">
+                                                        <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636; text-align: center; line-height: 150%;">크롬<br>몰리브데넘강</span>
+                                                        <span style="font-family: 'Pretendard'; font-size: 12px; color: #A7A7A7;">Cr-Mo</span>
+                                                    </div>
+                                                    <div style="box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 101px; height: 64px; border-top: 1px solid #D6D6D6; padding: 6px;">
+                                                        <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636; text-align: center;">기타 합금</span>
+                                                        <span style="font-family: 'Pretendard'; font-size: 12px; color: #A7A7A7;">Others</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- JIS -->
+                                        <div style="display: flex; flex-direction: row; height: 187px;">
+                                            <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 122px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 14px 18px; text-align: center;">
+                                                <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636; line-height: 150%;">SPCC-1B, SPCC-2B, SPCC04B, SPCC-8B, SPCC-SB, S20C</span>
+                                            </div>
+                                            <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 122px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 14px 18px; text-align: center;">
+                                                <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636; line-height: 150%;">S35C, S45C, S50C, S53C, S55C</span>
+                                            </div>
+                                            <div style="display: flex; flex-direction: row; width: 302px;">
+                                                <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 101px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 6px; text-align: center;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636;">SNCM220</span>
+                                                </div>
+                                                <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 100px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 6px; text-align: center;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636; line-height: 150%;">SCM415, SCM430, SCM435</span>
+                                                </div>
+                                                <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 101px; border-top: 1px solid #D6D6D6; padding: 6px; text-align: center;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636;">SUJ2</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- SAE -->
+                                        <div style="display: flex; flex-direction: row; height: 187px;">
+                                            <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 122px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 14px 18px; text-align: center;">
+                                                <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636; line-height: 150%;">1004, 1010, 1020</span>
+                                            </div>
+                                            <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 122px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 14px 18px; text-align: center;">
+                                                <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636; line-height: 150%;">1035, 1045, 1050, 1055</span>
+                                            </div>
+                                            <div style="display: flex; flex-direction: row; width: 302px;">
+                                                <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 101px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 6px; text-align: center;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636; line-height: 150%;">6150M,<br>8660M</span>
+                                                </div>
+                                                <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 100px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 6px; text-align: center;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636;">-</span>
+                                                </div>
+                                                <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 101px; border-top: 1px solid #D6D6D6; padding: 6px; text-align: center;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636;">1552</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- DN -->
+                                        <div style="display: flex; flex-direction: row; height: 187px;">
+                                            <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 122px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 14px 18px; text-align: center;">
+                                                <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636;">-</span>
+                                            </div>
+                                            <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 122px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 14px 18px; text-align: center;">
+                                                <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636; line-height: 150%;">CK75M2, CK75M3</span>
+                                            </div>
+                                            <div style="display: flex; flex-direction: row; width: 302px;">
+                                                <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 101px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 6px; text-align: center;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636;">-</span>
+                                                </div>
+                                                <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 100px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 6px; text-align: center;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636;">-</span>
+                                                </div>
+                                                <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 101px; border-top: 1px solid #D6D6D6; padding: 6px; text-align: center;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636;">-</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="cat-data-rows">
+
+                                    <!-- 컬럼 3: 산업용 (546px) -->
+                                    <div class="cat-col" style="display: flex; flex-direction: column; width: 546px; background: #FFF; flex-shrink: 0;">
+                                        <div style="box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 546px; height: 90px; background: #F9FAFE; border-top: 1px solid #000000;">
+                                            <span style="font-family: 'Pretendard'; font-weight: 700; font-size: 18px; color: #363636;">산업용</span>
+                                            <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 12px; color: #A7A7A7;">Tool Steel</span>
+                                        </div>
+                                        <div style="display: flex; flex-direction: row; height: 119px;">
+                                            <div style="box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 120px; height: 119px; background: #F9FAFE; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6;">
+                                                <span style="font-family: 'Pretendard'; font-size: 16px; color: #363636;">고탄소강</span>
+                                                <span style="font-family: 'Pretendard'; font-size: 12px; color: #A7A7A7; text-align: center; line-height: 150%;">High Carbon<br>Steel</span>
+                                            </div>
+                                            <div style="display: flex; flex-direction: column; width: 426px; height: 119px; background: #F9FAFE;">
+                                                <div style="box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 426px; height: 55px; border-top: 1px solid #D6D6D6;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 16px; color: #363636;">합금강</span>
+                                                    <span style="font-family: 'Pretendard'; font-size: 12px; color: #A7A7A7;">Alloy Steel</span>
+                                                </div>
+                                                <div style="display: flex; flex-direction: row; height: 64px;">
+                                                    <div style="box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 106.5px; height: 64px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 6px;">
+                                                        <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636; text-align: center; line-height: 150%;">니켈 크롬<br>몰리브데넘강</span>
+                                                        <span style="font-family: 'Pretendard'; font-size: 12px; color: #A7A7A7;">Ni-Cr-Mo</span>
+                                                    </div>
+                                                    <div style="box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 106.5px; height: 64px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 6px;">
+                                                        <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636; text-align: center;">니켈 크롬강</span>
+                                                        <span style="font-family: 'Pretendard'; font-size: 12px; color: #A7A7A7;">Ni-Cr</span>
+                                                    </div>
+                                                    <div style="box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 106.5px; height: 64px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 6px;">
+                                                        <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636; text-align: center; line-height: 150%;">크롬<br>몰리브데넘강</span>
+                                                        <span style="font-family: 'Pretendard'; font-size: 12px; color: #A7A7A7;">Cr-Mo</span>
+                                                    </div>
+                                                    <div style="box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 106.5px; height: 64px; border-top: 1px solid #D6D6D6; padding: 6px;">
+                                                        <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636; text-align: center;">크롬강</span>
+                                                        <span style="font-family: 'Pretendard'; font-size: 12px; color: #A7A7A7;">Cr</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <!-- JIS -->
-                                        <div class="cat-data-row">
-                                            <div class="cat-data-cell" style="width: 122px;">SPCC-1B, SPCC-2B, SPCC04B, SPCC-8B, SPCC-SB, S20C</div>
-                                            <div class="cat-data-cell" style="width: 122px;">S35C, S45C, S50C, S53C, S55C</div>
-                                            <div class="cat-data-cell" style="width: 101px;">SNCM220</div>
-                                            <div class="cat-data-cell" style="width: 100px;">SCM415, SCM430, SCM435</div>
-                                            <div class="cat-data-cell" style="width: 101px;">SUJ2</div>
+                                        <div style="display: flex; flex-direction: row; height: 187px;">
+                                            <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 120px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 14px 18px; text-align: center;">
+                                                <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636; line-height: 150%;">S60C, S65C, S70C, SK60, SK85, SK95, SK105, SK120</span>
+                                            </div>
+                                            <div style="display: flex; flex-direction: row; width: 426px;">
+                                                <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 106.5px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 6px; text-align: center;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636;">-</span>
+                                                </div>
+                                                <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 106.5px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 6px; text-align: center;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636;">SKS51</span>
+                                                </div>
+                                                <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 106.5px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 6px; text-align: center;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636;">-</span>
+                                                </div>
+                                                <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 106.5px; border-top: 1px solid #D6D6D6; padding: 6px; text-align: center;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636;">SKS81</span>
+                                                </div>
+                                            </div>
                                         </div>
                                         <!-- SAE -->
-                                        <div class="cat-data-row">
-                                            <div class="cat-data-cell" style="width: 122px;">1004, 1010, 1020</div>
-                                            <div class="cat-data-cell" style="width: 122px;">1035, 1045, 1050, 1055</div>
-                                            <div class="cat-data-cell" style="width: 101px;">6150M, 8660M</div>
-                                            <div class="cat-data-cell" style="width: 100px;">-</div>
-                                            <div class="cat-data-cell" style="width: 101px;">1552</div>
+                                        <div style="display: flex; flex-direction: row; height: 187px;">
+                                            <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 120px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 14px 18px; text-align: center;">
+                                                <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636; line-height: 150%;">1060, 1065, 1070, 1074</span>
+                                            </div>
+                                            <div style="display: flex; flex-direction: row; width: 426px;">
+                                                <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 106.5px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 6px; text-align: center;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636;">8660M</span>
+                                                </div>
+                                                <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 106.5px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 6px; text-align: center;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636;">-</span>
+                                                </div>
+                                                <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 106.5px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 6px; text-align: center;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636; line-height: 150%;">AISI4140, AISI1536</span>
+                                                </div>
+                                                <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 106.5px; border-top: 1px solid #D6D6D6; padding: 6px; text-align: center;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636;">-</span>
+                                                </div>
+                                            </div>
                                         </div>
                                         <!-- DN -->
-                                        <div class="cat-data-row">
-                                            <div class="cat-data-cell" style="width: 122px;">-</div>
-                                            <div class="cat-data-cell" style="width: 122px;">CK75M2, CK75M3</div>
-                                            <div class="cat-data-cell" style="width: 101px;">-</div>
-                                            <div class="cat-data-cell" style="width: 100px;">-</div>
-                                            <div class="cat-data-cell" style="width: 101px;">50CrV4, 51CrV4, 58CrV4, 16MnCr5, 100Cr6</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- 산업용 컬럼 -->
-                                <div class="cat-col cat-col-ind">
-                                    <div class="cat-cell cat-header-main">
-                                        산업용<br><span>Tool Steel</span>
-                                    </div>
-                                    <div class="cat-header-mid-row">
-                                        <div class="cat-cell cat-header-mid" style="width: 120px;">고탄소강<br><span>High Carbon Steel</span></div>
-                                        <div class="cat-alloy-group" style="width: 426px;">
-                                            <div class="cat-cell cat-header-mid alloy-title">합금강<br><span>Alloy Steel</span></div>
-                                            <div class="alloy-subs">
-                                                <div class="cat-header-sub">니켈 크롬<br>몰리브데넘강<br><span>Ni-Cr-Mo</span></div>
-                                                <div class="cat-header-sub">니켈 크롬강<br><span>Ni-Cr</span></div>
-                                                <div class="cat-header-sub">크롬<br>몰리브데넘강<br><span>Cr-Mo</span></div>
-                                                <div class="cat-header-sub">크롬강<br><span>Cr</span></div>
+                                        <div style="display: flex; flex-direction: row; height: 187px;">
+                                            <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 120px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 14px 18px; text-align: center;">
+                                                <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636;">-</span>
+                                            </div>
+                                            <div style="display: flex; flex-direction: row; width: 426px;">
+                                                <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 106.5px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 6px; text-align: center;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636;">-</span>
+                                                </div>
+                                                <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 106.5px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 6px; text-align: center;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636;">-</span>
+                                                </div>
+                                                <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 106.5px; border-top: 1px solid #D6D6D6; border-right: 1px solid #D6D6D6; padding: 6px; text-align: center;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636;">-</span>
+                                                </div>
+                                                <div style="box-sizing: border-box; display: flex; justify-content: center; align-items: center; width: 106.5px; border-top: 1px solid #D6D6D6; padding: 6px; text-align: center;">
+                                                    <span style="font-family: 'Pretendard'; font-size: 14px; color: #363636;">-</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="cat-data-rows">
-                                        <!-- JIS -->
-                                        <div class="cat-data-row">
-                                            <div class="cat-data-cell" style="width: 120px;">S60C, S65C, S70C, SK60, SK85, SK95, SK105, SK120</div>
-                                            <div class="cat-data-cell" style="width: 106.5px;">-</div>
-                                            <div class="cat-data-cell" style="width: 106.5px;">SKS51</div>
-                                            <div class="cat-data-cell" style="width: 106.5px;">-</div>
-                                            <div class="cat-data-cell" style="width: 106.5px;">SKS81</div>
-                                        </div>
-                                        <!-- SAE -->
-                                        <div class="cat-data-row">
-                                            <div class="cat-data-cell" style="width: 120px;">1060, 1065, 1070, 1074</div>
-                                            <div class="cat-data-cell" style="width: 106.5px;">8660M</div>
-                                            <div class="cat-data-cell" style="width: 106.5px;">-</div>
-                                            <div class="cat-data-cell" style="width: 106.5px;">AISI4140, AISI1536</div>
-                                            <div class="cat-data-cell" style="width: 106.5px;">-</div>
-                                        </div>
-                                        <!-- DN -->
-                                        <div class="cat-data-row">
-                                            <div class="cat-data-cell" style="width: 120px;">-</div>
-                                            <div class="cat-data-cell" style="width: 106.5px;">-</div>
-                                            <div class="cat-data-cell" style="width: 106.5px;">-</div>
-                                            <div class="cat-data-cell" style="width: 106.5px;">-</div>
-                                            <div class="cat-data-cell" style="width: 106.5px;">-</div>
-                                        </div>
-                                    </div>
                                 </div>
-                            </div>
-                            <!-- Scroll indicator -->
-                            <div class="cat-scroll-indicator">
-                                <div class="cat-scroll-bg"></div>
-                                <div class="cat-scroll-thumb"></div>
                             </div>
                         </div>
 
-                        <div
+                        <div class="cat-scroll-indicator mobile-only" data-target="cold-rolled-spec-scroll" style="margin-top: 10px; width: 100%; max-width: 328px; height: 4px; position: relative; margin-left: auto; margin-right: auto; flex-shrink: 0;">
+                            <!-- Vector 3586: Track (Fixed) -->
+                            <div class="cat-scroll-track" style="position: absolute; width: 100%; height: 4px; background: rgba(211, 211, 211, 0.3); border-radius: 2px; left: 0; top: 0;"></div>
+                            <!-- Vector 3587: Thumb (Moving) -->
+                            <div class="cat-scroll-thumb" style="position: absolute; width: 164px; height: 4px; background: #D3D3D3; border-radius: 2px; left: 0; top: 0; transition: transform 0.1s ease-out;"></div>
+                        </div>
+                        <script>
+                            (function() {
+                                var box = document.getElementById('cold-rolled-spec-scroll');
+                                var indicator = document.querySelector('.cat-scroll-indicator[data-target="cold-rolled-spec-scroll"]');
+                                if (!box || !indicator) return;
+                                
+                                var thumb = indicator.querySelector('.cat-scroll-thumb');
+                                var track = indicator.querySelector('.cat-scroll-track');
+                                
+                                function update() {
+                                    var sw = box.scrollWidth - box.clientWidth;
+                                    if (sw <= 0) return;
+                                    var pct = box.scrollLeft / sw;
+                                    var max = track.clientWidth - thumb.clientWidth;
+                                    thumb.style.transform = 'translateX(' + (pct * max) + 'px)';
+                                }
+                                
+                                box.addEventListener('scroll', update);
+                                window.addEventListener('resize', update);
+                                
+                                // 초기 실행 및 주기적 체크 (아코디언 대응)
+                                update();
+                                var itv = setInterval(function() {
+                                    if (box.clientWidth > 0) {
+                                        update();
+                                        clearInterval(itv);
+                                    }
+                                }, 500);
+                            })();
+                        </script>
+
+                        <!-- Legend Box (Desktop Only) -->
+                        <div class="desktop-only"
                             style="width: 298px; height: 120px; background: #F8F9FB; border-radius: 16px; padding: 16px 20px; display: flex; flex-direction: column; gap: 5px; margin-top: 10px; box-sizing: border-box;">
                             <div
                                 style="display: flex; flex-direction: row; align-items: center; gap: 4px; height: 26px;">
@@ -492,12 +642,12 @@
                 </div>
             </div>
 
-            <!-- 2. 제품사양 -->
+            <!-- 2. 생산범위 -->
             <div class="acc-item">
                 <div class="acc-header" onclick="toggleAcc(this)">
                     <div class="acc-header-left">
                         <div class="acc-dot"></div>
-                        <span class="acc-title">제품사양</span>
+                        <span class="acc-title">생산범위</span>
                     </div>
                     <div class="acc-dropdown-icon">
                         <img src="../assets/common/ic-dropdown.svg" class="plus" alt="열기">
@@ -505,188 +655,212 @@
                     </div>
                 </div>
                 <div class="acc-body">
-                    <div class="acc-content-box" style="padding-top: 30px;">
-                        <p class="txt-p-20">표의 색상 영역에서 제품별 상세 생산 범위를 확인해 보세요.</p>
-                        <!-- Product 1: PO -->
-                        <div class="sg-card" ">
-                            <div class=" sg-info">
-                            <div class="sg-info-row">
-                                <span class="sg-title">산세강판</span>
-                                <span class="sg-sub">Pickled & Oiled Coil (PO)</span>
-                            </div>
-                                    <p class="sg-desc">열연강판 표면의 산화물과 이물질을 염산<br class="m-br">
-                                        세척으로 제거한 후, 방청을 위해 기름을<br class="m-br">
-                                        도포해 표면을 깨끗하게 정리한 강판</p>
-                        </div>
-                        <div class="sg-visual-box">
-                            <div class="sg-graph-area" style="width: 810px; height: 416px; position: relative;">
-                                <picture>
-                                    <source media="(max-width: 1023px)" srcset="assets/cold-rolled/산세강판_모바일.png">
-                                    <img src="assets/cold-rolled/그래프1.svg" alt="산세강판 생산범위"
-                                        style="width: 100%; height: 100%; object-fit: contain;">
-                                </picture>
-                            </div>
-                            <div class="capa-info-group"
-                                style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 0px; gap: 8px; width: 291px; height: 57px;">
-                                <div
-                                    style="display: flex; flex-direction: row; align-items: center; padding: 0px; gap: 8px; width: 291px; height: 26px;">
-                                    <div
-                                        style="display: flex; flex-direction: row; align-items: center; gap: 2px; width: 194px; height: 26px;">
-                                        <span
-                                            style="width: 107px; height: 26px; font-family: 'Pretendard'; font-weight: 700; font-size: 16px; line-height: 160%; color: #363636;">설비
-                                            전체 Capa.</span>
-                                        <span
-                                            style="width: 85px; height: 26px; font-family: 'Pretendard'; font-weight: 400; font-size: 16px; line-height: 160%; color: #7A7A7A;">(최대
-                                            생산량)</span>
+                    <div class="acc-content-box">
+                        <!-- 안내 문구 -->
+                        <p class="desktop-only" style="width: 461px; height: 32px; font-family: 'Pretendard'; font-style: normal; font-weight: 400; font-size: 20px; line-height: 160%; color: #F27100; margin: 0;">표의 색상 영역에서 제품별 상세 생산 범위를 확인해 보세요.</p>
+                        <p class="mobile-only m-notice-text">표의 색상 영역에서 제품별 상세 생산 범위를 확인해 보세요.</p>
+
+                        <div class="pr-list-container">
+                            <!-- 1. 산세강판 (Pickled & Oiled Coil) -->
+                            <div class="pr-item-row">
+                                <div class="pr-item-info">
+                                    <div class="pr-title-box">
+                                        <span class="pr-title-main">산세강판</span>
+                                        <span class="pr-title-sub">Pickled & Oiled Coil (PO)</span>
                                     </div>
-                                    <span
-                                        style="width: 89px; height: 26px; font-family: 'Pretendard'; font-weight: 400; font-size: 16px; line-height: 160%; color: #363636;">300,000
-                                        MT</span>
+                                    <p class="pr-item-desc">열연강판 표면의 산화물과 이물질을 염산 <br class="mo-br">세척으로 제거한 후, 방청을 위해 기름을 <br class="mo-br">도포해 표면을 깨끗하게 정리한 강판</p>
                                 </div>
-                                <div
-                                    style="display: flex; flex-direction: row; align-items: center; padding: 0px; gap: 8px; width: 284px; height: 26px;">
-                                    <div
-                                        style="display: flex; flex-direction: row; align-items: center; gap: 2px; width: 188px; height: 26px;">
-                                        <span
-                                            style="width: 101px; height: 26px; font-family: 'Pretendard'; font-weight: 700; font-size: 16px; line-height: 160%; color: #363636;">PO
-                                            전용 Capa.</span>
-                                        <span
-                                            style="width: 85px; height: 26px; font-family: 'Pretendard'; font-weight: 400; font-size: 16px; line-height: 160%; color: #7A7A7A;">(공급
-                                            가능량)</span>
+                                <div class="desktop-only pr-chart-box" style="height: 613px;">
+                                    <div class="pr-chart-visual">
+                                        <img src="./assets/cold-rolled/그래프1.svg" alt="산세강판 생산범위" style="width: 100%; height: 100%; object-fit: contain;">
                                     </div>
-                                    <span
-                                        style="width: 88px; height: 26px; font-family: 'Pretendard'; font-weight: 400; font-size: 16px; line-height: 160%; color: #363636;">200,000
-                                        MT</span>
+                                    <div class="capa-info-group">
+                                        <div style="display: flex; flex-direction: row; align-items: center; gap: 8px; height: 26px;">
+                                            <div style="display: flex; flex-direction: row; align-items: center; gap: 2px;">
+                                                <span style="font-family: 'Pretendard'; font-weight: 700; font-size: 16px; line-height: 160%; color: #363636;">설비 전체 Capa.</span>
+                                                <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 16px; line-height: 160%; color: #7A7A7A;">(최대 생산량)</span>
+                                            </div>
+                                            <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 16px; line-height: 160%; color: #363636;">300,000 MT</span>
+                                        </div>
+                                        <div style="display: flex; flex-direction: row; align-items: center; gap: 8px; height: 26px;">
+                                            <div style="display: flex; flex-direction: row; align-items: center; gap: 2px;">
+                                                <span style="font-family: 'Pretendard'; font-weight: 700; font-size: 16px; line-height: 160%; color: #363636;">PO 전용 Capa.</span>
+                                                <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 16px; line-height: 160%; color: #7A7A7A;">(공급 가능량)</span>
+                                            </div>
+                                            <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 16px; line-height: 160%; color: #363636;">200,000 MT</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Mobile View -->
+                                <div class="mobile-only m-chart-container" style="height: 304px;">
+                                    <div class="m-chart-visual-wrap" style="width: 328px; height: 304px; padding: 24px 20px; background: #F8F9FB; border-radius: 16px; box-sizing: border-box; display: flex; flex-direction: column; gap: 30px;">
+                                        <div class="m-chart-visual" style="width: 288px; height: 179px; position: relative;">
+                                            <img src="./assets/cold-rolled/산세강판_모바일.png" alt="산세강판 생산범위" style="width: 100%; height: 100%; object-fit: contain;">
+                                        </div>
+                                        
+                                        <!-- Capa Box -->
+                                        <div style="display: flex; flex-direction: column; gap: 8px; width: 100%;">
+                                            <div style="display: flex; align-items: center; gap: 4px;">
+                                                <div style="display: flex; align-items: center; gap: 2px;">
+                                                    <span style="font-family: 'Pretendard'; font-weight: 700; font-size: 14px; line-height: 150%; color: #363636;">설비 전체 Capa.</span>
+                                                    <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 14px; line-height: 150%; color: #7A7A7A;">(생산 가능 용량)</span>
+                                                </div>
+                                                <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 14px; line-height: 150%; color: #363636;">300,000 MT</span>
+                                            </div>
+                                            <div style="display: flex; align-items: center; gap: 4px;">
+                                                <div style="display: flex; align-items: center; gap: 2px;">
+                                                    <span style="font-family: 'Pretendard'; font-weight: 700; font-size: 14px; line-height: 150%; color: #363636;">PO 전용 Capa.</span>
+                                                    <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 14px; line-height: 150%; color: #7A7A7A;">(공급 가능량)</span>
+                                                </div>
+                                                <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 14px; line-height: 150%; color: #363636;">200,000 MT</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 2. 냉연강판 (Cold Rolled Coil) -->
+                            <div class="pr-item-row">
+                                <div class="pr-item-info">
+                                    <div class="pr-title-box">
+                                        <span class="pr-title-main">냉연강판</span>
+                                        <span class="pr-title-sub">Cold Rolled Coil (CR)</span>
+                                    </div>
+                                    <p class="pr-item-desc">열연강판에 산세 공정(PO)을 적용한 후 상온에서 <br class="mo-br">정밀 압연(Cold Rolled)과 열처리를 거쳐, <br class="mo-br">표면이 매끄럽고 강도가 우수한 강판</p>
+                                </div>
+                                <div class="desktop-only pr-chart-box" style="height: 616px;">
+                                    <div class="pr-chart-visual">
+                                        <img src="./assets/cold-rolled/그래프2.svg" alt="냉연강판 생산범위" style="width: 100%; height: 100%; object-fit: contain;">
+                                    </div>
+                                    <div class="capa-info-group">
+                                        <div style="display: flex; flex-direction: column; gap: 8px; width: 547px;">
+                                            <div style="display: flex; flex-direction: row; align-items: center; gap: 8px; height: 26px;">
+                                                <div style="display: flex; flex-direction: row; align-items: center; gap: 2px;">
+                                                    <span style="font-family: 'Pretendard'; font-weight: 700; font-size: 16px; line-height: 160%; color: #363636;">설비 전체 Capa.</span>
+                                                    <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 16px; line-height: 160%; color: #7A7A7A;">(생산 가능 용량)</span>
+                                                </div>
+                                                <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 16px; line-height: 160%; color: #363636;">360,000 MT</span>
+                                            </div>
+                                            <p style="font-family: 'Pretendard'; font-weight: 400; font-size: 16px; line-height: 160%; color: #F27100; margin: 0;">별표(*)가 표시된 규격은 생산 조건에 따라 협의가 필요하오니 고객센터로 문의해 주세요.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Mobile View -->
+                                <div class="mobile-only m-chart-container" style="height: 328px;">
+                                    <div class="m-chart-visual-wrap" style="width: 328px; height: 328px; padding: 24px 20px; background: #F8F9FB; border-radius: 16px; box-sizing: border-box; display: flex; flex-direction: column; gap: 30px;">
+                                        <div class="m-chart-visual" style="width: 288px; height: 179px; position: relative;">
+                                            <img src="./assets/cold-rolled/냉연강판_모바일.png" alt="냉연강판 생산범위" style="width: 100%; height: 100%; object-fit: contain;">
+                                        </div>
+                                        
+                                        <!-- Capa Box -->
+                                        <div style="display: flex; flex-direction: column; gap: 8px; width: 100%;">
+                                            <div style="display: flex; align-items: center; gap: 4px;">
+                                                <div style="display: flex; align-items: center; gap: 2px;">
+                                                    <span style="font-family: 'Pretendard'; font-weight: 700; font-size: 14px; line-height: 150%; color: #363636;">설비 전체 Capa.</span>
+                                                    <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 14px; line-height: 150%; color: #7A7A7A;">(생산 가능 용량)</span>
+                                                </div>
+                                                <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 14px; line-height: 150%; color: #363636;">360,000 MT</span>
+                                            </div>
+                                            <p style="width: 258px; height: 42px; font-family: 'Pretendard'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 150%; color: #F27100; margin: 0;">별표(*)가 표시된 규격은 생산 조건에 따라 <br class="m-br">협의가 필요하오니 고객센터로 문의해 주세요.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3. 대용량 연속 코일 (Oscillating Coil) -->
+                            <div class="pr-item-row">
+                                <div class="pr-item-info">
+                                    <div class="pr-title-box">
+                                        <span class="pr-title-main">대용량 연속 코일</span>
+                                        <span class="pr-title-sub">Oscillating Coil</span>
+                                    </div>
+                                    <p class="pr-item-desc">좁은 폭의 강판을 좌우로 왕복시키며 <br class="mo-br">연속적으로 권취(Oscillating)해 하나의 코일로 <br class="mo-br">만든 제품으로, 일반 코일보다 길이가 길어 <br class="mo-br">생산성과 가공 효율이 높은 코일</p>
+                                </div>
+                                <div class="desktop-only pr-chart-box" style="height: 582px;">
+                                    <div class="pr-chart-visual">
+                                        <img src="./assets/cold-rolled/그래프3.svg" alt="대용량 연속 코일 생산범위" style="width: 100%; height: 100%; object-fit: contain;">
+                                    </div>
+                                    <div class="capa-info-group">
+                                        <div style="display: flex; flex-direction: row; align-items: center; gap: 8px; height: 26px;">
+                                            <div style="display: flex; flex-direction: row; align-items: center; gap: 2px;">
+                                                <span style="font-family: 'Pretendard'; font-weight: 700; font-size: 16px; line-height: 160%; color: #363636;">설비 전체 Capa.</span>
+                                                <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 16px; line-height: 160%; color: #7A7A7A;">(생산 가능 용량)</span>
+                                            </div>
+                                            <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 16px; line-height: 160%; color: #363636;">9,000 MT</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Mobile View -->
+                                <div class="mobile-only m-chart-container" style="height: 278px; ">
+                                    <div class="m-chart-visual-wrap" style="width: 328px; height: 278px; padding: 24px 20px; background: #F8F9FB; border-radius: 16px; box-sizing: border-box; display: flex; flex-direction: column; gap: 30px;">
+                                        <div class="m-chart-visual" style="width: 288px; height: 179px; position: relative;">
+                                            <img src="./assets/cold-rolled/대용량연속코일_모바일.png" alt="대용량 연속 코일 생산범위" style="width: 100%; height: 100%; object-fit: contain;">
+                                        </div>
+                                        
+                                        <!-- Capa Box -->
+                                        <div style="display: flex; flex-direction: column; gap: 8px; width: 100%;">
+                                            <div style="display: flex; align-items: center; gap: 4px;">
+                                                <div style="display: flex; align-items: center; gap: 2px;">
+                                                    <span style="font-family: 'Pretendard'; font-weight: 700; font-size: 14px; line-height: 150%; color: #363636;">설비 전체 Capa.</span>
+                                                    <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 14px; line-height: 150%; color: #7A7A7A;">(생산 가능 용량)</span>
+                                                </div>
+                                                <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 14px; line-height: 150%; color: #363636;">9,000 MT</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 4. 가공 가능 규격 (Mini Shear Line) -->
+                            <div class="pr-item-row">
+                                <div class="pr-item-info">
+                                    <div class="pr-title-box">
+                                        <span class="pr-title-main">가공 가능 규격</span>
+                                        <span class="pr-title-sub">Mini Shear Line</span>
+                                    </div>
+                                    <p class="pr-item-desc">코일 형태의 강판을 고객이 요구하는 규격의 판재로 정밀 절단하는 가공 설비</p>
+                                </div>
+                                <div class="desktop-only pr-chart-box" style="height: 582px;">
+                                    <div class="pr-chart-visual">
+                                        <img src="./assets/cold-rolled/그래프4.svg" alt="가공 가능 규격 생산범위" style="width: 100%; height: 100%; object-fit: contain;">
+                                    </div>
+                                    <div class="capa-info-group">
+                                        <div style="display: flex; flex-direction: row; align-items: center; gap: 8px; height: 26px;">
+                                            <div style="display: flex; flex-direction: row; align-items: center; gap: 2px;">
+                                                <span style="font-family: 'Pretendard'; font-weight: 700; font-size: 16px; line-height: 160%; color: #363636;">설비 전체 Capa.</span>
+                                                <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 16px; line-height: 160%; color: #7A7A7A;">(생산 가능 용량)</span>
+                                            </div>
+                                            <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 16px; line-height: 160%; color: #363636;">11,400 MT</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Mobile View -->
+                                <div class="mobile-only m-chart-container" style="height: 278px; ">
+                                    <div class="m-chart-visual-wrap" style="width: 328px; height: 278px; padding: 24px 20px; background: #F8F9FB; border-radius: 16px; box-sizing: border-box; display: flex; flex-direction: column; gap: 30px;">
+                                        <div class="m-chart-visual" style="width: 288px; height: 179px; position: relative;">
+                                            <img src="./assets/cold-rolled/가공가능구격_모바일.png" alt="가공 가능 규격 생산범위" style="width: 100%; height: 100%; object-fit: contain;">
+                                        </div>
+                                        
+                                        <!-- Capa Box -->
+                                        <div style="display: flex; flex-direction: column; gap: 8px; width: 100%;">
+                                            <div style="display: flex; align-items: center; gap: 4px;">
+                                                <div style="display: flex; align-items: center; gap: 2px;">
+                                                    <span style="font-family: 'Pretendard'; font-weight: 700; font-size: 14px; line-height: 150%; color: #363636;">설비 전체 Capa.</span>
+                                                    <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 14px; line-height: 150%; color: #7A7A7A;">(생산 가능 용량)</span>
+                                                </div>
+                                                <span style="font-family: 'Pretendard'; font-weight: 400; font-size: 14px; line-height: 150%; color: #363636;">11,400 MT</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Product 2: CR -->
-                    <div class="sg-card" ">
-                            <div class=" sg-info">
-                        <div class="sg-info-row">
-                            <span class="sg-title">냉연강판</span>
-                            <span class="sg-sub">Cold Rolled Coil (CR)</span>
-                        </div>
-                        <p class="sg-desc">열연강판에 산세 공정(PO)을 적용한 후 상온에서 정밀 압연(Cold Rolled)과 열처리를 거쳐, <br class="m-br">
-                            표면이 매끄럽고 강도가 우수한 강판</p>
-                    </div>
-                    <div class="sg-visual-box">
-                        <div class="sg-graph-area" style="width: 810px; height: 416px; position: relative;">
-                            <picture>
-                                <source media="(max-width: 1023px)" srcset="assets/cold-rolled/냉연강판_모바일.png">
-                                <img src="assets/cold-rolled/그래프2.svg" alt="냉연강판 생산범위"
-                                    style="width: 100%; height: 100%; object-fit: contain;">
-                            </picture>
-                        </div>
-                        <div class="capa-info-group"
-                            style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 0px; gap: 8px; width: 500px;">
-                            <div
-                                style="display: flex; flex-direction: row; align-items: center; padding: 0px; gap: 8px; height: 26px;">
-                                <div style="display: flex; flex-direction: row; align-items: center; gap: 2px;">
-                                    <span
-                                        style="width: 107px; height: 26px; font-family: 'Pretendard'; font-weight: 700; font-size: 16px; line-height: 160%; color: #363636;">설비
-                                        전체 Capa.</span>
-                                    <span
-                                        style="width: 85px; height: 26px; font-family: 'Pretendard'; font-weight: 400; font-size: 16px; line-height: 160%; color: #7A7A7A;">(최대
-                                        생산량)</span>
-                                </div>
-                                <span
-                                    style="width: 89px; height: 26px; font-family: 'Pretendard'; font-weight: 400; font-size: 16px; line-height: 160%; color: #363636;">360,000
-                                    MT</span>
-                            </div>
-                                            <span class="desktop-only"
-                                                style="font-family: 'Pretendard'; font-weight: 400; font-size: 14px; line-height: 160%; color: #7A7A7A;">*
-                                                별표(*)가 표시된 규격은 생산 조건에 따라 협의가 필요하오니 고객센터로 문의해 주세요.</span>
-                                            <span class="mobile-only"
-                                                style="font-family: 'Pretendard'; font-weight: 400; font-size: 14px; line-height: 160%; color: #F27100;">*
-                                                별표(*)가 표시된 규격은 생산 조건에 따라 <br>협의가 필요하오니 고객센터로 문의해 주세요.</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 3: Oscillating -->
-                <div class="sg-card" ">
-                            <div class=" sg-info">
-                    <div class="sg-info-row">
-                        <span class="sg-title">대용량 연속 코일</span>
-                        <span class="sg-sub">Oscillating Coil</span>
-                    </div>
-                    <p class="sg-desc">좁은 폭의 강판을 좌우로 왕복시키며<br class="m-br">
-                        연속적으로 권취(Oscillating)해 하나의 코일로 만든 제품으로, 일반 코일보다 길이가 길어<br class="m-br">
-                        생산성과 가공 효율이 높은 코일</p>
-                </div>
-                <div class="sg-visual-box">
-                    <div class="sg-graph-area" style="width: 810px; height: 416px; position: relative;">
-                        <picture>
-                            <source media="(max-width: 1023px)" srcset="assets/cold-rolled/대용량연속코일_모바일.png">
-                            <img src="assets/cold-rolled/그래프3.svg" alt="대용량 연속 코일 생산범위"
-                                style="width: 100%; height: 100%; object-fit: contain;">
-                        </picture>
-                    </div>
-                    <div class="capa-info-group"
-                        style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 0px; gap: 8px; width: 300px; height: 26px;">
-                        <div
-                            style="display: flex; flex-direction: row; align-items: center; padding: 0px; gap: 8px; height: 26px;">
-                            <div style="display: flex; flex-direction: row; align-items: center; gap: 2px;">
-                                <span
-                                    style="width: 107px; height: 26px; font-family: 'Pretendard'; font-weight: 700; font-size: 16px; line-height: 160%; color: #363636;">설비
-                                    전체 Capa.</span>
-                                <span
-                                    style="width: 85px; height: 26px; font-family: 'Pretendard'; font-weight: 400; font-size: 16px; line-height: 160%; color: #7A7A7A;">(최대
-                                    생산량)</span>
-                            </div>
-                            <span
-                                style="width: 89px; height: 26px; font-family: 'Pretendard'; font-weight: 400; font-size: 16px; line-height: 160%; color: #363636;">9,000
-                                MT</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 4: Mini Shear Line -->
-            <div class="sg-card" ">
-                            <div class=" sg-info">
-                <div class="sg-info-row">
-                    <span class="sg-title">가공 가능 규격</span>
-                    <span class="sg-sub">Mini Shear Line</span>
-                </div>
-                <p class="sg-desc">코일 형태의 강판을 고객이 요구하는 규격의 판재로 정밀 절단하는 가공 설비</p>
-            </div>
-            <div class="sg-visual-box">
-                <div class="sg-graph-area" style="width: 810px; height: 416px; position: relative;">
-                    <picture>
-                        <source media="(max-width: 1023px)" srcset="assets/cold-rolled/가공가능구격_모바일.png">
-                        <img src="assets/cold-rolled/그래프4.svg" alt="미니 시어 라인 가공범위"
-                            style="width: 100%; height: 100%; object-fit: contain;">
-                    </picture>
-                </div>
-                <div class="capa-info-group"
-                    style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 0px; gap: 8px; width: 300px; height: 26px;">
-                    <div
-                        style="display: flex; flex-direction: row; align-items: center; padding: 0px; gap: 8px; height: 26px;">
-                        <div style="display: flex; flex-direction: row; align-items: center; gap: 2px;">
-                            <span
-                                style="width: 107px; height: 26px; font-family: 'Pretendard'; font-weight: 700; font-size: 16px; line-height: 160%; color: #363636;">설비
-                                전체 Capa.</span>
-                            <span
-                                style="width: 85px; height: 26px; font-family: 'Pretendard'; font-weight: 400; font-size: 16px; line-height: 160%; color: #7A7A7A;">(최대
-                                생산량)</span>
-                        </div>
-                        <span
-                            style="width: 89px; height: 26px; font-family: 'Pretendard'; font-weight: 400; font-size: 16px; line-height: 160%; color: #363636;">11,400
-                            MT</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </section>
+
     <!-- 활용분야 -->
     <section class="usage-section">
         <div class="inner">
@@ -846,49 +1020,49 @@
                     <!-- ── Tooltips ── -->
 
                     <!-- 01 열연 코일 세팅: 381×128 @ left:0, top:250, arrow UP -->
-                    <div class="ps-bubble" id="bubble-0" style="width:381px;min-height:128px;left:127px;top:275px;">
+                    <div class="ps-bubble" id="bubble-0" style="left:127px;top:275px;">
                         <span class="bubble-arrow arrow-up" style="top:-19px;"></span>
                         <h3>열연 코일 세팅</h3>
-                        <p>냉연강판 공정의 원재료인 열연코일을 준비합니다.</p>
+                        <p>냉연강판 공정의 원재료인 열연코일을 <br> 준비합니다.</p>
                     </div>
 
                     <!-- 02 산세라인: 381×157 @ left:220, top:265, arrow UP -->
-                    <div class="ps-bubble" id="bubble-1" style="width:381px;min-height:157px;left:308px;top:293px;">
+                    <div class="ps-bubble" id="bubble-1" style="left:308px;top:293px;">
                         <span class="bubble-arrow arrow-up" style="top:-19px;"></span>
                         <h3>산세라인</h3>
-                        <p>불순물을 제거하여 표면을 깨끗하게 만드는 과정으로, 우수한 표면 구현에 도움이 됩니다. </p>
+                        <p>불순물을 제거하여 표면을 깨끗하게 만드는 <br> 과정으로, 우수한 표면 구현에 도움이 됩니다. </p>
                     </div>
 
                     <!-- 03 정밀컷팅: 381×157 @ left:621, top:161, arrow DOWN (Figma spec) -->
-                    <div class="ps-bubble" id="bubble-2" style="width:381px;min-height:157px;left:611px;bottom:438px;">
+                    <div class="ps-bubble" id="bubble-2" style="left:611px;bottom:438px;">
                         <h3>정밀컷팅</h3>
                         <p>고객이 요구한 규격에 맞게 소재를 절단합니다.</p>
                         <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
                     </div>
 
                     <!-- 04 냉간압연: 381×157 @ left:700, top:-36, arrow DOWN -->
-                    <div class="ps-bubble" id="bubble-3" style="width:381px;min-height:157px;left:831px;bottom:398px;">
+                    <div class="ps-bubble" id="bubble-3" style="left:831px;bottom:398px;">
                         <h3>냉간압연</h3>
-                        <p>강판을 상온에서 압연하는 과정으로, 강도와 표면 품질을 높이고 원하는 두께를 구현합니다.</p>
+                        <p>강판을 상온에서 압연하는 과정으로, 강도와 <br> 표면 품질을 높이고 원하는 두께를 구현합니다.</p>
                         <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
                     </div>
 
                     <!-- 05 소둔라인: 381×157 @ left:960, top:-40, arrow DOWN -->
-                    <div class="ps-bubble" id="bubble-4" style="width:381px;min-height:157px;left:1121px;bottom:348px;">
+                    <div class="ps-bubble" id="bubble-4" style="left:1121px;bottom:348px;">
                         <h3>소둔라인</h3>
-                        <p>경화된 강판을 가열 후 냉각하는 과정으로, 강판을 부드럽게 만들어 가공성을 높입니다.</p>
+                        <p>경화된 강판을 가열 후 냉각하는 과정으로, <br> 강판을 부드럽게 만들어 가공성을 높입니다.</p>
                         <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
                     </div>
 
                     <!-- 06 표면마감: 381×157 @ left:1200, top:-36, arrow DOWN -->
-                    <div class="ps-bubble" id="bubble-5" style="width:381px;min-height:157px;left:1311px;bottom:278px;">
+                    <div class="ps-bubble" id="bubble-5" style="left:1311px;bottom:278px;">
                         <h3>표면마감</h3>
-                        <p>압연 후 표면 상태를 정리하는 과정으로, 균일하고 매끄러운 품질을 완성합니다.</p>
+                        <p>압연 후 표면 상태를 정리하는 과정으로, <br> 균일하고 매끄러운 품질을 완성합니다.</p>
                         <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
                     </div>
 
                     <!-- 07 포장정리: 381×128 @ left:1440, top:-30, arrow DOWN -->
-                    <div class="ps-bubble" id="bubble-6" style="width:381px;min-height:128px;left:1501px;top:137px;">
+                    <div class="ps-bubble" id="bubble-6" style="left:1501px;top:137px;">
                         <h3>포장정리</h3>
                         <p>완성된 제품을 보호 포장합니다.</p>
                         <span class="bubble-arrow arrow-down" style="bottom:-19px;"></span>
@@ -952,7 +1126,7 @@
                 </div>
 
                 <!-- ═══ 모바일 전용: 다이어그램 + 인디케이터 + 설명카드 ═══ -->
-                <div class="ps-mobile-diagram" style="display:none;">
+                <div class="ps-mobile-diagram mobile-only">
                     <div class="ps-mobile-row">
                         <div class="ps-mob-group">
                             <img class="ps-mob-icon" data-step="0" src="assets/cold-rolled/1.열연 코일 세팅.svg"
@@ -993,7 +1167,7 @@
                     </div>
                 </div>
 
-                <div class="ps-mobile-indicators" style="display:none;">
+                <div class="ps-mobile-indicators mobile-only">
                     <div class="ps-mobile-dot" data-step="0"></div>
                     <div class="ps-mobile-dot" data-step="1"></div>
                     <div class="ps-mobile-dot" data-step="2"></div>
@@ -1003,7 +1177,7 @@
                     <div class="ps-mobile-dot" data-step="6"></div>
                 </div>
 
-                <div class="ps-mobile-info-card" style="display:none;">
+                <div class="ps-mobile-info-card mobile-only">
                     <div class="ps-mobile-info-header">
                         <span class="ps-mobile-info-num">01</span>
                         <span class="ps-mobile-info-name">열연 코일 세팅</span>
@@ -1031,12 +1205,12 @@
         let autoTimer = null;
 
         const STEP_DATA = [
-            { num: '01', name: '열연 코일 세팅', desc: '냉연강판 공정의 원재료인 열연코일을 준비합니다.' },
-            { num: '02', name: '산세라인', desc: '불순물을 제거하여 표면을 깨끗하게 만드는 과정으로, 우수한 표면 구현에 도움이 됩니다.' },
+            { num: '01', name: '열연 코일 세팅', desc: '냉연강판 공정의 원재료인 열연코일을 <br> 준비합니다.' },
+            { num: '02', name: '산세라인', desc: '불순물을 제거하여 표면을 깨끗하게 만드는 <br> 과정으로, 우수한 표면 구현에 도움이 됩니다.' },
             { num: '03', name: '정밀컷팅', desc: '고객이 요구한 규격에 맞게 소재를 절단합니다.' },
-            { num: '04', name: '냉간압연', desc: '강판을 상온에서 압연하는 과정으로, 강도와 표면 품질을 높이고 원하는 두께를 구현합니다.' },
-            { num: '05', name: '소둔라인', desc: '경화된 강판을 가열 후 냉각하는 과정으로, 강판을 부드럽게 만들어 가공성을 높입니다.' },
-            { num: '06', name: '표면마감', desc: '압연 후 표면 상태를 정리하는 과정으로, 균일하고 매끄러운 품질을 완성합니다.' },
+            { num: '04', name: '냉간압연', desc: '강판을 상온에서 압연하는 과정으로, 강도와 <br> 표면 품질을 높이고 원하는 두께를 구현합니다.' },
+            { num: '05', name: '소둔라인', desc: '경화된 강판을 가열 후 냉각하는 과정으로, <br> 강판을 부드럽게 만들어 가공성을 높입니다.' },
+            { num: '06', name: '표면마감', desc: '압연 후 표면 상태를 정리하는 과정으로, <br> 균일하고 매끄러운 품질을 완성합니다.' },
             { num: '07', name: '포장정리', desc: '완성된 제품을 보호 포장합니다.' }
         ];
 
@@ -1046,8 +1220,14 @@
             currentStep = idx;
 
             /* 1. Progress bar 업데이트 (데스크탑) */
-            document.querySelectorAll('#ps-steps-bar .ps-step').forEach((el, i) => {
+            const stepEls = document.querySelectorAll('#ps-steps-bar .ps-step');
+            stepEls.forEach((el) => {
                 el.classList.remove('active', 'done');
+            });
+            const activeStepEl = document.querySelector('#ps-steps-bar .ps-step[data-step="' + idx + '"]');
+            const activeStepLine = activeStepEl ? activeStepEl.querySelector('.ps-step-line') : null;
+            if (activeStepLine) void activeStepLine.offsetWidth;
+            stepEls.forEach((el, i) => {
                 if (i < idx) el.classList.add('done');
                 if (i === idx) el.classList.add('active');
             });
@@ -1068,8 +1248,15 @@
             });
 
             /* 5. 모바일 인디케이터 */
-            document.querySelectorAll('.ps-mobile-dot').forEach((el) => {
-                el.classList.toggle('active', parseInt(el.dataset.step) === idx);
+            const dotEls = document.querySelectorAll('.ps-mobile-dot');
+            dotEls.forEach((el) => {
+                el.classList.remove('active', 'done');
+            });
+            const activeDot = document.querySelector('.ps-mobile-dot[data-step="' + idx + '"]');
+            if (activeDot) void activeDot.offsetWidth;
+            dotEls.forEach((el, i) => {
+                if (i < idx) el.classList.add('done');
+                if (i === idx) el.classList.add('active');
             });
 
             /* 5-1. 모바일 공정 라벨 */
@@ -1084,7 +1271,7 @@
             if (numEl && STEP_DATA[idx]) {
                 numEl.textContent = STEP_DATA[idx].num;
                 nameEl.textContent = STEP_DATA[idx].name;
-                descEl.textContent = STEP_DATA[idx].desc;
+                descEl.innerHTML = STEP_DATA[idx].desc;
             }
         }
 
